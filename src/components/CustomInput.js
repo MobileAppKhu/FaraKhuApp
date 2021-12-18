@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
-import {I18nManager, Pressable, StyleSheet, TextInput, View} from 'react-native'
+import {StyleSheet, TextInput, View} from 'react-native'
 
 import theme from '../theme'
 import palette from '../theme/palette'
-import CustomIcon from './CustomIcon'
+// import CustomIcon from './CustomIcon'
 import Typography from './Typography'
 
 export default function CustomInput({
@@ -18,12 +17,11 @@ export default function CustomInput({
   helperText,
   keyboardType = 'default',
   secureTextEntry,
-  endIcon,
+  // endIcon,
   startIcon,
   clearInputOptions,
   ...others
 }) {
-  const {t} = useTranslation()
   const [isFocused, setIsFocused] = useState(false)
 
   return (
@@ -44,15 +42,15 @@ export default function CustomInput({
         ]}
         onChangeText={onChangeText}
         value={value}
-        placeholder={t(placeholder)}
+        placeholder={placeholder}
         {...others}
         onBlur={() => setIsFocused(false)}
         onFocus={() => setIsFocused(true)}
         keyboardType={keyboardType}
-        textAlign={I18nManager.isRTL ? 'right' : 'left'}
+        textAlign="right"
         secureTextEntry={secureTextEntry}
       />
-      {status === 'error' && (
+      {/* {status === 'error' && (
         <CustomIcon
           name="Close-Square"
           size={25}
@@ -67,7 +65,7 @@ export default function CustomInput({
           color={palette.success}
           style={[styles.icon, styles.iconSuccess]}
         />
-      )}
+      )} */}
       {!!helperText && (
         <Typography
           variant="body1"
@@ -80,27 +78,27 @@ export default function CustomInput({
           {helperText}
         </Typography>
       )}
-      {endIcon && (
+      {/* {endIcon && (
         <CustomIcon
           name={endIcon}
           size={25}
           color={palette.raven}
           style={styles.icon}
         />
-      )}
-      {startIcon && (
+      )} */}
+      {/* {startIcon && (
         <CustomIcon
           name={startIcon}
           size={25}
           color={palette.raven}
           style={styles.startIcon}
         />
-      )}
-      {clearInputOptions && (
+      )} */}
+      {/* {clearInputOptions && (
         <Pressable style={styles.startIcon} onPress={() => onChangeText('')}>
           <CustomIcon name="Arrow---Right-Square" size={25} color="#19223d" />
         </Pressable>
-      )}
+      )} */}
     </View>
   )
 }
@@ -112,20 +110,20 @@ const styles = StyleSheet.create({
   label: {marginTop: 20, marginBottom: 10},
   input: {
     fontFamily: theme.VazirMedium,
-    borderColor: palette.authInput.border,
-    color: palette.authInput.text,
-    borderWidth: 0.5,
-    borderRadius: 8,
+    borderColor: palette.M_3_SYS_SURFACE_VARIANT,
+    color: palette.M_3_SYS_INVERSE_SURFACE,
+    borderWidth: 2,
+    borderRadius: 15,
     fontSize: 14,
     lineHeight: 18,
     width: '100%',
     paddingRight: 15,
     paddingLeft: 15,
-    paddingTop: 13,
-    paddingBottom: 13
+    paddingTop: 15,
+    paddingBottom: 15
   },
   inputError: {
-    borderColor: palette.authInput.borderError,
+    borderColor: palette.M_3_READ_ONLY_BACKGROUND_OPACITY_0_08,
     borderWidth: 1
   },
   inputInStartIcon: {
@@ -137,7 +135,7 @@ const styles = StyleSheet.create({
     right: 15
   },
   iconError: {
-    backgroundColor: palette.error,
+    backgroundColor: palette.M_3_READ_ONLY_BACKGROUND_OPACITY_0_08,
     borderRadius: 16
   },
   iconSuccess: {},
@@ -145,13 +143,15 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   helperTextError: {
-    color: palette.error
+    color: palette.M_3_READ_ONLY_BACKGROUND_OPACITY_0_08
   },
-  isFocused: {
-    backgroundColor: 'white'
+  inputFocused: {
+    backgroundColor: palette.M_3_SYS_BACKGROUND,
+    borderColor: palette.M_3_SYS_PRIMARY
   },
   inputBlured: {
-    backgroundColor: palette.authInput.background
+    backgroundColor: palette.M_3_SYS_BACKGROUND
+    // borderColor: palette.M_3_SYS_PRIMARY
   },
   startIcon: {position: 'absolute', top: 14, left: 15},
   clearInputOptions: {
