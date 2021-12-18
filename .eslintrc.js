@@ -11,6 +11,13 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
+  globals: {
+    $: true,
+    require: true,
+    process: true
+  },
   plugins: ['react'],
-  rules: {}
+  rules: {
+    'react/prop-types': 'off'
+  }
 }
