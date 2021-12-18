@@ -40,8 +40,8 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   smallButton: {
-    fontFamily: theme.VazirBold,
-    fontSize: 16
+    fontFamily: theme.VazirMedium,
+    fontSize: 14
   },
   black18: {
     fontFamily: theme.VazirBlack,
