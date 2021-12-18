@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
   },
   label: {marginTop: 20, marginBottom: 10},
   input: {
-    fontFamily: theme.VazirMedium,
+    fontFamily: theme.Shabnam,
     borderColor: palette.M_3_SYS_SURFACE_VARIANT,
     color: palette.M_3_SYS_INVERSE_SURFACE,
     borderWidth: 2,
