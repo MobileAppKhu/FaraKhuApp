@@ -1,10 +1,9 @@
 import {useNavigation} from '@react-navigation/native'
 import React from 'react'
-import {useTranslation} from 'react-i18next'
-import {View, StyleSheet, Pressable, I18nManager} from 'react-native'
+import {View, StyleSheet, Pressable} from 'react-native'
 
 import palette from '../theme/palette'
-import CustomIcon from './CustomIcon'
+// import CustomIcon from './CustomIcon'
 import Typography from './Typography'
 
 export default function SimpleHeader({
@@ -12,10 +11,10 @@ export default function SimpleHeader({
   showHeaderRight,
   headerRightText,
   onHeaderRightClicked,
+  // eslint-disable-next-line no-unused-vars
   headerRightIcon
 }) {
   const navigation = useNavigation()
-  const {t} = useTranslation()
 
   return (
     <View style={styles.container}>
@@ -23,16 +22,17 @@ export default function SimpleHeader({
         <Pressable
           onPress={() => navigation.goBack()}
           style={styles.goBackButton}>
-          <CustomIcon
+          {/* <CustomIcon
             name="Arrow---Left-2"
             size={32}
             color={palette.balticSea}
-          />
+          /> */}
+          <Typography>ریدم تو بهنیا</Typography>
         </Pressable>
       </View>
       <View style={styles.headerCenter}>
         <Typography variant="h4" style={styles.title}>
-          {t(title)}
+          {title}
         </Typography>
       </View>
       <View style={styles.headerRight}>
@@ -41,17 +41,17 @@ export default function SimpleHeader({
             onPress={onHeaderRightClicked}
             style={styles.confirmButton}>
             <Typography variant="h5" style={styles.headerRightTypography}>
-              {t(headerRightText)}
+              {headerRightText}
             </Typography>
           </Pressable>
         )}
-        {headerRightIcon && (
+        {/* {headerRightIcon && (
           <Pressable
             onPress={onHeaderRightClicked}
             style={styles.confirmButton}>
             <CustomIcon name={headerRightIcon} size={30} />
           </Pressable>
-        )}
+        )} */}
       </View>
     </View>
   )
@@ -59,11 +59,10 @@ export default function SimpleHeader({
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 25,
-    paddingBottom: 25,
-    backgroundColor: palette.secondary.background
+    paddingVertical: 15,
+    backgroundColor: palette.M_3_SYS_BACKGROUND
   },
   headerLeft: {
     width: 99,
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     paddingRight: 24
   },
   title: {
-    color: palette.nero,
+    color: palette.M_3_SYS_ON_SURFACE,
     textAlign: 'center'
   },
   goBackButton: {
