@@ -22,7 +22,7 @@ export default function CustomButton({
 }) {
   return (
     <Pressable
-      // android_ripple={{color: palette.mainButton.ripple}}
+      android_ripple={{color: 'rgba(211, 228, 255, 0.8)', borderless: 16}}
       style={[
         styles[`${size}Button`],
         styles[`${type}${disabled ? 'Disabled' : ''}Button`],
