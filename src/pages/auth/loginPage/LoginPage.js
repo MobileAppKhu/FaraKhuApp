@@ -6,7 +6,9 @@ import CustomInput from './../../../components/CustomInput'
 import Typography from '../../../components/Typography'
 import palette from '../../../theme/palette'
 import CustomButton from './../../../components/CustomButton'
+import {useNavigation} from '@react-navigation/native'
 export default function LoginPage() {
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <ScrollView>
@@ -25,7 +27,7 @@ export default function LoginPage() {
             <CustomInput placeholder="رمز عبور" />
           </View>
           <View style={styles.forgetPasswordContainer}>
-            <Pressable>
+            <Pressable onPress={() => navigation.navigate('forget-password')}>
               <Typography variant="body2" color={palette.M_3_SYS_PRIMARY}>
                 بازیابی رمز عبور
               </Typography>
