@@ -7,7 +7,9 @@ import Typography from '../../../components/Typography'
 import palette from '../../../theme/palette'
 import CustomInput from './../../../components/CustomInput'
 import CustomButton from './../../../components/CustomButton'
+import {useNavigation} from '@react-navigation/native'
 export default function ForgetPassword() {
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <SimpleHeader />
@@ -29,7 +31,10 @@ export default function ForgetPassword() {
               />
             </View>
             <View>
-              <CustomButton title="ارسال کد تایید" />
+              <CustomButton
+                title="ارسال کد تایید"
+                onPress={() => navigation.navigate('confirm-code-page')}
+              />
             </View>
           </View>
         </View>

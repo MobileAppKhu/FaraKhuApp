@@ -1,5 +1,5 @@
 import React, {useRef} from 'react'
-import {View, StyleSheet, TextInput, I18nManager} from 'react-native'
+import {View, StyleSheet, TextInput} from 'react-native'
 
 import theme from '../theme'
 import palette from '../theme/palette'
@@ -17,8 +17,11 @@ function CodeInput({code, onChange}) {
         maxLength={1}
         placeholder=""
         keyboardType="numeric"
-        style={styles.input}
+        style={[styles.input, code[3] ? styles.inputFill : {}]}
         onChangeText={(val) => {
+          if (val.length === 0) {
+            inp3.current.focus()
+          }
           onChange([...code.slice(0, 3), val])
         }}
       />
@@ -27,10 +30,12 @@ function CodeInput({code, onChange}) {
         maxLength={1}
         placeholder=""
         keyboardType="numeric"
-        style={styles.input}
+        style={[styles.input, code[2] ? styles.inputFill : {}]}
         onChangeText={(val) => {
           if (val.length === 1) {
             inp4.current.focus()
+          } else {
+            inp2.current.focus()
           }
           onChange([...code.slice(0, 2), val, code[3]])
         }}
@@ -40,10 +45,12 @@ function CodeInput({code, onChange}) {
         maxLength={1}
         placeholder=""
         keyboardType="numeric"
-        style={styles.input}
+        style={[styles.input, code[1] ? styles.inputFill : {}]}
         onChangeText={(val) => {
           if (val.length === 1) {
             inp3.current.focus()
+          } else {
+            inp1.current.focus()
           }
           onChange([code[0], val, ...code.slice(2, 4)])
         }}
@@ -53,14 +60,13 @@ function CodeInput({code, onChange}) {
         maxLength={1}
         placeholder=""
         keyboardType="numeric"
-        style={styles.input}
+        style={[styles.input, code[0] ? styles.inputFill : {}]}
         onChangeText={(val) => {
           if (val.length === 1) {
             inp2.current.focus()
           }
           onChange([val, ...code.slice(1, 4)])
         }}
-        // eslint-disable-next-line jsx-a11y/no-autofocus
         autoFocus={true}
       />
     </View>
@@ -69,25 +75,33 @@ function CodeInput({code, onChange}) {
 
 const styles = StyleSheet.create({
   root: {
-    flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
+    // flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
+    width: '100%',
     padding: 10,
-    justifyContent: 'center',
+    flexDirection: 'row-reverse',
+    justifyContent: 'space-evenly',
     alignItems: 'center'
   },
   input: {
-    fontFamily: theme.VazirBold,
-    borderColor: palette.authInput.border,
-    color: palette.balticSea,
-    backgroundColor: palette.authInput.background,
+    fontFamily: theme.ShabnamBold,
+    borderColor: palette.M_3_SYS_OUTLINE,
+    color: palette.M_3_SYS_ON_SURFACE_VARIANT,
+    backgroundColor: palette.M_3_SYS_SURFACE,
     borderWidth: 0.5,
     borderRadius: 8,
-    fontSize: 40,
+    fontSize: 20,
     textAlign: 'center',
-    paddingRight: 12,
-    paddingLeft: 12,
-    marginRight: 10,
-    marginLeft: 10,
+    // paddingRight: 12,
+    // paddingLeft: 12,
+    width: 47,
+    height: 47,
+    // marginHorizontal: 17,
     overflow: 'visible'
+  },
+  inputFill: {
+    backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
+    // color: palette.M_3_SYS_ON_SECONDARY_CONTAINER,
+    borderWidth: 0
   }
 })
 

@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   smallButton: {
     width: '100%',
-    borderRadius: 16,
+    borderRadius: 7,
     justifyContent: 'center',
     alignItems: 'center',
     height: 40,
