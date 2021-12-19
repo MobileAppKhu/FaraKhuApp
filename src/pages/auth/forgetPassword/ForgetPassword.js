@@ -22,7 +22,11 @@ export default function ForgetPassword() {
           </View>
           <View style={styles.partContainer}>
             <View style={styles.inputContainer}>
-              <CustomInput placeholder="ایمیل دانشگاهی" />
+              <CustomInput
+                placeholder="ایمیل دانشگاهی"
+                endIcon="mail_outline"
+                clearInputOptions
+              />
             </View>
             <View>
               <CustomButton title="ارسال کد تایید" />
