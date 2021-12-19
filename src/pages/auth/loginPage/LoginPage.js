@@ -39,7 +39,12 @@ export default function LoginPage() {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title="ورود به سامانه" />
+          <View>
+            <CustomButton title="ورود به سامانه" size="small" />
+          </View>
+          <View style={styles.guestLoginButton}>
+            <CustomButton title="ورود مهمان" size="small" type="cancel" />
+          </View>
         </View>
       </ScrollView>
     </View>
