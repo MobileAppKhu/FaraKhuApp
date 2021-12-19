@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
-import {StyleSheet, TextInput, View} from 'react-native'
+import {Pressable, StyleSheet, TextInput, View} from 'react-native'
 
 import theme from '../theme'
 import palette from '../theme/palette'
-// import CustomIcon from './CustomIcon'
+import CustomIcon from './CustomIcon'
 import Typography from './Typography'
 
 export default function CustomInput({
@@ -17,7 +17,7 @@ export default function CustomInput({
   helperText,
   keyboardType = 'default',
   secureTextEntry,
-  // endIcon,
+  endIcon,
   startIcon,
   clearInputOptions,
   ...others
@@ -38,7 +38,8 @@ export default function CustomInput({
           status === 'error' ? styles.inputError : {},
           isFocused ? styles.inputFocused : styles.inputBlured,
           startIcon ? styles.inputInStartIcon : {},
-          clearInputOptions ? styles.clearInputOptions : {}
+          clearInputOptions ? styles.clearInputOptions : {},
+          endIcon ? {paddingRight: 45} : {}
         ]}
         onChangeText={onChangeText}
         value={value}
@@ -78,27 +79,27 @@ export default function CustomInput({
           {helperText}
         </Typography>
       )}
-      {/* {endIcon && (
+      {endIcon && (
         <CustomIcon
           name={endIcon}
           size={25}
-          color={palette.raven}
+          color={palette.M_3_SYS_OUTLINE}
           style={styles.icon}
         />
-      )} */}
-      {/* {startIcon && (
+      )}
+      {startIcon && (
         <CustomIcon
           name={startIcon}
           size={25}
-          color={palette.raven}
+          color={palette.M_3_SYS_OUTLINE}
           style={styles.startIcon}
         />
-      )} */}
-      {/* {clearInputOptions && (
+      )}
+      {clearInputOptions && isFocused && (
         <Pressable style={styles.startIcon} onPress={() => onChangeText('')}>
-          <CustomIcon name="Arrow---Right-Square" size={25} color="#19223d" />
+          <CustomIcon name="close_24px" size={25} color="#19223d" />
         </Pressable>
-      )} */}
+      )}
     </View>
   )
 }
@@ -131,7 +132,7 @@ const styles = StyleSheet.create({
   },
   icon: {
     position: 'absolute',
-    top: 14,
+    top: 18,
     right: 15
   },
   iconError: {
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: palette.M_3_SYS_BACKGROUND
     // borderColor: palette.M_3_SYS_PRIMARY
   },
-  startIcon: {position: 'absolute', top: 14, left: 15},
+  startIcon: {position: 'absolute', top: 18, left: 15},
   clearInputOptions: {
     paddingLeft: 45
   }

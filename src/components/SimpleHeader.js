@@ -3,6 +3,7 @@ import React from 'react'
 import {View, StyleSheet, Pressable} from 'react-native'
 
 import palette from '../theme/palette'
+import CustomIcon from './CustomIcon'
 // import CustomIcon from './CustomIcon'
 import Typography from './Typography'
 
@@ -22,12 +23,11 @@ export default function SimpleHeader({
         <Pressable
           onPress={() => navigation.goBack()}
           style={styles.goBackButton}>
-          {/* <CustomIcon
-            name="Arrow---Left-2"
+          <CustomIcon
+            name="arrow_back_24px"
             size={32}
-            color={palette.balticSea}
-          /> */}
-          <Typography>ریدم تو بهنیا</Typography>
+            color={palette.M_3_SYS_ON_SURFACE_VARIANT}
+          />
         </Pressable>
       </View>
       <View style={styles.headerCenter}>
@@ -61,8 +61,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 15,
-    backgroundColor: palette.M_3_SYS_BACKGROUND
+    paddingVertical: 15
+    // backgroundColor: palette.M_3_SYS_BACKGROUND
   },
   headerLeft: {
     width: 99,
