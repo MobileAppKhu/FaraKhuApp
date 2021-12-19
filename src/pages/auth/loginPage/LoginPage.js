@@ -28,7 +28,11 @@ export default function LoginPage() {
             />
           </View>
           <View style={styles.passwordContainer}>
-            <CustomInput placeholder="رمز عبور" endIcon="icons8_lock-1" />
+            <CustomInput
+              placeholder="رمز عبور"
+              endIcon="icons8_lock-1"
+              secureTextEntry={true}
+            />
           </View>
           <View style={styles.forgetPasswordContainer}>
             <Pressable onPress={() => navigation.navigate('forget-password')}>

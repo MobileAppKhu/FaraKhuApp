@@ -23,7 +23,7 @@ export default function CustomInput({
   ...others
 }) {
   const [isFocused, setIsFocused] = useState(false)
-
+  const [isPasswordType, setisPasswordType] = useState(secureTextEntry)
   return (
     <View style={styles.container}>
       {label && (
@@ -49,7 +49,7 @@ export default function CustomInput({
         onFocus={() => setIsFocused(true)}
         keyboardType={keyboardType}
         textAlign="right"
-        secureTextEntry={secureTextEntry}
+        secureTextEntry={isPasswordType}
       />
       {/* {status === 'error' && (
         <CustomIcon
@@ -98,6 +98,17 @@ export default function CustomInput({
       {clearInputOptions && isFocused && (
         <Pressable style={styles.startIcon} onPress={() => onChangeText('')}>
           <CustomIcon name="close_24px" size={25} color="#19223d" />
+        </Pressable>
+      )}
+      {secureTextEntry && (
+        <Pressable
+          style={styles.startIcon}
+          onPress={() => setisPasswordType(!isPasswordType)}>
+          <CustomIcon
+            name={isPasswordType ? 'icons8_hide' : 'icons8_eye'}
+            size={25}
+            color="#19223d"
+          />
         </Pressable>
       )}
     </View>
