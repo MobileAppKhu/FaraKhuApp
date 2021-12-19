@@ -29,6 +29,9 @@ const styles = StyleSheet.create({
   forgetPasswordContainer: {marginHorizontal: 10, marginBottom: 10},
   buttonContainer: {
     marginHorizontal: 20
+  },
+  guestLoginButton: {
+    marginTop: 16
   }
 })
 export default styles

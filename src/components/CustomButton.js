@@ -79,14 +79,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'red'
   },
   cancelButton: {
-    backgroundColor: 'red'
+    backgroundColor: palette.M_3_SYS_BACKGROUND,
+    borderWidth:1,
+    borderColor:palette.M_3_SYS_OUTLINE
   },
   text: {},
   confirmText: {
     color: palette.M_3_SYS_ON_PRIMARY
   },
   cancelText: {
-    color: 'blue'
+    color: palette.M_3_SYS_PRIMARY
   },
   startIcon: {
     position: 'absolute',

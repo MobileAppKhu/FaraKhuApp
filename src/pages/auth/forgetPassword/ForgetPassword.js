@@ -33,6 +33,7 @@ export default function ForgetPassword() {
             <View>
               <CustomButton
                 title="ارسال کد تایید"
+                size="small"
                 onPress={() => navigation.navigate('confirm-code-page')}
               />
             </View>
