@@ -5,7 +5,7 @@ import LoginPage from '../pages/auth/loginPage/LoginPage'
 import LandingPage from '../pages/auth/landingPage/LandingPage'
 import ForgetPassword from '../pages/auth/forgetPassword/ForgetPassword'
 import Welcome from "../pages/auth/welcom/Welcome";
-
+import ConfirmCodePage from '../pages/auth/forgetPassword/confirmCodePage/ConfirmCodePage'
 const Stack = createStackNavigator()
 
 export default function LoginNavigation() {
@@ -15,6 +15,6 @@ export default function LoginNavigation() {
       <Stack.Screen name="login" component={LoginPage} />
       <Stack.Screen name="forget-password" component={ForgetPassword} />
         <Stack.Screen name="welcome" component={Welcome} />
-    </Stack.Navigator>
+ <Stack.Screen name="confirm-code-page" component={ConfirmCodePage} />    </Stack.Navigator>
   )
 }
