@@ -25,14 +25,14 @@ export default function LoginPage() {
               placeholder="ایمیل دانشگاهی"
               endIcon="mail_outline"
               clearInputOptions
-            />{' '}
+            />
           </View>
           <View style={styles.passwordContainer}>
             <CustomInput
               placeholder="رمز عبور"
               endIcon="icons8_lock-1"
               secureTextEntry={true}
-            />{' '}
+            />
           </View>
           <View style={styles.forgetPasswordContainer}>
             <Pressable onPress={() => navigation.navigate('forget-password')}>
