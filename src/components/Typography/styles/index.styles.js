@@ -95,6 +95,11 @@ const styles = StyleSheet.create({
   black11: {
     fontSize: 11,
     fontFamily: theme.ShabnamLight
-  }
+  },
+  regular24:{
+    fontSize:24,
+    fontFamily:theme.Shabnam,
+
+  },
 })
 export default styles

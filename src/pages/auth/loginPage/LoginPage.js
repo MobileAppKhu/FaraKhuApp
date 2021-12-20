@@ -21,19 +21,17 @@ export default function LoginPage() {
         </View>
         <View style={styles.inputsContainer}>
           <View style={styles.emailContainer}>
-            <CustomInput
+ <CustomInput
               placeholder="ایمیل دانشگاهی"
               endIcon="mail_outline"
               clearInputOptions
-            />
-          </View>
+            />          </View>
           <View style={styles.passwordContainer}>
             <CustomInput
               placeholder="رمز عبور"
               endIcon="icons8_lock-1"
               secureTextEntry={true}
-            />
-          </View>
+            />          </View>
           <View style={styles.forgetPasswordContainer}>
             <Pressable onPress={() => navigation.navigate('forget-password')}>
               <Typography variant="body2" color={palette.M_3_SYS_PRIMARY}>
@@ -43,7 +41,7 @@ export default function LoginPage() {
           </View>
         </View>
         <View style={styles.buttonContainer}>
-          <View>
+                    <View>
             <CustomButton title="ورود به سامانه" size="small" />
           </View>
           <View style={styles.guestLoginButton}>
