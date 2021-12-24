@@ -80,8 +80,8 @@ const styles = StyleSheet.create({
   },
   cancelButton: {
     backgroundColor: palette.M_3_SYS_BACKGROUND,
-    borderWidth:1,
-    borderColor:palette.M_3_SYS_OUTLINE
+    borderWidth: 1,
+    borderColor: palette.M_3_SYS_OUTLINE
   },
   text: {},
   confirmText: {
