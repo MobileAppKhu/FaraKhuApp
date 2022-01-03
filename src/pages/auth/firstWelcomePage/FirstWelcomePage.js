@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 import styles from './stylesheet'
 import palette from '../../../theme/palette'
 import CustomButton from '../../../components/CustomButton'
-export default function Welcome() {
+export default function FirstWelcomePage() {
   const navigation = useNavigation()
   return (
     <View style={styles.container}>

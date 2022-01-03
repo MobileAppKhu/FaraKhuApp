@@ -9,7 +9,7 @@ export default function LandingPage() {
   return (
     <Pressable
       style={styles.root}
-      onPress={() => navigation.navigate('welcome')}>
+      onPress={() => navigation.navigate('first-welcome')}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
