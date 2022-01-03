@@ -14,7 +14,7 @@ export default function LoginNavigation() {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="signin">
-      <Stack.Screen name="welcome-2" component={SecondWelcomePage} />
+      <Stack.Screen name="second-welcome" component={SecondWelcomePage} />
       <Stack.Screen name="landing-page" component={LandingPage} />
       <Stack.Screen name="login" component={LoginPage} />
       <Stack.Screen name="forget-password" component={ForgetPassword} />
