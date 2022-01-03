@@ -7,7 +7,9 @@ import {useNavigation} from '@react-navigation/native'
 export default function LandingPage() {
   const navigation = useNavigation()
   return (
-    <Pressable style={styles.root} onPress={() => navigation.navigate('login')}>
+    <Pressable
+      style={styles.root}
+      onPress={() => navigation.navigate('welcome')}>
       <View style={styles.imageContainer}>
         <Image
           style={styles.image}
