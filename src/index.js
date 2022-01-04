@@ -1,7 +1,7 @@
 import {NavigationContainer} from '@react-navigation/native'
 import React from 'react'
 import {StatusBar} from 'react-native'
-import LoginNavigation from './navigations/LoginNavigation'
+import MainNavigation from './navigations/mainNavigation'
 
 const Main = () => {
   // useEffect(() => {
@@ -30,7 +30,7 @@ const Main = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle="dark-content" />
-      {<LoginNavigation />}
+      {<MainNavigation />}
     </NavigationContainer>
   )
 }
