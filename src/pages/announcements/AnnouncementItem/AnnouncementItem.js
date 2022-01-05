@@ -66,7 +66,7 @@ export default function AnnouncementItem() {
               borderless: true
             }}>
             <CustomIcon
-              name="arrow_back_24px"
+              name="icons8_left_send"
               size={24}
               color={palette.M_3_REF_PRIMARY_PRIMARY_0}
             />
