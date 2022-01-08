@@ -2,14 +2,16 @@ import React from 'react'
 import {View} from 'react-native'
 import DashboardButtonPage from '../Components/DashboardButtonPage/DashboardButtonPage'
 import styles from './stylesheet'
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation} from '@react-navigation/native'
+
 export default function DashbaordMenu() {
-    const navigation = useNavigation()
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <DashboardButtonPage
         title="درس های من"
         iconName="icons8_teacher-1-course"
+        onPress={() => navigation.navigate('my-courses-main-page')}
       />
       <DashboardButtonPage
         title="اخبار و رویدادها"
