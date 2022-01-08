@@ -7,8 +7,8 @@ import styles from './stylesheet'
 export default function DashboardButtonPage({iconName, title, onPress}) {
   return (
     <Pressable style={styles.root} onPress={onPress}>
-      <CustomIcon name={iconName} size={51} color={palette.M_3_SYS_PRIMARY} />
-      <Typography variant="body2" color={palette.M_3_SYS_SECONDARY}>
+      <CustomIcon name={iconName} size={50} color={palette.M_3_SYS_PRIMARY} />
+      <Typography variant="bold12" color={palette.M_3_SYS_SECONDARY}>
         {title}
       </Typography>
     </Pressable>
