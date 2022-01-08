@@ -2,6 +2,7 @@ import React from 'react'
 import {Pressable, StyleSheet} from 'react-native'
 
 import palette from '../theme/palette'
+import CustomIcon from './CustomIcon'
 // import CustomIcon from './CustomIcon'
 import Typography from './Typography'
 
@@ -12,13 +13,13 @@ export default function CustomButton({
   textStyle,
   size = 'big',
   type = 'confirm',
-  disabled
-  // startIcon,
-  // startIconSize,
-  // startIconColor,
-  // endIcon,
-  // endIconSize,
-  // endIconColor
+  disabled,
+  startIcon,
+  startIconSize,
+  startIconColor,
+  endIcon,
+  endIconSize,
+  endIconColor
 }) {
   return (
     <Pressable
@@ -30,27 +31,27 @@ export default function CustomButton({
       ]}
       onPress={onPress}
       disabled={disabled}>
-      {/* {startIcon && (
+      {startIcon && (
         <CustomIcon
           color={startIconColor}
           name={startIcon}
           style={styles.startIcon}
           size={startIconSize ? startIconSize : 20}
         />
-      )} */}
+      )}
       <Typography
         variant={`${size}Button`}
         style={[styles.text, styles[`${type}Text`], textStyle]}>
         {title}
       </Typography>
-      {/* {endIcon && (
+      {endIcon && (
         <CustomIcon
           color={endIconColor}
           name={endIcon}
           style={styles.endIcon}
           size={endIconSize ? endIconSize : 20}
         />
-      )} */}
+      )}
     </Pressable>
   )
 }
@@ -91,11 +92,11 @@ const styles = StyleSheet.create({
     color: palette.M_3_SYS_PRIMARY
   },
   startIcon: {
-    position: 'absolute',
-    left: 20
+    // position: 'absolute',
+    marginRight: 5
   },
   endIcon: {
-    position: 'absolute',
+    // position: 'absolute',
     right: 20
   }
 })
