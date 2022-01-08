@@ -4,7 +4,6 @@ import {View, StyleSheet, Pressable} from 'react-native'
 
 import palette from '../theme/palette'
 import CustomIcon from './CustomIcon'
-// import CustomIcon from './CustomIcon'
 import Typography from './Typography'
 
 export default function SimpleHeader({
@@ -12,8 +11,8 @@ export default function SimpleHeader({
   showHeaderRight,
   headerRightText,
   onHeaderRightClicked,
-  // eslint-disable-next-line no-unused-vars
-  headerRightIcon
+  headerRightIcon,
+  isCloseIcon
 }) {
   const navigation = useNavigation()
 
@@ -24,14 +23,14 @@ export default function SimpleHeader({
           onPress={() => navigation.goBack()}
           style={styles.goBackButton}>
           <CustomIcon
-            name="arrow_back_24px"
+            name={isCloseIcon ? 'close_24px' : 'arrow_back_24px'}
             size={32}
             color={palette.M_3_SYS_ON_SURFACE_VARIANT}
           />
         </Pressable>
       </View>
       <View style={styles.headerCenter}>
-        <Typography variant="h4" style={styles.title}>
+        <Typography variant="medium18" style={styles.title}>
           {title}
         </Typography>
       </View>
@@ -45,13 +44,13 @@ export default function SimpleHeader({
             </Typography>
           </Pressable>
         )}
-        {/* {headerRightIcon && (
+        {headerRightIcon && (
           <Pressable
             onPress={onHeaderRightClicked}
             style={styles.confirmButton}>
             <CustomIcon name={headerRightIcon} size={30} />
           </Pressable>
-        )} */}
+        )}
       </View>
     </View>
   )
@@ -61,12 +60,12 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 15
-    // backgroundColor: palette.M_3_SYS_BACKGROUND
+    height: 64,
+    backgroundColor: palette.M_3_SYS_PRIMARY
   },
   headerLeft: {
     width: 99,
-    height: 54,
+    height: 64,
     paddingLeft: 24
   },
   headerCenter: {
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     width: 99,
-    height: 54,
+    height: 64,
     paddingRight: 24
   },
   title: {
