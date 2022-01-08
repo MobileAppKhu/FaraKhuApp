@@ -3,11 +3,11 @@ import {View, Pressable, Image, ScrollView} from 'react-native'
 import CustomIcon from '../../../components/CustomIcon'
 import CustomButton from '../../../components/CustomButton'
 import Typography from '../../../components/Typography'
-import palette from './../../../theme/palette'
+import palette from '../../../theme/palette'
 
 import styles from './stylesheet'
 
-export default function AnnouncementItem() {
+export default function AnnouncementView() {
   return (
     <View style={styles.container}>
       <View style={styles.AnnouncementHeader}>
