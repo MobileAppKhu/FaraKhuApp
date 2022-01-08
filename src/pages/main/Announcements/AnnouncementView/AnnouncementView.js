@@ -1,11 +1,11 @@
 import React from 'react'
 import {View, Pressable, Image, ScrollView} from 'react-native'
-import CustomIcon from '../../../components/CustomIcon'
-import CustomButton from '../../../components/CustomButton'
-import Typography from '../../../components/Typography'
-import palette from '../../../theme/palette'
+import CustomIcon from '../../../../components/CustomIcon'
+import Typography from '../../../../components/Typography'
+import palette from '../../../../theme/palette'
 
 import styles from './stylesheet'
+import CustomButton from './../../../../components/CustomButton'
 
 export default function AnnouncementView() {
   return (
@@ -40,7 +40,7 @@ export default function AnnouncementView() {
       <View style={styles.AnnouncementTitleContainer}>
         <View style={styles.AnnouncemenAuthor}>
           <Image
-            source={require('../../../assets/images/sample_avatar.jpg')}
+            source={require('../../../../assets/images/sample_avatar.jpg')}
             style={styles.authorAvatar}
           />
           <Typography variant="medium13" color={palette.M_3_SYS_PRIMARY}>
@@ -72,7 +72,10 @@ export default function AnnouncementView() {
             />
           </Pressable>
         </View>
-        <Typography style={{paddingRight: 15, marginBottom: 20}} variant="h5">
+        <Typography
+          style={{marginRight: 15, marginBottom: 8}}
+          variant="h5"
+          color={palette.M_3_SYS_ON_SURFACE}>
           توضیحات:
         </Typography>
         <ScrollView>

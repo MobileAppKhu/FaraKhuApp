@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import palette from '../../../theme/palette'
+import palette from '../../../../theme/palette'
 
 const styles = StyleSheet.create({
   container: {
@@ -38,16 +38,16 @@ const styles = StyleSheet.create({
   },
   AnnouncementDetails: {
     flex: 1,
-    paddingHorizontal: 25,
-    paddingVertical: 25,
-    borderTopRightRadius: 50,
-    borderTopLeftRadius: 50,
+    paddingHorizontal: 16,
+    paddingVertical: 16,
+    borderTopRightRadius: 35,
+    borderTopLeftRadius: 35,
     backgroundColor: palette.M_3_SYS_ON_PRIMARY
   },
   AnnouncementDetailsButton: {
     width: 50,
     height: 50,
-    borderRadius: 500,
+    borderRadius: 25,
     backgroundColor: 'white',
     justifyContent: 'center',
     alignItems: 'center',
