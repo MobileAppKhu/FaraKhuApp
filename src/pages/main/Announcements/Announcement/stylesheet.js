@@ -13,11 +13,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between'
   },
-  announcementcard: {
-    width: 312,
-    height: 112,
-    borderRadius: 12
-  },
+
   bottombar: {
     width: 146,
     height: 56,
