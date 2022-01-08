@@ -2,7 +2,9 @@ import React from 'react'
 import {View} from 'react-native'
 import DashboardButtonPage from '../Components/DashboardButtonPage/DashboardButtonPage'
 import styles from './stylesheet'
+import {useNavigation} from "@react-navigation/native";
 export default function DashbaordMenu() {
+    const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <DashboardButtonPage
@@ -16,6 +18,7 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="فراخوان ها"
         iconName="icons8_commercial-1-announcement"
+        onPress={() => navigation.navigate('announcement')}
       />
       <DashboardButtonPage
         title="کتابخانه مرکزی"

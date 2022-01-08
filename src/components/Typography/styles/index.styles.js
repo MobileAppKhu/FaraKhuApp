@@ -103,6 +103,10 @@ const styles = StyleSheet.create({
   regular10: {
     fontSize: 10,
     fontFamily: theme.Shabnam
-  }
+  },
+  font13bold:{
+    fontSize:13,
+    fontFamily:theme.ShabnamBold,
+  },
 })
 export default styles
