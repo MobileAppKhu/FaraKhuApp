@@ -8,6 +8,7 @@ import Typography from './Typography'
 
 export default function CustomInput({
   label,
+  labelColor,
   onChangeText,
   value,
   style,
@@ -27,7 +28,10 @@ export default function CustomInput({
   return (
     <View style={styles.container}>
       {label && (
-        <Typography variant="h5" style={styles.label} color="#495057">
+        <Typography
+          variant="h5"
+          style={styles.label}
+          color={labelColor || '#495057'}>
           {label}
         </Typography>
       )}

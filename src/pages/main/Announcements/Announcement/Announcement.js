@@ -7,7 +7,9 @@ import styles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
+import {useNavigation} from '@react-navigation/native'
 export default function Announcement() {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <SimpleHeader title="فراخوان ها" headerRightIcon={'icons8_search_1-1'} />
@@ -25,7 +27,9 @@ export default function Announcement() {
         </View>
       </ScrollView>
       <View>
-        <Pressable style={styles.buttonStyle}>
+        <Pressable
+          style={styles.buttonStyle}
+          onPress={() => navigation.navigate('create-announcement')}>
           <View style={styles.addiconStyle}>
             <View style={styles.textStyle}>
               <Typography
