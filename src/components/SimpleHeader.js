@@ -25,7 +25,7 @@ export default function SimpleHeader({
           <CustomIcon
             name={isCloseIcon ? 'close_24px' : 'arrow_back_24px'}
             size={32}
-            color={palette.M_3_SYS_ON_SURFACE_VARIANT}
+            color={palette.M_3_SYS_ON_PRIMARY}
           />
         </Pressable>
       </View>
@@ -48,7 +48,7 @@ export default function SimpleHeader({
           <Pressable
             onPress={onHeaderRightClicked}
             style={styles.confirmButton}>
-            <CustomIcon name={headerRightIcon} size={30} />
+            <CustomIcon name={headerRightIcon} size={30} color={palette.M_3_SYS_ON_PRIMARY}/>
           </Pressable>
         )}
       </View>
@@ -74,10 +74,9 @@ const styles = StyleSheet.create({
   headerRight: {
     width: 99,
     height: 64,
-    paddingRight: 24
   },
   title: {
-    color: palette.M_3_SYS_ON_SURFACE,
+    color: palette.M_3_SYS_ON_PRIMARY,
     textAlign: 'center'
   },
   goBackButton: {

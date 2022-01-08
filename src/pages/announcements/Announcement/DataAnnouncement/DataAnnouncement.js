@@ -6,7 +6,7 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 import CustomIcon from '../../../../components/CustomIcon'
 import palette from "../../../../theme/palette";
 
-export default function AnnouncementItem({teacherName, teacherImage, text, date, iconName}) {
+export default function DataAnnouncement({teacherName, teacherImage, text, date, iconName}) {
     return (
 
         <Pressable style={styles.root}>

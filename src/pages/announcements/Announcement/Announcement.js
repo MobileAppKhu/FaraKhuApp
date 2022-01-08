@@ -4,34 +4,21 @@ import Typography from '../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
 import styles from './stylesheet'
 import palette from '../../../theme/palette'
-import CustomButton from '../../../components/CustomButton'
 import CustomIcon from "../../../components/CustomIcon";
-import AnnouncementItem from "./AnnouncementItem/AnnouncementItem";
+import DataAnnouncement from "./DataAnnouncement/DataAnnouncement";
 import {ScrollView} from "react-native-gesture-handler";
-
+import SimpleHeader from "../../../components/SimpleHeader";
 export default function Announcement() {
     const navigation = useNavigation()
     return (
         <View style={styles.container}>
-            <View style={styles.topappbar}>
-                <View style={styles.menuIconContainer}>
-                    <Pressable onPress={() => navigation.goBack()}>
-                        <CustomIcon name="arrow_back_24px" size={24} color={palette.M_3_SYS_ON_PRIMARY}/>
-                    </Pressable>
-                </View>
-                <View style={styles.topappbar}>
-                    <Typography
-                        variant="black18"
-                        color={palette.M_3_SYS_ON_PRIMARY}
-                    >
-                        فراخوان ها
-                    </Typography>
-                </View>
-            </View>
+            <SimpleHeader title='فراخوان ها'
+                 headerRightIcon={"icons8_search_1-1"}
+            />
             <ScrollView>
-                <View>
+                <View style={{marginBottom:88,}}>
                     {data.map((item, index) =>
-                        <AnnouncementItem
+                        <DataAnnouncement
                     key={item.text + item.teacherName + index.toString()}
                     teacherName={item.teacherName}
                     teacherImage={item.teacherImage}
@@ -42,14 +29,7 @@ export default function Announcement() {
             </ScrollView>
             <View>
                 <Pressable
-                style={{
-                    bottom: 16,
-                    left: 24,
-                    height: 56,
-                    width: 146,
-                    backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
-                    borderRadius: 12,
-                }}>
+                style={styles.buttonStyle}>
                     <View style={styles.addiconStyle}>
                         <View style={styles.textStyle}>
                             <Typography variant="h6" color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}>
@@ -57,7 +37,7 @@ export default function Announcement() {
                             </Typography>
                         </View>
                         <View style={styles.iconStyle}>
-                            <CustomIcon name="mode_edit_24px" size={24} />
+                            <CustomIcon name="mode_edit_24px" size={24} color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}/>
                         </View>
 
                     </View>
@@ -104,4 +84,12 @@ const data = [{
     text: 'Behnia pesare khobie2',
     date: '1400/10/29',
     iconName: "arrow_back_24px",
-}]
+
+}, {
+    teacherName: 'Arsham2',
+    teacherImage: null,
+    text: 'Behnia pesare khobie2',
+    date: '1400/10/29',
+    iconName: "arrow_back_24px",
+},
+]

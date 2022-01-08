@@ -44,6 +44,7 @@ const styles = StyleSheet.create({
     addiconStyle:{
         flexDirection: 'row',
         marginHorizontal:16,
+        marginRight:12,
     },
     iconStyle:{
         marginTop:16,
@@ -52,8 +53,17 @@ const styles = StyleSheet.create({
     },
     textStyle:{
         marginTop:16,
-        marginRight:12,
 
+    },
+    buttonStyle:{
+        position:'absolute',
+        bottom: 16,
+        left: 24,
+        height: 56,
+        width: 146,
+        backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
+        borderRadius: 12,
+        elevation:10,
     },
 })
 export default styles

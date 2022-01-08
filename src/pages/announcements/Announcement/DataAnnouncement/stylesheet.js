@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 24,
         paddingHorizontal:16,
         marginBottom: 16,
+        marginTop:16,
         backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
         // height: 112,
         borderRadius: 12,
