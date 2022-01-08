@@ -22,7 +22,7 @@ export default function DataAnnouncement({
         <View style={styles.imgTeachStyle}>
           <Image
             style={styles.imageStyle}
-            source={require('../../../../assets/images/sample_avatar.jpg')}
+            source={require('../../../../../assets/images/sample_avatar.jpg')}
           />
           <View style={styles.teacherName}>
             <Typography variant="black11" color={palette.M_3_SYS_PRIMARY}>

@@ -40,7 +40,7 @@ export default function AnnouncementView() {
       <View style={styles.AnnouncementTitleContainer}>
         <View style={styles.AnnouncemenAuthor}>
           <Image
-            source={require('../../../assets/images/sample_avatar.jpg')}
+            source={require('../../../../assets/images/sample_avatar.jpg')}
             style={styles.authorAvatar}
           />
           <Typography variant="medium13" color={palette.M_3_SYS_PRIMARY}>
