@@ -1,7 +1,8 @@
-import {Pressable, View, Image} from 'react-native'
+import {Pressable, View} from 'react-native'
 import React from 'react'
 import styles from './stylesheet'
 import CustomIcon from '../../../../components/CustomIcon'
+import palette from './../../../../theme/palette'
 export default function DashboardHeader() {
   return (
     <View style={styles.root}>
@@ -14,9 +15,10 @@ export default function DashboardHeader() {
         </Pressable>
       </View>
       <View style={styles.imageContainer}>
-        <Image
-          source={require('./../../../../assets/images/KhuSmallLogo.png')}
-          style={styles.image}
+        <CustomIcon
+          name="KHU_Logo_without_text"
+          size={48}
+          color={palette.M_3_SYS_PRIMARY}
         />
       </View>
       <View style={styles.menuIconContainer}>

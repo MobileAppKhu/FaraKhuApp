@@ -1,12 +1,12 @@
 import React from 'react'
-import {View, Pressable} from 'react-native'
-import Typography from '../../../components/Typography'
-import styles from './stylesheet'
-import palette from '../../../theme/palette'
-import CustomIcon from '../../../components/CustomIcon'
 import DataAnnouncement from './DataAnnouncement/DataAnnouncement'
+import SimpleHeader from './../../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
-import SimpleHeader from '../../../components/SimpleHeader'
+import {Pressable, View} from 'react-native'
+import styles from './stylesheet'
+import Typography from '../../../../components/Typography'
+import palette from '../../../../theme/palette'
+import CustomIcon from '../../../../components/CustomIcon'
 export default function Announcement() {
   return (
     <View style={styles.container}>
@@ -20,7 +20,6 @@ export default function Announcement() {
               teacherImage={item.teacherImage}
               text={item.text}
               date={item.date}
-              iconName={item.iconName}
             />
           ))}
         </View>
@@ -53,49 +52,42 @@ const data = [
     teacherName: 'Arsham1',
     teacherImage: null,
     text: 'Behnia pesare khobie1 vali konie Behnia pesare khobie1 vali konie ',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   },
   {
     teacherName: 'Arsham2',
     teacherImage: null,
     text: 'کیرم تو بهنیا  کیرم تو بهنیا کیرم تو بهنیا کیرم تو بهنیا',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   },
   {
     teacherName: 'Arsham1',
     teacherImage: null,
     text: 'Behnia pesare khobie1',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   },
   {
     teacherName: 'Arsham2',
     teacherImage: null,
     text: 'Behnia pesare khobie2',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   },
   {
     teacherName: 'Arsham1',
     teacherImage: null,
     text: 'Behnia pesare khobie1',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   },
   {
     teacherName: 'Arsham2',
     teacherImage: null,
     text: 'Behnia pesare khobie2',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   },
   {
     teacherName: 'Arsham2',
     teacherImage: null,
     text: 'Behnia pesare khobie2',
-    date: '1400/10/29',
-    iconName: 'arrow_back_24px'
+    date: '1400/10/29'
   }
 ]

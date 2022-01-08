@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontFamily: theme.Shabnam
   },
-  font13bold: {
+  bold13: {
     fontSize: 13,
     fontFamily: theme.ShabnamBold
   },

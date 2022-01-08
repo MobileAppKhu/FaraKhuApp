@@ -1,21 +1,23 @@
 import React from 'react'
 import styles from './stylesheet'
-import Typography from '../../../../components/Typography'
-import {Image, View} from 'react-native'
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
-import CustomIcon from '../../../../components/CustomIcon'
-import palette from '../../../../theme/palette'
+import {Image, Pressable, View} from 'react-native'
+import {useNavigation} from '@react-navigation/native'
+import Typography from '../../../../../components/Typography'
+import palette from '../../../../../theme/palette'
+import CustomIcon from '../../../../../components/CustomIcon'
 
 export default function DataAnnouncement({
   teacherName,
   // eslint-disable-next-line no-unused-vars
   teacherImage,
   text,
-  date,
-  iconName
+  date
 }) {
+  const navigation = useNavigation()
   return (
-    <Pressable style={styles.root}>
+    <Pressable
+      style={styles.root}
+      onPress={() => navigation.navigate('announcement-item')}>
       <View style={styles.cardStyle}>
         <View style={styles.imgTeachStyle}>
           <Image
@@ -29,7 +31,7 @@ export default function DataAnnouncement({
           </View>
         </View>
         <View style={styles.textIcon}>
-          <Typography variant="font13bold" color={palette.M_3_SYS_TERTIARY}>
+          <Typography variant="bold13" color={palette.M_3_SYS_TERTIARY}>
             {text}
           </Typography>
         </View>
@@ -42,7 +44,7 @@ export default function DataAnnouncement({
       <View style={styles.iconStyle}>
         <Pressable>
           <CustomIcon
-            name={iconName}
+            name="arrow_back_24px"
             size={24}
             color={palette.M_3_SYS_TERTIARY}
           />
