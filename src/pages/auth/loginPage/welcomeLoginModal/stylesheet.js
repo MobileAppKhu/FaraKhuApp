@@ -4,7 +4,7 @@ import palette from '../../../../theme/palette'
 const styles = StyleSheet.create({
   root: {
     marginHorizontal: 24,
-    borderRadius: 20,
+    borderRadius: 16,
     flexDirection: 'column',
     alignItems: 'center',
     backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER
