@@ -39,7 +39,7 @@ export default function SimpleHeader({
           <Pressable
             onPress={onHeaderRightClicked}
             style={styles.confirmButton}>
-            <Typography variant="h5" style={styles.headerRightTypography}>
+            <Typography variant="h6" color={palette.M_3_SYS_ON_PRIMARY}>
               {headerRightText}
             </Typography>
           </Pressable>
@@ -48,7 +48,11 @@ export default function SimpleHeader({
           <Pressable
             onPress={onHeaderRightClicked}
             style={styles.confirmButton}>
-            <CustomIcon name={headerRightIcon} size={30} color={palette.M_3_SYS_ON_PRIMARY}/>
+            <CustomIcon
+              name={headerRightIcon}
+              size={30}
+              color={palette.M_3_SYS_ON_PRIMARY}
+            />
           </Pressable>
         )}
       </View>
@@ -73,7 +77,7 @@ const styles = StyleSheet.create({
   },
   headerRight: {
     width: 99,
-    height: 64,
+    height: 64
   },
   title: {
     color: palette.M_3_SYS_ON_PRIMARY,
