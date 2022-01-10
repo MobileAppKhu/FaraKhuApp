@@ -7,6 +7,8 @@ import styles from './stylesheet'
 import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
 import DeleteAnnouncementConfirmationModal from './DeleteAnnouncementConfirmationModal/DeleteAnnouncementConfirmationModal'
+import SaveAnnouncementModal from './SaveAnnouncementModal/SaveAnnouncementModal'
+import {useNavigation} from '@react-navigation/native'
 export default function EditAnnouncement() {
   const [title, settitle] = useState('عنوان')
   const [description, setdescription] = useState(
@@ -16,6 +18,8 @@ export default function EditAnnouncement() {
     deleteAnnouncementConfirmationModalIsOpen,
     setdeleteAnnouncementConfirmationModalIsOpen
   ] = useState(false)
+  const [saveAnnouncementModal, setsaveAnnouncementModal] = useState(false)
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <SimpleHeader
@@ -46,11 +50,23 @@ export default function EditAnnouncement() {
         </View>
       </ScrollView>
       <View style={styles.optionsContainer}>
-        <CustomButton title="ثبت تغییرات" size="small" style={styles.button} />
+        <CustomButton
+          title="ثبت تغییرات"
+          size="small"
+          style={styles.button}
+          onPress={() => setsaveAnnouncementModal(true)}
+        />
       </View>
       <DeleteAnnouncementConfirmationModal
         isVisible={deleteAnnouncementConfirmationModalIsOpen}
         onClose={() => setdeleteAnnouncementConfirmationModalIsOpen(false)}
+      />
+      <SaveAnnouncementModal
+        isVisible={saveAnnouncementModal}
+        onClsoe={() => {
+          setsaveAnnouncementModal(false)
+          navigation.goBack()
+        }}
       />
     </View>
   )
