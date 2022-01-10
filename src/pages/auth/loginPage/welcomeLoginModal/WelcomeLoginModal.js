@@ -23,7 +23,7 @@ export default function WelcomeLoginModal({isVisible, onClsoe, name}) {
           </Typography>
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title="وارد شو" size="small" />
+          <CustomButton title="وارد شو" size="small" onPress={onClsoe} />
         </View>
       </View>
     </Modal>
