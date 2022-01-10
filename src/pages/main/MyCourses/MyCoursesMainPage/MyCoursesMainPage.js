@@ -21,29 +21,29 @@ export default function MyCoursesMainPage() {
             />
           ))}
         </View>
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            title="برنامه امتحانات"
-            type="cancel"
-            style={styles.buttonStyle}
-            textStyle={styles.buttonTextStyle}
-            startIcon="icons_exam"
-            startIconSize={19}
-            startIconColor={palette.M_3_SYS_PRIMARY}
-            size="small"
-          />
-          <CustomButton
-            title="برنامه ی هفتگی"
-            type="cancel"
-            style={styles.buttonStyle}
-            textStyle={styles.buttonTextStyle}
-            size="small"
-            startIcon="timeline_week"
-            startIconSize={19}
-            startIconColor={palette.M_3_SYS_PRIMARY}
-          />
-        </View>
       </ScrollView>
+      <View style={styles.buttonContainer}>
+        <CustomButton
+          title="برنامه امتحانات"
+          type="cancel"
+          style={styles.buttonStyle}
+          textStyle={styles.buttonTextStyle}
+          startIcon="icons_exam"
+          startIconSize={19}
+          startIconColor={palette.M_3_SYS_PRIMARY}
+          size="small"
+        />
+        <CustomButton
+          title="برنامه ی هفتگی"
+          type="cancel"
+          style={styles.buttonStyle}
+          textStyle={styles.buttonTextStyle}
+          size="small"
+          startIcon="timeline_week"
+          startIconSize={19}
+          startIconColor={palette.M_3_SYS_PRIMARY}
+        />
+      </View>
     </View>
   )
 }
