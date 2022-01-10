@@ -47,11 +47,6 @@ export default function MyCoursesMainPageHeader() {
               size={24}
             />
           </Pressable>
-          {/* <Pressable style={styles.createAccountButtonContainer}>
-            <Typography variant="h6" color={palette.M_3_SYS_PRIMARY}>
-            ایجاد درس جدید
-            </Typography>
-          </Pressable> */}
         </Modal>
       </View>
     </Pressable>

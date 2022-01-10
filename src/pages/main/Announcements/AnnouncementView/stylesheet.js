@@ -55,6 +55,22 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: -20,
     left: 50
+  },
+  modal: {
+    paddingVertical: 16,
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: palette.M_3_READ_ONLY_SURFACE_3,
+    position: 'absolute',
+    paddingHorizontal: 24,
+    top: 0,
+    right: 0,
+    elevation: 10,
+    borderRadius: 16
+  },
+  editIcon: {
+    marginLeft: 12
   }
 })
 
