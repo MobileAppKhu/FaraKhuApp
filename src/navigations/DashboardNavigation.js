@@ -4,6 +4,7 @@ import Announcement from '../pages/main/Announcements/Announcement/Announcement'
 import AnnouncementView from '../pages/main/Announcements/AnnouncementView/AnnouncementView'
 import CreateAnnouncement from '../pages/main/Announcements/CreateAnnouncement/CreateAnnouncement'
 import Dashboard from '../pages/main/Dashboard/Dashboard'
+import CreateCoursePage from '../pages/main/MyCourses/CreateCoursePage'
 import MyCoursesMainPage from '../pages/main/MyCourses/MyCoursesMainPage/MyCoursesMainPage'
 const Stack = createStackNavigator()
 
@@ -12,6 +13,7 @@ export default function DashboardNavigation() {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="mainpage">
+      <Stack.Screen name="create-course" component={CreateCoursePage} />
       <Stack.Screen name="landing-page" component={Dashboard} />
       <Stack.Screen name="announcement" component={Announcement} />
       <Stack.Screen name="announcement-item" component={AnnouncementView} />

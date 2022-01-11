@@ -17,6 +17,7 @@
     "react": "17.0.2",
     "react-native": "0.66.4",
     "react-native-gesture-handler": "^2.1.0",
+    "react-native-image-picker": "^4.7.0",
     "react-native-image-slider-box": "^1.1.14",
     "react-native-modal": "^13.0.0",
     "react-native-safe-area-context": "^3.3.2",
