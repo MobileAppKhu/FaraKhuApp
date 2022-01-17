@@ -8,8 +8,8 @@ export default function UpcomingEvent() {
   return (
     <View style={styles.root}>
       <View style={styles.topPart}>
-        <Typography variant="h4" color={palette.M_3_SYS_ON_PRIMARY}>
-          رویدادهای نزدیک
+        <Typography variant="h5" color={palette.M_3_SYS_ON_PRIMARY}>
+          فعالیت‌های پیش‌رو
         </Typography>
       </View>
       <View style={styles.eventContainer}>

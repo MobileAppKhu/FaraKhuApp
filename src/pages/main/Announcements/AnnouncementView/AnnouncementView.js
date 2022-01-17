@@ -1,28 +1,52 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {View, Pressable, Image, ScrollView} from 'react-native'
-import CustomIcon from '../../../components/CustomIcon'
-import CustomButton from '../../../components/CustomButton'
-import Typography from '../../../components/Typography'
-import palette from './../../../theme/palette'
+import CustomIcon from '../../../../components/CustomIcon'
+import Typography from '../../../../components/Typography'
+import palette from '../../../../theme/palette'
 
 import styles from './stylesheet'
+import CustomButton from './../../../../components/CustomButton'
+import Modal from 'react-native-modal'
+import {useNavigation} from '@react-navigation/native'
 
-export default function AnnouncementItem() {
+export default function AnnouncementView() {
+  const [moreOptionViewIsOpen, setmoreOptionViewIsOpen] = useState(false)
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <View style={styles.AnnouncementHeader}>
-        <Pressable
-          android_ripple={{
-            color: palette.M_3_SYS_ON_PRIMARY,
-            borderless: true,
-            radius: 30
-          }}>
-          <CustomIcon
-            name="more_vert_24px"
-            size={24}
-            color={palette.M_3_SYS_ON_PRIMARY}
-          />
-        </Pressable>
+        <View>
+          <Pressable onPress={() => setmoreOptionViewIsOpen(true)}>
+            <CustomIcon
+              name="more_vert_24px"
+              size={24}
+              color={palette.M_3_SYS_ON_PRIMARY}
+            />
+          </Pressable>
+          <Modal
+            isVisible={moreOptionViewIsOpen}
+            onBackdropPress={() => setmoreOptionViewIsOpen(false)}
+            animationInTiming={-1}
+            animationOutTiming={-1}
+            backdropOpacity={0}>
+            <Pressable
+              style={styles.modal}
+              onPress={() => {
+                setmoreOptionViewIsOpen(false)
+                navigation.navigate('edit-announcement')
+              }}>
+              <Typography variant="body2" color={palette.M_3_SYS_PRIMARY}>
+                ویرایش
+              </Typography>
+              <CustomIcon
+                color={palette.M_3_SYS_PRIMARY}
+                name="mode_edit_24px"
+                size={24}
+                style={styles.editIcon}
+              />
+            </Pressable>
+          </Modal>
+        </View>
         <Typography style={styles.pageTitle}>فراخوان‌ها</Typography>
         <Pressable
           android_ripple={{
@@ -40,7 +64,7 @@ export default function AnnouncementItem() {
       <View style={styles.AnnouncementTitleContainer}>
         <View style={styles.AnnouncemenAuthor}>
           <Image
-            source={require('../../../assets/images/sample_avatar.jpg')}
+            source={require('../../../../assets/images/sample_avatar.jpg')}
             style={styles.authorAvatar}
           />
           <Typography variant="medium13" color={palette.M_3_SYS_PRIMARY}>
@@ -72,7 +96,10 @@ export default function AnnouncementItem() {
             />
           </Pressable>
         </View>
-        <Typography style={{paddingRight: 15, marginBottom: 20}} variant="h5">
+        <Typography
+          style={{marginRight: 15, marginBottom: 8}}
+          variant="h5"
+          color={palette.M_3_SYS_ON_SURFACE}>
           توضیحات:
         </Typography>
         <ScrollView>

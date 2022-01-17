@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   image: {
-    height: 59,
+    height: 48,
     width: 35
   },
   menuIconContainer: {
