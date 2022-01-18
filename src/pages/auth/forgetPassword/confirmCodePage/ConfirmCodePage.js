@@ -9,7 +9,6 @@ import styles from './stylesheet'
 import palette from '../../../../theme/palette'
 export default function ConfirmCodePage() {
   const [code, setcode] = useState('')
-  console.log(code)
   return (
     <View style={styles.root}>
       <SimpleHeader />

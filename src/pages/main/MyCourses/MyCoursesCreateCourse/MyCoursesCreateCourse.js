@@ -14,7 +14,6 @@ import styles from './stylessheet'
 import {useNavigation} from '@react-navigation/native'
 
 const {M_3_SYS_PRIMARY: primaryColor} = palette
-
 const dayTemplate = {
   id: 0,
   day: '',
