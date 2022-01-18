@@ -31,13 +31,20 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 4,
-    backgroundColor: palette.M_3_REF_SECONDARY_SECONDARY_40
+    backgroundColor: palette.M_3_REF_SECONDARY_SECONDARY_40,
+    marginLeft: 16
+  },
+  courseNameContainerOnShowCheckBox: {
+    marginLeft: 0
   },
   eventControler: {
     flexDirection: 'row-reverse',
     alignItems: 'center',
-    justifyContent: 'space-evenly',
+    justifyContent: 'flex-start',
     flex: 1
     // width: '100%'
+  },
+  eventControlerOnShowCheckBox: {
+    justifyContent: 'space-evenly'
   }
 })

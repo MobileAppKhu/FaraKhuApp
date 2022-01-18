@@ -9,23 +9,34 @@ export default function UpcomingEventItems({
   eventName,
   eventDescription,
   eventTime,
-  courseName
+  courseName,
+  showEventCheckBox = true
 }) {
   const [showEvent, setshowEvent] = useState(false)
   return (
     <View style={styles.root}>
-      <View style={styles.eventControler}>
-        <View style={styles.courseNameContainer}>
+      <View
+        style={[
+          styles.eventControler,
+          showEventCheckBox ? styles.eventControlerOnShowCheckBox : {}
+        ]}>
+        <View
+          style={[
+            styles.courseNameContainer,
+            showEventCheckBox ? styles.courseNameContainerOnShowCheckBox : {}
+          ]}>
           <Typography variant="regular10" color={palette.M_3_SYS_ON_PRIMARY}>
             {courseName}
           </Typography>
         </View>
-        <View>
-          <CheckBox
-            value={showEvent}
-            onValueChange={(newValue) => setshowEvent(newValue)}
-          />
-        </View>
+        {showEventCheckBox && (
+          <View>
+            <CheckBox
+              value={showEvent}
+              onValueChange={(newValue) => setshowEvent(newValue)}
+            />
+          </View>
+        )}
       </View>
       <View style={styles.eventDetails}>
         <Typography variant="bold12" color={palette.M_3_SYS_ON_SURFACE}>

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import styles from './stylesheet'
 import {ImageBackground, Pressable, View} from 'react-native'
@@ -6,13 +5,17 @@ import palette from '../../../../../theme/palette'
 import Typography from '../../../../../components/Typography'
 // import Typography from '../../../../../components/Typography'
 // import palette from '../../../../../theme/palette'
+import {useNavigation} from '@react-navigation/native'
 export default function MyCoursesMainPageCourseItem({
   title,
   courseNumber,
   teacherName
 }) {
+  const navigation = useNavigation()
   return (
-    <View style={styles.root}>
+    <Pressable
+      style={styles.root}
+      onPress={() => navigation.navigate('course-view')}>
       <ImageBackground
         source={require('../../../../../assets/images/my-course-test.jpg')}
         style={styles.imageBackground}
@@ -35,6 +38,6 @@ export default function MyCoursesMainPageCourseItem({
           </View>
         </Pressable>
       </ImageBackground>
-    </View>
+    </Pressable>
   )
 }
