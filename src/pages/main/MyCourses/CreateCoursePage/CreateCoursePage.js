@@ -11,6 +11,7 @@ import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
 import DayPicker from './DayPicker'
 import styles from './stylessheet'
+import {useNavigation} from '@react-navigation/native'
 
 const {M_3_SYS_PRIMARY: primaryColor} = palette
 
@@ -28,6 +29,7 @@ const dayTemplate = {
 }
 
 function CreateCoursePage() {
+  const navigation = useNavigation()
   // States
   const [faculty, setFaculty] = useState('')
   const [department, setDepartment] = useState('')
@@ -88,6 +90,7 @@ function CreateCoursePage() {
         <Typography style={styles.pageTitle}>درس جدید</Typography>
         <Pressable
           style={styles.closeButton}
+          onPress={() => navigation.goBack()}
           android_ripple={{
             color: palette.M_3_SYS_ON_PRIMARY,
             borderless: true,

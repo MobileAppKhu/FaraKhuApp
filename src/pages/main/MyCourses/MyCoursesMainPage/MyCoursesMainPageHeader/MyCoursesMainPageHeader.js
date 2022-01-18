@@ -37,7 +37,12 @@ export default function MyCoursesMainPageHeader() {
           animationInTiming={-1}
           animationOutTiming={-1}
           backdropOpacity={0}>
-          <Pressable style={styles.modal}>
+          <Pressable
+            style={styles.modal}
+            onPress={() => {
+              setmoreOptionViewIsOpen(false)
+              navigation.navigate('create-course')
+            }}>
             <Typography variant="h6" color={palette.M_3_SYS_PRIMARY}>
               ایجاد درس جدید
             </Typography>
