@@ -28,7 +28,7 @@ const dayTemplate = {
   }
 }
 
-function CreateCoursePage() {
+function MyCoursesCreateCourse() {
   const navigation = useNavigation()
   // States
   const [faculty, setFaculty] = useState('')
@@ -334,4 +334,4 @@ function CreateCoursePage() {
   )
 }
 
-export default CreateCoursePage
+export default MyCoursesCreateCourse
