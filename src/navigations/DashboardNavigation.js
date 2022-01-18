@@ -4,6 +4,7 @@ import Announcement from '../pages/main/Announcements/Announcement/Announcement'
 import AnnouncementView from '../pages/main/Announcements/AnnouncementView/AnnouncementView'
 import CreateAnnouncement from '../pages/main/Announcements/CreateAnnouncement/CreateAnnouncement'
 import Dashboard from '../pages/main/Dashboard/Dashboard'
+import CreateCoursePage from '../pages/main/MyCourses/CreateCoursePage'
 import MyCoursesMainPage from '../pages/main/MyCourses/MyCoursesMainPage/MyCoursesMainPage'
 import EditAnnouncement from './../pages/main/Announcements/EditAnnouncement/EditAnnouncement'
 import Setting from "../pages/main/MenuPages/Setting/Setting";

@@ -9,6 +9,7 @@ import Typography from './Typography'
 export default function CustomInput({
   label,
   labelColor,
+  labelStyle,
   onChangeText,
   value,
   style,
@@ -16,6 +17,7 @@ export default function CustomInput({
   status,
   helperStatus,
   helperText,
+  helperTextStyle,
   keyboardType = 'default',
   secureTextEntry,
   endIcon,
@@ -30,7 +32,7 @@ export default function CustomInput({
       {label && (
         <Typography
           variant="h5"
-          style={styles.label}
+          style={[styles.label, labelStyle]}
           color={labelColor || '#495057'}>
           {label}
         </Typography>
@@ -76,6 +78,7 @@ export default function CustomInput({
           variant="body1"
           style={[
             styles.helperText,
+            helperTextStyle,
             status === 'error' || helperStatus === 'error'
               ? styles.helperTextError
               : {}
