@@ -49,6 +49,7 @@ export default function AnnouncementView() {
         </View>
         <Typography style={styles.pageTitle}>فراخوان‌ها</Typography>
         <Pressable
+          onPress={() => navigation.goBack()}
           android_ripple={{
             color: palette.M_3_SYS_ON_PRIMARY,
             borderless: true,
