@@ -25,17 +25,19 @@ export default function CreateAnnouncement() {
             label="توضیحات:"
             labelColor={palette.M_3_SYS_PRIMARY}
             multiline
-            numberOfLines={15}
+            numberOfLines={19}
             textAlignVertical="top"
             onChangeText={(text) => setdescription(text)}
           />
-          <CustomButton
-            title="ایجاد فراخوان"
-            size="small"
-            style={styles.button}
-          />
         </View>
       </ScrollView>
+      <View style={styles.optionsContainer}>
+        <CustomButton
+          title="ایجاد فراخوان"
+          size="small"
+          style={styles.button}
+        />
+      </View>
     </View>
   )
 }
