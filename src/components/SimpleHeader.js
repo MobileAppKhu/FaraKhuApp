@@ -15,8 +15,7 @@ export default function SimpleHeader({
   isCloseIcon,
   backgroundColor,
   itemsColor,
-  titleColor,
-  titleStlye
+  titleColor
 }) {
   const navigation = useNavigation()
   return (
@@ -39,11 +38,7 @@ export default function SimpleHeader({
       <View style={styles.headerCenter}>
         <Typography
           variant="medium18"
-          style={[
-            styles.title,
-            titleColor ? {color: titleColor} : {},
-            titleStlye
-          ]}>
+          style={[styles.title, titleColor ? {color: titleColor} : {}]}>
           {title}
         </Typography>
       </View>
