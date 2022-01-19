@@ -14,7 +14,6 @@ import styles from './stylessheet'
 import {useNavigation} from '@react-navigation/native'
 
 const {M_3_SYS_PRIMARY: primaryColor} = palette
-
 const dayTemplate = {
   id: 0,
   day: '',
@@ -28,7 +27,7 @@ const dayTemplate = {
   }
 }
 
-function CreateCoursePage() {
+function MyCoursesCreateCourse() {
   const navigation = useNavigation()
   // States
   const [faculty, setFaculty] = useState('')
@@ -334,4 +333,4 @@ function CreateCoursePage() {
   )
 }
 
-export default CreateCoursePage
+export default MyCoursesCreateCourse

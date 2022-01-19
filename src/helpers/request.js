@@ -1,9 +1,8 @@
-import {REACT_APP_API_BASE_URL, REACT_APP_API_VERSION} from '@env'
-import {I18nManager} from 'react-native'
+// import {REACT_APP_API_BASE_URL, REACT_APP_API_VERSION} from '@env'
 
 import store from '../redux/store'
 
-const api_url = REACT_APP_API_BASE_URL + '/' + REACT_APP_API_VERSION
+// const api_url = REACT_APP_API_BASE_URL + '/' + REACT_APP_API_VERSION
 
 export const request = (
   endpoint,
@@ -13,35 +12,20 @@ export const request = (
 ) => {
   const state = store.getState()
 
-  const {token} = state.auth
-
-  console.log(api_url + endpoint)
-
-  return fetch('https://backend.gandom-app.com/v1' + endpoint, {
+  const {token} = state.authReducer
+  return fetch('http://109.162.206.229:5000/api' + endpoint, {
     method,
     headers: {
       Authorization: token || undefined,
-      localization: I18nManager.isRTL ? 'fa' : 'en',
       Accept: 'application/json',
       'Content-Type': contentType
     },
     body: JSON.stringify(body)
-  }).then((response) => Promise.all([response.status, response.json()]))
-}
-
-// rawRequest is spacially usefull for requests with content types other than applicaion/json
-export const rawRequest = (endpoint, method, body) => {
-  const state = store.getState()
-
-  const {token} = state.auth
-
-  return fetch(api_url + endpoint, {
-    method,
-    headers: {
-      Authorization: token || undefined,
-      localization: 'fa'
-      // Accept: 'application/json',
-    },
-    body
-  }).then((response) => Promise.all([response.status, response.json()]))
+  })
+    .then(async (response) => ({
+      state: response.status,
+      response: await response.json(),
+      header: response.headers
+    }))
+    .catch((error) => console.log(error))
 }

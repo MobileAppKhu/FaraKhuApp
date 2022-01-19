@@ -16,7 +16,6 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="اخبار و رویدادها"
         iconName="icons8_rss-1-news"
-        onPress={()=>navigation.navigate('createtodo')}
       />
       <DashboardButtonPage
         title="فراخوان ها"
@@ -26,7 +25,7 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="کتابخانه مرکزی"
         iconName="icons8_book_shelf-1-library"
-        onPress={()=>navigation.navigate('setting')}
+        onPress={() => navigation.navigate('setting')}
       />
       <DashboardButtonPage title="ایمیل دانشگاهی" iconName="mail_outline" />
       <DashboardButtonPage title="نقشه" iconName="icons8_map_marker_1-1" />
