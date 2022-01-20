@@ -8,17 +8,21 @@ function HorizontalSeparator({
   color = palette.M_3_SYS_OUTLINE,
   marginTop,
   marginBottom,
-  margin = 0
+  margin = 0,
+  style
 }) {
   return (
     <View
-      style={{
-        width,
-        height,
-        backgroundColor: color,
-        marginTop: marginTop ?? margin,
-        marginBottom: marginBottom ?? margin
-      }}></View>
+      style={[
+        {
+          width,
+          height,
+          backgroundColor: color,
+          marginTop: marginTop ?? margin,
+          marginBottom: marginBottom ?? margin
+        },
+        style
+      ]}></View>
   )
 }
 
