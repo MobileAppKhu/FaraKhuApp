@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useNavigation} from '@react-navigation/native'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import styles from './stylesheet'
 import {TextInput, View} from 'react-native'
@@ -10,8 +9,6 @@ import CustomPicker from '../../../../components/CustomPicker'
 import CustomButton from '../../../../components/CustomButton'
 
 export default function CreatToDo() {
-  const navigation = useNavigation()
-
   const [finalExamDate, setFinalExamDate] = useState({
     day: '',
     month: '',
@@ -35,7 +32,7 @@ export default function CreatToDo() {
           placeholder="((عنوان رویداد))"
           maxLength={9}
           labelColor={palette.M_3_SYS_PRIMARY}
-          labelStyle={{fontSize: 14, fontFamily: 'Shabnam'}}
+          labelStyle={styles.labelStyle}
           style={styles.textInput}
           value={todoID}
           onChangeText={(id) => setToDoID(id)}
@@ -51,59 +48,49 @@ export default function CreatToDo() {
             placeholder="روز"
             keyboardType="numeric"
             textAlign="center"
-            onChangeText={(day) => {
-              setFinalExamDate({...finalExamDate, day})
-            }}
+            onChangeText={(day) => setFinalExamDate({...finalExamDate, day})}
             style={styles.dateTextInput}
           />
-          <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
+          <Typography>{`/`}</Typography>
           <TextInput
             maxLength={2}
             placeholder="ماه"
             keyboardType="numeric"
             textAlign="center"
-            onChangeText={(month) => {
+            onChangeText={(month) =>
               setFinalExamDate({...finalExamDate, month})
-            }}
+            }
             style={styles.dateTextInput}
           />
-          <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
+          <Typography>{`/`}</Typography>
           <TextInput
             maxLength={4}
             placeholder="سال"
             keyboardType="numeric"
             textAlign="center"
-            onChangeText={(year) => {
-              setFinalExamDate({...finalExamDate, year})
-            }}
+            onChangeText={(year) => setFinalExamDate({...finalExamDate, year})}
             style={styles.dateTextInput}
           />
         </View>
-
-        <Typography
-          variant="body1"
-          color={palette.M_3_SYS_PRIMARY}
-          style={{marginRight: 32}}>
-          ساعت:
-        </Typography>
+        <View style={styles.hourContainer}>
+          <Typography variant="body1" color={palette.M_3_SYS_PRIMARY}>
+            ساعت:
+          </Typography>
+        </View>
         <View style={styles.hourInput}>
           <TextInput
             maxLength={2}
             keyboardType="numeric"
             textAlign="center"
-            onChangeText={(year) => {
-              setFinalExamDate({...finalExamDate, year})
-            }}
+            onChangeText={(year) => setFinalExamDate({...finalExamDate, year})}
             style={styles.dateTextInput}
           />
-          <Typography style={{padding: 0, margin: 0}}>{`:`}</Typography>
+          <Typography>{`:`}</Typography>
           <TextInput
             maxLength={2}
             keyboardType="numeric"
             textAlign="center"
-            onChangeText={(year) => {
-              setFinalExamDate({...finalExamDate, year})
-            }}
+            onChangeText={(year) => setFinalExamDate({...finalExamDate, year})}
             style={styles.dateTextInput}
           />
         </View>
@@ -123,7 +110,7 @@ export default function CreatToDo() {
           placeholder="((توضیحات رویداد))"
           textAlignVertical="top"
           labelColor={palette.M_3_SYS_PRIMARY}
-          labelStyle={{fontSize: 14, fontFamily: 'Shabnam'}}
+          labelStyle={styles.labelStyle}
           style={styles.desInput}
           value={description}
           onChangeText={(des) => setDiscription(des)}

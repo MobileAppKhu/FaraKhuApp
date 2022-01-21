@@ -8,7 +8,7 @@ import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import styles from './stylessheet'
 
-function ToDoDetails({
+export default function ToDoDetails({
   date = '2 بهمن - 08:00، 37 روز مانده',
   overdue,
   title = 'امتحان پایان ترم هوش مصنوعی(شفاهی)-4نمره',
@@ -38,9 +38,7 @@ function ToDoDetails({
         <View style={styles.title}>
           <Typography variant="bold18">{title}</Typography>
         </View>
-
         <HorizontalSeparator style={styles.separator} />
-
         <View style={styles.description}>
           <Typography variant="body2">
             {description !== '' ? description : 'توضیحات'}
@@ -58,5 +56,3 @@ function ToDoDetails({
     </View>
   )
 }
-
-export default ToDoDetails

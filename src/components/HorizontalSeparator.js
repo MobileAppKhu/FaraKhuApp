@@ -22,7 +22,8 @@ function HorizontalSeparator({
           marginBottom: marginBottom ?? margin
         },
         style
-      ]}></View>
+      ]}
+    />
   )
 }
 
