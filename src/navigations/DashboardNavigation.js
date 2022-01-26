@@ -9,6 +9,7 @@ import EditAnnouncement from './../pages/main/Announcements/EditAnnouncement/Edi
 import Setting from '../pages/main/MenuPages/Setting/Setting'
 import MyCoursesCreateCourse from './../pages/main/MyCourses/MyCoursesCreateCourse/MyCoursesCreateCourse'
 import MyCoursesCourseView from '../pages/main/MyCourses/MyCoursesCourseView/MyCoursesCourseView'
+import EditToDo from "../pages/main/Calendar/EditToDo/EditToDo";
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -25,6 +26,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="my-courses-main-page" component={MyCoursesMainPage} />
       <Stack.Screen name="create-course" component={MyCoursesCreateCourse} />
       <Stack.Screen name="course-view" component={MyCoursesCourseView} />
+      <Stack.Screen name="edit-todo"component={EditToDo}/>
     </Stack.Navigator>
   )
 }
