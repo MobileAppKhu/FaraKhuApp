@@ -9,6 +9,7 @@ import EditAnnouncement from './../pages/main/Announcements/EditAnnouncement/Edi
 import Setting from '../pages/main/MenuPages/Setting/Setting'
 import MyCoursesCreateCourse from './../pages/main/MyCourses/MyCoursesCreateCourse/MyCoursesCreateCourse'
 import MyCoursesCourseView from '../pages/main/MyCourses/MyCoursesCourseView/MyCoursesCourseView'
+import ToDoDetails from '../pages/main/Calendar/ToDoDetails'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -16,6 +17,7 @@ export default function DashboardNavigation() {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="mainpage">
+      <Stack.Screen name="todo-details" component={ToDoDetails} />
       <Stack.Screen name="landing-page" component={Dashboard} />
       <Stack.Screen name="announcement" component={Announcement} />
       <Stack.Screen name="announcement-item" component={AnnouncementView} />
