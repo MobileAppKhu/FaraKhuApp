@@ -16,6 +16,7 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="اخبار و رویدادها"
         iconName="icons8_rss-1-news"
+        onPress={()=>navigation.navigate('edit-todo')}
       />
       <DashboardButtonPage
         title="فراخوان ها"
