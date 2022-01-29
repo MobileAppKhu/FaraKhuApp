@@ -31,7 +31,7 @@ export default function DataAnnouncement({
           </View>
         </View>
         <View style={styles.textIcon}>
-          <Typography variant="bold13" color={palette.M_3_SYS_TERTIARY}>
+          <Typography variant="h5" color={palette.M_3_SYS_TERTIARY}>
             {text}
           </Typography>
         </View>
