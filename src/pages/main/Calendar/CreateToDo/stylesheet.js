@@ -2,13 +2,14 @@ import {StyleSheet} from 'react-native'
 import palette from '../../../../theme/palette'
 
 const styles = StyleSheet.create({
-  container: {
+  screen: {
     flex: 1,
     backgroundColor: palette.M_3_SYS_ON_PRIMARY
   },
-  textInputContainer: {
-    marginHorizontal: 16
+  container: {
+    paddingHorizontal: 20
   },
+  textInputContainer: {},
   textInput: {
     borderRadius: 15,
     borderWidth: 1,
@@ -16,12 +17,10 @@ const styles = StyleSheet.create({
   },
   dateContainer: {
     flexDirection: 'row-reverse',
-    marginHorizontal: 16,
-    marginTop: 32,
-    paddingRight: 12
+    marginTop: 32
   },
   dateInput: {
-    width: 147,
+    width: 136,
     height: 32,
     flexDirection: 'row-reverse',
     alignItems: 'center',
@@ -34,6 +33,9 @@ const styles = StyleSheet.create({
     padding: 0,
     paddingHorizontal: 5
   },
+  hourContainer: {
+    marginRight: 38
+  },
   hourInput: {
     width: 59,
     height: 29,
@@ -45,23 +47,21 @@ const styles = StyleSheet.create({
     marginLeft: 8
   },
   containerpicker: {
-    flexDirection: 'row',
-    marginHorizontal: 16
+    flexDirection: 'row'
   },
-  desInput: {
-    height: 223,
+  descInputContainer: {
+    marginBottom: 24,
+    flex: 1
+  },
+  descInput: {
+    height: 300,
     borderRadius: 15,
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: palette.M_3_SYS_OUTLINE
   },
-  desinputContainer: {
-    marginHorizontal: 16,
-    flex: 1
-  },
   buttonContainer: {
-    marginHorizontal: 16,
-    marginBottom: 16
+    marginTop: 20
   },
   button: {
     marginBottom: 16
@@ -69,9 +69,6 @@ const styles = StyleSheet.create({
   labelStyle: {
     fontSize: 14,
     fontFamily: 'Shabnam'
-  },
-  hourContainer: {
-    marginRight: 32
   }
 })
 export default styles
