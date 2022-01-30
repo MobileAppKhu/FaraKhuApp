@@ -21,6 +21,7 @@ export default function MainNavigation() {
   useEffect(() => {
     getData()
   }, [dispatch])
-  let token = useSelector((state) => state.authReducer)
+  let {token} = useSelector((state) => state.authReducer)
+  // console.log(token)
   return token ? <DashboardNavigation /> : <LoginNavigation />
 }
