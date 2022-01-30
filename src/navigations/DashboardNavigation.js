@@ -9,8 +9,9 @@ import EditAnnouncement from './../pages/main/Announcements/EditAnnouncement/Edi
 import Setting from '../pages/main/MenuPages/Setting/Setting'
 import MyCoursesCreateCourse from './../pages/main/MyCourses/MyCoursesCreateCourse/MyCoursesCreateCourse'
 import MyCoursesCourseView from '../pages/main/MyCourses/MyCoursesCourseView/MyCoursesCourseView'
-import EditToDo from "../pages/main/Calendar/EditToDo/EditToDo";
-import BookShopView from "../pages/main/BookShop/BookShopView/BookShopView";
+import EditToDo from '../pages/main/Calendar/EditToDo/EditToDo'
+import BookShopView from '../pages/main/BookShop/BookShopView/BookShopView'
+import PersonalCalendar from '../pages/main/Calendar/PersonalCalendar/PersonalCalendar'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -27,8 +28,9 @@ export default function DashboardNavigation() {
       <Stack.Screen name="my-courses-main-page" component={MyCoursesMainPage} />
       <Stack.Screen name="create-course" component={MyCoursesCreateCourse} />
       <Stack.Screen name="course-view" component={MyCoursesCourseView} />
-      <Stack.Screen name="edit-todo"component={EditToDo}/>
-      <Stack.Screen name="bookshop-view" component={BookShopView}/>
+      <Stack.Screen name="edit-todo" component={EditToDo} />
+      <Stack.Screen name="bookshop-view" component={BookShopView} />
+      <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
     </Stack.Navigator>
   )
 }
