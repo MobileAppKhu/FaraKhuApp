@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {View} from 'react-native'
+import {Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import styles from './stylesheet'
@@ -10,11 +10,12 @@ export default function UpcomingEventItems({
   eventDescription,
   eventTime,
   courseName,
-  showEventCheckBox = true
+  showEventCheckBox = true,
+  onPress = () => {}
 }) {
   const [showEvent, setshowEvent] = useState(false)
   return (
-    <View style={styles.root}>
+    <Pressable style={styles.root} onPress={onPress}>
       <View
         style={[
           styles.eventControler,
@@ -52,6 +53,6 @@ export default function UpcomingEventItems({
           {eventTime}
         </Typography>
       </View>
-    </View>
+    </Pressable>
   )
 }

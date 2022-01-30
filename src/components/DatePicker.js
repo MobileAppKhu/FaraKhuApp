@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import {useTranslation} from 'react-i18next'
 import {Pressable, StyleSheet, TextInput} from 'react-native'
 
 import theme from '../theme'
@@ -18,7 +17,6 @@ export default function DatePicker({
   label,
   ...others
 }) {
-  const {t, i18n} = useTranslation()
   const [datePickerOpen, setDatePickerOpen] = useState(false)
   return (
     <>
@@ -39,14 +37,16 @@ export default function DatePicker({
           ]}
           onChangeText={onChangeText}
           value={value}
-          placeholder={t(placeholder)}
+          placeholder={placeholder}
           {...others}
           editable={false}
+          textAlign="center"
+          textAlignVertical="center"
         />
         <CustomIcon
-          name="Calendar"
+          name="icon_calendar_simple"
           size={25}
-          color={palette.raven}
+          color={palette.M_3_SYS_ON_SURFACE}
           style={styles.icon}
         />
 
@@ -62,13 +62,13 @@ export default function DatePicker({
         )}
       </Pressable>
       <BirthdayPickerModal
-        type={i18n.language}
         open={datePickerOpen}
         close={() => setDatePickerOpen(false)}
         onOkPress={(newValue) => {
           onChangeText(newValue)
           setDatePickerOpen(false)
         }}
+        type="fa"
       />
     </>
   )
@@ -81,30 +81,29 @@ const styles = StyleSheet.create({
   label: {marginTop: 20, marginBottom: 10},
 
   input: {
-    fontFamily: theme.VazirMedium,
-    borderColor: palette.authInput.border,
-    color: palette.balticSea,
+    fontFamily: theme.ShabnamBold,
+    borderColor: palette.M_3_SYS_ON_SECONDARY_CONTAINER,
+    color: palette.M_3_SYS_OUTLINE,
     borderWidth: 0.5,
     borderRadius: 8,
     fontSize: 14,
-    lineHeight: 18,
-    width: '100%',
-    paddingRight: 50,
-    paddingLeft: 15,
-    paddingTop: 13,
-    paddingBottom: 13
+    width: '100%'
+    // paddingRight: 50,
+    // paddingLeft: 15
+    // paddingTop: 13,
+    // paddingBottom: 13
   },
   inputError: {
-    borderColor: palette.authInput.borderError,
+    // borderColor: palette.authInput.borderError,
     borderWidth: 1
   },
   icon: {
     position: 'absolute',
-    top: 14,
+    top: 10,
     right: 15
   },
   iconError: {
-    backgroundColor: palette.error,
+    // backgroundColor: palette.error,
     borderRadius: 16
   },
   iconSuccess: {},
@@ -112,12 +111,12 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   helperTextError: {
-    color: palette.error
+    // color: palette.error
   },
   isFocused: {
     backgroundColor: 'white'
   },
   inputBlured: {
-    backgroundColor: palette.authInput.background
+    // backgroundColor: palette.authInput.background
   }
 })

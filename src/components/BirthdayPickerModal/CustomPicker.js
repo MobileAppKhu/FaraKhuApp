@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react'
 import {StyleSheet, FlatList, Pressable} from 'react-native'
 
 import theme from '../../theme'
-import palette from '../../theme/palette'
+// import palette from '../../theme/palette'
 import Typography from '../Typography'
 
 function CustomPicker({options, onChange, selected, textVariant = 'body2'}) {
@@ -25,7 +25,7 @@ function CustomPicker({options, onChange, selected, textVariant = 'body2'}) {
       style={styles.root}
       data={[{value: -1, label: ''}, ...options, {value: -5, label: ''}]}
       showsVerticalScrollIndicator={false}
-      renderItem={({item, index}) => {
+      renderItem={({item}) => {
         return (
           <Pressable
             // onPress={() => {
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 10,
-    borderBottomColor: palette.formInput.border,
+    // borderBottomColor: palette.fo,
     borderBottomWidth: 0.5,
     height: 50
   },
@@ -67,11 +67,11 @@ const styles = StyleSheet.create({
     height: 50
   },
   selectedItem: {
-    color: palette.link.text,
-    fontFamily: theme.VazirBlack
+    // color: palette.link.text,
+    fontFamily: theme.Shabnam
     // fontSize: 16
   },
   itemText: {
-    color: palette.balticSea
+    // color: palette.balticSea
   }
 })

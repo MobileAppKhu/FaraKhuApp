@@ -31,7 +31,7 @@ export default function Index({type, open, close, onOkPress}) {
         <View style={styles.datePickerContainer}>
           <View style={styles.pickerContainer}>
             <Typography style={styles.pickerTitle} variant="bold20">
-              Year
+              سال
             </Typography>
             <CustomPicker
               onChange={(newItem) => setSelectedYear(newItem)}
@@ -41,7 +41,7 @@ export default function Index({type, open, close, onOkPress}) {
           </View>
           <View style={styles.pickerContainer}>
             <Typography style={styles.pickerTitle} variant="bold20">
-              Month
+              ماه
             </Typography>
             <CustomPicker
               onChange={(newItem) => setSelectedMonth(newItem)}
@@ -51,7 +51,7 @@ export default function Index({type, open, close, onOkPress}) {
           </View>
           <View style={styles.pickerContainer}>
             <Typography style={styles.pickerTitle} variant="bold20">
-              Day
+              روز
             </Typography>
             <CustomPicker
               onChange={(newItem) => setSelectedDay(newItem)}
@@ -63,7 +63,7 @@ export default function Index({type, open, close, onOkPress}) {
         <View style={styles.buttonsContainer}>
           <View style={styles.confirmButtonContainer}>
             <CustomButton
-              title="Confirm"
+              title="تایید"
               size="small"
               onPress={() => {
                 var result = selectedYear.value
@@ -82,8 +82,8 @@ export default function Index({type, open, close, onOkPress}) {
           </View>
           <View style={styles.cancelButtonContainer}>
             <CustomButton
-              title="Cancel"
-              type="cancel"
+              title="بستن"
+              // type="cancel"
               size="small"
               onPress={close}
               style={styles.button}
@@ -98,7 +98,7 @@ export default function Index({type, open, close, onOkPress}) {
 const styles = StyleSheet.create({
   container: {
     minHeight: 275,
-    backgroundColor: palette.white,
+    backgroundColor: palette.M_3_SYS_PRIMARY,
     borderRadius: 10,
     paddingVertical: 14,
     paddingHorizontal: 20
