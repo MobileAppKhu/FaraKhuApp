@@ -12,6 +12,7 @@ import MyCoursesCourseView from '../pages/main/MyCourses/MyCoursesCourseView/MyC
 import EditToDo from '../pages/main/Calendar/EditToDo/EditToDo'
 import BookShopView from '../pages/main/BookShop/BookShopView/BookShopView'
 import PersonalCalendar from '../pages/main/Calendar/PersonalCalendar/PersonalCalendar'
+import CreatToDo from './../pages/main/Calendar/CreateToDo/CreateToDo'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -29,6 +30,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="create-course" component={MyCoursesCreateCourse} />
       <Stack.Screen name="course-view" component={MyCoursesCourseView} />
       <Stack.Screen name="edit-todo" component={EditToDo} />
+      <Stack.Screen name="create-todo" component={CreatToDo} />
       <Stack.Screen name="bookshop-view" component={BookShopView} />
       <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
     </Stack.Navigator>

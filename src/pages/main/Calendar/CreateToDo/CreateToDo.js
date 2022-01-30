@@ -29,7 +29,7 @@ export default function CreatToDo() {
       <View style={styles.textInputContainer}>
         <CustomInput
           label="عنوان رویداد:"
-          placeholder="((عنوان رویداد))"
+          placeholder="عنوان رویداد"
           maxLength={9}
           labelColor={palette.M_3_SYS_PRIMARY}
           labelStyle={styles.labelStyle}

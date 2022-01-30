@@ -5884,6 +5884,11 @@
     "lodash" "^4.17.21"
     "prop-types" "^15.7.2"
 
+"react-native-global-datetimepicker@^2.0.0":
+  "integrity" "sha512-NfoQOQnfEygMOKT3ktnZF2pQ1sVLSH5WKhJLp2neILYTUYsh+Z4lLpnwY6GlEV1QIzTwzC70HOF5a24t+2xkTA=="
+  "resolved" "https://registry.npmjs.org/react-native-global-datetimepicker/-/react-native-global-datetimepicker-2.0.0.tgz"
+  "version" "2.0.0"
+
 "react-native-image-picker@^4.7.1":
   "integrity" "sha512-8jOHvSX2UMX+76Ixjt2fCOuTLfBx55WGlmn4HK7ZTWfZWXGilpEDDXGnchwBAJkw4Xv953/8tsvSNFEoyvNjFg=="
   "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-4.7.1.tgz"

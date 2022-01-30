@@ -32,7 +32,7 @@ const jalaaliMonthsList = [
   'اسفند'
 ]
 
-export const getCurrentYear = (type = 'en') => {
+export const getCurrentYear = (type = 'fa') => {
   return type === 'fa'
     ? momentJalaali().format('jYYYY')
     : moment().format('YYYY')
