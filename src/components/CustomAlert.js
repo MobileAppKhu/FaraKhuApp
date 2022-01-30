@@ -26,6 +26,9 @@ function CustomAlert({
   title,
   titleColor,
   titleStyle,
+  message,
+  messageColor,
+  messageStyle,
   bgColor,
   buttons
 }) {
@@ -54,6 +57,15 @@ function CustomAlert({
         color={titleColor}>
         {title}
       </Typography>
+
+      {message && (
+        <Typography
+          variant="body2"
+          style={[styles.alertMessage, messageStyle]}
+          color={messageColor ?? titleColor}>
+          {message}
+        </Typography>
+      )}
 
       <View style={styles.buttons}>
         {buttons.map((btn, index) => (
@@ -88,6 +100,9 @@ const styles = StyleSheet.create({
   },
   alertIcon: {
     marginBottom: 20
+  },
+  alertMessage: {
+    marginTop: 20
   },
   buttons: {
     flexDirection: 'row-reverse',
