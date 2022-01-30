@@ -33,6 +33,7 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="کتاب یاب"
         iconName="icons8_books-1-exchange"
+        onPress={() => navigation.navigate('bookshop-view')}
       />
     </View>
   )
