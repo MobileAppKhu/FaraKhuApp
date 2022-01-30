@@ -14,15 +14,18 @@ export const request = async (
 
   const {token} = state.authReducer
   try {
-    const response = await fetch('http://109.162.221.236:5000/api' + endpoint, {
-      method,
-      headers: {
-        Authorization: token || undefined,
-        Accept: 'application/json',
-        'Content-Type': contentType
-      },
-      body: JSON.stringify(body)
-    })
+    const response = await fetch(
+      'https://api.farakhu.markop.ir/api' + endpoint,
+      {
+        method,
+        headers: {
+          Authorization: token || undefined,
+          Accept: 'application/json',
+          'Content-Type': contentType
+        },
+        body: JSON.stringify(body)
+      }
+    )
     return await {
       state: response.status,
       response: await response.json(),
