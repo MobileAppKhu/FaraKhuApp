@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 16,
     borderRadius: 16,
     elevation: 3,
-    marginBottom: 10
+    marginBottom: 10,
   },
   topPart: {
     height: 45,

@@ -10,7 +10,7 @@ export default function BookShopHeader(){
             <Pressable>
                 <View style={styles.lefticon}>
                     <CustomIcon
-                        name={"arrow_back_24px"}
+                        name={"ck_24pxarrow_ba"}
                         size={24}
                     />
                 </View>
@@ -25,11 +25,12 @@ export default function BookShopHeader(){
                     <CustomIcon
                         name={'icons8_search_1-1'}
                         size={24}
+
                     />
                 </Pressable>
               <Pressable>
                   <CustomIcon
-                      name={'icons8_search_1-1'}
+                      name={'icons8_list_1-1'}
                       size={24}
                   />
               </Pressable>

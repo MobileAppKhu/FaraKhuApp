@@ -29,7 +29,7 @@ export default function DashbaordMenu() {
         onPress={() => navigation.navigate('setting')}
       />
       <DashboardButtonPage title="ایمیل دانشگاهی" iconName="mail_outline" />
-      <DashboardButtonPage title="نقشه" iconName="icons8_map_marker_1-1" />
+      <DashboardButtonPage title="نقشه" iconName="icons8_map_marker_1-1"onPress={() => navigation.navigate('bookshop-create')}/>
       <DashboardButtonPage
         title="کتاب یاب"
         iconName="icons8_books-1-exchange"

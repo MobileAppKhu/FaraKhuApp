@@ -3,7 +3,8 @@ import palette from '../../../../theme/palette'
 
 const styles = StyleSheet.create({
   screen: {
-    flex: 1
+    flex: 1,
+    backgroundColor:palette.M_3_SYS_ON_PRIMARY
   },
   container: {
     paddingHorizontal: 20
