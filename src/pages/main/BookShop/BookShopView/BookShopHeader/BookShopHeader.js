@@ -1,30 +1,28 @@
 import React from 'react'
 import {Pressable, View} from 'react-native'
-
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
 import palette from '../../../../../theme/palette'
 import styles from './stylesheet'
-
-const androidRipple = {borderless: true, color: '#ddd', radius: 25}
-
+import {useNavigation} from '@react-navigation/native'
 export default function BookShopHeader() {
+  const navigation = useNavigation()
   return (
-    <View style={styles.container}>
-      <Pressable style={styles.leftIcon} android_ripple={androidRipple}>
+    <View style={styles.root}>
+      <Pressable style={styles.leftIcon} onPress={() => navigation.goBack()}>
         <CustomIcon name={'arrow_back_24px'} size={24} />
       </Pressable>
-
-      <Typography variant="medium18" color={palette.M_3_SYS_ON_SURFACE}>
-        کتاب یاب
-      </Typography>
-
+      <View>
+        <Typography variant="medium18" color={palette.M_3_SYS_ON_SURFACE}>
+          کتاب یاب
+        </Typography>
+      </View>
       <View style={styles.rightIcons}>
-        <Pressable style={styles.search} android_ripple={androidRipple}>
+        <Pressable>
           <CustomIcon name={'icons8_search_1-1'} size={24} />
         </Pressable>
-        <Pressable style={styles.filterMenu} android_ripple={androidRipple}>
-          <CustomIcon name={'icons8_list_1-1'} size={24} />
+        <Pressable>
+          <CustomIcon name={'menu-2'} size={24} />
         </Pressable>
       </View>
     </View>
