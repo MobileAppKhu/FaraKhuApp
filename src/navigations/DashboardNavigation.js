@@ -17,6 +17,7 @@ import EditToDo from '../pages/main/Calendar/EditToDo/EditToDo'
 import ProfileMainPage from '../pages/main/MenuPages/Profile/ProfileMainPage/ProfileMainPage'
 import BookShopCreate from './../pages/main/BookShop/BookShopCreate/BookShopCreate'
 import Guide from './../pages/main/BookShop/Guide/Guide'
+import EachBookShop from '../pages/main/BookShop/EachBookShop/EachBookShop'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -39,8 +40,9 @@ export default function DashboardNavigation() {
       <Stack.Screen name="create-todo" component={CreatToDo} />
       <Stack.Screen name="bookshop-view" component={BookShopView} />
       <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
-      <Stack.Screen name="profile-main=page" component={ProfileMainPage} />
       <Stack.Screen name="todo-details" component={ToDoDetails} />
+      <Stack.Screen name="each-bookshop" component={EachBookShop} />
+      <Stack.Screen name="profile-main-page" component={ProfileMainPage} />
     </Stack.Navigator>
   )
 }

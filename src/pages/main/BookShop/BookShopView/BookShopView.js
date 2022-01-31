@@ -8,6 +8,8 @@ import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import BookShopHeader from './BookShopHeader/BookShopHeader'
 export default function BookShopView() {
+  // const [searchModal, setSearchModal] = useState(false)
+
   return (
     <View style={styles.container}>
       <BookShopHeader />

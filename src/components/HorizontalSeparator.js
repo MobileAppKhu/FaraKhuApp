@@ -5,7 +5,7 @@ import palette from '../theme/palette'
 function HorizontalSeparator({
   width = '100%',
   height = 1,
-  color = palette.M_3_SYS_OUTLINE,
+  color = palette.M_3_READ_ONLY_ON_SURFACE_OPACITY_0_16,
   marginTop,
   marginBottom,
   margin = 0,

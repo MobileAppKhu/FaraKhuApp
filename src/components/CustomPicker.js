@@ -13,20 +13,28 @@ const CustomPicker = ({
   onSelectItem,
   labelStyle,
   labelColor,
-  placeholder = 'انتخاب کنید'
+  placeholder = 'انتخاب کنید',
+  required
 }) => {
   const [modalVisible, setModalVisible] = useState(false)
 
   return (
     <View style={styles.container}>
-      {label && (
-        <Typography
-          variant="h5"
-          style={[styles.label, labelStyle]}
-          color={labelColor || '#495057'}>
-          {label}
-        </Typography>
-      )}
+      <View style={styles.labelContainer}>
+        {label && required && (
+          <Typography color={palette.M_3_SYS_ERROR} style={styles.requiredMark}>
+            *
+          </Typography>
+        )}
+        {label && (
+          <Typography
+            variant="h5"
+            style={[styles.label, labelStyle]}
+            color={labelColor || '#495057'}>
+            {label}
+          </Typography>
+        )}
+      </View>
       <Pressable
         android_ripple={{color: '#eee'}}
         style={styles.pickerContiner}
@@ -69,12 +77,17 @@ const styles = StyleSheet.create({
   container: {
     width: '100%'
   },
+  labelContainer: {
+    flexDirection: 'row-reverse',
+    alignItems: 'baseline'
+  },
   label: {
     fontFamily: 'Shabnam',
     fontSize: 14,
     marginTop: 20,
     marginBottom: 10
   },
+  requiredMark: {marginLeft: 5},
   pickerContiner: {
     flexDirection: 'row',
     justifyContent: 'space-between',
