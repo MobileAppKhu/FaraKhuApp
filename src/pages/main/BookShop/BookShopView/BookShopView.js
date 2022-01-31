@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Pressable, View, FlatList} from 'react-native'
 
 import DataBookShop from './DataBookShop/DataBookShop'
@@ -7,11 +7,19 @@ import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import BookShopHeader from './BookShopHeader/BookShopHeader'
+import SearchModal from './SearchModal'
 
 export default function BookShopView() {
+  const [searchModal, setSearchModal] = useState(false)
+
   return (
     <View style={styles.screen}>
-      <BookShopHeader />
+      <BookShopHeader onSearchPress={() => setSearchModal(true)} />
+      <SearchModal
+        isVisible={searchModal}
+        onBackPress={() => setSearchModal(false)}
+      />
+
       <FlatList
         contentContainerStyle={styles.container}
         data={data}
