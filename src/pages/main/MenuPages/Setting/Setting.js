@@ -8,8 +8,10 @@ import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {ScrollView} from 'react-native-gesture-handler'
 import SettingPart from './SettingPart/SettingPart'
+import {useNavigation} from '@react-navigation/native'
 
 export default function Setting() {
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <SimpleHeader
@@ -34,7 +36,9 @@ export default function Setting() {
               </Typography>
             </View>
           </View>
-          <Pressable style={styles.buttonCard}>
+          <Pressable
+            style={styles.buttonCard}
+            onPress={() => navigation.navigate('profile-main=page')}>
             <View style={styles.textPressable}>
               <Typography variant="medium12" color={palette.M_3_SYS_ON_PRIMARY}>
                 تنظیمات پروفایل
