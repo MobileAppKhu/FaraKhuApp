@@ -18,8 +18,6 @@ const styles = StyleSheet.create({
     fontFamily: theme.ShabnamBold
   },
   imageInput: {
-    // backgroundColor: 'red',
-    // marginTop: 16,
     marginHorizontal: 16,
     flexDirection: 'row',
     alignItems: 'center',

@@ -1,11 +1,10 @@
 import React, {useState} from 'react'
-import {ScrollView, View} from 'react-native'
+import {ScrollView, View, Pressable} from 'react-native'
 import {useNavigation} from '@react-navigation/native'
 
 import Typography from '../../../../components/Typography'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import CustomPicker from '../../../../components/CustomPicker'
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import palette from '../../../../theme/palette'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
@@ -13,15 +12,25 @@ import CustomInput from '../../../../components/CustomInput'
 import CustomButton from '../../../../components/CustomButton'
 import styles from './stylesheet'
 
-export default function BookShopCreate() {
+export default function BookShopCreate({
+  image = null,
+  title = '',
+  type = '',
+  price = '',
+  desc = '',
+  editScreen = false
+}) {
   const navigation = useNavigation()
-  const [bookType, setBookType] = useState()
-  const [image, setImage] = useState(null)
-  const [description, setDescription] = useState()
+
+  const [adType, setAdType] = useState(type)
+  const [imageUri, setImageUri] = useState(image)
+  const [adTitle, setAdTitle] = useState(title)
+  const [adPrice, setAdPrice] = useState(price)
+  const [description, setDescription] = useState(desc)
 
   return (
     <View style={styles.container}>
-      <SimpleHeader title="ثبت آگهی جدید" />
+      <SimpleHeader title={editScreen ? 'ویرایش آگهی' : 'ثبت آگهی جدید'} />
 
       <ScrollView>
         <Pressable
@@ -42,8 +51,8 @@ export default function BookShopCreate() {
             required
             items={['خرید', 'فروش', 'امانت']}
             labelColor={palette.M_3_SYS_ON_SURFACE}
-            selectedItem={bookType}
-            onSelectItem={(type) => setBookType(type)}
+            selectedItem={adType}
+            onSelectItem={(type) => setAdType(type)}
           />
         </View>
 
@@ -51,8 +60,8 @@ export default function BookShopCreate() {
 
         <View style={styles.imageInput}>
           <ImagePicker
-            imageUri={image}
-            onChangeImage={(uri) => setImage(uri)}
+            imageUri={imageUri}
+            onChangeImage={(uri) => setImageUri(uri)}
             width={144}
             height={144}
           />
@@ -72,6 +81,8 @@ export default function BookShopCreate() {
             required
             labelColor={palette.M_3_SYS_ON_BACKGROUND}
             labelStyle={styles.pickerLabelStyle}
+            value={adTitle}
+            onChangeText={(text) => setAdTitle(text)}
           />
         </View>
 
@@ -84,6 +95,8 @@ export default function BookShopCreate() {
               label="قیمت:"
               keyboardType="numeric"
               labelColor={palette.M_3_SYS_ON_BACKGROUND}
+              value={adPrice}
+              onChangeText={(text) => setAdPrice(text)}
             />
           </View>
           <View style={styles.tomanContainer}>
@@ -132,9 +145,9 @@ export default function BookShopCreate() {
 
         <View style={styles.buttonContainer}>
           <CustomButton
-            title="ثبت اگهی"
+            title={editScreen ? 'ویرایش اگهی' : 'ثبت آگهی'}
             size="small"
-            startIcon="add_24px"
+            startIcon={editScreen ? 'mode_edit_24px' : 'add_24px'}
             startIconSize={18}
             startIconColor={palette.M_3_SYS_ON_PRIMARY}
           />
