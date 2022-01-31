@@ -29,8 +29,8 @@ export default function SimpleHeader({
           onPress={() => navigation.goBack()}
           style={styles.goBackButton}>
           <CustomIcon
-            name={isCloseIcon ? 'close_24px' : 'ck_24pxarrow_ba'}
-            size={32}
+            name={isCloseIcon ? 'close_24px' : 'arrow_back_24px'}
+            size={24}
             color={itemsColor || palette.M_3_SYS_ON_PRIMARY}
           />
         </Pressable>

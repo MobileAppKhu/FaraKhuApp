@@ -23,20 +23,28 @@ export default function CustomInput({
   endIcon,
   startIcon,
   clearInputOptions,
+  required,
   ...others
 }) {
   const [isFocused, setIsFocused] = useState(false)
   const [isPasswordType, setisPasswordType] = useState(secureTextEntry)
   return (
     <View style={styles.container}>
-      {label && (
-        <Typography
-          variant="h5"
-          style={[styles.label, labelStyle]}
-          color={labelColor || '#495057'}>
-          {label}
-        </Typography>
-      )}
+      <View style={styles.labelContainer}>
+        {label && required && (
+          <Typography color={palette.M_3_SYS_ERROR} style={styles.requiredMark}>
+            *
+          </Typography>
+        )}
+        {label && (
+          <Typography
+            variant="h5"
+            style={[styles.label, labelStyle]}
+            color={labelColor || '#495057'}>
+            {label}
+          </Typography>
+        )}
+      </View>
       <TextInput
         style={[
           styles.input,
@@ -126,7 +134,12 @@ const styles = StyleSheet.create({
   container: {
     width: '100%'
   },
+  labelContainer: {
+    flexDirection: 'row-reverse',
+    alignItems: 'baseline'
+  },
   label: {marginTop: 20, marginBottom: 10},
+  requiredMark: {marginLeft: 5},
   input: {
     fontFamily: theme.Shabnam,
     borderColor: palette.M_3_SYS_SURFACE_VARIANT,

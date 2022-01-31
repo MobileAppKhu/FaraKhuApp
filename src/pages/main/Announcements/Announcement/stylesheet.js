@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     width: 146,
     backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
     borderRadius: 12,
+    elevation: 5
   }
 })
 export default styles
