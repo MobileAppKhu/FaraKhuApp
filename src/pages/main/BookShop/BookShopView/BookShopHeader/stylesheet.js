@@ -2,21 +2,25 @@ import {StyleSheet} from 'react-native'
 import palette from '../../../../../theme/palette'
 
 const styles = StyleSheet.create({
-  root: {
+  container: {
     backgroundColor: palette.M_3_SYS_SURFACE,
-    elevation: 6,
+    elevation: 4,
     width: '100%',
-    paddingTop: 20,
     height: 64,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'center'
   },
-  lefticon: {
-    marginLeft: 24
+  leftIcon: {
+    marginLeft: 24,
+    marginRight: 15
   },
-  righticon: {
-    marginRight: 16,
-    flexDirection: 'row'
+  rightIcons: {
+    flexDirection: 'row',
+    marginRight: 16
+  },
+  search: {
+    marginRight: 16
   }
 })
 export default styles

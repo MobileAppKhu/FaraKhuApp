@@ -4,13 +4,13 @@ import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
 import palette from '../../../../../theme/palette'
 import styles from './stylesheet'
+import {useNavigation} from '@react-navigation/native'
 export default function BookShopHeader() {
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
-      <Pressable>
-        <View style={styles.leftIcon}>
-          <CustomIcon name={'ck_24pxarrow_ba'} size={24} />
-        </View>
+      <Pressable style={styles.leftIcon} onPress={() => navigation.goBack()}>
+        <CustomIcon name={'arrow_back_24px'} size={24} />
       </Pressable>
       <View>
         <Typography variant="medium18" color={palette.M_3_SYS_ON_SURFACE}>
