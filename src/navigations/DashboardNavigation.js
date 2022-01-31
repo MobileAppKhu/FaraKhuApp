@@ -22,7 +22,6 @@ export default function DashboardNavigation() {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="mainpage">
-      <Stack.Screen name="todo-details" component={ToDoDetails} />
       <Stack.Screen name="landing-page" component={Dashboard} />
       <Stack.Screen name="announcement" component={Announcement} />
       <Stack.Screen name="announcement-item" component={AnnouncementView} />
@@ -37,6 +36,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="bookshop-view" component={BookShopView} />
       <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
       <Stack.Screen name="profile-main=page" component={ProfileMainPage} />
+      <Stack.Screen name="todo-details" component={ToDoDetails} />
     </Stack.Navigator>
   )
 }

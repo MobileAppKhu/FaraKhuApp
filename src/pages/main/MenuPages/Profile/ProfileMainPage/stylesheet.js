@@ -7,7 +7,9 @@ export default StyleSheet.create({
   },
   topPart: {
     backgroundColor: palette.M_3_SYS_SECONDARY,
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomLeftRadius: 18,
+    borderBottomRightRadius: 18
   },
   header: {
     width: '100%',
@@ -46,5 +48,52 @@ export default StyleSheet.create({
   },
   rule: {
     marginBottom: 16
+  },
+  studentCartImageButtonContainer: {
+    width: '100%'
+  },
+  studentCartImageButton: {
+    // width: '100%',
+    // flex: 1,
+    // width: '100%',
+    marginHorizontal: 12,
+    borderRadius: 7,
+    borderColor: palette.M_3_SYS_SECONDARY_CONTAINER,
+    borderWidth: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 43,
+    marginBottom: 16
+  },
+  bottomPart: {
+    marginHorizontal: 16
+  },
+  studentNumberContainer: {
+    flexDirection: 'row-reverse',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    height: 56
+  },
+  iconContainer: {
+    flexDirection: 'row-reverse',
+    alignItems: 'center'
+  },
+  icon: {
+    marginLeft: 8
+  },
+  sepetator: {
+    width: '100%',
+    borderBottomWidth: 1,
+    borderBottomColor: palette.M_3_READ_ONLY_ON_SURFACE_OPACITY_0_16
+  },
+  favorite: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end'
+  },
+  point: {
+    marginLeft: 5
+    // marginBottom: 5
   }
 })
