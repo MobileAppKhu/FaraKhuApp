@@ -8,12 +8,14 @@ import palette from '../../../../theme/palette'
 import styles from './stylesheet'
 import CustomButton from '../../../../components/CustomButton'
 import PollOptionsSection from './PollOptionsSection'
+import SuccessModal from './SuccessModal'
 
 let id = 0
 
 function CreatePoll() {
   const [pollTitle, setPollTitle] = useState('')
   const [pollOptions, setPollOptions] = useState([{id: id++, value: ''}])
+  const [successModal, setSuccessModal] = useState(false)
 
   const container = useRef()
 
@@ -66,6 +68,10 @@ function CreatePoll() {
             startIconSize={18}
           />
         </View>
+        <SuccessModal
+          isVisible={successModal}
+          onPressBtn={() => setSuccessModal(false)}
+        />
       </ScrollView>
     </View>
   )
