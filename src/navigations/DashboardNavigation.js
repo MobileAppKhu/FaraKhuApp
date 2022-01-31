@@ -14,6 +14,7 @@ import PersonalCalendar from '../pages/main/Calendar/PersonalCalendar/PersonalCa
 import CreatToDo from './../pages/main/Calendar/CreateToDo/CreateToDo'
 import ToDoDetails from '../pages/main/Calendar/ToDoDetails'
 import EditToDo from '../pages/main/Calendar/EditToDo/EditToDo'
+import ProfileMainPage from '../pages/main/MenuPages/Profile/ProfileMainPage/ProfileMainPage'
 import BookShopCreate from './../pages/main/BookShop/BookShopCreate/BookShopCreate'
 import Guide from './../pages/main/BookShop/Guide/Guide'
 const Stack = createStackNavigator()
@@ -23,7 +24,6 @@ export default function DashboardNavigation() {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="mainpage">
-      <Stack.Screen name="todo-details" component={ToDoDetails} />
       <Stack.Screen name="landing-page" component={Dashboard} />
       <Stack.Screen name="announcement" component={Announcement} />
       <Stack.Screen name="announcement-item" component={AnnouncementView} />
@@ -39,6 +39,8 @@ export default function DashboardNavigation() {
       <Stack.Screen name="create-todo" component={CreatToDo} />
       <Stack.Screen name="bookshop-view" component={BookShopView} />
       <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
+      <Stack.Screen name="profile-main=page" component={ProfileMainPage} />
+      <Stack.Screen name="todo-details" component={ToDoDetails} />
     </Stack.Navigator>
   )
 }
