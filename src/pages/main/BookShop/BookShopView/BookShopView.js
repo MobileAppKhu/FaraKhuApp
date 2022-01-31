@@ -30,7 +30,7 @@ export default function BookShopView() {
             </ScrollView>
             <View>
                 <Pressable
-                    style={styles.buttonStyle}>
+                    style={styles.buttonStyle}onPress={() => navigation.navigate('bookshop-create')}>
                     <View style={styles.addiconStyle}>
                         <View style={styles.textStyle}>
                             <Typography

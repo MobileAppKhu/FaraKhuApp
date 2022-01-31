@@ -16,6 +16,7 @@ import ToDoDetails from '../pages/main/Calendar/ToDoDetails'
 import EditToDo from '../pages/main/Calendar/EditToDo/EditToDo'
 import BookShopCreate from './../pages/main/BookShop/BookShopCreate/BookShopCreate'
 import Guide from './../pages/main/BookShop/Guide/Guide'
+import EachBookShop from "../pages/main/BookShop/EachBookShop/EachBookShop";
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -23,22 +24,23 @@ export default function DashboardNavigation() {
     <Stack.Navigator
       screenOptions={{headerShown: false}}
       initialRouteName="mainpage">
-      <Stack.Screen name="todo-details" component={ToDoDetails} />
       <Stack.Screen name="landing-page" component={Dashboard} />
-      <Stack.Screen name="announcement" component={Announcement} />
-      <Stack.Screen name="announcement-item" component={AnnouncementView} />
-      <Stack.Screen name="create-announcement" component={CreateAnnouncement} />
-      <Stack.Screen name="edit-announcement" component={EditAnnouncement} />
-      <Stack.Screen name="setting" component={Setting} />
-      <Stack.Screen name="my-courses-main-page" component={MyCoursesMainPage} />
-      <Stack.Screen name="create-course" component={MyCoursesCreateCourse} />
-      <Stack.Screen name="course-view" component={MyCoursesCourseView} />
-      <Stack.Screen name="edit-todo" component={EditToDo} />
-      <Stack.Screen name="bookshop-create" component={BookShopCreate} />
-      <Stack.Screen name="guide" component={Guide} />
-      <Stack.Screen name="create-todo" component={CreatToDo} />
-      <Stack.Screen name="bookshop-view" component={BookShopView} />
-      <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
+        <Stack.Screen name="announcement" component={Announcement} />
+        <Stack.Screen name="announcement-item" component={AnnouncementView} />
+        <Stack.Screen name="create-announcement" component={CreateAnnouncement} />
+        <Stack.Screen name="edit-announcement" component={EditAnnouncement} />
+        <Stack.Screen name="setting" component={Setting} />
+        <Stack.Screen name="my-courses-main-page" component={MyCoursesMainPage} />
+        <Stack.Screen name="create-course" component={MyCoursesCreateCourse} />
+        <Stack.Screen name="course-view" component={MyCoursesCourseView} />
+        <Stack.Screen name="edit-todo" component={EditToDo} />
+        <Stack.Screen name="bookshop-create" component={BookShopCreate} />
+        <Stack.Screen name="guide" component={Guide} />
+        <Stack.Screen name="create-todo" component={CreatToDo} />
+        <Stack.Screen name="bookshop-view" component={BookShopView} />
+        <Stack.Screen name="personal-calendar" component={PersonalCalendar} />
+        <Stack.Screen name="todo-details" component={ToDoDetails} />
+        <Stack.Screen name="each-bookshop"component={EachBookShop}/>
     </Stack.Navigator>
   )
 }

@@ -27,7 +27,6 @@ export default function BookShopCreate() {
                         راهنمای ثبت اگهی
                     </Typography>
                     <CustomIcon name="ck_24pxarrow_ba" size={20}/>
-
                 </Pressable>
                 <View style={{marginHorizontal: 16}}>
                     <HorizontalSeparator margin={18}/>

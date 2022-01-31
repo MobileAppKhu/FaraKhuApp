@@ -49,7 +49,6 @@ const styles = StyleSheet.create({
   },
   bold18: {
     fontFamily: theme.ShabnamBold,
-    fontWeight: 'bold',
     fontSize: 18
   },
   bold20: {
