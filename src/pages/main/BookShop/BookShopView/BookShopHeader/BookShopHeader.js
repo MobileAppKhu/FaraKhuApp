@@ -22,7 +22,7 @@ export default function BookShopHeader() {
           <CustomIcon name={'icons8_search_1-1'} size={24} />
         </Pressable>
         <Pressable>
-          <CustomIcon name={'menu-2'} size={24} />
+          <CustomIcon name={'icons8_list_1-1'} size={24} />
         </Pressable>
       </View>
     </View>
