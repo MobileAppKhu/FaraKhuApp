@@ -7,6 +7,7 @@ import UpcomingEvent from './UpcomingEvent/UpcomingEvent'
 import DashbaordMenu from './DashbaordMenu/DashbaordMenu'
 import NotificationsImages from './NotificationsImages/NotificationsImages'
 import InternetManagement from './InternetManagement'
+import NotificationModal from './NotificationModal'
 
 export default function Dashboard() {
   return (
@@ -21,6 +22,7 @@ export default function Dashboard() {
         <View style={styles.seprator} />
         <NotificationsImages />
       </ScrollView>
+      <NotificationModal isVisible={true} />
     </View>
   )
 }
