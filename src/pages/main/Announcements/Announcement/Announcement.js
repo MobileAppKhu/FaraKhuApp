@@ -1,27 +1,33 @@
 import React, {useEffect, useState} from 'react'
 import DataAnnouncement from './DataAnnouncement/DataAnnouncement'
 import SimpleHeader from './../../../../components/SimpleHeader'
-import {ScrollView} from 'react-native-gesture-handler'
-import {Pressable, View} from 'react-native'
+import {Pressable, View, ScrollView, RefreshControl} from 'react-native'
 import styles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
+
 export default function Announcement() {
   const navigation = useNavigation()
   // eslint-disable-next-line no-unused-vars
   const [announcement, setannouncement] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
 
   const getAnnouncementFunction = () => {
+    setRefreshing(true)
+
     request('/Announcement/SearchAnnouncements', 'POST', {
       announcementIds: [],
       start: 0,
       step: 10,
       announcementColumn: 1,
       orderDirection: true
-    }).then((data) => setannouncement(data.response.announcements))
+    }).then((data) => {
+      setannouncement(data.response.announcements)
+      setRefreshing(false)
+    })
   }
   useEffect(() => {
     getAnnouncementFunction()
@@ -30,7 +36,13 @@ export default function Announcement() {
   return (
     <View style={styles.container}>
       <SimpleHeader title="فراخوان ها" headerRightIcon={'icons8_search_1-1'} />
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => getAnnouncementFunction()}
+          />
+        }>
         <View style={{marginBottom: 88}}>
           {announcement.map((item) => (
             <DataAnnouncement
