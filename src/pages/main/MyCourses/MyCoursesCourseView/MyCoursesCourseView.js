@@ -1,12 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {View} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import styles from './stylesheet'
 import MyCoursesCourseViewHeader from './MyCoursesCourseViewParts/MyCoursesCourseViewHeader/MyCoursesCourseViewHeader'
 import MyCoursesCourseViewDetails from './MyCoursesCourseViewParts/MyCoursesCourseViewDetails/MyCoursesCourseViewDetails'
 import MyCoursesCourseViewAnnouncement from './MyCoursesCourseViewParts/MyCoursesCourseViewAnnouncement/MyCoursesCourseViewAnnouncement'
+import AddMenu from './MyCoursesCourseViewParts/AddMenu/AddMenu'
 
 export default function MyCoursesCourseView() {
+  const [showAddMenu, setShowAddMenu] = useState(false)
+
   return (
     <View style={styles.root}>
       <ScrollView>
@@ -24,6 +27,11 @@ export default function MyCoursesCourseView() {
         />
         <MyCoursesCourseViewAnnouncement />
       </ScrollView>
+      <AddMenu
+        visible={showAddMenu}
+        setVisible={() => setShowAddMenu(true)}
+        onBackdropPress={() => setShowAddMenu(false)}
+      />
     </View>
   )
 }
