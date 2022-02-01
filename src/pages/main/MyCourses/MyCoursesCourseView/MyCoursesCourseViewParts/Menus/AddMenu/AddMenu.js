@@ -2,9 +2,9 @@ import React from 'react'
 import {Pressable, View} from 'react-native'
 import Modal from 'react-native-modal'
 
-import CustomIcon from '../../../../../../components/CustomIcon'
-import Typography from '../../../../../../components/Typography'
-import palette from '../../../../../../theme/palette'
+import CustomIcon from '../../../../../../../components/CustomIcon'
+import palette from '../../../../../../../theme/palette'
+import MenuItem from '../MenuItem/MenuItem'
 import styles from './stylesheet'
 
 const modalItems = [
@@ -27,18 +27,6 @@ const modalItems = [
   }
 ]
 
-const ModalItem = ({text, color, icon, onPress}) => (
-  <Pressable
-    onPress={onPress}
-    android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
-    style={styles.modalItem}>
-    <Typography variant="body2" color={color} style={styles.modalItemText}>
-      {text}
-    </Typography>
-    <CustomIcon name={icon} size={24} color={color} />
-  </Pressable>
-)
-
 function AddMenu({visible, setVisible, onBackdropPress}) {
   return (
     <>
@@ -50,13 +38,14 @@ function AddMenu({visible, setVisible, onBackdropPress}) {
         style={styles.modalContainer}
         backdropOpacity={0}
         onBackdropPress={onBackdropPress}
+        onBackButtonPress={onBackdropPress}
         animationIn="slideInUp"
         animationOut="slideOutDown">
         <View style={styles.modalMenu}>
           {modalItems.map((item, index) => (
-            <ModalItem
+            <MenuItem
               key={index}
-              text={item.text}
+              title={item.text}
               color={item.color}
               icon={item.icon}
               onPress={item.onPress}

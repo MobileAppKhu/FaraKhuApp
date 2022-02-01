@@ -5,10 +5,12 @@ import styles from './stylesheet'
 import MyCoursesCourseViewHeader from './MyCoursesCourseViewParts/MyCoursesCourseViewHeader/MyCoursesCourseViewHeader'
 import MyCoursesCourseViewDetails from './MyCoursesCourseViewParts/MyCoursesCourseViewDetails/MyCoursesCourseViewDetails'
 import MyCoursesCourseViewAnnouncement from './MyCoursesCourseViewParts/MyCoursesCourseViewAnnouncement/MyCoursesCourseViewAnnouncement'
-import AddMenu from './MyCoursesCourseViewParts/AddMenu/AddMenu'
+import AddMenu from './MyCoursesCourseViewParts/Menus/AddMenu/AddMenu'
+import ThreeDotMenu from './MyCoursesCourseViewParts/Menus/ThreeDotMenu/ThreeDotMenu'
 
 export default function MyCoursesCourseView() {
   const [showAddMenu, setShowAddMenu] = useState(false)
+  const [showThreeDotMenu, setShowThreeDotMenu] = useState(false)
 
   return (
     <View style={styles.root}>
@@ -16,7 +18,13 @@ export default function MyCoursesCourseView() {
         <MyCoursesCourseViewHeader
           courseName="هوش مصنوعی و سیستم‌های خبره"
           teacherName="دكتر ميرحسين پدارم"
+          onPressThreeDot={() => setShowThreeDotMenu(true)}
         />
+        <ThreeDotMenu
+          visible={showThreeDotMenu}
+          onBackdropPress={() => setShowThreeDotMenu(false)}
+        />
+
         <MyCoursesCourseViewDetails
           examDate="۱۴۰۰/۱۰/۲۹"
           classTime={[
@@ -27,6 +35,7 @@ export default function MyCoursesCourseView() {
         />
         <MyCoursesCourseViewAnnouncement />
       </ScrollView>
+
       <AddMenu
         visible={showAddMenu}
         setVisible={() => setShowAddMenu(true)}

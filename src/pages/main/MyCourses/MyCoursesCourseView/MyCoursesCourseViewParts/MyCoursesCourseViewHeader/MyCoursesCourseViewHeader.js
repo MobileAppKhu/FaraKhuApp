@@ -6,21 +6,30 @@ import palette from '../../../../../../theme/palette'
 import styles from './stylesheet'
 import Typography from '../../../../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
-export default function MyCoursesCourseViewHeader({courseName, teacherName}) {
+
+const androidRipple = {color: '#ddd', borderless: true, radius: 24}
+
+export default function MyCoursesCourseViewHeader({
+  courseName,
+  teacherName,
+  onPressThreeDot
+}) {
   const navigation = useNavigation()
   return (
     <ImageBackground
       source={require('../../../../../../assets/images/my-course-test.jpg')}
       style={styles.root}>
       <View style={styles.moreOption}>
-        <Pressable onPress={() => navigation.goBack()}>
+        <Pressable
+          onPress={() => navigation.goBack()}
+          android_ripple={androidRipple}>
           <CustomIcon
             name="icons8_back-1-False"
             size={30}
             color={palette.M_3_SYS_INVERSE_ON_SURFACE}
           />
         </Pressable>
-        <Pressable>
+        <Pressable onPress={onPressThreeDot} android_ripple={androidRipple}>
           <CustomIcon
             name="more_vert_24px"
             size={30}

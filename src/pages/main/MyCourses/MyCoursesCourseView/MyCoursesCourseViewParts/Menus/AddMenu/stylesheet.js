@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-import palette from '../../../../../../theme/palette'
+import palette from '../../../../../../../theme/palette'
 
 const styles = StyleSheet.create({
   container: {
@@ -26,17 +26,6 @@ const styles = StyleSheet.create({
     alignItems: 'stretch',
     overflow: 'hidden',
     elevation: 5
-  },
-  modalItem: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    paddingVertical: 15,
-    paddingRight: 15,
-    paddingLeft: 25
-  },
-  modalItemText: {
-    marginRight: 12
   }
 })
 
