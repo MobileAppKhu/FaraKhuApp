@@ -13,6 +13,7 @@ export default function Announcement() {
   const navigation = useNavigation()
   // eslint-disable-next-line no-unused-vars
   const [announcement, setannouncement] = useState([])
+
   const getAnnouncementFunction = () => {
     request('/Announcement/SearchAnnouncements', 'POST', {
       announcementIds: [],
@@ -38,6 +39,7 @@ export default function Announcement() {
               teacherImage={item.teacherImage}
               text={item.announcementTitle}
               date={item.announcementDescription}
+              onPress={() => navigation.navigate('announcement-item', item)}
             />
           ))}
         </View>

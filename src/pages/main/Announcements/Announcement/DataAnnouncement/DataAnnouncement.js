@@ -11,13 +11,12 @@ export default function DataAnnouncement({
   // eslint-disable-next-line no-unused-vars
   teacherImage,
   text,
-  date
+  date,
+  onPress
 }) {
   const navigation = useNavigation()
   return (
-    <Pressable
-      style={styles.root}
-      onPress={() => navigation.navigate('announcement-item')}>
+    <Pressable style={styles.root} onPress={onPress}>
       <View style={styles.cardStyle}>
         <View style={styles.imgTeachStyle}>
           <Image
