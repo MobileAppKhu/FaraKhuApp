@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     height: 64,
     alignItems: 'center',
     paddingHorizontal: 24,
-    backgroundColor: 'rgba(255,255,255,0.1)',
+    backgroundColor: 'rgba(0,0,0,0.2)',
     justifyContent: 'space-between'
   },
   teacherImage: {

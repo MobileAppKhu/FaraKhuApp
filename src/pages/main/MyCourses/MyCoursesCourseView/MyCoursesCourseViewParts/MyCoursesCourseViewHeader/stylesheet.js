@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   },
   moreOption: {
     paddingHorizontal: 24,
-    paddingTop: 20,
+    paddingVertical: 15,
     flexDirection: 'row',
     width: '100%',
     alignItems: 'center',

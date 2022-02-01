@@ -77,7 +77,8 @@ const styles = StyleSheet.create({
     backgroundColor: palette.M_3_SYS_PRIMARY
   },
   confirmDisabledButton: {
-    backgroundColor: 'red'
+    // backgroundColor: 'red'
+    backgroundColor: palette.M_3_SYS_PRIMARY_CONTAINER
   },
   cancelButton: {
     backgroundColor: palette.M_3_SYS_BACKGROUND,

@@ -6,9 +6,20 @@ import CustomInput from './../../../../components/CustomInput'
 import styles from './stylesheet'
 import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
+import {request} from './../../../../helpers/request'
+import {useNavigation} from '@react-navigation/native'
 export default function CreateAnnouncement() {
   const [title, settitle] = useState('')
   const [description, setdescription] = useState('')
+  const navigation = useNavigation()
+  const createAnnouncementFunction = () => {
+    request('/Announcement/AddAnnouncement', 'POST', {
+      title,
+      description,
+      department: '6c22286e-f837-4811-9b72-3b17fa0ee205',
+      avatar: 'smiley.png'
+    }).then(() => navigation.goBack())
+  }
   return (
     <View style={styles.root}>
       <SimpleHeader title="ایجاد فراخوان" />
@@ -36,6 +47,8 @@ export default function CreateAnnouncement() {
           title="ایجاد فراخوان"
           size="small"
           style={styles.button}
+          onPress={createAnnouncementFunction}
+          disabled={!title || !description}
         />
       </View>
     </View>

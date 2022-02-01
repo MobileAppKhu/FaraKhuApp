@@ -3,10 +3,15 @@ import styles from './stylesheet'
 import {Image, Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
+import {useNavigation} from '@react-navigation/native'
 
+// eslint-disable-next-line no-unused-vars
 export default function DataBookShop({title, type, bookImage, price}) {
+  const navigation = useNavigation()
   return (
-    <Pressable style={styles.root}>
+    <Pressable
+      style={styles.root}
+      onPress={() => navigation.navigate('each-bookshop')}>
       <View style={styles.cardStyle}>
         <View style={styles.cardDesc}>
           <View style={styles.bookTitle}>
@@ -27,7 +32,7 @@ export default function DataBookShop({title, type, bookImage, price}) {
             <Typography
               variant="smallButton"
               color={palette.M_3_SYS_ON_SECONDARY_CONTAINER}>
-              {price} هزار تومان
+              {price}
             </Typography>
           </View>
         </View>

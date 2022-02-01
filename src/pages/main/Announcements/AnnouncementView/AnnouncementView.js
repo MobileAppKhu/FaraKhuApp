@@ -56,7 +56,7 @@ export default function AnnouncementView() {
             radius: 30
           }}>
           <CustomIcon
-            name="ck_24pxarrow_ba"
+            name="arrow_back_24px"
             size={24}
             color={palette.M_3_SYS_ON_PRIMARY}
           />

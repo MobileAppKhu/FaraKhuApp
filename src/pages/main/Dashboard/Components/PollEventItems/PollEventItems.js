@@ -13,7 +13,7 @@ export default function PollEventItems({eventName, eventTime}) {
       </Typography>
       <View style={styles.eventControler}>
         <CustomIcon
-          name="icons8_back-1"
+          name="icons8_back-1-False"
           size={24}
           color={palette.M_3_SYS_TERTIARY}
           style={{marginLeft: 16}}

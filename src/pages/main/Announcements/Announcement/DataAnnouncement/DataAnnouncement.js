@@ -44,7 +44,7 @@ export default function DataAnnouncement({
       <View style={styles.iconStyle}>
         <Pressable>
           <CustomIcon
-            name="ck_24pxarrow_ba"
+            name="icons8_back-1-False"
             size={24}
             color={palette.M_3_SYS_TERTIARY}
           />
