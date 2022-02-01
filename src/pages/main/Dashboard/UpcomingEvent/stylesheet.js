@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginHorizontal: 16,
     borderRadius: 16,
+    backgroundColor: palette.M_3_SYS_SURFACE,
     elevation: 3
   },
   topPart: {
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     marginBottom: 8
   },
   eventContainer: {
-    marginBottom: 16
+    // marginBottom: 16
   }
 })
 export default styles
