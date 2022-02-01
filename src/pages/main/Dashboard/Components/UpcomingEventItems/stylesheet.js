@@ -7,7 +7,6 @@ export default StyleSheet.create({
     marginBottom: 8,
     paddingVertical: 4,
     borderRadius: 12,
-    // paddingHorizontal: 20,
     paddingRight: 32,
     paddingLeft: 20,
     backgroundColor: palette.M_3_SYS_SURFACE_VARIANT,
@@ -18,9 +17,8 @@ export default StyleSheet.create({
   },
   eventDetails: {
     flexDirection: 'column',
-    // width: '100%',
     alignItems: 'flex-end',
-    flex: 1
+    flex: 1.5
   },
   timeContainer: {
     marginTop: 4
@@ -42,9 +40,8 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     flex: 1
-    // width: '100%'
   },
   eventControlerOnShowCheckBox: {
-    justifyContent: 'space-evenly'
+    justifyContent: 'space-between'
   }
 })
