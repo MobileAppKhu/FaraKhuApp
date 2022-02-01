@@ -6,13 +6,14 @@ import store from '../redux/store'
 
 export const request = async (
   endpoint,
-  method = 'GET',
+  method = 'POST',
   body,
   contentType = 'application/json'
 ) => {
   const state = store.getState()
 
   const {token} = state.authReducer
+  console.log(token)
   try {
     const response = await fetch(
       'https://api.farakhu.markop.ir/api' + endpoint,
@@ -27,7 +28,7 @@ export const request = async (
       }
     )
     return await {
-      state: response.status,
+      status: response.status,
       response: await response.json(),
       header: response.headers
     }

@@ -18,10 +18,10 @@ export default function BookShopView() {
         <View>
           {data.map((item, index) => (
             <DataBookShop
-              key={item.text + item.type + index.toString()}
-              text={item.text}
+              key={item.title + item.type + index.toString()}
+              title={item.title}
               type={item.type}
-              lessonImage={item.lessonImage}
+              // bookImage={require(item.lessonImage)}
               price={item.price}
             />
           ))}
@@ -52,33 +52,33 @@ export default function BookShopView() {
 }
 const data = [
   {
-    text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
+    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
     type: 'فروش',
-    lessonImage: null,
+    lessonImage: '../../../../assets/images/sample_avatar.jpg',
     price: '400هزارتومن'
   },
   {
-    text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
+    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
     type: 'فروش',
-    lessonImage: null,
+    lessonImage: '../../../../assets/images/sample_avatar.jpg',
     price: '400هزارتومن'
   },
   {
-    text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
+    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
     type: 'فروش',
-    lessonImage: null,
+    lessonImage: '../../../../assets/images/sample_avatar.jpg',
     price: '400هزارتومن'
   },
   {
-    text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
+    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
     type: 'فروش',
-    lessonImage: null,
+    lessonImage: '../../../../assets/images/sample_avatar.jpg',
     price: '400هزارتومن'
   },
   {
-    text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
+    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
     type: 'فروش',
-    lessonImage: null,
+    lessonImage: '../../../../assets/images/sample_avatar.jpg',
     price: '400هزارتومن'
   }
 ]

@@ -8,6 +8,7 @@ import CustomIcon from '../../../../components/CustomIcon'
 import styles from './stylesheet'
 import DeleteModal from './DeleteModal'
 import OptionsModal from './OptionsModal'
+import {useNavigation} from '@react-navigation/native'
 
 const androidRipple = {borderless: true, color: '#ddd', radius: 25}
 
@@ -50,7 +51,7 @@ export default function EachBookShop({
       }
     }
   ]
-
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -58,7 +59,9 @@ export default function EachBookShop({
           source={require('../../../../assets/images/sample_avatar.jpg')}
           style={styles.imageContainer}>
           <View style={styles.optionsIcon}>
-            <Pressable android_ripple={androidRipple}>
+            <Pressable
+              android_ripple={androidRipple}
+              onPress={() => navigation.goBack()}>
               <CustomIcon
                 name="arrow_back_24px"
                 size={30}
@@ -131,7 +134,6 @@ export default function EachBookShop({
               توضیحات
             </Typography>
           </View>
-
           <View style={{marginTop: 16}}>
             <Typography variant="body2" color={palette.M_3_SYS_ON_BACKGROUND}>
               ❌❌فوری❌❌ من به تازگی از رشته‌ی مهندسی کامپیوتر فارغ التحصیل

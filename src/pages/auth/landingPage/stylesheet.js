@@ -18,8 +18,7 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    flex: 1,
-    backgroundColor: 'red'
+    flex: 1
   }
 })
 export default styles

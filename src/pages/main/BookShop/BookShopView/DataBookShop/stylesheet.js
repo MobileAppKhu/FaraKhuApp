@@ -28,7 +28,8 @@ const styles = StyleSheet.create({
   },
   bookImageStyle: {
     alignItems: 'center',
-    flex: 1
+    flex: 1,
+    marginLeft: 8
   },
   bookImage: {
     width: 118,
