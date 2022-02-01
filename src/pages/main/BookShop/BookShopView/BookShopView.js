@@ -7,11 +7,12 @@ import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import BookShopHeader from './BookShopHeader/BookShopHeader'
+import {useNavigation} from '@react-navigation/native'
 export default function BookShopView() {
   // const [searchModal, setSearchModal] = useState(false)
-
+  const navigation = useNavigation()
   return (
-    <View style={styles.container}>
+    <View style={styles.screen}>
       <BookShopHeader />
       <ScrollView>
         <View>
@@ -26,30 +27,36 @@ export default function BookShopView() {
           ))}
         </View>
       </ScrollView>
-      <View>
-        <Pressable style={styles.buttonStyle}>
-          <View style={styles.addiconStyle}>
-            <View style={styles.textStyle}>
-              <Typography
-                variant="h6"
-                color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}>
-                اگهی جدید
-              </Typography>
-            </View>
-            <View style={styles.iconStyle}>
-              <CustomIcon
-                name="mode_edit_24px"
-                size={24}
-                color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}
-              />
-            </View>
+      <Pressable
+        style={styles.addBtnContainer}
+        onPress={() => navigation.navigate('book-shop-create')}>
+        <View style={styles.addBtn}>
+          <View style={styles.addBtnText}>
+            <Typography
+              variant="h6"
+              color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}>
+              اگهی جدید
+            </Typography>
           </View>
-        </Pressable>
-      </View>
+          <View style={styles.addBtnIcon}>
+            <CustomIcon
+              name="mode_edit_24px"
+              size={24}
+              color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}
+            />
+          </View>
+        </View>
+      </Pressable>
     </View>
   )
 }
 const data = [
+  {
+    text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
+    type: 'فروش',
+    lessonImage: null,
+    price: '400هزارتومن'
+  },
   {
     text: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
     type: 'فروش',

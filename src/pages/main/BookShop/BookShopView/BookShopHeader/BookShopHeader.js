@@ -8,7 +8,7 @@ import {useNavigation} from '@react-navigation/native'
 export default function BookShopHeader() {
   const navigation = useNavigation()
   return (
-    <View style={styles.root}>
+    <View style={styles.container}>
       <Pressable style={styles.leftIcon} onPress={() => navigation.goBack()}>
         <CustomIcon name={'arrow_back_24px'} size={24} />
       </Pressable>

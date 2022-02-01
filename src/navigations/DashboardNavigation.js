@@ -43,6 +43,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="todo-details" component={ToDoDetails} />
       <Stack.Screen name="each-bookshop" component={EachBookShop} />
       <Stack.Screen name="profile-main-page" component={ProfileMainPage} />
+      <Stack.Screen name="book-shop-create" component={BookShopCreate} />
     </Stack.Navigator>
   )
 }
