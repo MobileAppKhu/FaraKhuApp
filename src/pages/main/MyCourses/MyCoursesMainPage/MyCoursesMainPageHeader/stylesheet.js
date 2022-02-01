@@ -39,18 +39,19 @@ const styles = StyleSheet.create({
     position: 'absolute',
     borderRadius: 16
   },
-  modal: {
-    paddingVertical: 16,
-    justifyContent: 'space-around',
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: palette.M_3_READ_ONLY_SURFACE_1,
+  modalContainer: {
+    flex: 1,
+    margin: 0
+  },
+  modalMenu: {
+    backgroundColor: '#e4ebf6',
+    borderRadius: 20,
     position: 'absolute',
-    paddingHorizontal: 24,
-    top: 0,
-    right: 0,
-    elevation: 10,
-    borderRadius: 16
+    top: 15,
+    right: 24,
+    alignItems: 'stretch',
+    overflow: 'hidden',
+    elevation: 5
   }
 })
 export default styles

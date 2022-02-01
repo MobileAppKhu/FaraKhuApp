@@ -6,13 +6,20 @@ import Typography from '../../../../../../../components/Typography'
 import HorizontalSeparator from '../../../../../../../components/HorizontalSeparator'
 import palette from '../../../../../../../theme/palette'
 
-const MenuItem = ({title, color, icon, onPress, separator}) => (
+const MenuItem = ({
+  title,
+  color,
+  icon,
+  onPress,
+  separator,
+  fontVariant = 'body2'
+}) => (
   <>
     <Pressable
       onPress={onPress}
       android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
       style={styles.container}>
-      <Typography variant="body2" color={color} style={styles.title}>
+      <Typography variant={fontVariant} color={color} style={styles.title}>
         {title}
       </Typography>
       <CustomIcon name={icon} size={24} color={color} />
