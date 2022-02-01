@@ -1026,9 +1026,9 @@
     merge-options "^3.0.4"
 
 "@react-native-clipboard/clipboard@^1.8.5":
-  "integrity" "sha512-o2RPDwP9JMnLece1Qq6a3Fsz/VxfA9auLckkGOor7WcI82DWaWiJ6Uiyu7H1xpaUyqWc+ypVKRX680GYS36HjA=="
-  "resolved" "https://registry.npmjs.org/@react-native-clipboard/clipboard/-/clipboard-1.8.5.tgz"
-  "version" "1.8.5"
+  version "1.8.5"
+  resolved "https://registry.npmjs.org/@react-native-clipboard/clipboard/-/clipboard-1.8.5.tgz"
+  integrity sha512-o2RPDwP9JMnLece1Qq6a3Fsz/VxfA9auLckkGOor7WcI82DWaWiJ6Uiyu7H1xpaUyqWc+ypVKRX680GYS36HjA==
 
 "@react-native-community/checkbox@^0.5.9":
   version "0.5.9"
@@ -5764,7 +5764,6 @@ react-native-gesture-handler@^2.1.0:
   integrity sha512-vF4yEUrV5GMBioTkvf5Le1l3N/52dSLBnNMFC+kZ4hssnRoXB0hEQ0ReUkZckRB5L3nbHBhAyjySEtFPx4nyEA==
   dependencies:
     "@egjs/hammerjs" "^2.0.17"
-<<<<<<< HEAD
     hoist-non-react-statics "^3.3.0"
     invariant "^2.2.4"
     lodash "^4.17.21"
@@ -5840,83 +5839,6 @@ react-native@0.66.4:
   version "0.66.4"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.66.4.tgz"
   integrity sha512-9vx5dlSfQlKbbDtr8+xMon6qsmSu7jvjdXWZpEKh3XVKpUidbbODv7048gwVKX8YAel1egeR7hN8vzSeI6ssTw==
-=======
-    "hoist-non-react-statics" "^3.3.0"
-    "invariant" "^2.2.4"
-    "lodash" "^4.17.21"
-    "prop-types" "^15.7.2"
-
-"react-native-global-datetimepicker@^2.0.0":
-  "integrity" "sha512-NfoQOQnfEygMOKT3ktnZF2pQ1sVLSH5WKhJLp2neILYTUYsh+Z4lLpnwY6GlEV1QIzTwzC70HOF5a24t+2xkTA=="
-  "resolved" "https://registry.npmjs.org/react-native-global-datetimepicker/-/react-native-global-datetimepicker-2.0.0.tgz"
-  "version" "2.0.0"
-
-"react-native-image-picker@^4.7.1":
-  "integrity" "sha512-8jOHvSX2UMX+76Ixjt2fCOuTLfBx55WGlmn4HK7ZTWfZWXGilpEDDXGnchwBAJkw4Xv953/8tsvSNFEoyvNjFg=="
-  "resolved" "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-4.7.1.tgz"
-  "version" "4.7.1"
-
-"react-native-image-slider-box@^1.1.14":
-  "integrity" "sha512-BcU3vvRnRe4tFDYwiruxKyTeh53GjY6QMK/x3UGysMACqPO8VguQThSOjcCGemOFBvqNpIRJREHcyJF5ydIryw=="
-  "resolved" "https://registry.npmjs.org/react-native-image-slider-box/-/react-native-image-slider-box-1.1.14.tgz"
-  "version" "1.1.14"
-  dependencies:
-    "react-native-snap-carousel" "latest"
-
-"react-native-modal@^13.0.0":
-  "integrity" "sha512-k6r9T31mc7HIDFj1V53ceAAN1dwc8052c4JLtDVEmEQ19Bbq9yiLXoDsQuNb+hB8A+2tVOXmo5Gq4IQfb11upw=="
-  "resolved" "https://registry.npmjs.org/react-native-modal/-/react-native-modal-13.0.0.tgz"
-  "version" "13.0.0"
-  dependencies:
-    "prop-types" "^15.6.2"
-    "react-native-animatable" "1.3.3"
-
-"react-native-persian-jalali-calendar-picker@^1.0.2":
-  "integrity" "sha512-6Dps4+7ERNogvpVR30fNKO8H06zKd/si5PI2f+g3hO3xUY0wRqVqXesp7HolAghwAKaENdPBUTycMz/n3CvjQw=="
-  "resolved" "https://registry.npmjs.org/react-native-persian-jalali-calendar-picker/-/react-native-persian-jalali-calendar-picker-1.0.2.tgz"
-  "version" "1.0.2"
-  dependencies:
-    "moment-jalaali" "^0.9.2"
-
-"react-native-safe-area-context@^3.3.2", "react-native-safe-area-context@>= 3.0.0":
-  "integrity" "sha512-yOwiiPJ1rk+/nfK13eafbpW6sKW0jOnsRem2C1LPJjM3tfTof6hlvV5eWHATye3XOpu2cJ7N+HdkUvUDGwFD2Q=="
-  "resolved" "https://registry.npmjs.org/react-native-safe-area-context/-/react-native-safe-area-context-3.3.2.tgz"
-  "version" "3.3.2"
-
-"react-native-safe-area-view@^0.14.9":
-  "integrity" "sha512-WII/ulhpVyL/qbYb7vydq7dJAfZRBcEhg4/UWt6F6nAKpLa3gAceMOxBxI914ppwSP/TdUsandFy6lkJQE0z4A=="
-  "resolved" "https://registry.npmjs.org/react-native-safe-area-view/-/react-native-safe-area-view-0.14.9.tgz"
-  "version" "0.14.9"
-  dependencies:
-    "hoist-non-react-statics" "^2.3.1"
-
-"react-native-snap-carousel@latest":
-  "integrity" "sha512-xWEGusacIgK1YaDXLi7Gao2+ISLoGPVEBR8fcMf4tOOJQufutlNwkoLu0l6B8Qgsrre0nTxoVZikRgGRDWlLaQ=="
-  "resolved" "https://registry.npmjs.org/react-native-snap-carousel/-/react-native-snap-carousel-3.9.1.tgz"
-  "version" "3.9.1"
-  dependencies:
-    "prop-types" "^15.6.1"
-    "react-addons-shallow-compare" "15.6.2"
-
-"react-native-vector-icons@^9.0.0":
-  "integrity" "sha512-qKX5d5/TafHmI4B7UOSZCL3BAGh7ZfF30iLwRgxBkKfZl2lKSuHp8Ottj9OyWh9b5fFtlg+LtyvZrns3g2kh+w=="
-  "resolved" "https://registry.npmjs.org/react-native-vector-icons/-/react-native-vector-icons-9.0.0.tgz"
-  "version" "9.0.0"
-  dependencies:
-    "lodash.frompairs" "^4.0.1"
-    "lodash.isequal" "^4.5.0"
-    "lodash.isstring" "^4.0.1"
-    "lodash.omit" "^4.5.0"
-    "lodash.pick" "^4.4.0"
-    "lodash.template" "^4.5.0"
-    "prop-types" "^15.7.2"
-    "yargs" "^16.1.1"
-
-"react-native@*", "react-native@^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0", "react-native@>= 0.62", "react-native@>=0.57.0", "react-native@>=0.65.0", "react-native@0.66.4":
-  "integrity" "sha512-9vx5dlSfQlKbbDtr8+xMon6qsmSu7jvjdXWZpEKh3XVKpUidbbODv7048gwVKX8YAel1egeR7hN8vzSeI6ssTw=="
-  "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.66.4.tgz"
-  "version" "0.66.4"
->>>>>>> main
   dependencies:
     "@jest/create-cache-key-function" "^27.0.1"
     "@react-native-community/cli" "^6.0.0"
@@ -5965,7 +5887,6 @@ react-redux@^7.2.6:
   dependencies:
     "@babel/runtime" "^7.15.4"
     "@types/react-redux" "^7.1.20"
-<<<<<<< HEAD
     hoist-non-react-statics "^3.3.2"
     loose-envify "^1.4.0"
     prop-types "^15.7.2"
@@ -6039,81 +5960,6 @@ redux@^4.0.0, redux@^4.1.2:
   version "4.1.2"
   resolved "https://registry.npmjs.org/redux/-/redux-4.1.2.tgz"
   integrity sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==
-=======
-    "hoist-non-react-statics" "^3.3.2"
-    "loose-envify" "^1.4.0"
-    "prop-types" "^15.7.2"
-    "react-is" "^17.0.2"
-
-"react-refresh@^0.4.0":
-  "integrity" "sha512-Hwln1VNuGl/6bVwnd0Xdn1e84gT/8T9aYNL+HAKDArLCS7LWjwr7StE30IEYbIkx0Vi3vs+coQxe+SQDbGbbpA=="
-  "resolved" "https://registry.npmjs.org/react-refresh/-/react-refresh-0.4.3.tgz"
-  "version" "0.4.3"
-
-"react-shallow-renderer@^16.13.1":
-  "integrity" "sha512-rkIMcQi01/+kxiTE9D3fdS959U1g7gs+/rborw++42m1O9FAQiNI/UNRZExVUoAOprn4umcXf+pFRou8i4zuBg=="
-  "resolved" "https://registry.npmjs.org/react-shallow-renderer/-/react-shallow-renderer-16.14.1.tgz"
-  "version" "16.14.1"
-  dependencies:
-    "object-assign" "^4.1.1"
-    "react-is" "^16.12.0 || ^17.0.0"
-
-"react-test-renderer@17.0.2":
-  "integrity" "sha512-yaQ9cB89c17PUb0x6UfWRs7kQCorVdHlutU1boVPEsB8IDZH6n9tHxMacc3y0JoXOJUsZb/t/Mb8FUWMKaM7iQ=="
-  "resolved" "https://registry.npmjs.org/react-test-renderer/-/react-test-renderer-17.0.2.tgz"
-  "version" "17.0.2"
-  dependencies:
-    "object-assign" "^4.1.1"
-    "react-is" "^17.0.2"
-    "react-shallow-renderer" "^16.13.1"
-    "scheduler" "^0.20.2"
-
-"react@*", "react@^16.0.0 || ^17.0.0", "react@^16.8.0 || ^17.0.0", "react@^16.8.3 || ^17", "react@>=15.0.0", "react@>=16.0", "react@17.0.2":
-  "integrity" "sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA=="
-  "resolved" "https://registry.npmjs.org/react/-/react-17.0.2.tgz"
-  "version" "17.0.2"
-  dependencies:
-    "loose-envify" "^1.1.0"
-    "object-assign" "^4.1.1"
-
-"readable-stream@~2.3.6":
-  "integrity" "sha512-Ebho8K4jIbHAxnuxi7o42OrZgF/ZTNcsZj6nRKyUmkhLFq8CHItp/fy6hQZuZmP/n3yZ9VBUbp4zz/mX8hmYPw=="
-  "resolved" "https://registry.npmjs.org/readable-stream/-/readable-stream-2.3.7.tgz"
-  "version" "2.3.7"
-  dependencies:
-    "core-util-is" "~1.0.0"
-    "inherits" "~2.0.3"
-    "isarray" "~1.0.0"
-    "process-nextick-args" "~2.0.0"
-    "safe-buffer" "~5.1.1"
-    "string_decoder" "~1.1.1"
-    "util-deprecate" "~1.0.1"
-
-"readline@^1.3.0":
-  "integrity" "sha1-xYDXfvLPyHUrEySYBg3JeTp6wBw="
-  "resolved" "https://registry.npmjs.org/readline/-/readline-1.3.0.tgz"
-  "version" "1.3.0"
-
-"recast@^0.20.3":
-  "integrity" "sha512-E5qICoPoNL4yU0H0NoBDntNB0Q5oMSNh9usFctYniLBluTthi3RsQVBXIJNbApOlvSwW/RGxIuokPcAc59J5fQ=="
-  "resolved" "https://registry.npmjs.org/recast/-/recast-0.20.5.tgz"
-  "version" "0.20.5"
-  dependencies:
-    "ast-types" "0.14.2"
-    "esprima" "~4.0.0"
-    "source-map" "~0.6.1"
-    "tslib" "^2.0.1"
-
-"redux-devtools-extension@^2.13.9":
-  "integrity" "sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A=="
-  "resolved" "https://registry.npmjs.org/redux-devtools-extension/-/redux-devtools-extension-2.13.9.tgz"
-  "version" "2.13.9"
-
-"redux@^3.1.0 || ^4.0.0", "redux@^4.0.0", "redux@^4.1.2":
-  "integrity" "sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw=="
-  "resolved" "https://registry.npmjs.org/redux/-/redux-4.1.2.tgz"
-  "version" "4.1.2"
->>>>>>> main
   dependencies:
     "@babel/runtime" "^7.9.2"
 

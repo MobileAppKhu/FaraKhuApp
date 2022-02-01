@@ -1,6 +1,3 @@
-import React from 'react'
-import CreateCoursePage from './CreateCoursePage'
+import MyCoursesCreateCourse from './MyCoursesCreateCourse'
 
-export default function Index() {
-  return <CreateCoursePage />
-}
+export default MyCoursesCreateCourse
