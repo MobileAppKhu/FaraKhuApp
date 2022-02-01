@@ -47,6 +47,7 @@ function MyCoursesCreateCourse() {
     stuID: ''
   })
   const [profID, setProfID] = useState('')
+  const [classPlace, setClassPlace] = useState('')
 
   //Refs
   const studentList = useRef()
@@ -255,6 +256,15 @@ function MyCoursesCreateCourse() {
               />
             </View>
           </View>
+        </View>
+
+        <View style={styles.classPlace}>
+          <CustomInput
+            placeholder="مکان برگزاری کلاس"
+            value={classPlace}
+            onChangeText={(text) => setClassPlace(text)}
+            style={styles.textInput}
+          />
         </View>
 
         <HorizontalSeparator margin={20} />

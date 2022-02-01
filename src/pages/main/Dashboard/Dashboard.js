@@ -22,7 +22,7 @@ export default function Dashboard() {
         <View style={styles.seprator} />
         <NotificationsImages />
       </ScrollView>
-      <NotificationModal isVisible={true} />
+      <NotificationModal isVisible={false} />
     </View>
   )
 }
