@@ -1,9 +1,13 @@
 import {Pressable, View} from 'react-native'
 import React from 'react'
+import {useNavigation} from '@react-navigation/native'
+
 import styles from './stylesheet'
 import CustomIcon from '../../../../components/CustomIcon'
 import palette from './../../../../theme/palette'
+
 export default function DashboardHeader() {
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <View style={styles.optionsConainers}>
@@ -22,7 +26,9 @@ export default function DashboardHeader() {
         />
       </View>
       <View style={styles.menuIconContainer}>
-        <Pressable>
+        <Pressable
+          onPress={() => navigation.openDrawer()}
+          android_ripple={{borderless: true, color: '#ddd', radius: 25}}>
           <CustomIcon name="menu-2" size={24} />
         </Pressable>
       </View>
