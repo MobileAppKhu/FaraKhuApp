@@ -1,17 +1,36 @@
-import React from 'react'
-import {View, Image} from 'react-native'
+import React, {useEffect, useState} from 'react'
+import {View, Image, Pressable, ActivityIndicator} from 'react-native'
 import styles from './stylesheet'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {ScrollView} from 'react-native-gesture-handler'
 import SettingPart from './SettingPart/SettingPart'
 import {useNavigation} from '@react-navigation/native'
+import {request} from '../../../../helpers/request'
 
 export default function Setting() {
+  const [userData, setUserData] = useState()
   const navigation = useNavigation()
+
+  const getUserData = async () => {
+    const {
+      response: {userId}
+    } = await request('/User/GetUserId', 'POST', {})
+
+    const {
+      response: {profile}
+    } = await request('/User/SearchProfile', 'POST', {
+      userId
+    })
+    setUserData(profile)
+  }
+
+  useEffect(() => {
+    getUserData()
+  }, [])
+
   return (
     <View style={styles.container}>
       <SimpleHeader
@@ -32,13 +51,23 @@ export default function Setting() {
               <Typography
                 variant="body2"
                 color={palette.M_3_REF_NEUTRAL_VARIANT_NEUTRAL_VARIANT_50}>
-                فرهبد دوست داشتنی
+                {userData ? (
+                  userData.firstName + ' ' + userData.lastName
+                ) : (
+                  <ActivityIndicator
+                    color={palette.M_3_SYS_PRIMARY}
+                    size="large"
+                    animating
+                  />
+                )}
               </Typography>
             </View>
           </View>
           <Pressable
             style={styles.buttonCard}
-            onPress={() => navigation.navigate('profile-main-page')}>
+            onPress={() =>
+              userData ? navigation.navigate('profile-main-page', userData) : {}
+            }>
             <View style={styles.textPressable}>
               <Typography variant="medium12" color={palette.M_3_SYS_ON_PRIMARY}>
                 تنظیمات پروفایل
@@ -59,7 +88,12 @@ export default function Setting() {
       </ScrollView>
 
       <View style={styles.buttonCardmain}>
-        <Pressable style={styles.buttonCard2}>
+        <Pressable
+          style={styles.buttonCard2}
+          android_ripple={{
+            color: palette.M_3_SYS_SECONDARY_CONTAINER,
+            borderless: true
+          }}>
           <View style={styles.textCard2}>
             <Typography
               variant="smallButton"
