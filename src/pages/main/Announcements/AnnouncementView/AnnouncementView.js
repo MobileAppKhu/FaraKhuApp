@@ -12,7 +12,6 @@ import {useNavigation} from '@react-navigation/native'
 export default function AnnouncementView({route}) {
   const [moreOptionViewIsOpen, setmoreOptionViewIsOpen] = useState(false)
   const navigation = useNavigation()
-
   const announcementData = route.params
   const {userFullname, announcementTitle, announcementDescription} =
     announcementData

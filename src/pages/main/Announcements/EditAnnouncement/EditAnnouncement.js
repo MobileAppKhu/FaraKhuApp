@@ -1,4 +1,4 @@
-import {View, Platform, ToastAndroid, AlertIOS} from 'react-native'
+import {View} from 'react-native'
 import React, {useState} from 'react'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
@@ -10,8 +10,10 @@ import DeleteAnnouncementConfirmationModal from './DeleteAnnouncementConfirmatio
 import SaveAnnouncementModal from './SaveAnnouncementModal/SaveAnnouncementModal'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
 
 export default function EditAnnouncement({route}) {
+  const toast = useToast()
   const announcementData = route.params
   const {announcementId, announcementTitle, announcementDescription} =
     announcementData
@@ -25,7 +27,21 @@ export default function EditAnnouncement({route}) {
   ] = useState(false)
   const [saveAnnouncementModal, setsaveAnnouncementModal] = useState(false)
   const navigation = useNavigation()
-
+  const deleteAnnouncementFunction = () => {
+    request('/Announcement/DeleteAnnouncement', 'POST', {
+      announcementId
+    }).then((data) => {
+      if (data.status === 200) {
+        toast.show('فراخوان با موفقيت حذف شد', {
+          type: 'success',
+          duration: 3000,
+          animationType: 'zoom-in'
+        })
+        navigation.goBack()
+        navigation.goBack()
+      }
+    })
+  }
   const editAnnouncementRequest = async ({
     announcementId,
     title,
@@ -33,7 +49,7 @@ export default function EditAnnouncement({route}) {
     department,
     avatarId
   }) => {
-    const res = await request('/Announcement/EditAnnouncement', 'POST', {
+    const response = await request('/Announcement/EditAnnouncement', 'POST', {
       announcementId,
       title,
       description,
@@ -41,30 +57,14 @@ export default function EditAnnouncement({route}) {
       avatarId
     })
 
-    if (res.status === 200) {
+    if (response.status === 200) {
       setsaveAnnouncementModal(true)
     } else {
-      if (Platform.OS === 'android') {
-        ToastAndroid.show('خطایی رخ داده!', ToastAndroid.SHORT)
-      } else {
-        AlertIOS.alert('خطایی رخ داده!')
-      }
-    }
-  }
-
-  const deleteAnnouncementRequest = async (announcementId) => {
-    const res = await request('/Announcement/DeleteAnnouncement', 'POST', {
-      announcementId
-    })
-    if (res.status === 200) {
-      setdeleteAnnouncementConfirmationModalIsOpen(false)
-      setsaveAnnouncementModal(true)
-    } else {
-      if (Platform.OS === 'android') {
-        ToastAndroid.show('خطایی رخ داده!', ToastAndroid.SHORT)
-      } else {
-        AlertIOS.alert('خطایی رخ داده!')
-      }
+      toast.show('خطايي رخ داد', {
+        type: 'warning',
+        duration: 3000,
+        animationType: 'zoom-in'
+      })
     }
   }
 
@@ -110,7 +110,7 @@ export default function EditAnnouncement({route}) {
       </View>
       <DeleteAnnouncementConfirmationModal
         isVisible={deleteAnnouncementConfirmationModalIsOpen}
-        onDeleteAnnouncement={() => deleteAnnouncementRequest(announcementId)}
+        onDeleteAnnouncement={deleteAnnouncementFunction}
         onClose={() => setdeleteAnnouncementConfirmationModalIsOpen(false)}
       />
       <SaveAnnouncementModal

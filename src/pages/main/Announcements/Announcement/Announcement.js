@@ -8,34 +8,37 @@ import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
+import {useSelector} from 'react-redux'
 
 export default function Announcement() {
   const navigation = useNavigation()
-  // eslint-disable-next-line no-unused-vars
   const [announcement, setannouncement] = useState([])
   const [refreshing, setRefreshing] = useState(false)
-
-  const getAnnouncementFunction = () => {
+  const {userId: user} = useSelector((state) => state.authReducer)
+  const getAnnouncementFunction = async () => {
     setRefreshing(true)
-
     request('/Announcement/SearchAnnouncements', 'POST', {
       announcementIds: [],
       start: 0,
       step: 10,
-      announcementColumn: 1,
-      orderDirection: true
+      announcementColumn: 6,
+      orderDirection: false,
+      user
     }).then((data) => {
-      setannouncement(data.response.announcements)
-      setRefreshing(false)
+      if (data.status === 200) {
+        setRefreshing(false)
+        setannouncement(data.response.announcements)
+      }
     })
   }
   useEffect(() => {
     getAnnouncementFunction()
+    navigation.addListener('focus', getAnnouncementFunction)
   }, [])
 
   return (
     <View style={styles.container}>
-      <SimpleHeader title="فراخوان ها" headerRightIcon={'icons8_search_1-1'} />
+      <SimpleHeader title="فراخوان" headerRightIcon={'icons8_search_1-1'} />
       <ScrollView
         refreshControl={
           <RefreshControl
