@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from './stylesheet'
 import {Image, Pressable, View} from 'react-native'
-import {useNavigation} from '@react-navigation/native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import CustomIcon from '../../../../../components/CustomIcon'
@@ -14,7 +13,6 @@ export default function DataAnnouncement({
   date,
   onPress
 }) {
-  const navigation = useNavigation()
   return (
     <Pressable style={styles.root} onPress={onPress}>
       <View style={styles.cardStyle}>

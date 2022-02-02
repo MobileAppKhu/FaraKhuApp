@@ -38,7 +38,7 @@ export default function Setting() {
           </View>
           <Pressable
             style={styles.buttonCard}
-            onPress={() => navigation.navigate('profile-main=page')}>
+            onPress={() => navigation.navigate('profile-main-page')}>
             <View style={styles.textPressable}>
               <Typography variant="medium12" color={palette.M_3_SYS_ON_PRIMARY}>
                 تنظیمات پروفایل

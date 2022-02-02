@@ -8,17 +8,25 @@ import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
 import {request} from './../../../../helpers/request'
 import {useNavigation} from '@react-navigation/native'
+import {useToast} from 'react-native-toast-notifications'
 export default function CreateAnnouncement() {
   const [title, settitle] = useState('')
   const [description, setdescription] = useState('')
   const navigation = useNavigation()
+  const toast = useToast()
   const createAnnouncementFunction = () => {
     request('/Announcement/AddAnnouncement', 'POST', {
       title,
       description,
-      department: '6c22286e-f837-4811-9b72-3b17fa0ee205',
-      avatar: 'smiley.png'
-    }).then(() => navigation.goBack())
+      department: '',
+      avatar: ''
+    }).then(() => {
+      toast.show('فرخوان با موفقيت ساخته شد', {
+        type: 'success',
+        animationType: 'zoom-in'
+      })
+      navigation.goBack()
+    })
   }
   return (
     <View style={styles.root}>

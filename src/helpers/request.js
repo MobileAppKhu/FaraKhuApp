@@ -1,8 +1,5 @@
-// import {REACT_APP_API_BASE_URL, REACT_APP_API_VERSION} from '@env'
-
 import store from '../redux/store'
-
-// const api_url = REACT_APP_API_BASE_URL + '/' + REACT_APP_API_VERSION
+// import {useToast} from 'react-native-toast-notifications'
 
 export const request = async (
   endpoint,
@@ -11,9 +8,9 @@ export const request = async (
   contentType = 'application/json'
 ) => {
   const state = store.getState()
+  // const toast = useToast()
 
   const {token} = state.authReducer
-  console.log(token)
   try {
     const response = await fetch(
       'https://api.farakhu.markop.ir/api' + endpoint,
@@ -33,6 +30,8 @@ export const request = async (
       header: response.headers
     }
   } catch (error) {
-    return console.log(error)
+    console.log(error)
+    // toast.show(error)
+    return error
   }
 }
