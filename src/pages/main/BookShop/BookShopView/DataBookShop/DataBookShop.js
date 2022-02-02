@@ -5,13 +5,28 @@ import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
 
-// eslint-disable-next-line no-unused-vars
-export default function DataBookShop({title, type, bookImage, price}) {
+export default function DataBookShop({
+  title,
+  type,
+  // eslint-disable-next-line no-unused-vars
+  bookImage,
+  price,
+  offerId,
+  description
+}) {
   const navigation = useNavigation()
   return (
     <Pressable
       style={styles.root}
-      onPress={() => navigation.navigate('each-bookshop')}>
+      onPress={() =>
+        navigation.navigate('each-bookshop', {
+          offerId,
+          description,
+          price,
+          type,
+          title
+        })
+      }>
       <View style={styles.cardStyle}>
         <View style={styles.cardDesc}>
           <View style={styles.bookTitle}>
@@ -32,7 +47,7 @@ export default function DataBookShop({title, type, bookImage, price}) {
             <Typography
               variant="smallButton"
               color={palette.M_3_SYS_ON_SECONDARY_CONTAINER}>
-              {price}
+              {price} تومان
             </Typography>
           </View>
         </View>
