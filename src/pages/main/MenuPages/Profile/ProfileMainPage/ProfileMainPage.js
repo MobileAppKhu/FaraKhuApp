@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native'
 import React from 'react'
-import {Image, Pressable, View, Linking} from 'react-native'
+import {Pressable, View, Linking} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomIcon from '../../../../../components/CustomIcon'
 import palette from '../../../../../theme/palette'
@@ -9,6 +9,7 @@ import Clipboard from '@react-native-clipboard/clipboard'
 
 import Typography from './../../../../../components/Typography/index'
 import CustomButton from './../../../../../components/CustomButton'
+import CustomImage from '../../../../../components/CustomImage'
 
 export default function ProfileMainPage({route}) {
   const navigation = useNavigation()
@@ -31,15 +32,14 @@ export default function ProfileMainPage({route}) {
             </Typography>
             <View />
           </View>
+
           <View style={styles.imageContainer}>
-            <Image
-              style={styles.image}
-              source={require('../../../../../assets/images/sample_avatar.jpg')}
-            />
+            <CustomImage avatarId={userData.avatarId} style={styles.image} />
             <Pressable style={styles.editImageIcon}>
               <CustomIcon name="mode_edit_24px" size={18} />
             </Pressable>
           </View>
+
           <Typography
             color={palette.M_3_SYS_ON_SECONDARY}
             variant="h6"
