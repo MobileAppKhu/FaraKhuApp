@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textCard: {
-    marginRight: 16
+    width: 120,
+    marginStart: 12,
+    flexDirection: 'row-reverse'
   },
   buttonCard: {
     height: 36,
@@ -33,7 +35,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8
   },
   iconPressable: {
-    marginHorizontal: 8
+    // marginHorizontal: 8
+    marginLeft: 8
   },
   imageStyle: {
     width: 38,

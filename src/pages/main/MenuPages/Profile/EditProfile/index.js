@@ -10,9 +10,12 @@ import CustomInput from '../../../../../components/CustomInput'
 
 let id = 0
 
-function EditProfile() {
-  const [linkedin, setLinkedin] = useState('')
-  const [googleScholar, setGoogleScholar] = useState('')
+function EditProfile({route}) {
+  const userData = route.params
+  console.log(userData)
+
+  const [linkedin, setLinkedin] = useState(userData.linkedIn)
+  const [googleScholar, setGoogleScholar] = useState(userData.googleScholar)
   const [favoriteItems, setFavoriteItems] = useState([{id: id++, value: ''}])
 
   const container = useRef()
@@ -24,6 +27,7 @@ function EditProfile() {
         title="ویرایش اطلاعات"
         titleColor={palette.M_3_SYS_ON_SURFACE}
         itemsColor={palette.M_3_SYS_ON_SURFACE}
+        isCloseIcon
       />
       <ScrollView
         ref={container}
