@@ -40,7 +40,8 @@ const styles = StyleSheet.create({
     marginTop: 8
   },
   bookTitle: {
-    width: '100%'
+    width: '100%',
+    alignItems: 'flex-end'
   },
   AdType: {
     width: 50,
@@ -51,7 +52,7 @@ const styles = StyleSheet.create({
     backgroundColor: palette.M_3_SYS_SECONDARY
   },
   priceBook: {
-    maxWidth: 100
+    maxWidth: 150
   }
 })
 export default styles

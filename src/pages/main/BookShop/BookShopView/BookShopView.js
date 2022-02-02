@@ -1,26 +1,63 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import DataBookShop from './DataBookShop/DataBookShop'
 import {ScrollView} from 'react-native-gesture-handler'
-import {Pressable, View} from 'react-native'
+import {Pressable, RefreshControl, View} from 'react-native'
 import styles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import BookShopHeader from './BookShopHeader/BookShopHeader'
 import {useNavigation} from '@react-navigation/native'
+import {request} from '../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
+import {bookShopType} from '../BookShopCreate/BookShopCreate'
+
 export default function BookShopView() {
   // const [searchModal, setSearchModal] = useState(false)
+  const toast = useToast()
+  const [refreshing, setRefreshing] = useState(false)
+  const [offer, setoffer] = useState([])
+  const getOffers = () => {
+    setRefreshing(true)
+    request('/Offer/SearchOffers', 'POST', {
+      start: 0,
+      step: 10,
+      offerColumn: 6,
+      orderDirection: false
+    }).then((data) => {
+      setRefreshing(false)
+      if (data.status === 200) {
+        setoffer(data.response.offer)
+      } else {
+        toast.show('خطایی رخ داد', {
+          type: 'warning'
+        })
+      }
+    })
+  }
   const navigation = useNavigation()
+  useEffect(() => {
+    getOffers()
+    navigation.addListener('focus', getOffers)
+  }, [])
   return (
     <View style={styles.screen}>
       <BookShopHeader />
-      <ScrollView>
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => getOffers()}
+          />
+        }>
         <View>
-          {data.map((item, index) => (
+          {offer.map((item) => (
             <DataBookShop
-              key={item.title + item.type + index.toString()}
+              key={item.offerId}
               title={item.title}
-              type={item.type}
+              type={bookShopType[item.offerType]}
+              offerId={item.offerId}
+              description={item.description}
               // bookImage={require(item.lessonImage)}
               price={item.price}
             />
@@ -50,35 +87,3 @@ export default function BookShopView() {
     </View>
   )
 }
-const data = [
-  {
-    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
-    type: 'فروش',
-    lessonImage: '../../../../assets/images/sample_avatar.jpg',
-    price: '400هزارتومن'
-  },
-  {
-    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
-    type: 'فروش',
-    lessonImage: '../../../../assets/images/sample_avatar.jpg',
-    price: '400هزارتومن'
-  },
-  {
-    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
-    type: 'فروش',
-    lessonImage: '../../../../assets/images/sample_avatar.jpg',
-    price: '400هزارتومن'
-  },
-  {
-    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
-    type: 'فروش',
-    lessonImage: '../../../../assets/images/sample_avatar.jpg',
-    price: '400هزارتومن'
-  },
-  {
-    title: '5 کامپیوتر اصلی مهندسی کامپیوتر اینجاست',
-    type: 'فروش',
-    lessonImage: '../../../../assets/images/sample_avatar.jpg',
-    price: '400هزارتومن'
-  }
-]
