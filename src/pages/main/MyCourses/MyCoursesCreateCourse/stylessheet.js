@@ -4,7 +4,7 @@ import palette from '../../../../theme/palette'
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor:palette.M_3_SYS_ON_PRIMARY
+    backgroundColor: palette.M_3_SYS_ON_PRIMARY
   },
   container: {
     paddingHorizontal: 20
@@ -62,7 +62,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     marginTop: 15
   },
-  dateTextInput: {padding: 0, paddingHorizontal: 5},
+  dateTextInput: {
+    padding: 0,
+    paddingHorizontal: 5
+  },
+  classPlace: {
+    marginTop: 16
+  },
   studentsBox: {
     height: 322,
     marginTop: 10,

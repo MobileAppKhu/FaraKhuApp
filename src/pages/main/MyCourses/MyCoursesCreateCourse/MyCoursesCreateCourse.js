@@ -278,6 +278,15 @@ function MyCoursesCreateCourse() {
           </View>
         </View>
 
+        <View style={styles.classPlace}>
+          <CustomInput
+            placeholder="مکان برگزاری کلاس"
+            value={classPlace}
+            onChangeText={(text) => setClassPlace(text)}
+            style={styles.textInput}
+          />
+        </View>
+
         <HorizontalSeparator margin={20} />
 
         <View style={styles.students}>
