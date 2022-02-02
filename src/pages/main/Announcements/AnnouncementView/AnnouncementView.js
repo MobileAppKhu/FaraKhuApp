@@ -9,9 +9,14 @@ import CustomButton from './../../../../components/CustomButton'
 import Modal from 'react-native-modal'
 import {useNavigation} from '@react-navigation/native'
 
-export default function AnnouncementView() {
+export default function AnnouncementView({route}) {
   const [moreOptionViewIsOpen, setmoreOptionViewIsOpen] = useState(false)
   const navigation = useNavigation()
+
+  const announcementData = route.params
+  const {userFullname, announcementTitle, announcementDescription} =
+    announcementData
+
   return (
     <View style={styles.container}>
       <View style={styles.AnnouncementHeader}>
@@ -33,7 +38,7 @@ export default function AnnouncementView() {
               style={styles.modal}
               onPress={() => {
                 setmoreOptionViewIsOpen(false)
-                navigation.navigate('edit-announcement')
+                navigation.navigate('edit-announcement', announcementData)
               }}>
               <Typography variant="body2" color={palette.M_3_SYS_PRIMARY}>
                 ویرایش
@@ -69,14 +74,14 @@ export default function AnnouncementView() {
             style={styles.authorAvatar}
           />
           <Typography variant="medium13" color={palette.M_3_SYS_PRIMARY}>
-            دکتر میرحسین پدرام
+            {userFullname}
           </Typography>
         </View>
         <Typography
           style={styles.AnnouncemenTitle}
           variant="bold20"
           color={palette.M_3_SYS_TERTIARY}>
-          همکاری در ساخت دستگاه ضدعفونی کننده برای دانشگاه
+          {announcementTitle}
         </Typography>
         <Typography style={styles.AnnouncemenDate} variant="medium12">
           29 آذر 1400
@@ -104,12 +109,7 @@ export default function AnnouncementView() {
           توضیحات:
         </Typography>
         <ScrollView>
-          <Typography variant="body2">
-            از دانشجویان علاقه‌مند رشته مکانیک برای شرکت در روند ساخت استندهای
-            ضدعفونی کننده، دعوت به همکاری می‌شود. علاقه‌مندان می‌توانند برای
-            مشارکت در این پروژه، به اتاق 103 دانشکده فنی و مهندسی در ساعات 10
-            الی 12 مراجعه کنند.
-          </Typography>
+          <Typography variant="body2">{announcementDescription}</Typography>
         </ScrollView>
         <CustomButton title="ارسال ایمیل به فراخوان دهنده" size="small" />
       </View>
