@@ -31,7 +31,7 @@ function CustomDrawer(props) {
   const navigation = useNavigation()
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, paddingHorizontal: 10}}>
       <DrawerContentScrollView
         {...props}
         contentContainerStyle={{
