@@ -4,6 +4,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import LoginNavigation from './LoginNavigation'
 import {saveUser} from '../redux/auth/actions'
 import {getUserFromStorage} from '../helpers/userData'
+import DrawerNavigation from './DrawerNavigation'
 // import {AsyncStorage} from 'react-native'
 // import _ from 'underscore'
 
@@ -23,5 +24,5 @@ export default function MainNavigation() {
   }, [dispatch])
   let {token} = useSelector((state) => state.authReducer)
   // console.log(token)
-  return token ? <DashboardNavigation /> : <LoginNavigation />
+  return token ? <DrawerNavigation /> : <LoginNavigation />
 }
