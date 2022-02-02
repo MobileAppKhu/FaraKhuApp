@@ -19,6 +19,8 @@ import BookShopCreate from './../pages/main/BookShop/BookShopCreate/BookShopCrea
 import Guide from './../pages/main/BookShop/Guide/Guide'
 import EachBookShop from '../pages/main/BookShop/EachBookShop/EachBookShop'
 import EditProfile from '../pages/main/MenuPages/Profile/EditProfile'
+import BookShopEdit from '../pages/main/BookShop/BookShopEdit/BookShopEdit'
+import AddUser from '../pages/main/UserMangement/AddUser/AddUser'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -36,7 +38,6 @@ export default function DashboardNavigation() {
       <Stack.Screen name="create-course" component={MyCoursesCreateCourse} />
       <Stack.Screen name="course-view" component={MyCoursesCourseView} />
       <Stack.Screen name="edit-todo" component={EditToDo} />
-      <Stack.Screen name="bookshop-create" component={BookShopCreate} />
       <Stack.Screen name="guide" component={Guide} />
       <Stack.Screen name="create-todo" component={CreatToDo} />
       <Stack.Screen name="bookshop-view" component={BookShopView} />
@@ -46,6 +47,8 @@ export default function DashboardNavigation() {
       <Stack.Screen name="profile-main-page" component={ProfileMainPage} />
       <Stack.Screen name="book-shop-create" component={BookShopCreate} />
       <Stack.Screen name="edit-profile" component={EditProfile} />
+      <Stack.Screen name="book-shop-edit" component={BookShopEdit} />
+      <Stack.Screen name="add-user" component={AddUser} />
     </Stack.Navigator>
   )
 }

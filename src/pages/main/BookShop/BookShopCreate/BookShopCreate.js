@@ -11,6 +11,8 @@ import ImagePicker from '../../../../components/ImagePicker'
 import CustomInput from '../../../../components/CustomInput'
 import CustomButton from '../../../../components/CustomButton'
 import styles from './stylesheet'
+import {request} from '../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
 
 export default function BookShopCreate({
   image = null,
@@ -18,15 +20,38 @@ export default function BookShopCreate({
   type = '',
   price = '',
   desc = '',
+  offerId = undefined,
   editScreen = false
 }) {
   const navigation = useNavigation()
-
+  const toast = useToast()
   const [adType, setAdType] = useState(type)
   const [imageUri, setImageUri] = useState(image)
   const [adTitle, setAdTitle] = useState(title)
   const [adPrice, setAdPrice] = useState(price)
   const [description, setDescription] = useState(desc)
+  const AddOfferFunction = async () => {
+    request(editScreen ? '/Offer/EditOffer' : '/Offer/AddOffer', 'POST', {
+      title: adTitle,
+      description,
+      offerType: bookShopTypeLabel[adType],
+      price: adPrice,
+      avatarId: 'smiley.png',
+      offerId
+    }).then((data) => {
+      if (data.status === 200) {
+        toast.show('آگهی با موفقیت ثبت شد', {
+          type: 'success'
+        })
+        navigation.goBack()
+      } else {
+        console.log(offerId)
+        toast.show(data.response.errors[0].message, {
+          type: 'warning'
+        })
+      }
+    })
+  }
 
   return (
     <View style={styles.container}>
@@ -41,7 +66,6 @@ export default function BookShopCreate({
           </Typography>
           <Typography>〈</Typography>
         </Pressable>
-
         <HorizontalSeparator margin={18} />
 
         <View style={{marginHorizontal: 16}}>
@@ -85,7 +109,6 @@ export default function BookShopCreate({
             onChangeText={(text) => setAdTitle(text)}
           />
         </View>
-
         <HorizontalSeparator marginTop={18} marginBottom={0} />
 
         <View style={styles.priceContainer}>
@@ -150,9 +173,21 @@ export default function BookShopCreate({
             startIcon={editScreen ? 'mode_edit_24px' : 'add_24px'}
             startIconSize={18}
             startIconColor={palette.M_3_SYS_ON_PRIMARY}
+            disabled={!adType || !adTitle || !description || !adPrice}
+            onPress={AddOfferFunction}
           />
         </View>
       </ScrollView>
     </View>
   )
+}
+export const bookShopTypeLabel = {
+  امانت: 3,
+  خرید: 2,
+  فروش: 1
+}
+export const bookShopType = {
+  3: 'امانت',
+  2: 'خرید',
+  1: 'فروش'
 }

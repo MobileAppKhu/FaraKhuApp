@@ -13,7 +13,8 @@
     "@react-native-async-storage/async-storage": "^1.15.14",
     "@react-native-clipboard/clipboard": "^1.8.5",
     "@react-native-community/checkbox": "^0.5.9",
-    "@react-navigation/native": "^6.0.6",
+    "@react-navigation/drawer": "^6.3.0",
+    "@react-navigation/native": "^6.0.8",
     "@react-navigation/stack": "^6.0.11",
     "moment-jalaali": "^0.9.4",
     "react": "17.0.2",
@@ -25,13 +26,16 @@
     "react-native-image-slider-box": "^1.1.14",
     "react-native-modal": "^13.0.0",
     "react-native-persian-jalali-calendar-picker": "^1.0.2",
+    "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.10.2",
     "react-native-toast-notifications": "^3.2.3",
     "react-native-vector-icons": "^9.0.0",
     "react-navigation": "^4.4.4",
     "react-redux": "^7.2.6",
     "redux": "^4.1.2",
-    "redux-devtools-extension": "^2.13.9"
+    "redux-devtools-extension": "^2.13.9",
+    "toggle-switch-react-native": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",

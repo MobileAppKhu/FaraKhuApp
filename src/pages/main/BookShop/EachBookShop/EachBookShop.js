@@ -9,23 +9,36 @@ import styles from './stylesheet'
 import DeleteModal from './DeleteModal'
 import OptionsModal from './OptionsModal'
 import {useNavigation} from '@react-navigation/native'
+import {request} from '../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
+import {
+  addCommaToPriceUnsigned,
+  convertPersianNumbersToEnglishNumbers
+} from '../../../../helpers/numbers'
 
 const androidRipple = {borderless: true, color: '#ddd', radius: 25}
 
-export default function EachBookShop({
-  title = '5 کتاب اصلی مهندسی کامپیوتر یکجا',
-  adType = 'فروش',
-  price = 400
-}) {
+export default function EachBookShop({route}) {
+  const toast = useToast()
+  const {offerId, description, price, type, title} = route.params
   const [deleteModal, setDeleteModal] = useState(false)
   const [optionsModal, setOptionsModal] = useState(false)
-
+  const deleteOfferFuntion = () => {
+    request('/Offer/DeleteOffer', 'POST', {offerId}).then((data) => {
+      if (data.status === 200) {
+        toast.show('آگهی با موفقیت حذف شد', {type: 'success'})
+        navigation.goBack()
+      } else {
+        toast.show(data.response.errors[0].message, {type: 'warning'})
+      }
+    })
+  }
   const deleteModalButtons = [
     {
       title: 'حذف رویداد',
       color: palette.M_3_SYS_ON_PRIMARY,
       bgColor: palette.M_3_SYS_ERROR,
-      onPress: () => console.log('delete event')
+      onPress: deleteOfferFuntion
     },
     {
       title: 'بیخیال',
@@ -39,7 +52,17 @@ export default function EachBookShop({
     {
       text: 'ویرایش',
       color: palette.M_3_SYS_PRIMARY,
-      icon: 'mode_edit_24px'
+      icon: 'mode_edit_24px',
+      onPress: () => {
+        setOptionsModal(false)
+        navigation.navigate('book-shop-edit', {
+          offerId,
+          description,
+          price,
+          type,
+          title
+        })
+      }
     },
     {
       text: 'حذف',
@@ -104,7 +127,7 @@ export default function EachBookShop({
 
           <View style={styles.adType}>
             <Typography variant="medium12" color={palette.M_3_SYS_ON_PRIMARY}>
-              {adType}
+              {type}
             </Typography>
           </View>
         </View>
@@ -121,7 +144,10 @@ export default function EachBookShop({
             <Typography
               variant="h6"
               color={palette.M_3_SYS_ON_SECONDARY_CONTAINER}>
-              {price} هزار تومان
+              {addCommaToPriceUnsigned(
+                convertPersianNumbersToEnglishNumbers(price)
+              )}{' '}
+              هزار تومان
             </Typography>
           </View>
         </View>
@@ -136,20 +162,7 @@ export default function EachBookShop({
           </View>
           <View style={{marginTop: 16}}>
             <Typography variant="body2" color={palette.M_3_SYS_ON_BACKGROUND}>
-              ❌❌فوری❌❌ من به تازگی از رشته‌ی مهندسی کامپیوتر فارغ التحصیل
-              شدم و دیگه این کتا‌ب‌ها به دردم نمیخورن، اما واقعا کتاب های خوب و
-              شاخصی هستن و اگر ترم اولی هستید قطعا در آینده به این کتاب ها نیاز
-              پیدا می کنید: Java How to Deitel - - معماری کامپیوتر پترسون
-              (ویرایش RISC-V) Java How to Deitel - C++How to Deitel - Clean Code
-              for Dummies - اگر تمایل به خرید دارید، میتونید به این ایمیل پیام
-              بدید: ce_khu@khu.ac.ir 👈🏼 📧 قیمت ها واقعا منصفانه هستن و از این
-              کمتر نمیشه. فقط هم فروش یکجا. شدم و دیگه این کتا‌ب‌ها به دردم
-              نمیخورن، اما واقعا کتاب های خوب و شاخصی هستن و اگر ترم اولی هستید
-              قطعا در آینده به این کتاب ها نیاز پیدا می کنید: Java How to Deitel
-              - - معماری کامپیوتر پترسون (ویرایش RISC-V) Java How to Deitel -
-              C++How to Deitel - Clean Code for Dummies - اگر تمایل به خرید
-              دارید، میتونید به این ایمیل پیام بدید: ce_khu@khu.ac.ir 👈🏼 📧 قیمت
-              ها واقعا منصفانه هستن و از این کمتر نمیشه. فقط هم فروش یکجا.
+              {description}
             </Typography>
           </View>
         </View>
