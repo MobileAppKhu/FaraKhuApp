@@ -1,9 +1,8 @@
 import React from 'react'
-import {View, Image} from 'react-native'
+import {View, Image, Pressable} from 'react-native'
 import styles from './stylesheet'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {ScrollView} from 'react-native-gesture-handler'
@@ -59,7 +58,12 @@ export default function Setting() {
       </ScrollView>
 
       <View style={styles.buttonCardmain}>
-        <Pressable style={styles.buttonCard2}>
+        <Pressable
+          style={styles.buttonCard2}
+          android_ripple={{
+            color: palette.M_3_SYS_SECONDARY_CONTAINER,
+            borderless: true
+          }}>
           <View style={styles.textCard2}>
             <Typography
               variant="smallButton"

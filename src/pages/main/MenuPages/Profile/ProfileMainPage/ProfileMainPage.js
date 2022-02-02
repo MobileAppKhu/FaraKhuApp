@@ -109,7 +109,10 @@ export default function ProfileMainPage() {
                 علاقه مندی ها
               </Typography>
             </View>
-            <Pressable style={styles.iconContainer}>
+            <Pressable
+              style={styles.iconContainer}
+              android_ripple={{color: palette.M_3_SYS_PRIMARY_CONTAINER}}
+              onPress={() => navigation.navigate('edit-profile')}>
               <Typography
                 color={palette.M_3_SYS_PRIMARY}
                 variant="bold12"

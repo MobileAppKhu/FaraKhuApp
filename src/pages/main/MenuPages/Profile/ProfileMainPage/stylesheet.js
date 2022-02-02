@@ -77,7 +77,8 @@ export default StyleSheet.create({
   },
   iconContainer: {
     flexDirection: 'row-reverse',
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 10
   },
   icon: {
     marginLeft: 8

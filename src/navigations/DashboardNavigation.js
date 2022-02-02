@@ -18,13 +18,14 @@ import ProfileMainPage from '../pages/main/MenuPages/Profile/ProfileMainPage/Pro
 import BookShopCreate from './../pages/main/BookShop/BookShopCreate/BookShopCreate'
 import Guide from './../pages/main/BookShop/Guide/Guide'
 import EachBookShop from '../pages/main/BookShop/EachBookShop/EachBookShop'
+import EditProfile from '../pages/main/MenuPages/Profile/EditProfile'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="mainpage">
+      initialRouteName="profile-main-page">
       <Stack.Screen name="landing-page" component={Dashboard} />
       <Stack.Screen name="announcement" component={Announcement} />
       <Stack.Screen name="announcement-item" component={AnnouncementView} />
@@ -44,6 +45,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="each-bookshop" component={EachBookShop} />
       <Stack.Screen name="profile-main-page" component={ProfileMainPage} />
       <Stack.Screen name="book-shop-create" component={BookShopCreate} />
+      <Stack.Screen name="edit-profile" component={EditProfile} />
     </Stack.Navigator>
   )
 }

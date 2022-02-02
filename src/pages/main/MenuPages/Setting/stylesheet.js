@@ -45,27 +45,24 @@ const styles = StyleSheet.create({
     paddingTop: 9
   },
   buttonCardmain: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonCard2: {
     width: 189,
-    height: 39,
-    borderRadius: 8,
+    alignSelf: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    borderWidth: 1,
     borderStyle: 'solid',
     borderColor: palette.M_3_SYS_OUTLINE,
-    borderWidth: 1,
-    marginBottom: 32,
+    borderRadius: 8,
+    marginBottom: 32
+  },
+  buttonCard2: {
     alignItems: 'center',
-    flexDirection: 'row-reverse'
+    flexDirection: 'row-reverse',
+    justifyContent: 'center',
+    padding: 10
   },
-  textCard2: {
-    marginRight: 20
-  },
+  textCard2: {},
 
-  iconCard2: {
-    marginRight: 8,
-    marginLeft: 20
-  }
+  iconCard2: {}
 })
 export default styles
