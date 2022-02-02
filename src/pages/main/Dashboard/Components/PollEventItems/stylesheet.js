@@ -7,17 +7,18 @@ export default StyleSheet.create({
     marginBottom: 8,
     paddingVertical: 4,
     borderRadius: 12,
-    // paddingHorizontal: 20,
     paddingRight: 32,
     paddingLeft: 20,
     backgroundColor: palette.M_3_SYS_TERTIARY_CONTAINER,
     flex: 1,
-    flexDirection: 'column'
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-around'
   },
   eventDetails: {
     flexDirection: 'column',
     alignItems: 'flex-end',
-    flex: 1
+    flex: 1.5
   },
 
   eventControler: {

@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react'
-import {View, Pressable, ScrollView, TextInput} from 'react-native'
+import {View, Pressable, ScrollView, TextInput, BackHandler} from 'react-native'
+import {useNavigation, useFocusEffect} from '@react-navigation/native'
 
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
@@ -11,7 +12,7 @@ import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
 import DayPicker from './DayPicker'
 import styles from './stylessheet'
-import {useNavigation} from '@react-navigation/native'
+import CloseModal from './Modals/CloseModal'
 
 const {M_3_SYS_PRIMARY: primaryColor} = palette
 const dayTemplate = {
@@ -47,7 +48,7 @@ function MyCoursesCreateCourse() {
     stuID: ''
   })
   const [profID, setProfID] = useState('')
-  const [classPlace, setClassPlace] = useState('')
+  const [closeModal, setCloseModal] = useState(false)
 
   //Refs
   const studentList = useRef()
@@ -59,6 +60,19 @@ function MyCoursesCreateCourse() {
     newDays[selectedDay] = {...newDays[selectedDay], day: value}
     setDays(newDays)
   }
+
+  useFocusEffect(
+    React.useCallback(() => {
+      const onBackPress = () => {
+        setCloseModal(true)
+        return true
+      }
+
+      BackHandler.addEventListener('hardwareBackPress', onBackPress)
+      return () =>
+        BackHandler.removeEventListener('hardwareBackPress', onBackPress)
+    }, [])
+  )
 
   const handleTimeChange = (value, field, day, timeType) => {
     // timeType = startTime or endTime  | field = hour or minute
@@ -90,7 +104,7 @@ function MyCoursesCreateCourse() {
         <Typography style={styles.pageTitle}>درس جدید</Typography>
         <Pressable
           style={styles.closeButton}
-          onPress={() => navigation.goBack()}
+          onPress={() => setCloseModal(true)}
           android_ripple={{
             color: palette.M_3_SYS_ON_PRIMARY,
             borderless: true,
@@ -103,6 +117,12 @@ function MyCoursesCreateCourse() {
           />
         </Pressable>
       </View>
+
+      <CloseModal
+        isVisible={closeModal}
+        onClosePress={() => navigation.goBack()}
+        onStayPress={() => setCloseModal(false)}
+      />
 
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <View>
