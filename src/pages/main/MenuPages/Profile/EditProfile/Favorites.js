@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
     alignItems: 'center',
     justifyContent: 'space-between',
-    width: '32%',
+    width: '22%',
     paddingVertical: 10
   }
 })

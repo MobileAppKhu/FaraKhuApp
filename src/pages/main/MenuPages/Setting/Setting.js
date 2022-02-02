@@ -24,7 +24,6 @@ export default function Setting() {
     } = await request('/User/SearchProfile', 'POST', {
       userId
     })
-    console.log(profile)
     setUserData(profile)
   }
 
@@ -66,7 +65,9 @@ export default function Setting() {
           </View>
           <Pressable
             style={styles.buttonCard}
-            onPress={() => navigation.navigate('profile-main-page', userData)}>
+            onPress={() =>
+              userData ? navigation.navigate('profile-main-page', userData) : {}
+            }>
             <View style={styles.textPressable}>
               <Typography variant="medium12" color={palette.M_3_SYS_ON_PRIMARY}>
                 تنظیمات پروفایل

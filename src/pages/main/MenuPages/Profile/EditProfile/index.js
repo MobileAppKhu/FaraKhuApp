@@ -7,18 +7,59 @@ import palette from '../../../../../theme/palette'
 import Favorites from './Favorites'
 import HorizontalSeparator from '../../../../../components/HorizontalSeparator'
 import CustomInput from '../../../../../components/CustomInput'
+import {request} from '../../../../../helpers/request'
+import SuccessModal from './SuccessModal'
+import {useNavigation} from '@react-navigation/native'
+import {useToast} from 'react-native-toast-notifications'
 
 let id = 0
 
 function EditProfile({route}) {
   const userData = route.params
-  console.log(userData)
+  const navigation = useNavigation()
+  const toast = useToast()
 
   const [linkedin, setLinkedin] = useState(userData.linkedIn)
   const [googleScholar, setGoogleScholar] = useState(userData.googleScholar)
-  const [favoriteItems, setFavoriteItems] = useState([{id: id++, value: ''}])
+  const [favoriteItems, setFavoriteItems] = useState(
+    userData.favourites.map((f) => ({id: f.favouriteId, value: f.description}))
+  )
+  const [successModal, setSuccessModal] = useState(false)
 
   const container = useRef()
+
+  const editProfileRequest = async () => {
+    const favorites = favoriteItems
+      .filter((f) => f.value !== '')
+      .map((f) => f.value)
+
+    const userDataFavorites = userData.favourites.map((f) => f.description)
+
+    const deletedFavorites = userDataFavorites.filter(
+      (f) => !favorites.includes(f)
+    )
+
+    const addedFavorites = favorites.filter(
+      (f) => !userDataFavorites.includes(f)
+    )
+
+    const {status} = await request('/Account/EditProfile', 'POST', {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      avatarId: userData.avatarId,
+      deleteAvatar: false,
+      linkedIn: userData.linkedIn,
+      googleScholar: userData.googleScholar,
+      addFavourites: addedFavorites,
+      deleteFavourites: deletedFavorites
+    })
+
+    if (status === 200) {
+      setSuccessModal(true)
+    } else {
+      toast.show('خطایی رخ داده!')
+    }
+  }
 
   return (
     <View style={styles.screen}>
@@ -63,9 +104,21 @@ function EditProfile({route}) {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title="ثبت تغییرات" size="small" />
+          <CustomButton
+            title="ثبت تغییرات"
+            size="small"
+            onPress={() => editProfileRequest()}
+          />
         </View>
       </ScrollView>
+      <SuccessModal
+        isVisible={successModal}
+        title="تغییرات با موفقیت ثبت شد."
+        onPressBtn={() => {
+          setSuccessModal(false)
+          navigation.goBack()
+        }}
+      />
     </View>
   )
 }
