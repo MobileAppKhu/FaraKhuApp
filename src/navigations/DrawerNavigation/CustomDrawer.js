@@ -20,7 +20,11 @@ const DrawerItem = ({icon, title, onPress}) => {
           borderless: true
         }}>
         <Typography variant="body2">{title}</Typography>
-        <Image source={icon} style={styles.drawerItemIcon} />
+        <Image
+          source={icon}
+          style={styles.drawerItemIcon}
+          resizeMode="contain"
+        />
       </Pressable>
     </View>
   )
