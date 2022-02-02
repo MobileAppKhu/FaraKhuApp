@@ -8,10 +8,6 @@ const Drawer = createDrawerNavigator()
 const DrawerNavigation = () => {
   return (
     <Drawer.Navigator
-      drawerStyle={{
-        backgroundColor: 'red',
-        width: 240
-      }}
       drawerContent={(props) => <CustomDrawer {...props} />}
       screenOptions={{
         headerShown: false,
@@ -20,7 +16,6 @@ const DrawerNavigation = () => {
           backgroundColor: '#f2f5fb',
           borderTopLeftRadius: 15,
           borderBottomLeftRadius: 15
-          // height: '95%'
         }
       }}>
       <Drawer.Screen name="Dashboard" component={DashboardNavigation} />
