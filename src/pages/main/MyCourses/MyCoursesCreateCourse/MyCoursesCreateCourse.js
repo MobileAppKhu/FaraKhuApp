@@ -31,6 +31,7 @@ const dayTemplate = {
 function MyCoursesCreateCourse() {
   const navigation = useNavigation()
   // States
+  const [classPlace, setClassPlace] = useState('')
   const [faculty, setFaculty] = useState('')
   const [department, setDepartment] = useState('')
   const [courseName, setCourseName] = useState('')
