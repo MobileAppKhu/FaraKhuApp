@@ -1,5 +1,6 @@
-import React, {useState} from 'react'
-import {Pressable, View} from 'react-native'
+/* eslint-disable no-unused-vars */
+import React, {useEffect, useState} from 'react'
+import {Pressable, RefreshControl, View} from 'react-native'
 import SimpleHeader from '../../../../components/SimpleHeader'
 
 import {ScrollView} from 'react-native-gesture-handler'
@@ -10,39 +11,63 @@ import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
+import {request} from '../../../../helpers/request'
 const PersonalCalendar = () => {
   const [date, setdate] = useState()
   const navigation = useNavigation()
-  console.log(date)
+  const [events, setevents] = useState([])
+  const [refreshing, setRefreshing] = useState(false)
+
+  const getToDoList = async () => {
+    setRefreshing(true)
+    request('/Event/SearchEvent', 'POST', {
+      eventIds: [],
+      eventTime: date || undefined,
+      courseId: '',
+      start: 0,
+      step: 10,
+      eventColumn: 6,
+      orderDirection: false
+    }).then((data) => setevents(data.response.event))
+    setRefreshing(false)
+  }
+  useEffect(() => {
+    getToDoList()
+  }, [date])
   return (
     <View style={styles.root}>
-      <SimpleHeader title="تقويم شخصي" headerRightIcon="more_vert_24px" />
-      <ScrollView>
+      <SimpleHeader title="تقویم شخصی" headerRightIcon="more_vert_24px" />
+      <ScrollView
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={() => getToDoList()}
+          />
+        }>
         <View style={styles.datePicker}>
           <DatePicker onChangeText={(text) => setdate(text)} value={date} />
         </View>
         <View style={styles.eventContainer}>
-          <UpcomingEventItems
-            eventName="تکمیل پروژی اول"
-            eventDescription="Tehran Metro with DFS"
-            eventTime="22 آذر 1400"
-            courseName="هوش مصنوعی"
-            onPress={() => navigation.navigate('edit-todo')}
-          />
-          <UpcomingEventItems
-            eventName="تکمیل پروژی اول"
-            eventDescription="Tehran Metro with DFS"
-            eventTime="22 آذر 1400"
-            onPress={() => navigation.navigate('edit-todo')}
-            courseName="هوش مصنوعی"
-          />
-          <UpcomingEventItems
-            eventName="تکمیل پروژی اول"
-            eventDescription="Tehran Metro with DFS"
-            eventTime="22 آذر 1400"
-            onPress={() => navigation.navigate('edit-todo')}
-            courseName="هوش مصنوعی"
-          />
+          {events.map((item) => (
+            <UpcomingEventItems
+              key={item.eventId}
+              eventId={item.eventId}
+              eventName={item.eventName}
+              eventDescription={item.eventDescription}
+              eventTime={item.eventTime}
+              courseTitle={item.courseTitle}
+              isDone={item.isDone}
+              onPress={() =>
+                navigation.navigate('edit-todo', {
+                  eventName: item.eventName,
+                  eventDescription: item.eventDescription,
+                  eventTime: item.eventTime,
+                  courseTitle: item.courseTitle,
+                  isDone: item.isDone
+                })
+              }
+            />
+          ))}
         </View>
       </ScrollView>
       <Pressable

@@ -4,16 +4,18 @@ import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import styles from './stylesheet'
 import CheckBox from '@react-native-community/checkbox'
+import moment from 'moment-jalaali'
 
 export default function UpcomingEventItems({
   eventName,
   eventDescription,
   eventTime,
-  courseName,
+  courseTitle,
   showEventCheckBox = true,
+  isDone,
   onPress = () => {}
 }) {
-  const [showEvent, setshowEvent] = useState(false)
+  const [showEvent, setshowEvent] = useState(isDone)
   return (
     <Pressable style={styles.root} onPress={onPress}>
       <View
@@ -27,7 +29,7 @@ export default function UpcomingEventItems({
             showEventCheckBox ? styles.courseNameContainerOnShowCheckBox : {}
           ]}>
           <Typography variant="regular10" color={palette.M_3_SYS_ON_PRIMARY}>
-            {courseName}
+            {courseTitle || 'شخصی'}
           </Typography>
         </View>
         {showEventCheckBox && (
@@ -50,7 +52,7 @@ export default function UpcomingEventItems({
           variant="medium12"
           color={palette.M_3_SYS_ON_SURFACE}
           style={styles.timeContainer}>
-          {eventTime}
+          {moment(eventTime).locale('fa').format('YYYY-jMM-jDD')}
         </Typography>
       </View>
     </Pressable>

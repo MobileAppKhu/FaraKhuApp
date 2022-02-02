@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5
   },
   hourContainer: {
-    marginRight: 38
+    marginRight: 10
   },
   hourInput: {
     width: 59,

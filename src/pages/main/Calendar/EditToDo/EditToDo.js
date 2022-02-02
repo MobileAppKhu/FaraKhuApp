@@ -8,16 +8,20 @@ import CustomInput from '../../../../components/CustomInput'
 import Typography from '../../../../components/Typography'
 import CustomPicker from '../../../../components/CustomPicker'
 import CustomButton from '../../../../components/CustomButton'
+import moment from 'moment-jalaali'
 
-export default function EditToDo() {
+export default function EditToDo({route}) {
+  const {eventName, eventDescription, eventTime, courseTitle} = route.params
+  const date = moment(eventTime)
   const [finalExamDate, setFinalExamDate] = useState({
     day: '',
     month: '',
     year: ''
   })
-  const [listTodo, setlistTodo] = useState('')
-  const [description, setDiscription] = useState()
-  const [todoID, setToDoID] = useState('')
+  console.log(date.month.toString())
+  const [listTodo, setlistTodo] = useState(courseTitle)
+  const [description, setDiscription] = useState(eventDescription)
+  const [todoID, setToDoID] = useState(eventName)
 
   return (
     <View style={styles.screen}>
@@ -52,6 +56,7 @@ export default function EditToDo() {
               placeholder="روز"
               keyboardType="numeric"
               textAlign="center"
+              value={finalExamDate.day}
               onChangeText={(day) => setFinalExamDate({...finalExamDate, day})}
               style={styles.dateTextInput}
             />
@@ -61,6 +66,7 @@ export default function EditToDo() {
               placeholder="ماه"
               keyboardType="numeric"
               textAlign="center"
+              value={finalExamDate.month}
               onChangeText={(month) =>
                 setFinalExamDate({...finalExamDate, month})
               }
@@ -72,6 +78,7 @@ export default function EditToDo() {
               placeholder="سال"
               keyboardType="numeric"
               textAlign="center"
+              value={finalExamDate.year}
               onChangeText={(year) =>
                 setFinalExamDate({...finalExamDate, year})
               }
@@ -111,7 +118,7 @@ export default function EditToDo() {
         <View style={styles.containerpicker}>
           <CustomPicker
             label="دسته بندی:"
-            items={['behnia1', 'behnia2', 'behnia3', 'behnia4']}
+            items={['شخصی', 'مبانی برق']}
             labelColor={palette.M_3_SYS_PRIMARY}
             selectedItem={listTodo}
             onSelectItem={(lst) => setlistTodo(lst)}
