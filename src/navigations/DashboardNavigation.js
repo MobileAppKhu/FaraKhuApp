@@ -18,6 +18,7 @@ import ProfileMainPage from '../pages/main/MenuPages/Profile/ProfileMainPage/Pro
 import BookShopCreate from './../pages/main/BookShop/BookShopCreate/BookShopCreate'
 import Guide from './../pages/main/BookShop/Guide/Guide'
 import EachBookShop from '../pages/main/BookShop/EachBookShop/EachBookShop'
+import AddUser from "../pages/main/UserMangement/AddUser/AddUser";
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -44,6 +45,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="each-bookshop" component={EachBookShop} />
       <Stack.Screen name="profile-main-page" component={ProfileMainPage} />
       <Stack.Screen name="book-shop-create" component={BookShopCreate} />
+      <Stack.Screen name="add-user"component={AddUser}/>
     </Stack.Navigator>
   )
 }
