@@ -12,8 +12,6 @@ import SuccessModal from './SuccessModal'
 import {useNavigation} from '@react-navigation/native'
 import {useToast} from 'react-native-toast-notifications'
 
-let id = 0
-
 function EditProfile({route}) {
   const userData = route.params
   const navigation = useNavigation()
@@ -35,13 +33,13 @@ function EditProfile({route}) {
 
     const userDataFavorites = userData.favourites.map((f) => f.description)
 
-    const deletedFavorites = userDataFavorites.filter(
-      (f) => !favorites.includes(f)
-    )
-
     const addedFavorites = favorites.filter(
       (f) => !userDataFavorites.includes(f)
     )
+
+    const deletedFavorites = userData.favourites
+      .filter((f) => !favorites.includes(f.description))
+      .map((f) => f.favouriteId)
 
     const {status} = await request('/Account/EditProfile', 'POST', {
       firstName: userData.firstName,
@@ -78,7 +76,6 @@ function EditProfile({route}) {
           <Favorites
             favoriteItems={favoriteItems}
             setFavoriteItems={setFavoriteItems}
-            currentFavoriteItemId={id}
           />
 
           <HorizontalSeparator marginTop={15} />
@@ -116,7 +113,7 @@ function EditProfile({route}) {
         title="تغییرات با موفقیت ثبت شد."
         onPressBtn={() => {
           setSuccessModal(false)
-          navigation.goBack()
+          navigation.navigate('landing-page')
         }}
       />
     </View>

@@ -27,7 +27,7 @@ export default function DashboardNavigation() {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="profile-main-page">
+      initialRouteName="mainpage">
       <Stack.Screen name="landing-page" component={Dashboard} />
       <Stack.Screen name="announcement" component={Announcement} />
       <Stack.Screen name="announcement-item" component={AnnouncementView} />

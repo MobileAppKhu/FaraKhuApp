@@ -6,7 +6,7 @@ import palette from '../../../../../theme/palette'
 import CustomIcon from '../../../../../components/CustomIcon'
 import FavoriteItem from './FavoriteItem'
 
-function Favorites({favoriteItems, setFavoriteItems, currentFavoriteItemId}) {
+function Favorites({favoriteItems, setFavoriteItems}) {
   const favoriteItemChangeHandler = (text, option) => {
     const selectedItem = favoriteItems.findIndex((opt) => option.id === opt.id)
     const newOptions = favoriteItems
@@ -45,10 +45,7 @@ function Favorites({favoriteItems, setFavoriteItems, currentFavoriteItemId}) {
           android_ripple={{color: palette.M_3_SYS_PRIMARY_CONTAINER}}
           style={styles.addItem}
           onPress={() => {
-            setFavoriteItems([
-              ...favoriteItems,
-              {id: currentFavoriteItemId++, value: ''}
-            ])
+            setFavoriteItems([...favoriteItems, {id: Date.now(), value: ''}])
           }}>
           <CustomIcon
             name="icon_add"
