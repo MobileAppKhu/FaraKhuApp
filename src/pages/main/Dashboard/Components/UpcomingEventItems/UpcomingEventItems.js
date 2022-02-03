@@ -4,16 +4,41 @@ import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import styles from './stylesheet'
 import CheckBox from '@react-native-community/checkbox'
+import moment from 'moment-jalaali'
+import {request} from '../../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
 
 export default function UpcomingEventItems({
   eventName,
   eventDescription,
   eventTime,
-  courseName,
+  courseTitle,
   showEventCheckBox = true,
+  isDone,
+  eventId,
+  courseId,
   onPress = () => {}
 }) {
-  const [showEvent, setshowEvent] = useState(false)
+  const toast = useToast()
+  const changeIsDoneFunction = async (newValue) => {
+    setshowEvent(newValue)
+    request('/Event/EditEvent', 'POST', {
+      eventName,
+      eventDescription,
+      eventTime,
+      courseTitle,
+      courseId,
+      eventId,
+      changingIsDone: newValue
+    }).then((data) => {
+      if (data.status !== 200) {
+        toast.show('خطایی رخ داد', {
+          type: 'warning'
+        })
+      }
+    })
+  }
+  const [showEvent, setshowEvent] = useState(isDone)
   return (
     <Pressable style={styles.root} onPress={onPress}>
       <View
@@ -27,15 +52,12 @@ export default function UpcomingEventItems({
             showEventCheckBox ? styles.courseNameContainerOnShowCheckBox : {}
           ]}>
           <Typography variant="regular10" color={palette.M_3_SYS_ON_PRIMARY}>
-            {courseName}
+            {courseTitle || 'شخصی'}
           </Typography>
         </View>
         {showEventCheckBox && (
           <View>
-            <CheckBox
-              value={showEvent}
-              onValueChange={(newValue) => setshowEvent(newValue)}
-            />
+            <CheckBox value={showEvent} onValueChange={changeIsDoneFunction} />
           </View>
         )}
       </View>
@@ -50,7 +72,7 @@ export default function UpcomingEventItems({
           variant="medium12"
           color={palette.M_3_SYS_ON_SURFACE}
           style={styles.timeContainer}>
-          {eventTime}
+          {moment(eventTime).locale('fa').format('YYYY-jMM-jDD')}
         </Typography>
       </View>
     </Pressable>

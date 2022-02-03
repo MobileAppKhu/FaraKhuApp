@@ -356,7 +356,7 @@ function MyCoursesCreateCourse() {
           <CustomButton
             title="ایجاد کلاس +"
             size="small"
-            style={{marginTop: 30}}
+            style={{marginVertical: 30}}
           />
         </View>
       </ScrollView>

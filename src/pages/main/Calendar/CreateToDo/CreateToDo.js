@@ -7,16 +7,45 @@ import palette from '../../../../theme/palette'
 import CustomInput from '../../../../components/CustomInput'
 import CustomPicker from '../../../../components/CustomPicker'
 import CustomButton from '../../../../components/CustomButton'
+import {request} from '../../../../helpers/request'
+import moment from 'moment-jalaali'
+import {useToast} from 'react-native-toast-notifications'
+import {useNavigation} from '@react-navigation/native'
 
 export default function CreatToDo() {
   const [finalExamDate, setFinalExamDate] = useState({
     day: '',
     month: '',
-    year: ''
+    year: '',
+    hour: '',
+    minute: ''
   })
+  const navigation = useNavigation()
   const [listTodo, setlistTodo] = useState('')
-  const [description, setDiscription] = useState()
+  const [description, setDiscription] = useState('')
   const [todoID, setToDoID] = useState('')
+  const toast = useToast()
+  const createToDoFunction = async () => {
+    const date = moment(
+      `${finalExamDate.year}-${finalExamDate.month}-${finalExamDate.day} ${finalExamDate.hour}:${finalExamDate.minute}`,
+      'jYYYY-jMM-jDD HH:MM'
+    ).format('YYYY-MM-DDTHH:MM:SS')
+    request('/Event/AddEvent', 'POST', {
+      eventName: todoID,
+      eventDescription: description,
+      eventTime: date,
+      courseId: listTodo.startsWith('شخصی')
+        ? ''
+        : '2d5fd322-1f99-4cf5-8dbe-7858d59b5189'
+    }).then((data) => {
+      if (data.status === 200) {
+        toast.show('رویداد با موفقیت ایجاد شد', {
+          type: 'success'
+        })
+        navigation.goBack()
+      }
+    })
+  }
 
   return (
     <View style={styles.screen}>
@@ -52,6 +81,7 @@ export default function CreatToDo() {
               placeholder="روز"
               keyboardType="numeric"
               textAlign="center"
+              value={finalExamDate.day}
               onChangeText={(day) => setFinalExamDate({...finalExamDate, day})}
               style={styles.dateTextInput}
             />
@@ -61,6 +91,7 @@ export default function CreatToDo() {
               placeholder="ماه"
               keyboardType="numeric"
               textAlign="center"
+              value={finalExamDate.month}
               onChangeText={(month) =>
                 setFinalExamDate({...finalExamDate, month})
               }
@@ -72,6 +103,7 @@ export default function CreatToDo() {
               placeholder="سال"
               keyboardType="numeric"
               textAlign="center"
+              value={finalExamDate.year}
               onChangeText={(year) =>
                 setFinalExamDate({...finalExamDate, year})
               }
@@ -90,8 +122,9 @@ export default function CreatToDo() {
               maxLength={2}
               keyboardType="numeric"
               textAlign="center"
-              onChangeText={(year) =>
-                setFinalExamDate({...finalExamDate, year})
+              value={finalExamDate.hour}
+              onChangeText={(hour) =>
+                setFinalExamDate({...finalExamDate, hour})
               }
               style={styles.dateTextInput}
             />
@@ -100,8 +133,9 @@ export default function CreatToDo() {
               maxLength={2}
               keyboardType="numeric"
               textAlign="center"
-              onChangeText={(year) =>
-                setFinalExamDate({...finalExamDate, year})
+              value={finalExamDate.minute}
+              onChangeText={(minute) =>
+                setFinalExamDate({...finalExamDate, minute})
               }
               style={styles.dateTextInput}
             />
@@ -111,7 +145,7 @@ export default function CreatToDo() {
         <View style={styles.containerpicker}>
           <CustomPicker
             label="دسته بندی:"
-            items={['behnia1', 'behnia2', 'behnia3', 'behnia4']}
+            items={['شخصی', 'مبانی برق']}
             labelColor={palette.M_3_SYS_PRIMARY}
             selectedItem={listTodo}
             onSelectItem={(lst) => setlistTodo(lst)}
@@ -135,6 +169,8 @@ export default function CreatToDo() {
             title="ایجاد رویداد ✓"
             size="small"
             startIconColor={palette.M_3_SYS_ON_PRIMARY}
+            disabled={!listTodo || !description || !finalExamDate || !todoID}
+            onPress={createToDoFunction}
           />
         </View>
       </ScrollView>

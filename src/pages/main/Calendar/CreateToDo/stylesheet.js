@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native'
+import theme from '../../../../theme'
 import palette from '../../../../theme/palette'
 
 const styles = StyleSheet.create({
@@ -31,10 +32,15 @@ const styles = StyleSheet.create({
   },
   dateTextInput: {
     padding: 0,
-    paddingHorizontal: 5
+    paddingHorizontal: 5,
+    fontFamily: theme.Shabnam,
+    fontSize: 13
+  },
+  placeholderStyle: {
+    fontFamily: theme.Shabnam
   },
   hourContainer: {
-    marginRight: 38
+    marginRight: 15
   },
   hourInput: {
     width: 59,

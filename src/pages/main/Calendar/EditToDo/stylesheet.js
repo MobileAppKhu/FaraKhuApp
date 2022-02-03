@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5
   },
   hourContainer: {
-    marginRight: 38
+    marginRight: 10
   },
   hourInput: {
     width: 59,
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderColor: palette.M_3_SYS_OUTLINE
   },
   buttonContainer: {
-    marginTop: 20
+    marginVertical: 20
   },
   button: {
     marginBottom: 16
