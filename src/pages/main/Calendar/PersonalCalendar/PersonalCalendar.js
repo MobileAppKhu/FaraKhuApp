@@ -12,6 +12,7 @@ import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
+import moment from 'moment-jalaali'
 const PersonalCalendar = () => {
   const [date, setdate] = useState()
   const navigation = useNavigation()
@@ -22,17 +23,30 @@ const PersonalCalendar = () => {
     setRefreshing(true)
     request('/Event/SearchEvent', 'POST', {
       eventIds: [],
-      eventTime: date || undefined,
-      courseId: '',
+      eventTime: date
+        ? moment(
+            moment(date).locale('fa').format('YYYY-MM-DD'),
+            'jYYYY-jMM-jDD'
+          ).format('YYYY-MM-DD')
+        : undefined,
       start: 0,
       step: 10,
       eventColumn: 6,
       orderDirection: false
-    }).then((data) => setevents(data.response.event))
+    }).then((data) => {
+      console.log(
+        moment(
+          moment(date).locale('fa').format('YYYY-MM-DD'),
+          'jYYYY-jMM-jDD'
+        ).format('YYYY-MM-DD')
+      )
+      setevents(data.response.event)
+    })
     setRefreshing(false)
   }
   useEffect(() => {
     getToDoList()
+    navigation.addListener('focus', getToDoList)
   }, [date])
   return (
     <View style={styles.root}>
@@ -48,26 +62,29 @@ const PersonalCalendar = () => {
           <DatePicker onChangeText={(text) => setdate(text)} value={date} />
         </View>
         <View style={styles.eventContainer}>
-          {events.map((item) => (
-            <UpcomingEventItems
-              key={item.eventId}
-              eventId={item.eventId}
-              eventName={item.eventName}
-              eventDescription={item.eventDescription}
-              eventTime={item.eventTime}
-              courseTitle={item.courseTitle}
-              isDone={item.isDone}
-              onPress={() =>
-                navigation.navigate('edit-todo', {
-                  eventName: item.eventName,
-                  eventDescription: item.eventDescription,
-                  eventTime: item.eventTime,
-                  courseTitle: item.courseTitle,
-                  isDone: item.isDone
-                })
-              }
-            />
-          ))}
+          {events &&
+            events.map((item) => (
+              <UpcomingEventItems
+                key={item.eventId}
+                eventId={item.eventId}
+                eventName={item.eventName}
+                eventDescription={item.eventDescription}
+                eventTime={item.eventTime}
+                courseTitle={item.courseTitle}
+                isDone={item.isDone}
+                onPress={() =>
+                  navigation.navigate('edit-todo', {
+                    eventName: item.eventName,
+                    eventDescription: item.eventDescription,
+                    eventTime: item.eventTime,
+                    courseTitle: item.courseTitle,
+                    isDone: item.isDone,
+                    courseId: item.courseId,
+                    eventId: item.eventId
+                  })
+                }
+              />
+            ))}
         </View>
       </ScrollView>
       <Pressable

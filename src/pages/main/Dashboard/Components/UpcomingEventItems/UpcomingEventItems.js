@@ -5,6 +5,8 @@ import palette from '../../../../../theme/palette'
 import styles from './stylesheet'
 import CheckBox from '@react-native-community/checkbox'
 import moment from 'moment-jalaali'
+import {request} from '../../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
 
 export default function UpcomingEventItems({
   eventName,
@@ -13,8 +15,29 @@ export default function UpcomingEventItems({
   courseTitle,
   showEventCheckBox = true,
   isDone,
+  eventId,
+  courseId,
   onPress = () => {}
 }) {
+  const toast = useToast()
+  const changeIsDoneFunction = async (newValue) => {
+    setshowEvent(newValue)
+    request('/Event/EditEvent', 'POST', {
+      eventName,
+      eventDescription,
+      eventTime,
+      courseTitle,
+      courseId,
+      eventId,
+      changingIsDone: newValue
+    }).then((data) => {
+      if (data.status !== 200) {
+        toast.show('خطایی رخ داد', {
+          type: 'warning'
+        })
+      }
+    })
+  }
   const [showEvent, setshowEvent] = useState(isDone)
   return (
     <Pressable style={styles.root} onPress={onPress}>
@@ -34,10 +57,7 @@ export default function UpcomingEventItems({
         </View>
         {showEventCheckBox && (
           <View>
-            <CheckBox
-              value={showEvent}
-              onValueChange={(newValue) => setshowEvent(newValue)}
-            />
+            <CheckBox value={showEvent} onValueChange={changeIsDoneFunction} />
           </View>
         )}
       </View>

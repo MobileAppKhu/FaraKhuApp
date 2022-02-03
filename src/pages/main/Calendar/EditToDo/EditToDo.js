@@ -9,20 +9,62 @@ import Typography from '../../../../components/Typography'
 import CustomPicker from '../../../../components/CustomPicker'
 import CustomButton from '../../../../components/CustomButton'
 import moment from 'moment-jalaali'
+import {request} from '../../../../helpers/request'
+import {useToast} from 'react-native-toast-notifications'
+import {useNavigation} from '@react-navigation/native'
 
 export default function EditToDo({route}) {
-  const {eventName, eventDescription, eventTime, courseTitle} = route.params
-  const date = moment(eventTime)
+  const {
+    eventName,
+    eventDescription,
+    eventTime,
+    courseTitle,
+    courseId,
+    isDone,
+    eventId
+  } = route.params
+  const date = moment(moment(eventTime).format('jYYYY-jMM-jDD HH-MM'))
   const [finalExamDate, setFinalExamDate] = useState({
-    day: '',
-    month: '',
-    year: ''
+    day: date.day().toString(),
+    month: date.month().toString(),
+    year: date.year().toString(),
+    hour: date.hour().toString(),
+    minute: date.minute().toString()
   })
-  console.log(date.month.toString())
-  const [listTodo, setlistTodo] = useState(courseTitle)
+  const [listTodo, setlistTodo] = useState(
+    courseTitle === '' ? 'شخصی' : courseTitle
+  )
+  const navigation = useNavigation()
   const [description, setDiscription] = useState(eventDescription)
   const [todoID, setToDoID] = useState(eventName)
-
+  const toast = useToast()
+  const editToDoFunction = async () => {
+    const date = moment(
+      moment(
+        `${finalExamDate.year}-${finalExamDate.month}-${finalExamDate.day} ${finalExamDate.hour}:${finalExamDate.minute}`
+      )
+        .locale('fa')
+        .format('YYYY-MM-DDTHH:MM:SS'),
+      'jYYYY-jMM-jDDTHH:MM:SS'
+    ).format('YYYY-MM-DDTHH:MM:SS')
+    request('/Event/EditEvent', 'POST', {
+      eventName: todoID,
+      eventDescription: description,
+      eventTime: date,
+      courseId,
+      eventId,
+      isDone
+    }).then((data) => {
+      if (data.status === 200) {
+        toast.show('رویداد با موفقیت تغییر کرد', {
+          type: 'success'
+        })
+        navigation.goBack()
+      } else {
+        toast.show(data.response.errors[0].message)
+      }
+    })
+  }
   return (
     <View style={styles.screen}>
       <SimpleHeader
@@ -97,8 +139,9 @@ export default function EditToDo({route}) {
               maxLength={2}
               keyboardType="numeric"
               textAlign="center"
-              onChangeText={(year) =>
-                setFinalExamDate({...finalExamDate, year})
+              value={finalExamDate.hour}
+              onChangeText={(hour) =>
+                setFinalExamDate({...finalExamDate, hour})
               }
               style={styles.dateTextInput}
             />
@@ -107,8 +150,9 @@ export default function EditToDo({route}) {
               maxLength={2}
               keyboardType="numeric"
               textAlign="center"
-              onChangeText={(year) =>
-                setFinalExamDate({...finalExamDate, year})
+              value={finalExamDate.minute}
+              onChangeText={(minute) =>
+                setFinalExamDate({...finalExamDate, minute})
               }
               style={styles.dateTextInput}
             />
@@ -138,7 +182,12 @@ export default function EditToDo({route}) {
           />
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title="ثبت تغییرات" size="small" />
+          <CustomButton
+            title="ثبت تغییرات"
+            size="small"
+            onPress={editToDoFunction}
+            disabled={!description || !todoID || !listTodo}
+          />
         </View>
       </ScrollView>
     </View>

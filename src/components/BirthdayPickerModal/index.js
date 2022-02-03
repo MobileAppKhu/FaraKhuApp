@@ -67,12 +67,12 @@ export default function Index({type, open, close, onOkPress}) {
               size="small"
               onPress={() => {
                 var result = selectedYear.value
-                result += '/'
+                result += '-'
                 result +=
                   selectedMonth < 10
                     ? `0${selectedMonth.value}`
                     : selectedMonth.value
-                result += '/'
+                result += '-'
                 result +=
                   selectedDay < 10 ? `0${selectedDay.value}` : selectedDay.value
                 onOkPress(result)

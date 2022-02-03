@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     borderColor: palette.M_3_SYS_OUTLINE
   },
   buttonContainer: {
-    marginTop: 20
+    marginVertical: 20
   },
   button: {
     marginBottom: 16

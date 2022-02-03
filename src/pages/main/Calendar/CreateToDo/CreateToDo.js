@@ -27,7 +27,8 @@ export default function CreatToDo() {
   const toast = useToast()
   const createToDoFunction = async () => {
     const date = moment(
-      `${finalExamDate.year}-${finalExamDate.month}-${finalExamDate.day} ${finalExamDate.hour}:${finalExamDate.minute}`
+      `${finalExamDate.year}-${finalExamDate.month}-${finalExamDate.day} ${finalExamDate.hour}:${finalExamDate.minute}`,
+      'jYYYY-jMM-jDD HH:MM'
     ).format('YYYY-MM-DDTHH:MM:SS')
     request('/Event/AddEvent', 'POST', {
       eventName: todoID,
