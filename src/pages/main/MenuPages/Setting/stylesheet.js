@@ -18,7 +18,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   textCard: {
-    marginRight: 16
+    width: 120,
+    marginStart: 12,
+    flexDirection: 'row-reverse'
   },
   buttonCard: {
     height: 36,
@@ -33,7 +35,8 @@ const styles = StyleSheet.create({
     marginHorizontal: 8
   },
   iconPressable: {
-    marginHorizontal: 8
+    // marginHorizontal: 8
+    marginLeft: 8
   },
   imageStyle: {
     width: 38,
@@ -45,27 +48,24 @@ const styles = StyleSheet.create({
     paddingTop: 9
   },
   buttonCardmain: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  buttonCard2: {
     width: 189,
-    height: 39,
-    borderRadius: 8,
+    alignSelf: 'center',
+    alignItems: 'stretch',
+    justifyContent: 'center',
+    borderWidth: 1,
     borderStyle: 'solid',
     borderColor: palette.M_3_SYS_OUTLINE,
-    borderWidth: 1,
-    marginBottom: 32,
+    borderRadius: 8,
+    marginBottom: 32
+  },
+  buttonCard2: {
     alignItems: 'center',
-    flexDirection: 'row-reverse'
+    flexDirection: 'row-reverse',
+    justifyContent: 'center',
+    padding: 10
   },
-  textCard2: {
-    marginRight: 20
-  },
+  textCard2: {},
 
-  iconCard2: {
-    marginRight: 8,
-    marginLeft: 20
-  }
+  iconCard2: {}
 })
 export default styles
