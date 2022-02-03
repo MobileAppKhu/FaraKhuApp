@@ -17,6 +17,7 @@ function AddMenu({visible, setVisible, onBackdropPress}) {
       color: palette.M_3_SYS_PRIMARY,
       icon: 'icon_new-event',
       onPress: () => {
+        onBackdropPress()
         navigation.navigate('create-todo')
       }
     },
@@ -25,6 +26,7 @@ function AddMenu({visible, setVisible, onBackdropPress}) {
       color: palette.M_3_SYS_PRIMARY,
       icon: 'icons_alarm-ringing',
       onPress: () => {
+        onBackdropPress()
         navigation.navigate('create-announcement')
       }
     },
@@ -33,6 +35,7 @@ function AddMenu({visible, setVisible, onBackdropPress}) {
       color: palette.M_3_SYS_PRIMARY,
       icon: 'icons_poll',
       onPress: () => {
+        onBackdropPress()
         navigation.navigate('create-poll')
       }
     }
