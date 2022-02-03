@@ -21,6 +21,7 @@ import EachBookShop from '../pages/main/BookShop/EachBookShop/EachBookShop'
 import EditProfile from '../pages/main/MenuPages/Profile/EditProfile'
 import BookShopEdit from '../pages/main/BookShop/BookShopEdit/BookShopEdit'
 import AddUser from '../pages/main/UserMangement/AddUser/AddUser'
+import CreatePoll from '../pages/main/Poll/CreatePoll'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -49,6 +50,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="edit-profile" component={EditProfile} />
       <Stack.Screen name="book-shop-edit" component={BookShopEdit} />
       <Stack.Screen name="add-user" component={AddUser} />
+      <Stack.Screen name="create-poll" component={CreatePoll} />
     </Stack.Navigator>
   )
 }
