@@ -58,7 +58,6 @@ export default function EditAnnouncement({route}) {
     if (response.status === 200) {
       setsaveAnnouncementModal(true)
     } else {
-      console.log(response.response.errors)
       toast.show(response.response.errors[0].message, {
         type: 'warning',
         duration: 3000,

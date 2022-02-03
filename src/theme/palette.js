@@ -395,7 +395,6 @@ const darkTheme = {
 const paletteGetter = () => {
   // const {theme} = useSelector((state) => state.authReducer)
   // const data = await AsyncStorage.getItem('theme')
-  console.log(store)
   return store.getState('authReducer').authReducer.theme
     ? darkTheme
     : lightPalette

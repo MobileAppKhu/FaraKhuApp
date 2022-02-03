@@ -46,7 +46,6 @@ const buildNewGregorianMonth = (month) => {
     newMonth.data.push(i)
   }
   const emptyDaysAtTheEnd = 7 - (newMonth.data.length % 7)
-  console.log('emptyDaysAtTheEnd', emptyDaysAtTheEnd)
   if (emptyDaysAtTheEnd !== 7) {
     newMonth.data = [
       ...newMonth.data,
@@ -107,8 +106,6 @@ export default function CustomDatePicker() {
   useEffect(() => {
     renderMonths()
   }, [])
-
-  console.log({renderedMonths: renderedMonths[0]})
 
   return (
     <View style={styles.root}>

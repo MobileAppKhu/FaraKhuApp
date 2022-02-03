@@ -49,19 +49,15 @@ export function downloadPhoto(avatarId) {
     )
       .then((response) => {
         if (response.status === 200) {
-          console.log('getting data was successfull')
           const fileNameWithPath = getImageFilePath(
             avatarId,
             response.headers.map['content-type'].split('/').pop()
           )
-          console.log('filenamepath: ' + fileNameWithPath)
           RNFS.exists(fileNameWithPath)
             .then((file) => {
               if (file) {
-                console.log('file is existed')
                 resolve(fileNameWithPath)
               } else {
-                console.log('file is donwloading')
                 RNFS.downloadFile({
                   fromUrl:
                     'https://api.farakhu.markop.ir/api/File/Download' +
@@ -69,8 +65,7 @@ export function downloadPhoto(avatarId) {
                     avatarId,
                   toFile: fileNameWithPath
                 })
-                  .promise.then((res) => {
-                    console.log(res)
+                  .promise.then(() => {
                     resolve(fileNameWithPath)
                   })
                   .catch((err) => console.log('downloadFile:', err))

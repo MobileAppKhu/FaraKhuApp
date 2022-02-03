@@ -25,6 +25,7 @@
     "react-native-image-picker": "^4.7.1",
     "react-native-image-slider-box": "^1.1.14",
     "react-native-modal": "^13.0.0",
+    "react-native-open-maps": "^0.4.0",
     "react-native-persian-jalali-calendar-picker": "^1.0.2",
     "react-native-reanimated": "^2.3.1",
     "react-native-safe-area-context": "^3.3.2",

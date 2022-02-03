@@ -3,6 +3,7 @@ import {View} from 'react-native'
 import DashboardButtonPage from '../Components/DashboardButtonPage/DashboardButtonPage'
 import styles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
+import openMap from 'react-native-open-maps'
 
 export default function DashbaordMenu() {
   const navigation = useNavigation()
@@ -32,11 +33,19 @@ export default function DashbaordMenu() {
           })
         }
       />
-      <DashboardButtonPage title="ایمیل دانشگاهی" iconName="mail_outline" />
+      <DashboardButtonPage
+        title="ایمیل دانشگاهی"
+        iconName="mail_outline"
+        onPress={() =>
+          navigation.navigate('web-view', {
+            uri: 'https://mail.khu.ac.ir/'
+          })
+        }
+      />
       <DashboardButtonPage
         title="نقشه"
         iconName="icons8_map_marker_1-1"
-        onPress={() => navigation.navigate('news')}
+        onPress={() => openMap({latitude: 35.858789, longitude: 50.914745})}
       />
       <DashboardButtonPage
         title="کتاب یاب"

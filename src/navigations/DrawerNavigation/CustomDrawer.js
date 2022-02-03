@@ -1,5 +1,11 @@
-import React, {useState} from 'react'
-import {View, StyleSheet, Image, Pressable} from 'react-native'
+import React, {useEffect, useState} from 'react'
+import {
+  View,
+  StyleSheet,
+  Image,
+  Pressable,
+  ActivityIndicator
+} from 'react-native'
 import {DrawerContentScrollView} from '@react-navigation/drawer'
 import {useNavigation} from '@react-navigation/native'
 import ToggleSwitch from 'toggle-switch-react-native'
@@ -9,7 +15,9 @@ import Icon from 'react-native-vector-icons/Feather'
 import palette from '../../theme/palette'
 import HorizontalSeparator from '../../components/HorizontalSeparator'
 import {changeTheme} from './../../redux/auth/actions'
+import {request} from '../../helpers/request'
 import {useDispatch} from 'react-redux'
+import CustomImage from '../../components/CustomImage'
 
 const DrawerItem = ({icon, title, onPress}) => {
   return (
@@ -36,6 +44,23 @@ function CustomDrawer(props) {
   const [darkTheme, setDarkTheme] = useState(false)
   const navigation = useNavigation()
   const dispatch = useDispatch()
+  const [userData, setUserData] = useState()
+  const getUserData = async () => {
+    const {
+      response: {userId}
+    } = await request('/User/GetUserId', 'POST', {})
+
+    const {
+      response: {profile}
+    } = await request('/User/SearchProfile', 'POST', {
+      userId
+    })
+    setUserData(profile)
+  }
+
+  useEffect(() => {
+    getUserData()
+  }, [])
   return (
     <View
       style={{
@@ -55,8 +80,8 @@ function CustomDrawer(props) {
               paddingHorizontal: 20,
               alignItems: 'center'
             }}>
-            <Image
-              source={require('../../assets/images/sample_avatar.jpg')}
+            <CustomImage
+              avatarId={userData.avatarId}
               style={{
                 width: 38,
                 height: 38,
@@ -64,7 +89,19 @@ function CustomDrawer(props) {
                 marginStart: 16
               }}
             />
-            <Typography variant="h6">کامیار غضنفری</Typography>
+
+            {/* <Image source={require('../../assets/images/sample_avatar.jpg')} /> */}
+            <Typography variant="h6">
+              {userData ? (
+                userData.firstName + ' ' + userData.lastName
+              ) : (
+                <ActivityIndicator
+                  color={palette.M_3_SYS_PRIMARY}
+                  size="large"
+                  animating
+                />
+              )}
+            </Typography>
           </View>
 
           <View
@@ -83,7 +120,9 @@ function CustomDrawer(props) {
                   marginStart: 13
                 }}
               />
-              <Typography variant="h6">تم تاریک</Typography>
+              <Typography variant="h6">
+                {darkTheme ? 'تم تاریک' : 'تم روشن'}
+              </Typography>
             </View>
             <ToggleSwitch
               isOn={darkTheme}
@@ -140,7 +179,12 @@ function CustomDrawer(props) {
           />
           <DrawerItem
             icon={require(`../../assets/images/request.png`)}
-            title="درخواست‌های دانشجویی"
+            title="سامانه آموزش مجازی LMS"
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'https://lms.khu.ac.ir/'
+              })
+            }
           />
         </View>
 
@@ -160,6 +204,11 @@ function CustomDrawer(props) {
           <DrawerItem
             icon={require(`../../assets/images/question.png`)}
             title="سوالات متداول"
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'https://khu.ac.ir/page/23666/%D9%BE%D8%A7%D8%B3%D8%AE-%D8%B3%D9%88%D8%A7%D9%84%D8%A7%D8%AA-%D9%85%D8%AA%D8%AF%D8%A7%D9%88%D9%84'
+              })
+            }
           />
           <DrawerItem
             icon={require(`../../assets/images/message.png`)}
@@ -167,7 +216,12 @@ function CustomDrawer(props) {
           />
           <DrawerItem
             icon={require(`../../assets/images/phone.png`)}
-            title="تماس با ما"
+            title="ارتباط با دانشگاه"
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'https://khu.ac.ir/page/5757/%D8%A7%D8%B1%D8%AA%D8%A8%D8%A7%D8%B7-%D8%A8%D8%A7-%D9%85%D8%A7'
+              })
+            }
           />
           <DrawerItem
             icon={require(`../../assets/images/exclamation.png`)}
