@@ -7,6 +7,7 @@ import ForgetPassword from '../pages/auth/forgetPassword/ForgetPassword'
 import FirstWelcomePage from '../pages/auth/firstWelcomePage/FirstWelcomePage'
 import ConfirmCodePage from '../pages/auth/forgetPassword/confirmCodePage/ConfirmCodePage'
 import SecondWelcomePage from '../pages/auth/secondWelcomePage/SecondWelcomePage'
+import News from '../pages/main/News/News'
 const Stack = createStackNavigator()
 
 export default function LoginNavigation() {
@@ -20,6 +21,7 @@ export default function LoginNavigation() {
       <Stack.Screen name="first-welcome" component={FirstWelcomePage} />
       <Stack.Screen name="second-welcome" component={SecondWelcomePage} />
       <Stack.Screen name="confirm-code-page" component={ConfirmCodePage} />
+      <Stack.Screen name="news" component={News} />
     </Stack.Navigator>
   )
 }

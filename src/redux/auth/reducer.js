@@ -4,6 +4,7 @@ const INIT_STATE = {
   user: '',
   role: '',
   userId: '',
+  theme: false,
   token: undefined
 }
 
@@ -20,6 +21,20 @@ export default function authReducer(state = INIT_STATE, action) {
         userId: action.payload
       }
     }
+    case 'CHANGE_THEME': {
+      return {
+        ...state,
+        theme: !state.theme
+      }
+    }
+    case 'LOG_OUT':
+      return {
+        user: '',
+        role: '',
+        userId: '',
+        theme: false,
+        token: undefined
+      }
     default:
       return state
   }

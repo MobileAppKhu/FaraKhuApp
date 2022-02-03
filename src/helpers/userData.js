@@ -11,6 +11,9 @@ import {useSelector} from 'react-redux'
 //   expires_at: '',
 //   token_type: ''
 // }
+export const deleteUserFromStorage = async () => {
+  await AsyncStorage.removeItem('token')
+}
 
 export const getUserFromStorage = async () => {
   const token = await AsyncStorage.getItem('token')

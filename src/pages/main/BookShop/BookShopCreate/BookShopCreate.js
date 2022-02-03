@@ -45,7 +45,6 @@ export default function BookShopCreate({
         })
         navigation.goBack()
       } else {
-        console.log(offerId)
         toast.show(data.response.errors[0].message, {
           type: 'warning'
         })

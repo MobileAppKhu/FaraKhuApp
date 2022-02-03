@@ -4,6 +4,10 @@ import {Image, Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
+import {
+  addCommaToPriceUnsigned,
+  convertPersianNumbersToEnglishNumbers
+} from '../../../../../helpers/numbers'
 
 export default function DataBookShop({
   title,
@@ -12,7 +16,8 @@ export default function DataBookShop({
   bookImage,
   price,
   offerId,
-  description
+  description,
+  userId
 }) {
   const navigation = useNavigation()
   return (
@@ -24,7 +29,8 @@ export default function DataBookShop({
           description,
           price,
           type,
-          title
+          title,
+          userId
         })
       }>
       <View style={styles.cardStyle}>
@@ -47,7 +53,10 @@ export default function DataBookShop({
             <Typography
               variant="smallButton"
               color={palette.M_3_SYS_ON_SECONDARY_CONTAINER}>
-              {price} تومان
+              {addCommaToPriceUnsigned(
+                convertPersianNumbersToEnglishNumbers(price)
+              )}{' '}
+              تومان
             </Typography>
           </View>
         </View>

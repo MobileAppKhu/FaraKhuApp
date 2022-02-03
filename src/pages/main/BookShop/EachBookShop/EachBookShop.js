@@ -15,12 +15,24 @@ import {
   addCommaToPriceUnsigned,
   convertPersianNumbersToEnglishNumbers
 } from '../../../../helpers/numbers'
+import {useDispatch, useSelector} from 'react-redux'
+import {getUser} from './../../../../navigations/mainNavigation'
+import {getUserId} from '../../../../redux/auth/actions'
 
 const androidRipple = {borderless: true, color: '#ddd', radius: 25}
 
 export default function EachBookShop({route}) {
   const toast = useToast()
-  const {offerId, description, price, type, title} = route.params
+  const dispatch = useDispatch()
+  const saveUserid = async () => {
+    const id = await getUser()
+    dispatch(getUserId(id))
+  }
+  const {userId} = useSelector((state) => state.authReducer)
+  if (!userId) {
+    saveUserid()
+  }
+  const {offerId, description, price, type, title, userId: id} = route.params
   const [deleteModal, setDeleteModal] = useState(false)
   const [optionsModal, setOptionsModal] = useState(false)
   const deleteOfferFuntion = () => {
@@ -91,16 +103,17 @@ export default function EachBookShop({route}) {
                 color={palette.M_3_SYS_INVERSE_ON_SURFACE}
               />
             </Pressable>
-
-            <Pressable
-              android_ripple={androidRipple}
-              onPress={() => setOptionsModal(true)}>
-              <CustomIcon
-                name="more_vert_24px"
-                size={30}
-                color={palette.M_3_SYS_INVERSE_ON_SURFACE}
-              />
-            </Pressable>
+            {id === userId && (
+              <Pressable
+                android_ripple={androidRipple}
+                onPress={() => setOptionsModal(true)}>
+                <CustomIcon
+                  name="more_vert_24px"
+                  size={30}
+                  color={palette.M_3_SYS_INVERSE_ON_SURFACE}
+                />
+              </Pressable>
+            )}
           </View>
 
           <OptionsModal

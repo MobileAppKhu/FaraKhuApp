@@ -46,21 +46,20 @@ export default function EditAnnouncement({route}) {
     announcementId,
     title,
     description,
-    department,
     avatarId
   }) => {
     const response = await request('/Announcement/EditAnnouncement', 'POST', {
       announcementId,
       title,
       description,
-      department,
       avatarId
     })
 
     if (response.status === 200) {
       setsaveAnnouncementModal(true)
     } else {
-      toast.show('خطايي رخ داد', {
+      console.log(response.response.errors)
+      toast.show(response.response.errors[0].message, {
         type: 'warning',
         duration: 3000,
         animationType: 'zoom-in'

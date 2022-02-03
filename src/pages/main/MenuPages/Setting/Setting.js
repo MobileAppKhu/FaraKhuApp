@@ -9,11 +9,14 @@ import {ScrollView} from 'react-native-gesture-handler'
 import SettingPart from './SettingPart/SettingPart'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
+import {useDispatch} from 'react-redux'
+import {logOut} from '../../../../redux/auth/actions'
+import {deleteUserFromStorage} from '../../../../helpers/userData'
 
 export default function Setting() {
   const [userData, setUserData] = useState()
   const navigation = useNavigation()
-
+  const dispatch = useDispatch()
   const getUserData = async () => {
     const {
       response: {userId}
@@ -93,6 +96,10 @@ export default function Setting() {
           android_ripple={{
             color: palette.M_3_SYS_SECONDARY_CONTAINER,
             borderless: true
+          }}
+          onPress={async () => {
+            dispatch(logOut())
+            deleteUserFromStorage()
           }}>
           <View style={styles.textCard2}>
             <Typography

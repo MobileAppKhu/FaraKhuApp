@@ -8,13 +8,23 @@ import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
+import {getUserId} from '../../../../redux/auth/actions'
+import {getUser} from './../../../../navigations/mainNavigation'
 
 export default function Announcement() {
   const navigation = useNavigation()
   const [announcement, setannouncement] = useState([])
   const [refreshing, setRefreshing] = useState(false)
   const {userId: user} = useSelector((state) => state.authReducer)
+  const dispatch = useDispatch()
+  const saveUserid = async () => {
+    const id = await getUser()
+    dispatch(getUserId(id))
+  }
+  if (!user) {
+    saveUserid()
+  }
   const getAnnouncementFunction = async () => {
     setRefreshing(true)
     request('/Announcement/SearchAnnouncements', 'POST', {
@@ -34,7 +44,7 @@ export default function Announcement() {
   useEffect(() => {
     getAnnouncementFunction()
     navigation.addListener('focus', getAnnouncementFunction)
-  }, [])
+  }, [user])
 
   return (
     <View style={styles.container}>

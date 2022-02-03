@@ -4,7 +4,7 @@ import palette from '../../../../../theme/palette'
 export default StyleSheet.create({
   root: {
     flex: 1,
-    backgroundColor:palette.M_3_SYS_BACKGROUND,
+    backgroundColor: palette.M_3_SYS_BACKGROUND
   },
   topPart: {
     backgroundColor: palette.M_3_SYS_SECONDARY,

@@ -9,7 +9,8 @@ import DrawerNavigation from './DrawerNavigation'
 // import {AsyncStorage} from 'react-native'
 // import _ from 'underscore'
 import {request} from '../helpers/request'
-
+export const getUser = async () =>
+  request('/User/GetUserId', 'POST', {}).then((data) => data.response.userId)
 export default function MainNavigation() {
   const dispatch = useDispatch()
 
@@ -17,8 +18,7 @@ export default function MainNavigation() {
     const token = await getUserFromStorage()
     dispatch(saveUser(token))
   }
-  const getUser = async () =>
-    request('/User/GetUserId', 'POST', {}).then((data) => data.response.userId)
+
   const saveUserid = async () => {
     const id = await getUser()
     dispatch(getUserId(id))
@@ -30,6 +30,5 @@ export default function MainNavigation() {
       saveUserid()
     }
   }, [dispatch])
-  // console.log(token)
   return token ? <DrawerNavigation /> : <LoginNavigation />
 }

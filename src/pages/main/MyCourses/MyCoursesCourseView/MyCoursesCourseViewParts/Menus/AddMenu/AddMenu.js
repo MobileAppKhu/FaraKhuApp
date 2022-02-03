@@ -3,14 +3,13 @@ import {Pressable, View} from 'react-native'
 import Modal from 'react-native-modal'
 import {useNavigation} from '@react-navigation/native'
 
-import CustomIcon from '../../../../../../../components/CustomIcon'
 import palette from '../../../../../../../theme/palette'
 import MenuItem from '../MenuItem/MenuItem'
 import styles from './stylesheet'
+import CustomIcon from '../../../../../../../components/CustomIcon'
 
 function AddMenu({visible, setVisible, onBackdropPress}) {
   const navigation = useNavigation()
-
   const modalItems = [
     {
       text: 'ایجاد رویداد شخصی',

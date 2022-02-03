@@ -26,10 +26,18 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="کتابخانه مرکزی"
         iconName="icons8_book_shelf-1-library"
-        onPress={() => navigation.navigate('setting')}
+        onPress={() =>
+          navigation.navigate('web-view', {
+            uri: 'http://library.khu.ac.ir/'
+          })
+        }
       />
       <DashboardButtonPage title="ایمیل دانشگاهی" iconName="mail_outline" />
-      <DashboardButtonPage title="نقشه" iconName="icons8_map_marker_1-1"onPress={() => navigation.navigate('news')} />
+      <DashboardButtonPage
+        title="نقشه"
+        iconName="icons8_map_marker_1-1"
+        onPress={() => navigation.navigate('news')}
+      />
       <DashboardButtonPage
         title="کتاب یاب"
         iconName="icons8_books-1-exchange"

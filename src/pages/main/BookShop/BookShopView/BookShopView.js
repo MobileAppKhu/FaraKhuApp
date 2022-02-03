@@ -58,6 +58,7 @@ export default function BookShopView() {
               type={bookShopType[item.offerType]}
               offerId={item.offerId}
               description={item.description}
+              userId={item.userId}
               // bookImage={require(item.lessonImage)}
               price={item.price}
             />

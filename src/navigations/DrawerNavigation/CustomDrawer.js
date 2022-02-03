@@ -8,6 +8,8 @@ import Typography from '../../components/Typography'
 import Icon from 'react-native-vector-icons/Feather'
 import palette from '../../theme/palette'
 import HorizontalSeparator from '../../components/HorizontalSeparator'
+import {changeTheme} from './../../redux/auth/actions'
+import {useDispatch} from 'react-redux'
 
 const DrawerItem = ({icon, title, onPress}) => {
   return (
@@ -33,9 +35,14 @@ const DrawerItem = ({icon, title, onPress}) => {
 function CustomDrawer(props) {
   const [darkTheme, setDarkTheme] = useState(false)
   const navigation = useNavigation()
-
+  const dispatch = useDispatch()
   return (
-    <View style={{flex: 1, paddingHorizontal: 10}}>
+    <View
+      style={{
+        flex: 1,
+        paddingHorizontal: 10,
+        backgroundColor: palette.M_3_READ_ONLY_SURFACE_1
+      }}>
       <DrawerContentScrollView
         {...props}
         contentContainerStyle={{
@@ -83,7 +90,10 @@ function CustomDrawer(props) {
               onColor={palette.M_3_SYS_PRIMARY}
               offColor={palette.M_3_SYS_SURFACE_VARIANT}
               size="small"
-              onToggle={() => setDarkTheme(!darkTheme)}
+              onToggle={() => {
+                setDarkTheme(!darkTheme)
+                dispatch(changeTheme(darkTheme))
+              }}
               animationSpeed={200}
             />
           </View>
@@ -106,15 +116,27 @@ function CustomDrawer(props) {
           <DrawerItem
             icon={require(`../../assets/images/self.png`)}
             title="سلف و رزور غذا"
+            onPress={() =>
+              navigation.navigate('web-view', {uri: 'https://efood.khu.ac.ir/'})
+            }
           />
           <DrawerItem
             icon={require(`../../assets/images/library.png`)}
             title="کتابخانه مرکزی"
-            onPress={() => navigation.navigate('bookshop-view')}
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'http://library.khu.ac.ir/'
+              })
+            }
           />
           <DrawerItem
             icon={require(`../../assets/images/email.png`)}
             title="ایمیل دانشگاهی"
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'https://mail.khu.ac.ir/'
+              })
+            }
           />
           <DrawerItem
             icon={require(`../../assets/images/request.png`)}
@@ -162,7 +184,8 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     overflow: 'hidden',
     alignSelf: 'stretch',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: palette.M_3_READ_ONLY_SURFACE_1
   },
   drawerItemInnerContainer: {
     paddingVertical: 16,

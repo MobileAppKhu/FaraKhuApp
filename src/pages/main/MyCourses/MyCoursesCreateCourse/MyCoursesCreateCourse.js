@@ -306,7 +306,9 @@ function MyCoursesCreateCourse() {
               </View>
 
               <Pressable
-                android_ripple={{color: palette.M_3_SYS_PRIMARY_CONTAINER}}
+                android_ripple={{
+                  color: palette.M_3_SYS_PRIMARY_CONTAINER
+                }}
                 style={styles.addDay}
                 onPress={() => {
                   setStudents([...students, student])

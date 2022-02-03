@@ -72,7 +72,7 @@ export default function UpcomingEventItems({
           variant="medium12"
           color={palette.M_3_SYS_ON_SURFACE}
           style={styles.timeContainer}>
-          {moment(eventTime).locale('fa').format('YYYY-jMM-jDD')}
+          {moment(eventTime).locale('fa').format('jYYYY-jMM-jDD')}
         </Typography>
       </View>
     </Pressable>

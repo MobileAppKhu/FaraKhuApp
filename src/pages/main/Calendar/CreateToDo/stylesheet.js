@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native'
-import theme from '../../../../theme'
 import palette from '../../../../theme/palette'
+import theme from './../../../../theme/index'
 
 const styles = StyleSheet.create({
   screen: {

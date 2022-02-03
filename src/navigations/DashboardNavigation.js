@@ -23,6 +23,7 @@ import BookShopEdit from '../pages/main/BookShop/BookShopEdit/BookShopEdit'
 import AddUser from '../pages/main/UserMangement/AddUser/AddUser'
 import News from '../pages/main/News/News'
 import CreatePoll from '../pages/main/Poll/CreatePoll'
+import WebViewPage from './DrawerNavigation/WebView'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -53,6 +54,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="add-user" component={AddUser} />
       <Stack.Screen name="news" component={News} />
       <Stack.Screen name="create-poll" component={CreatePoll} />
+      <Stack.Screen name="web-view" component={WebViewPage} />
     </Stack.Navigator>
   )
 }

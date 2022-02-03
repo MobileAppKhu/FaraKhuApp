@@ -34,12 +34,6 @@ const PersonalCalendar = () => {
       eventColumn: 6,
       orderDirection: false
     }).then((data) => {
-      console.log(
-        moment(
-          moment(date).locale('fa').format('YYYY-MM-DD'),
-          'jYYYY-jMM-jDD'
-        ).format('YYYY-MM-DD')
-      )
       setevents(data.response.event)
     })
     setRefreshing(false)

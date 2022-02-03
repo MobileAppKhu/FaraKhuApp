@@ -70,7 +70,12 @@ export default function LoginPage() {
             <CustomButton title="ورود به سامانه" size="small" onPress={login} />
           </View>
           <View style={styles.guestLoginButton}>
-            <CustomButton title="ورود مهمان" size="small" type="cancel" />
+            <CustomButton
+              title="ورود مهمان"
+              size="small"
+              type="cancel"
+              onPress={() => navigation.navigate('news')}
+            />
           </View>
         </View>
       </ScrollView>

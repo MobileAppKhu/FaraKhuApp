@@ -11,8 +11,8 @@ function CustomPicker({options, onChange, selected, textVariant = 'body2'}) {
   return (
     <FlatList
       onMomentumScrollEnd={(e) => {
-        var offsetDif = e.nativeEvent.contentOffset.y - offset
-        var targetIndex = Math.floor(e.nativeEvent.contentOffset.y / 50) + 1
+        const offsetDif = e.nativeEvent.contentOffset.y - offset
+        let targetIndex = Math.floor(e.nativeEvent.contentOffset.y / 50) + 1
         targetIndex = offsetDif > 0 ? targetIndex : targetIndex - 1
         targetIndex =
           targetIndex === options.length ? options.length - 1 : targetIndex
