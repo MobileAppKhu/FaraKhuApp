@@ -146,6 +146,15 @@ export default function ProfileMainPage({route}) {
           </View>
         </View>
       </ScrollView>
+<<<<<<< HEAD
+      <View style={{flexDirection:'row',marginHorizontal:100,borderRadius: 8,marginBottom:16}}>
+        <View style={{marginRight:24,}}>
+          <CustomButton title="Linkedin" size="small" />
+        </View>
+        <View style={{marginRight:24,}}>
+          <CustomButton title="Google Scholar" size="small" />
+        </View>
+=======
       <View style={{marginHorizontal: 24, marginVertical: 20}}>
         <CustomButton
           title="Linkedin"
@@ -163,6 +172,7 @@ export default function ProfileMainPage({route}) {
             if (userData.googleScholar) Linking.openURL(userData.googleScholar)
           }}
         />
+>>>>>>> main
       </View>
     </View>
   )
