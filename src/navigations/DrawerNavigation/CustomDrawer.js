@@ -45,6 +45,7 @@ function CustomDrawer(props) {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const [userData, setUserData] = useState()
+
   const getUserData = async () => {
     const {
       response: {userId}
@@ -61,6 +62,7 @@ function CustomDrawer(props) {
   useEffect(() => {
     getUserData()
   }, [])
+
   return (
     <View
       style={{
@@ -81,7 +83,7 @@ function CustomDrawer(props) {
               alignItems: 'center'
             }}>
             <CustomImage
-              avatarId={userData.avatarId}
+              avatarId={userData?.avatarId}
               style={{
                 width: 38,
                 height: 38,
