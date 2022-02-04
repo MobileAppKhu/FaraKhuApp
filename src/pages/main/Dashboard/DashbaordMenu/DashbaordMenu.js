@@ -52,6 +52,15 @@ export default function DashbaordMenu() {
         iconName="icons8_books-1-exchange"
         onPress={() => navigation.navigate('bookshop-view')}
       />
+      <DashboardButtonPage
+        title="سامانه احراز هویت "
+        iconName="icons8_books-1-exchange"
+        onPress={() =>
+          navigation.navigate('web-view', {
+            uri: 'https://my.khu.ac.ir/'
+          })
+        }
+      />
     </View>
   )
 }

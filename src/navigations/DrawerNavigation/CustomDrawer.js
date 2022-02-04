@@ -80,15 +80,17 @@ function CustomDrawer(props) {
               paddingHorizontal: 20,
               alignItems: 'center'
             }}>
-            <CustomImage
-              avatarId={userData.avatarId}
-              style={{
-                width: 38,
-                height: 38,
-                borderRadius: 30,
-                marginStart: 16
-              }}
-            />
+            {userData && (
+              <CustomImage
+                avatarId={userData.avatarId}
+                style={{
+                  width: 38,
+                  height: 38,
+                  borderRadius: 30,
+                  marginStart: 16
+                }}
+              />
+            )}
 
             {/* <Image source={require('../../assets/images/sample_avatar.jpg')} /> */}
             <Typography variant="h6">
@@ -177,6 +179,15 @@ function CustomDrawer(props) {
               })
             }
           />
+          {/* <DrawerItem
+            icon={require(`../../assets/images/request.png`)}
+            title="سامانه احراز هویت متمرکز"
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'https://my.khu.ac.ir/'
+              })
+            }
+          /> */}
           <DrawerItem
             icon={require(`../../assets/images/request.png`)}
             title="سامانه آموزش مجازی LMS"
