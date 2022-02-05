@@ -179,6 +179,15 @@ function CustomDrawer(props) {
               })
             }
           />
+          {/* <DrawerItem
+            icon={require(`../../assets/images/request.png`)}
+            title="سامانه احراز هویت متمرکز"
+            onPress={() =>
+              navigation.navigate('web-view', {
+                uri: 'https://my.khu.ac.ir/'
+              })
+            }
+          /> */}
           <DrawerItem
             icon={require(`../../assets/images/request.png`)}
             title="سامانه آموزش مجازی LMS"
