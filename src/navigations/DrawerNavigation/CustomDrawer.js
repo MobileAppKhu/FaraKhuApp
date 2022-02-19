@@ -45,6 +45,7 @@ function CustomDrawer(props) {
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const [userData, setUserData] = useState()
+
   const getUserData = async () => {
     const {
       response: {userId}
@@ -61,6 +62,7 @@ function CustomDrawer(props) {
   useEffect(() => {
     getUserData()
   }, [])
+
   return (
     <View
       style={{
@@ -80,17 +82,15 @@ function CustomDrawer(props) {
               paddingHorizontal: 20,
               alignItems: 'center'
             }}>
-            {userData && (
-              <CustomImage
-                avatarId={userData.avatarId}
-                style={{
-                  width: 38,
-                  height: 38,
-                  borderRadius: 30,
-                  marginStart: 16
-                }}
-              />
-            )}
+            <CustomImage
+              avatarId={userData?.avatarId}
+              style={{
+                width: 38,
+                height: 38,
+                borderRadius: 30,
+                marginStart: 16
+              }}
+            />
 
             {/* <Image source={require('../../assets/images/sample_avatar.jpg')} /> */}
             <Typography variant="h6">
