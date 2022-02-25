@@ -1,7 +1,11 @@
 import {StyleSheet} from 'react-native'
-import palette from './../../../../theme/palette'
+import {useSelector} from 'react-redux'
+const makeStyles = (styles) => () => {
+  const theme = useSelector((state) => state.authReducer.theme)
 
-const styles = StyleSheet.create({
+  return StyleSheet.create(styles(theme))
+}
+const styles = makeStyles((palette) => ({
   root: {
     marginTop: 10,
     marginHorizontal: 16,
@@ -23,5 +27,5 @@ const styles = StyleSheet.create({
   eventContainer: {
     // marginBottom: 16
   }
-})
+}))
 export default styles

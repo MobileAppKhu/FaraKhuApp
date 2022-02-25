@@ -1,7 +1,10 @@
 import {StyleSheet} from 'react-native'
-import palette from './../../../../theme/palette'
+import store from '../../../../redux/store'
 
-const styles = StyleSheet.create({
+const makeStyles = (styles) => () =>
+  StyleSheet.create(styles(store.getState().authReducer.theme))
+
+export const styles = makeStyles((theme) => ({
   root: {
     height: 64,
     flexDirection: 'row',
@@ -10,7 +13,7 @@ const styles = StyleSheet.create({
     paddingRight: 16,
     paddingLeft: 16,
     elevation: 7,
-    backgroundColor: palette.M_3_SYS_SURFACE
+    backgroundColor: theme?.M_3_SYS_SURFACE
   },
   optionsConainers: {
     width: '100%',
@@ -37,5 +40,4 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end'
   }
-})
-export default styles
+}))

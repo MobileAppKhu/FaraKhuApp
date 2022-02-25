@@ -12,7 +12,7 @@ import ToggleSwitch from 'toggle-switch-react-native'
 
 import Typography from '../../components/Typography'
 import Icon from 'react-native-vector-icons/Feather'
-import palette from '../../theme/palette'
+import palette, {darkTheme} from '../../theme/palette'
 import HorizontalSeparator from '../../components/HorizontalSeparator'
 import {changeTheme} from './../../redux/auth/actions'
 import {request} from '../../helpers/request'
@@ -41,7 +41,7 @@ const DrawerItem = ({icon, title, onPress}) => {
 }
 
 function CustomDrawer(props) {
-  const [darkTheme, setDarkTheme] = useState(false)
+  const [isDarkTheme, setDarkTheme] = useState(false)
   const navigation = useNavigation()
   const dispatch = useDispatch()
   const [userData, setUserData] = useState()
@@ -62,7 +62,7 @@ function CustomDrawer(props) {
   useEffect(() => {
     getUserData()
   }, [])
-
+  // const theme = useSelector((state) => state.authReducer.theme)
   return (
     <View
       style={{
@@ -115,7 +115,7 @@ function CustomDrawer(props) {
             }}>
             <View style={{flexDirection: 'row-reverse'}}>
               <Icon
-                name={darkTheme ? 'moon' : 'sun'}
+                name={isDarkTheme ? 'moon' : 'sun'}
                 size={22}
                 color={palette.M_3_SYS_ON_SECONDARY_CONTAINER}
                 style={{
@@ -123,17 +123,18 @@ function CustomDrawer(props) {
                 }}
               />
               <Typography variant="h6">
-                {darkTheme ? 'تم تاریک' : 'تم روشن'}
+                {isDarkTheme ? 'تم تاریک' : 'تم روشن'}
               </Typography>
             </View>
             <ToggleSwitch
-              isOn={darkTheme}
+              isOn={isDarkTheme}
               onColor={palette.M_3_SYS_PRIMARY}
               offColor={palette.M_3_SYS_SURFACE_VARIANT}
               size="small"
               onToggle={() => {
-                setDarkTheme(!darkTheme)
-                dispatch(changeTheme(darkTheme))
+                setDarkTheme(!isDarkTheme)
+
+                dispatch(changeTheme(isDarkTheme ? palette : darkTheme))
               }}
               animationSpeed={200}
             />
