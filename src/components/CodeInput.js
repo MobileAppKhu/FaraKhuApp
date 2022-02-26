@@ -75,7 +75,6 @@ function CodeInput({code, onChange}) {
 
 const styles = StyleSheet.create({
   root: {
-    // flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
     width: '100%',
     padding: 10,
     flexDirection: 'row-reverse',
@@ -91,16 +90,12 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     fontSize: 20,
     textAlign: 'center',
-    // paddingRight: 12,
-    // paddingLeft: 12,
     width: 47,
     height: 47,
-    // marginHorizontal: 17,
     overflow: 'visible'
   },
   inputFill: {
     backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
-    // color: palette.M_3_SYS_ON_SECONDARY_CONTAINER,
     borderWidth: 0
   }
 })

@@ -1,13 +1,12 @@
 // import {getUserFromStorage} from '../../helpers/userData'
-
+import lightPalette from '../../theme/palette'
 const INIT_STATE = {
   user: '',
   role: '',
   userId: '',
-  theme: false,
+  theme: lightPalette,
   token: undefined
 }
-
 export default function authReducer(state = INIT_STATE, action) {
   switch (action.type) {
     case 'SAVE_USER':
@@ -24,7 +23,7 @@ export default function authReducer(state = INIT_STATE, action) {
     case 'CHANGE_THEME': {
       return {
         ...state,
-        theme: !state.theme
+        theme: action.payload
       }
     }
     case 'LOG_OUT':

@@ -1,5 +1,5 @@
+/* eslint-disable no-unused-vars */
 // import {useSelector} from 'react-redux'
-import store from '../redux/store'
 
 const lightPalette = {
   M_3_SYS_PRIMARY: '#1660a5',
@@ -195,7 +195,7 @@ const lightPalette = {
   M_3_READ_ONLY_INVERSE_SURFACE_OPACITY_0_16: 'rgba(47, 48, 51, 0.16)',
   M_3_READ_ONLY_INVERSE_SURFACE_OPACITY_0_12: 'rgba(47, 48, 51, 0.12)'
 }
-const darkTheme = {
+export const darkTheme = {
   M_3_SYS_PRIMARY: '#a1c9ff',
   M_3_SYS_ON_PRIMARY: '#00315d',
   M_3_SYS_PRIMARY_CONTAINER: '#004884',
@@ -392,12 +392,12 @@ const darkTheme = {
   M_3_READ_ONLY_INVERSE_ON_SURFACE_OPACITY_0_16: 'rgba(27, 27, 29, 0.16)',
   M_3_READ_ONLY_INVERSE_SURFACE_OPACITY_0_16: 'rgba(227, 226, 230, 0.16)'
 }
-const paletteGetter = () => {
-  // const {theme} = useSelector((state) => state.authReducer)
-  // const data = await AsyncStorage.getItem('theme')
-  return store.getState('authReducer').authReducer.theme
-    ? darkTheme
-    : lightPalette
-}
-const palette = paletteGetter()
-export default palette
+// const paletteGetter = () => {
+//   // const {theme} = useSelector((state) => state.authReducer)
+//   // const data = await AsyncStorage.getItem('theme')
+//   return store.getState('authReducer').authReducer.theme
+//     ? darkTheme
+//     : lightPalette
+// }
+// const palette = paletteGetter()
+export default lightPalette

@@ -1,7 +1,7 @@
 import Typography from '../../../../components/Typography'
 import React, {useEffect, useState} from 'react'
 import {View} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import palette from './../../../../theme/palette'
 import UpcomingEventItems from '../Components/UpcomingEventItems/UpcomingEventItems'
 import {useNavigation} from '@react-navigation/native'
@@ -17,7 +17,10 @@ export default function UpcomingEvent() {
   useEffect(() => {
     getEvents()
   }, [])
+  // const theme = useSelector((state) => state.authReducer.theme)
 
+  // console.log(theme.M_3_SYS_ON_PRIMARY)
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <View style={styles.topPart}>

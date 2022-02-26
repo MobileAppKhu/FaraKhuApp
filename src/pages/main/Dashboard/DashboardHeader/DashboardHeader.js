@@ -2,12 +2,13 @@ import {Pressable, View} from 'react-native'
 import React from 'react'
 import {useNavigation} from '@react-navigation/native'
 
-import styles from './stylesheet'
+import {styles as useStyles} from './stylesheet'
 import CustomIcon from '../../../../components/CustomIcon'
 import palette from './../../../../theme/palette'
 
 export default function DashboardHeader() {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <View style={styles.optionsConainers}>
