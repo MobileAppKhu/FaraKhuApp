@@ -1,10 +1,5 @@
-import {StyleSheet} from 'react-native'
-import {useSelector} from 'react-redux'
-const makeStyles = (styles) => () => {
-  const theme = useSelector((state) => state.authReducer.theme)
+import makeStyles from '../../../../helpers/makeStyles'
 
-  return StyleSheet.create(styles(theme))
-}
 const styles = makeStyles((palette) => ({
   root: {
     marginTop: 10,

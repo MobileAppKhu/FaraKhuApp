@@ -18,7 +18,7 @@ export default function MyCoursesCourseViewAnnouncement() {
         <UpcomingEventItems
           eventName="تکمیل پروژی اول"
           eventDescription="Tehran Metro with DFS"
-          eventTime="22 آذر 1400"
+          eventTime="2022-02-26"
           courseName="هوش مصنوعی"
         />
         <PollEventItems
@@ -28,7 +28,7 @@ export default function MyCoursesCourseViewAnnouncement() {
         <UpcomingEventItems
           eventName="تکمیل پروژی اول"
           eventDescription="Tehran Metro with DFS"
-          eventTime="22 آذر 1400"
+          eventTime="2022-02-26"
           courseName="هوش مصنوعی"
           showEventCheckBox={false}
         />

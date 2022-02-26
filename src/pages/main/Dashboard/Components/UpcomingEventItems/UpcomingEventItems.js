@@ -20,6 +20,7 @@ export default function UpcomingEventItems({
   onPress = () => {}
 }) {
   const toast = useToast()
+  console.log(eventTime)
   const changeIsDoneFunction = async (newValue) => {
     setshowEvent(newValue)
     request('/Event/EditEvent', 'POST', {
