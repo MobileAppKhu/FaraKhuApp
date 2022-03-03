@@ -3,7 +3,7 @@ import {Image, ImageBackground, Pressable, View} from 'react-native'
 import CustomIcon from '../../../../../../components/CustomIcon'
 import palette from '../../../../../../theme/palette'
 
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
 
@@ -15,6 +15,7 @@ export default function MyCoursesCourseViewHeader({
   onPressThreeDot
 }) {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <ImageBackground
       source={require('../../../../../../assets/images/my-course-test.jpg')}

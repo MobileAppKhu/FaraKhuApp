@@ -1,11 +1,12 @@
 import React from 'react'
 import {Pressable, View} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
 import palette from '../../../../../theme/palette'
 export default function SettingPart({text, onPress}) {
   //   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <Pressable onPress={onPress} style={styles.root}>
       <View>

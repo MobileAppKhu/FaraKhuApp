@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CheckBox from '@react-native-community/checkbox'
 import moment from 'moment-jalaali'
 import {request} from '../../../../../helpers/request'
@@ -20,7 +20,6 @@ export default function UpcomingEventItems({
   onPress = () => {}
 }) {
   const toast = useToast()
-  console.log(eventTime)
   const changeIsDoneFunction = async (newValue) => {
     setshowEvent(newValue)
     request('/Event/EditEvent', 'POST', {
@@ -40,6 +39,7 @@ export default function UpcomingEventItems({
     })
   }
   const [showEvent, setshowEvent] = useState(isDone)
+  const styles = useStyles()
   return (
     <Pressable style={styles.root} onPress={onPress}>
       <View

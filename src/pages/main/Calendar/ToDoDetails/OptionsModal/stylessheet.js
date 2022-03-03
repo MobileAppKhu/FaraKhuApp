@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   optionsModalContainer: {
     flex: 1,
     margin: 0
@@ -26,6 +26,5 @@ const styles = StyleSheet.create({
   optionsModalItemText: {
     marginRight: 12
   }
-})
-
-export default styles
+}))
+export default useStyles

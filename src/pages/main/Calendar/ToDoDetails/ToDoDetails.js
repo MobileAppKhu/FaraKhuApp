@@ -6,7 +6,7 @@ import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
-import styles from './stylessheet'
+import useStyles from './stylessheet'
 import OptionsModal from './OptionsModal'
 import DeleteModal from './DeleteModal'
 
@@ -53,6 +53,7 @@ export default function ToDoDetails({
     }
   ]
 
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <SimpleHeader

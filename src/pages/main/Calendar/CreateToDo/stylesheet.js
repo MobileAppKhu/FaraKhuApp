@@ -1,8 +1,7 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../theme/palette'
+import makeStyles from '../../../../helpers/makeStyles'
 import theme from './../../../../theme/index'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   screen: {
     flex: 1,
     backgroundColor: palette.M_3_SYS_ON_PRIMARY
@@ -76,5 +75,5 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Shabnam'
   }
-})
-export default styles
+}))
+export default useStyles

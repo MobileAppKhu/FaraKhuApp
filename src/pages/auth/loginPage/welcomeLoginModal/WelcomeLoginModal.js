@@ -1,11 +1,12 @@
 import Modal from 'react-native-modal'
 import React from 'react'
 import {Image, View} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
 export default function WelcomeLoginModal({isVisible, onClsoe, name}) {
+  const styles = useStyles()
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClsoe}>
       <View style={styles.root}>

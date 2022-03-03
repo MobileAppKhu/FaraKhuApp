@@ -2,9 +2,10 @@ import React from 'react'
 import {View} from 'react-native'
 import {SliderBox} from 'react-native-image-slider-box'
 import palette from '../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 // import {Dimensions} from 'react-native'
 export default function NotificationsImages() {
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <SliderBox

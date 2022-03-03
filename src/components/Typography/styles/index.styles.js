@@ -1,8 +1,8 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../helpers/makeStyles'
 
 import theme from '../../../theme'
 
-const styles = StyleSheet.create({
+const useStyle = makeStyles(() => ({
   body1: {
     fontFamily: theme.Shabnam,
     fontSize: 16
@@ -115,5 +115,5 @@ const styles = StyleSheet.create({
     fontSize: 25,
     fontFamily: theme.ShabnamBold
   }
-})
-export default styles
+}))
+export default useStyle

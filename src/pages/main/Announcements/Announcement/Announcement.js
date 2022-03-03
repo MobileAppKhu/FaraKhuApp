@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import DataAnnouncement from './DataAnnouncement/DataAnnouncement'
 import SimpleHeader from './../../../../components/SimpleHeader'
 import {Pressable, View, ScrollView, RefreshControl} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
@@ -45,7 +45,7 @@ export default function Announcement() {
     getAnnouncementFunction()
     navigation.addListener('focus', getAnnouncementFunction)
   }, [user])
-
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <SimpleHeader title="فراخوان" headerRightIcon={'icons8_search_1-1'} />

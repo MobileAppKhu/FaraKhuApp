@@ -1,9 +1,9 @@
 import React from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {Image, Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import CustomIcon from '../../../../../components/CustomIcon'
+import {useSelector} from 'react-redux'
 
 export default function DataAnnouncement({
   teacherName,
@@ -13,6 +13,8 @@ export default function DataAnnouncement({
   date,
   onPress
 }) {
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Pressable style={styles.root} onPress={onPress}>
       <View style={styles.cardStyle}>

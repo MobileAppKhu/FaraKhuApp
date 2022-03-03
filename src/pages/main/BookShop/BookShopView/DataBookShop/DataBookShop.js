@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {Image, Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
@@ -20,6 +20,7 @@ export default function DataBookShop({
   userId
 }) {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <Pressable
       style={styles.root}

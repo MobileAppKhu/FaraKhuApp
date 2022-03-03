@@ -1,10 +1,9 @@
-/* eslint-disable no-unused-vars */
 import React, {useEffect, useState} from 'react'
 import {Pressable, RefreshControl, View} from 'react-native'
 import SimpleHeader from '../../../../components/SimpleHeader'
 
 import {ScrollView} from 'react-native-gesture-handler'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import DatePicker from '../../../../components/DatePicker'
 import UpcomingEventItems from '../../Dashboard/Components/UpcomingEventItems/UpcomingEventItems'
 import Typography from '../../../../components/Typography'
@@ -42,6 +41,7 @@ const PersonalCalendar = () => {
     getToDoList()
     navigation.addListener('focus', getToDoList)
   }, [date])
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <SimpleHeader title="تقویم شخصی" headerRightIcon="more_vert_24px" />

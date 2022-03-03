@@ -1,6 +1,6 @@
-import {Dimensions, StyleSheet} from 'react-native'
-
-export default StyleSheet.create({
+import {Dimensions} from 'react-native'
+import makeStyles from '../../../../helpers/makeStyles'
+export default makeStyles(() => ({
   root: {marginBottom: 16, elevation: 9},
   image: {
     // flex: 1,
@@ -9,4 +9,4 @@ export default StyleSheet.create({
 
     // width: '100%'
   }
-})
+}))

@@ -1,11 +1,12 @@
 import {Image, Pressable, View} from 'react-native'
 import React from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../components/Typography/index'
 import palette from '../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
 export default function LandingPage() {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <Pressable
       style={styles.root}

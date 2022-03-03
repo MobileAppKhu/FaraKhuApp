@@ -3,12 +3,13 @@ import {View} from 'react-native'
 import CustomIcon from '../../../../../../components/CustomIcon'
 import Typography from '../../../../../../components/Typography'
 import palette from '../../../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 export default function MyCoursesCourseViewDetails({
   examDate,
   classTime,
   location
 }) {
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <View style={styles.timeDetailsContainer}>
@@ -55,6 +56,7 @@ export default function MyCoursesCourseViewDetails({
   )
 }
 const ClassTimeComponent = ({day, hour}) => {
+  const styles = useStyles()
   return (
     <View style={styles.timeDetailsPart}>
       <Typography variant="body1" color={palette.M_3_SYS_ON_SURFACE}>

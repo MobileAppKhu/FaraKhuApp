@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   root: {
     flex: 1
   },
@@ -24,5 +24,5 @@ const styles = StyleSheet.create({
   email: {
     marginHorizontal: 3
   }
-})
-export default styles
+}))
+export default useStyles

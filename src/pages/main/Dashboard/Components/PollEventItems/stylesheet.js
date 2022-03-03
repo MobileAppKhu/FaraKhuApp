@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../../theme/palette'
+import makeStyles from '../../../../../helpers/makeStyles'
 
-export default StyleSheet.create({
+export default makeStyles((palette) => ({
   root: {
     marginHorizontal: 8,
     marginBottom: 8,
@@ -27,4 +26,4 @@ export default StyleSheet.create({
     justifyContent: 'flex-end',
     flex: 1
   }
-})
+}))

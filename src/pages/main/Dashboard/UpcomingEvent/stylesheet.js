@@ -21,6 +21,11 @@ const styles = makeStyles((palette) => ({
   },
   eventContainer: {
     // marginBottom: 16
+  },
+  noEventContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 10
   }
 }))
 export default styles

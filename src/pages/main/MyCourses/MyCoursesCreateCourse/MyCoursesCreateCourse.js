@@ -11,7 +11,7 @@ import CustomPicker from '../../../../components/CustomPicker'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
 import DayPicker from './DayPicker'
-import styles from './stylessheet'
+import useStyles from './stylessheet'
 import CloseModal from './Modals/CloseModal'
 
 const {M_3_SYS_PRIMARY: primaryColor} = palette
@@ -98,7 +98,7 @@ function MyCoursesCreateCourse() {
     }
     setStudents(newStudents)
   }
-
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <View style={styles.header}>

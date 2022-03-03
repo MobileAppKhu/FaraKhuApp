@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../../theme/palette'
+import makeStyles from '../../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     backgroundColor: palette.M_3_SYS_SURFACE,
     elevation: 4,
@@ -22,5 +21,5 @@ const styles = StyleSheet.create({
   search: {
     marginRight: 16
   }
-})
-export default styles
+}))
+export default useStyles

@@ -1,7 +1,7 @@
 import React from 'react'
-import {Pressable, StyleSheet} from 'react-native'
+import {Pressable} from 'react-native'
+import makeStyles from '../helpers/makeStyles'
 
-import palette from '../theme/palette'
 import CustomIcon from './CustomIcon'
 // import CustomIcon from './CustomIcon'
 import Typography from './Typography'
@@ -21,6 +21,7 @@ export default function CustomButton({
   endIconSize,
   endIconColor
 }) {
+  const styles = useStyles()
   return (
     <Pressable
       android_ripple={{color: 'rgba(211, 228, 255, 0.8)', borderless: 16}}
@@ -56,7 +57,7 @@ export default function CustomButton({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   bigButton: {
     width: '100%',
     borderRadius: 16,
@@ -100,4 +101,4 @@ const styles = StyleSheet.create({
     // position: 'absolute',
     right: 20
   }
-})
+}))

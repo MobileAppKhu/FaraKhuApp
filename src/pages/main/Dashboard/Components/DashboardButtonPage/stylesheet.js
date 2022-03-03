@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../../theme/palette'
+import makeStyles from '../../../../../helpers/makeStyles'
 
-export default StyleSheet.create({
+export default makeStyles((palette) => ({
   root: {
     width: 100,
     height: 100,
@@ -13,4 +12,4 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+}))

@@ -28,8 +28,9 @@ export default function UpcomingEvent() {
           فعالیت‌های پیش‌رو
         </Typography>
       </View>
+
       <View style={styles.eventContainer}>
-        {events &&
+        {events.length > 0 ? (
           events.slice(0, 3).map((item) => (
             <UpcomingEventItems
               key={item.eventId}
@@ -51,7 +52,12 @@ export default function UpcomingEvent() {
                 })
               }
             />
-          ))}
+          ))
+        ) : (
+          <View style={styles.noEventContainer}>
+            <Typography variant="h5">فعالیت نزدیکی نداریم</Typography>
+          </View>
+        )}
       </View>
     </View>
   )

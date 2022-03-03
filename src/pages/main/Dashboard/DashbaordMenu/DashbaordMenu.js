@@ -1,12 +1,13 @@
 import React from 'react'
 import {View} from 'react-native'
 import DashboardButtonPage from '../Components/DashboardButtonPage/DashboardButtonPage'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
 import openMap from 'react-native-open-maps'
 
 export default function DashbaordMenu() {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <DashboardButtonPage

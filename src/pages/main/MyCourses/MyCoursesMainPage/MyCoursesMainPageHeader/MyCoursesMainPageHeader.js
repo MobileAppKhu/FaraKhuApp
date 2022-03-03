@@ -1,6 +1,6 @@
 import {Pressable, View} from 'react-native'
 import React, {useState} from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
 import palette from '../../../../../theme/palette'
@@ -25,7 +25,7 @@ export default function MyCoursesMainPageHeader() {
       }
     }
   ]
-
+  const styles = useStyles()
   return (
     <Pressable style={styles.root}>
       <View style={styles.optionsConainers}>

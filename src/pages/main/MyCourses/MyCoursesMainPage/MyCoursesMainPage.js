@@ -1,12 +1,13 @@
 import React from 'react'
 import {View} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import MyCoursesMainPageHeader from './MyCoursesMainPageHeader/MyCoursesMainPageHeader'
 import MyCoursesMainPageCourseItem from './MyCoursesMainPageCourseItem/MyCoursesMainPageCourseItem'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomButton from '../../../../components/CustomButton'
 import palette from './../../../../theme/palette'
 export default function MyCoursesMainPage() {
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <MyCoursesMainPageHeader />

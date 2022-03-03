@@ -4,7 +4,7 @@ import {Pressable, View, Linking} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomIcon from '../../../../../components/CustomIcon'
 import palette from '../../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Clipboard from '@react-native-clipboard/clipboard'
 
 import Typography from './../../../../../components/Typography/index'
@@ -14,7 +14,7 @@ import CustomImage from '../../../../../components/CustomImage'
 export default function ProfileMainPage({route}) {
   const navigation = useNavigation()
   const userData = route.params
-
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <ScrollView>

@@ -5,24 +5,28 @@ import CustomIcon from '../../../../../components/CustomIcon'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 
-import styles from './stylessheet'
+import useStyles from './stylessheet'
 
-const OptionsModalItem = ({text, color, icon, onPress}) => (
-  <Pressable
-    onPress={onPress}
-    android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
-    style={styles.optionsModalItem}>
-    <Typography
-      variant="body2"
-      color={color}
-      style={styles.optionsModalItemText}>
-      {text}
-    </Typography>
-    <CustomIcon name={icon} size={24} color={color} />
-  </Pressable>
-)
+const OptionsModalItem = ({text, color, icon, onPress}) => {
+  const styles = useStyles()
+  return (
+    <Pressable
+      onPress={onPress}
+      android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
+      style={styles.optionsModalItem}>
+      <Typography
+        variant="body2"
+        color={color}
+        style={styles.optionsModalItemText}>
+        {text}
+      </Typography>
+      <CustomIcon name={icon} size={24} color={color} />
+    </Pressable>
+  )
+}
 
 function OptionsModal({isVisible, onBackdropPress, items}) {
+  const styles = useStyles()
   return (
     <Modal
       isVisible={isVisible}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import DataBookShop from './DataBookShop/DataBookShop'
 import {ScrollView} from 'react-native-gesture-handler'
 import {Pressable, RefreshControl, View} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
@@ -40,6 +40,7 @@ export default function BookShopView() {
     getOffers()
     navigation.addListener('focus', getOffers)
   }, [])
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <BookShopHeader />

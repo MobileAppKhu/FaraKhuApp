@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../../theme/palette'
+import makeStyles from '../../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   root: {
     marginHorizontal: 24,
     borderRadius: 16,
@@ -26,5 +25,5 @@ const styles = StyleSheet.create({
   buttonTextStyle: {
     color: palette.M_3_SYS_ON_PRIMARY_CONTAINER
   }
-})
-export default styles
+}))
+export default useStyles

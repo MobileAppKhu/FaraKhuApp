@@ -5,12 +5,13 @@ import CustomButton from '../../../../../components/CustomButton'
 import CustomIcon from '../../../../../components/CustomIcon'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 export default function DeleteAnnouncementConfirmationModal({
   isVisible,
   onClose,
   onDeleteAnnouncement
 }) {
+  const styles = useStyles()
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose}>
       <View style={styles.root}>

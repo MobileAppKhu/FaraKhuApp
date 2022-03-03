@@ -3,11 +3,12 @@ import {View, Pressable, ScrollView, ImageBackground} from 'react-native'
 import CustomIcon from '../../../components/CustomIcon'
 import Typography from '../../../components/Typography'
 import palette from '../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
 const androidRipple = {borderless: true, color: '#ddd', radius: 25}
 export default function News() {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <ImageBackground

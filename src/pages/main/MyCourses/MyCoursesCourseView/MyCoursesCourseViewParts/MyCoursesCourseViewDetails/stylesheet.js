@@ -1,6 +1,5 @@
-import {StyleSheet} from 'react-native'
-
-const styles = StyleSheet.create({
+import makeStyles from '../../../../../../helpers/makeStyles'
+const useStyles = makeStyles(() => ({
   root: {
     paddingRight: 17,
     paddingLeft: 30,
@@ -42,5 +41,5 @@ const styles = StyleSheet.create({
   locatioText: {
     marginLeft: 8
   }
-})
-export default styles
+}))
+export default useStyles

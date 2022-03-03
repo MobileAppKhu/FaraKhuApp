@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomInput from './../../../../components/CustomInput'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
 import {request} from './../../../../helpers/request'
@@ -28,6 +28,7 @@ export default function CreateAnnouncement() {
       navigation.goBack()
     })
   }
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <SimpleHeader title="ایجاد فراخوان" />

@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native'
 
 import palette from '../../../../../../../theme/palette'
 import MenuItem from '../MenuItem/MenuItem'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CustomIcon from '../../../../../../../components/CustomIcon'
 
 function AddMenu({visible, setVisible, onBackdropPress}) {
@@ -39,7 +39,7 @@ function AddMenu({visible, setVisible, onBackdropPress}) {
       }
     }
   ]
-
+  const styles = useStyles()
   return (
     <>
       <Pressable style={styles.container} onPress={setVisible}>

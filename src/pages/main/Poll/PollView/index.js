@@ -5,7 +5,7 @@ import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import PollOptionDetails from './PollOptionDetails'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import TerminatePollModal from './TerminatePollModal'
 
 const samplePollOptions = [
@@ -52,7 +52,7 @@ function PollView({
     }
     setPollOptions(newOptions)
   }
-
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <SimpleHeader

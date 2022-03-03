@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {TextInput, View, ScrollView} from 'react-native'
 
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import palette from '../../../../theme/palette'
 import CustomInput from '../../../../components/CustomInput'
@@ -65,6 +65,7 @@ export default function EditToDo({route}) {
       }
     })
   }
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <SimpleHeader

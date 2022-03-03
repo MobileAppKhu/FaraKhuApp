@@ -1,15 +1,15 @@
 import React, {useRef} from 'react'
-import {View, StyleSheet, TextInput} from 'react-native'
+import {View, TextInput} from 'react-native'
+import makeStyles from '../helpers/makeStyles'
 
 import theme from '../theme'
-import palette from '../theme/palette'
 
 function CodeInput({code, onChange}) {
   const inp1 = useRef()
   const inp2 = useRef()
   const inp3 = useRef()
   const inp4 = useRef()
-
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <TextInput
@@ -73,7 +73,7 @@ function CodeInput({code, onChange}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   root: {
     width: '100%',
     padding: 10,
@@ -98,6 +98,5 @@ const styles = StyleSheet.create({
     backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
     borderWidth: 0
   }
-})
-
+}))
 export default React.memo(CodeInput)

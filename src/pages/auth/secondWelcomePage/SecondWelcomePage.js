@@ -4,9 +4,10 @@ import Typography from '../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
 import palette from '../../../theme/palette'
 import CustomButton from '../../../components/CustomButton'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 const SecondWelcomePage = () => {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

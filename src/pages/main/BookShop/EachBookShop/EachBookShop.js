@@ -5,7 +5,7 @@ import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import CustomIcon from '../../../../components/CustomIcon'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import DeleteModal from './DeleteModal'
 import OptionsModal from './OptionsModal'
 import {useNavigation} from '@react-navigation/native'
@@ -87,6 +87,7 @@ export default function EachBookShop({route}) {
     }
   ]
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <ScrollView>

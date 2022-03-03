@@ -10,7 +10,7 @@ import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
 import CustomInput from '../../../../components/CustomInput'
 import CustomButton from '../../../../components/CustomButton'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {request} from '../../../../helpers/request'
 import {useToast} from 'react-native-toast-notifications'
 
@@ -51,7 +51,7 @@ export default function BookShopCreate({
       }
     })
   }
-
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <SimpleHeader title={editScreen ? 'ویرایش آگهی' : 'ثبت آگهی جدید'} />

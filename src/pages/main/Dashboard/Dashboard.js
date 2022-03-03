@@ -1,7 +1,7 @@
 import {View} from 'react-native'
 import React from 'react'
 import DashboardHeader from './DashboardHeader/DashboardHeader'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import UpcomingEvent from './UpcomingEvent/UpcomingEvent'
 import DashbaordMenu from './DashbaordMenu/DashbaordMenu'
@@ -10,6 +10,7 @@ import InternetManagement from './InternetManagement'
 import NotificationModal from './NotificationModal'
 
 export default function Dashboard() {
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <DashboardHeader />

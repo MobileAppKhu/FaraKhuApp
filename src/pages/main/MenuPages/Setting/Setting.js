@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {View, Image, Pressable, ActivityIndicator} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
@@ -34,6 +34,7 @@ export default function Setting() {
     getUserData()
   }, [])
 
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <SimpleHeader

@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {View, ScrollView} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CustomPicker from '../../../../components/CustomPicker'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import CustomInput from '../../../../components/CustomInput'
@@ -13,6 +13,7 @@ export default function AddUser() {
   const [familyname, setFamilyName] = useState()
   const [identitycode, setIdentityCode] = useState()
   const [email, setEmail] = useState()
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <SimpleHeader

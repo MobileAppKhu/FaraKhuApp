@@ -3,7 +3,7 @@ import {View, Pressable} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 
 function PollOptionDetails({
   title = '29 آذر 8 تا 9 صبح',
@@ -13,6 +13,7 @@ function PollOptionDetails({
   checked = true,
   onPress
 }) {
+  const styles = useStyles()
   return (
     <View style={[styles.container, MostVote && styles.focusedContainer]}>
       <Pressable

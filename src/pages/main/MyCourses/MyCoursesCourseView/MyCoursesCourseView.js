@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {View} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import MyCoursesCourseViewHeader from './MyCoursesCourseViewParts/MyCoursesCourseViewHeader/MyCoursesCourseViewHeader'
 import MyCoursesCourseViewDetails from './MyCoursesCourseViewParts/MyCoursesCourseViewDetails/MyCoursesCourseViewDetails'
 import MyCoursesCourseViewAnnouncement from './MyCoursesCourseViewParts/MyCoursesCourseViewAnnouncement/MyCoursesCourseViewAnnouncement'
@@ -11,7 +11,7 @@ import ThreeDotMenu from './MyCoursesCourseViewParts/Menus/ThreeDotMenu/ThreeDot
 export default function MyCoursesCourseView() {
   const [showAddMenu, setShowAddMenu] = useState(false)
   const [showThreeDotMenu, setShowThreeDotMenu] = useState(false)
-
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <ScrollView>

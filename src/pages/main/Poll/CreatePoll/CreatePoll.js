@@ -5,7 +5,7 @@ import SimpleHeader from '../../../../components/SimpleHeader'
 import CustomInput from '../../../../components/CustomInput'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CustomButton from '../../../../components/CustomButton'
 import PollOptionsSection from './PollOptionsSection'
 import SuccessModal from './SuccessModal'
@@ -18,7 +18,7 @@ function CreatePoll() {
   const [successModal, setSuccessModal] = useState(false)
 
   const container = useRef()
-
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <SimpleHeader title="نظرسنجی جدید" />

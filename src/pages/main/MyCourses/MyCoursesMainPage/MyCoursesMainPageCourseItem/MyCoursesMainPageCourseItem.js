@@ -1,10 +1,8 @@
 import React from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {ImageBackground, Pressable, View} from 'react-native'
 import palette from '../../../../../theme/palette'
 import Typography from '../../../../../components/Typography'
-// import Typography from '../../../../../components/Typography'
-// import palette from '../../../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
 export default function MyCoursesMainPageCourseItem({
   title,
@@ -12,6 +10,7 @@ export default function MyCoursesMainPageCourseItem({
   teacherName
 }) {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <Pressable
       style={styles.root}

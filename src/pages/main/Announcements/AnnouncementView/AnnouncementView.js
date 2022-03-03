@@ -4,7 +4,7 @@ import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CustomButton from './../../../../components/CustomButton'
 import Modal from 'react-native-modal'
 import {useNavigation} from '@react-navigation/native'
@@ -15,7 +15,7 @@ export default function AnnouncementView({route}) {
   const announcementData = route.params
   const {userFullname, announcementTitle, announcementDescription} =
     announcementData
-
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <View style={styles.AnnouncementHeader}>

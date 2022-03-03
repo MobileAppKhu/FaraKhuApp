@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   container: {
     flex: 1
   },
@@ -43,5 +43,5 @@ const styles = StyleSheet.create({
   buttonview: {
     marginHorizontal: 150
   }
-})
-export default styles
+}))
+export default useStyles

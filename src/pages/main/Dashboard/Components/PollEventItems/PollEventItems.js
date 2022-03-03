@@ -2,10 +2,11 @@ import React from 'react'
 import {Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CustomIcon from '../../../../../components/CustomIcon'
 
 export default function PollEventItems({eventName, eventTime}) {
+  const styles = useStyles()
   return (
     <Pressable style={styles.root}>
       <View style={styles.eventControler}>

@@ -5,10 +5,11 @@ import {ScrollView} from 'react-native-gesture-handler'
 import Typography from '../../../../components/Typography'
 import CodeInput from '../../../../components/CodeInput'
 import CustomButton from '../../../../components/CustomButton'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import palette from '../../../../theme/palette'
 export default function ConfirmCodePage() {
   const [code, setcode] = useState('')
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <SimpleHeader />

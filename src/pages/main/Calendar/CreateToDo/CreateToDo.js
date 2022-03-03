@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import SimpleHeader from '../../../../components/SimpleHeader'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {ScrollView, TextInput, View} from 'react-native'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
@@ -46,7 +46,7 @@ export default function CreatToDo() {
       }
     })
   }
-
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <SimpleHeader

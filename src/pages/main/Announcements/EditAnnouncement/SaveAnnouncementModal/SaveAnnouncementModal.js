@@ -1,13 +1,14 @@
 import Modal from 'react-native-modal'
 import React from 'react'
 import {View} from 'react-native'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
 import palette from '../../../../../theme/palette'
 import CustomButton from '../../../../../components/CustomButton'
 import CustomIcon from '../../../../../components/CustomIcon'
 
 export default function SaveAnnouncementModal({isVisible, onClsoe}) {
+  const styles = useStyles()
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClsoe}>
       <View style={styles.root}>

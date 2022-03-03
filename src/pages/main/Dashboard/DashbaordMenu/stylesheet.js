@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   root: {
     flexWrap: 'wrap',
     marginHorizontal: 2.9,
@@ -8,5 +8,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   }
-})
-export default styles
+}))
+export default useStyles

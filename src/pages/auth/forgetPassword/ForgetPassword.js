@@ -2,7 +2,7 @@ import {View} from 'react-native'
 import React from 'react'
 import SimpleHeader from '../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import Typography from '../../../components/Typography'
 import palette from '../../../theme/palette'
 import CustomInput from './../../../components/CustomInput'
@@ -10,6 +10,7 @@ import CustomButton from './../../../components/CustomButton'
 import {useNavigation} from '@react-navigation/native'
 export default function ForgetPassword() {
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <SimpleHeader />

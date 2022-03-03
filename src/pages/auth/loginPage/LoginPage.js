@@ -1,7 +1,7 @@
 import {View, Image, Pressable} from 'react-native'
 import {useDispatch} from 'react-redux'
 import React, {useState} from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomInput from './../../../components/CustomInput'
 import Typography from '../../../components/Typography'
@@ -28,6 +28,7 @@ export default function LoginPage() {
     })
   }
   const navigation = useNavigation()
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <ScrollView>

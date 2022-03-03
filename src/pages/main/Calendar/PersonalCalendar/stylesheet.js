@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../theme/palette'
+import makeStyles from '../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   root: {
     flex: 1
   },
@@ -33,5 +32,5 @@ const styles = StyleSheet.create({
     marginTop: 16,
     marginLeft: 12
   }
-})
-export default styles
+}))
+export default useStyles

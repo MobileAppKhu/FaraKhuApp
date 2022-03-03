@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../theme/palette'
+import makeStyles from '../../../../helpers/makeStyles'
 
-export default StyleSheet.create({
+export default makeStyles((palette) => ({
   screen: {
     flex: 1
   },
@@ -46,4 +45,4 @@ export default StyleSheet.create({
     alignSelf: 'center',
     paddingBottom: 15
   }
-})
+}))

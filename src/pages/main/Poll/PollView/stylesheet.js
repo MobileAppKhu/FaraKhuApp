@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
-import palette from '../../../../theme/palette'
+import makeStyles from '../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   screen: {
     flex: 1
   },
@@ -30,6 +29,5 @@ const styles = StyleSheet.create({
   multipleText: {
     paddingHorizontal: 24
   }
-})
-
-export default styles
+}))
+export default useStyles
