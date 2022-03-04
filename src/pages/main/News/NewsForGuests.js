@@ -6,7 +6,7 @@ import palette from '../../../theme/palette'
 import useStyles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
 const androidRipple = {borderless: true, color: '#ddd', radius: 25}
-export default function News() {
+export default function NewsForGuests() {
   const navigation = useNavigation()
   const styles = useStyles()
   return (

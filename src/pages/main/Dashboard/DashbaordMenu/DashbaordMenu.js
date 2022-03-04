@@ -18,7 +18,7 @@ export default function DashbaordMenu() {
       <DashboardButtonPage
         title="اخبار و رویدادها"
         iconName="icons8_rss-1-news"
-        onPress={() => navigation.navigate('personal-calendar')}
+        onPress={() => navigation.navigate('news-list')}
       />
       <DashboardButtonPage
         title="فراخوان ها"
