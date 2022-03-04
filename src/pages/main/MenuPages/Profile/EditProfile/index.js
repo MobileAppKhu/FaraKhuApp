@@ -1,5 +1,5 @@
 import React, {useRef, useState} from 'react'
-import {View, StyleSheet, ScrollView} from 'react-native'
+import {View, ScrollView} from 'react-native'
 
 import CustomButton from '../../../../../components/CustomButton'
 import SimpleHeader from '../../../../../components/SimpleHeader'
@@ -10,8 +10,8 @@ import {request} from '../../../../../helpers/request'
 import SuccessModal from './SuccessModal'
 import {useNavigation} from '@react-navigation/native'
 import {useToast} from 'react-native-toast-notifications'
-import {useSelector} from "react-redux";
-import makeStyles from "../../../../../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 function EditProfile({route}) {
   const userData = route.params

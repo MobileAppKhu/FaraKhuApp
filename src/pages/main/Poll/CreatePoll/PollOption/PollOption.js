@@ -1,10 +1,10 @@
 import React from 'react'
-import {View, StyleSheet, TextInput, Pressable} from 'react-native'
+import {View, TextInput, Pressable} from 'react-native'
 
 import CustomIcon from '../../../../../components/CustomIcon'
 import theme from '../../../../../theme'
-import {useSelector} from "react-redux";
-import makeStyles from "../../../../../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 const PollOption = ({
   placeholder = 'گزینه1',

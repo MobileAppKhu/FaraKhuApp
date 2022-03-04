@@ -12,9 +12,8 @@ import ImagePicker from '../../../../components/ImagePicker'
 import DayPicker from './DayPicker'
 import useStyles from './stylessheet'
 import CloseModal from './Modals/CloseModal'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 
-const {M_3_SYS_PRIMARY: primaryColor} = palette
 const dayTemplate = {
   id: 0,
   day: '',
@@ -100,6 +99,8 @@ function MyCoursesCreateCourse() {
   }
   const styles = useStyles()
   const {theme: palette} = useSelector((state) => state.authReducer)
+  const {M_3_SYS_PRIMARY: primaryColor} = palette
+
   return (
     <View style={styles.screen}>
       <View style={styles.header}>

@@ -4,8 +4,8 @@ import {View, Pressable} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
 import PollOption from '../PollOption'
-import {useSelector} from "react-redux";
-import makeStyles from "../../../../../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 function PollOptionsSection({
   pollOptions,
@@ -74,7 +74,7 @@ function PollOptionsSection({
   )
 }
 
-const useStyles = makeStyles((palette) => ({
+const useStyles = makeStyles(() => ({
   pollOptionsTitle: {
     flexDirection: 'row-reverse',
     alignItems: 'baseline',

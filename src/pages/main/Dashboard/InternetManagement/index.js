@@ -1,9 +1,9 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View} from 'react-native'
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
-import {useSelector} from "react-redux";
-import makeStyles from "../../../../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../helpers/makeStyles'
 
 function InternetManagement() {
   const {theme: palette} = useSelector((state) => state.authReducer)

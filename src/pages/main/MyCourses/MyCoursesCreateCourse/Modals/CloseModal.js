@@ -1,14 +1,13 @@
 import React from 'react'
-import {StyleSheet} from 'react-native'
 import Modal from 'react-native-modal'
 
 import CustomAlert from '../../../../../components/CustomAlert'
-import {useSelector} from "react-redux";
-import makeStyles from "../../../../../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 function CloseModal({isVisible, onClosePress, onStayPress}) {
-    const {theme: palette} = useSelector((state) => state.authReducer)
-    const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <Modal
       isVisible={isVisible}
@@ -43,7 +42,7 @@ function CloseModal({isVisible, onClosePress, onStayPress}) {
   )
 }
 
-const useStyles = makeStyles((palette) => ({
+const useStyles = makeStyles(() => ({
   deleteModal: {
     flex: 1,
     margin: 0,
