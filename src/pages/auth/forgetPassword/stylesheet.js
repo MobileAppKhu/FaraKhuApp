@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   root: {
     flex: 1
   },
@@ -25,5 +25,5 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-between',
     // alignItems: 'stretch'
   }
-})
-export default styles
+}))
+export default useStyles

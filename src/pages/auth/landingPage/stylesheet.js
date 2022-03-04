@@ -1,6 +1,6 @@
 import makeStyles from '../../../helpers/makeStyles'
 
-const useStyle = makeStyles(() => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexDirection: 'column',
     justifyContent: 'center',
@@ -21,4 +21,4 @@ const useStyle = makeStyles(() => ({
     flex: 1
   }
 }))
-export default useStyle
+export default useStyles
