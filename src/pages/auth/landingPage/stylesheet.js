@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyle = makeStyles(() => ({
   root: {
     flexDirection: 'column',
     justifyContent: 'center',
@@ -20,5 +20,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1
   }
-})
-export default styles
+}))
+export default useStyle

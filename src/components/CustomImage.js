@@ -2,8 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Platform, Image, View} from 'react-native'
 import RNFS from 'react-native-fs'
 import Icon from 'react-native-vector-icons/Feather'
-
-import palette from '../theme/palette'
+import {useSelector} from 'react-redux'
 
 export default function CustomImage({avatarId, style}) {
   const [imageAddress, setImageAddress] = useState(null)
@@ -12,6 +11,7 @@ export default function CustomImage({avatarId, style}) {
       setImageAddress(imagePath)
     })
   }, [avatarId])
+  const {theme: palette} = useSelector((state) => state.authReducer)
 
   return (
     <>
