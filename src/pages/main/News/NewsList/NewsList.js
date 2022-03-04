@@ -1,20 +1,46 @@
-import {View} from 'react-native'
+import {Pressable, View} from 'react-native'
 import React from 'react'
 import NewsListHeader from './NewsListHeader/NewsListHeader'
 import styles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import NewsListItem from './NewsListItem/NewsListItem'
+import Typography from '../../../../components/Typography'
+import palette from '../../../../theme/palette'
+import CustomIcon from '../../../../components/CustomIcon'
 export default function NewsList() {
   return (
     <View style={styles.root}>
       <NewsListHeader />
       <ScrollView>
-        {Array(2)
-          .fill(null)
-          .map((item, index) => (
-            <NewsListItem key={index.toString()} />
-          ))}
+        <View style={styles.itemsContainer}>
+          {Array(8)
+            .fill(null)
+            .map((item, index) => (
+              <NewsListItem key={index.toString()} />
+            ))}
+        </View>
       </ScrollView>
+      <View>
+        <Pressable
+          style={styles.buttonStyle}
+          // onPress={() => navigation.navigate('create-announcement')}
+        >
+          <View style={styles.textStyle}>
+            <Typography
+              variant="h6"
+              color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}>
+              خبر جدید
+            </Typography>
+          </View>
+          <View style={styles.iconStyle}>
+            <CustomIcon
+              name="add_24px"
+              size={24}
+              color={palette.M_3_SYS_ON_PRIMARY_CONTAINER}
+            />
+          </View>
+        </Pressable>
+      </View>
     </View>
   )
 }

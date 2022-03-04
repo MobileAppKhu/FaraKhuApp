@@ -7,8 +7,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 24,
-    justifyContent: 'space-between',
-    marginBottom: 16
+    justifyContent: 'space-between'
   }
 })
 export default styles

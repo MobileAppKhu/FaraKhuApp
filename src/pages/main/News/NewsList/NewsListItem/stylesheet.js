@@ -19,6 +19,11 @@ const styles = StyleSheet.create({
     height: 118,
     borderRadius: 12,
     backgroundColor: 'red'
+  },
+  textContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between'
   }
 })
 export default styles
