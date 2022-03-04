@@ -2,14 +2,15 @@ import React from 'react'
 import {View} from 'react-native'
 import CustomIcon from '../../../../../../components/CustomIcon'
 import Typography from '../../../../../../components/Typography'
-import palette from '../../../../../../theme/palette'
 import useStyles from './stylesheet'
+import {useSelector} from "react-redux";
 export default function MyCoursesCourseViewDetails({
   examDate,
   classTime,
   location
 }) {
-  const styles = useStyles()
+    const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <View style={styles.timeDetailsContainer}>
@@ -56,7 +57,8 @@ export default function MyCoursesCourseViewDetails({
   )
 }
 const ClassTimeComponent = ({day, hour}) => {
-  const styles = useStyles()
+    const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.timeDetailsPart}>
       <Typography variant="body1" color={palette.M_3_SYS_ON_SURFACE}>

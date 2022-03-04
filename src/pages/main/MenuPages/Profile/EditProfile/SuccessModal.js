@@ -3,9 +3,10 @@ import {StyleSheet} from 'react-native'
 import Modal from 'react-native-modal'
 
 import CustomAlert from '../../../../../components/CustomAlert'
-import palette from '../../../../../theme/palette'
+import {useSelector} from "react-redux";
 
 function SuccessModal({isVisible, onPressBtn, title}) {
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Modal
       isVisible={isVisible}

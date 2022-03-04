@@ -1,11 +1,11 @@
 import React from 'react'
 import {Image, ImageBackground, Pressable, View} from 'react-native'
 import CustomIcon from '../../../../../../components/CustomIcon'
-import palette from '../../../../../../theme/palette'
 
 import useStyles from './stylesheet'
 import Typography from '../../../../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 
 const androidRipple = {color: '#ddd', borderless: true, radius: 24}
 
@@ -16,6 +16,7 @@ export default function MyCoursesCourseViewHeader({
 }) {
   const navigation = useNavigation()
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <ImageBackground
       source={require('../../../../../../assets/images/my-course-test.jpg')}

@@ -6,13 +6,13 @@ import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
 import CustomInput from '../../../../components/CustomInput'
 import CustomButton from '../../../../components/CustomButton'
-import palette from '../../../../theme/palette'
 import CustomPicker from '../../../../components/CustomPicker'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
 import DayPicker from './DayPicker'
 import useStyles from './stylessheet'
 import CloseModal from './Modals/CloseModal'
+import {useSelector} from "react-redux";
 
 const {M_3_SYS_PRIMARY: primaryColor} = palette
 const dayTemplate = {
@@ -99,6 +99,7 @@ function MyCoursesCreateCourse() {
     setStudents(newStudents)
   }
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.screen}>
       <View style={styles.header}>

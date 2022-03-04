@@ -4,11 +4,12 @@ import {useNavigation} from '@react-navigation/native'
 
 import {styles as useStyles} from './stylesheet'
 import CustomIcon from '../../../../components/CustomIcon'
-import palette from './../../../../theme/palette'
+import {useSelector} from "react-redux";
 
 export default function DashboardHeader() {
   const navigation = useNavigation()
   const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <View style={styles.optionsConainers}>

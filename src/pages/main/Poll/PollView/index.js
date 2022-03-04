@@ -3,10 +3,10 @@ import {View, ScrollView} from 'react-native'
 
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import PollOptionDetails from './PollOptionDetails'
 import useStyles from './stylesheet'
 import TerminatePollModal from './TerminatePollModal'
+import {useSelector} from "react-redux";
 
 const samplePollOptions = [
   {
@@ -39,7 +39,7 @@ function PollView({
 }) {
   const [pollOptions, setPollOptions] = useState(options)
   const [terminatePollModal, setTerminatePollModal] = useState(false)
-
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const optionOnPressHandler = (option) => {
     const selectedIndex = pollOptions.findIndex(
       (opt) => opt.title === option.title

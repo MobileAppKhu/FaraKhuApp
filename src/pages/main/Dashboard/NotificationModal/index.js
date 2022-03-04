@@ -3,8 +3,10 @@ import {View, StyleSheet, Pressable} from 'react-native'
 import Modal from 'react-native-modal'
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
-
+import {useSelector} from "react-redux";
+import makeStyles from "../../../../helpers/makeStyles";
+const {theme: palette} = useSelector((state) => state.authReducer)
+const styles = useStyles()
 const modalItems = [
   {
     title: 'تکلیف دوم از فصل3',
@@ -67,7 +69,7 @@ function NotificationModal({isVisible, onBackdropPress, items = modalItems}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   ModalContainer: {
     flex: 1,
     margin: 0
@@ -106,6 +108,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   }
-})
+}))
 
 export default NotificationModal

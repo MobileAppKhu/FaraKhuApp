@@ -1,12 +1,13 @@
 import React from 'react'
 import {View} from 'react-native'
 import useStyles from './stylesheet'
-import palette from '../../../../../../theme/palette'
 import UpcomingEventItems from '../../../../Dashboard/Components/UpcomingEventItems/UpcomingEventItems'
 import Typography from '../../../../../../components/Typography'
 import PollEventItems from './../../../../Dashboard/Components/PollEventItems/PollEventItems'
+import {useSelector} from "react-redux";
 
 export default function MyCoursesCourseViewAnnouncement() {
+    const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={styles.root}>

@@ -1,9 +1,9 @@
 import React from 'react'
 import {View, Pressable} from 'react-native'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 
 import useStyles from './stylesheet'
+import {useSelector} from "react-redux";
 
 function PollOptionDetails({
   title = '29 آذر 8 تا 9 صبح',
@@ -13,6 +13,7 @@ function PollOptionDetails({
   checked = true,
   onPress
 }) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={[styles.container, MostVote && styles.focusedContainer]}>

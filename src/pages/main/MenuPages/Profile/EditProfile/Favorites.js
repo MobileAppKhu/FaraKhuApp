@@ -1,10 +1,11 @@
 import React from 'react'
-import {View, StyleSheet, Pressable} from 'react-native'
+import {View,Pressable} from 'react-native'
 
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import CustomIcon from '../../../../../components/CustomIcon'
 import FavoriteItem from './FavoriteItem'
+import {useSelector} from "react-redux";
+import makeStyles from "../../../../../helpers/makeStyles";
 
 function Favorites({favoriteItems, setFavoriteItems}) {
   const favoriteItemChangeHandler = (text, option) => {
@@ -21,8 +22,10 @@ function Favorites({favoriteItems, setFavoriteItems}) {
     const newOptions = favoriteItems.filter((opt) => option.id !== opt.id)
     setFavoriteItems(newOptions)
   }
-
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
+
     <View style={styles.favoriteItem}>
       <View style={styles.favoriteItemTitle}>
         <Typography variant="h6" color={palette.M_3_SYS_PRIMARY}>
@@ -61,7 +64,7 @@ function Favorites({favoriteItems, setFavoriteItems}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   favoriteItemTitle: {
     marginBottom: 15
   },
@@ -84,6 +87,6 @@ const styles = StyleSheet.create({
     width: '22%',
     paddingVertical: 10
   }
-})
+}))
 
 export default Favorites

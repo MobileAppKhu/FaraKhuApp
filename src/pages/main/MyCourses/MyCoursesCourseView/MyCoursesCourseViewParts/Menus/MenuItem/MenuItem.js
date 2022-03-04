@@ -1,10 +1,11 @@
 import React from 'react'
-import {Pressable, StyleSheet} from 'react-native'
+import {Pressable} from 'react-native'
 
 import CustomIcon from '../../../../../../../components/CustomIcon'
 import Typography from '../../../../../../../components/Typography'
 import HorizontalSeparator from '../../../../../../../components/HorizontalSeparator'
-import palette from '../../../../../../../theme/palette'
+import {useSelector} from "react-redux";
+import makeStyles from "../../../../../../../helpers/makeStyles";
 
 const MenuItem = ({
   title,
@@ -13,28 +14,34 @@ const MenuItem = ({
   onPress,
   separator,
   fontVariant = 'body2'
-}) => (
-  <>
-    <Pressable
-      onPress={onPress}
-      android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
-      style={styles.container}>
-      <Typography variant={fontVariant} color={color} style={styles.title}>
-        {title}
-      </Typography>
-      <CustomIcon name={icon} size={24} color={color} />
-    </Pressable>
-    {separator && (
-      <HorizontalSeparator
-        width="85%"
-        style={{alignSelf: 'center'}}
-        color={palette.M_3_SYS_OUTLINE}
-      />
-    )}
-  </>
-)
+}) => {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
+  return(
+      <>
+        <Pressable
+            onPress={onPress}
+            android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
+            style={styles.container}>
+          <Typography variant={fontVariant} color={color} style={styles.title}>
+            {title}
+          </Typography>
+          <CustomIcon name={icon} size={24} color={color} />
+        </Pressable>
+        {separator && (
+            <HorizontalSeparator
+                width="85%"
+                style={{alignSelf: 'center'}}
+                color={palette.M_3_SYS_OUTLINE}
+            />
+        )}
+      </>
 
-const styles = StyleSheet.create({
+  )
+
+}
+
+const useStyles = makeStyles(() => ({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -46,6 +53,6 @@ const styles = StyleSheet.create({
   title: {
     marginRight: 12
   }
-})
+}))
 
 export default MenuItem

@@ -1,11 +1,13 @@
 import React from 'react'
-import {StyleSheet} from 'react-native'
 import Modal from 'react-native-modal'
 
 import CustomAlert from '../../../../../components/CustomAlert'
-import palette from '../../../../../theme/palette'
+import {useSelector} from "react-redux";
+import makeStyles from "../../../../../helpers/makeStyles";
 
 function ErrorModal({title, message, isVisible, onBtnPress}) {
+    const {theme: palette} = useSelector((state) => state.authReducer)
+    const styles = useStyles()
   return (
     <Modal
       isVisible={isVisible}
@@ -35,13 +37,13 @@ function ErrorModal({title, message, isVisible, onBtnPress}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   deleteModal: {
     flex: 1,
     margin: 0,
     justifyContent: 'center',
     alignItems: 'center'
   }
-})
+}))
 
 export default ErrorModal
