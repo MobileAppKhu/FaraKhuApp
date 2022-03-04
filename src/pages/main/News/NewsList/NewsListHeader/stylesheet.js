@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../../../helpers/makeStyles'
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   root: {
     width: '100%',
     height: 64,
@@ -9,5 +9,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     justifyContent: 'space-between'
   }
-})
-export default styles
+}))
+export default useStyles

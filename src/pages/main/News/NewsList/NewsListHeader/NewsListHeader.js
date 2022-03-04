@@ -1,12 +1,14 @@
 import {Pressable, View} from 'react-native'
 import React from 'react'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CustomIcon from '../../../../../components/CustomIcon'
-import palette from '../../../../../theme/palette'
 import Typography from '../../../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from 'react-redux'
 export default function NewsListHeader() {
   const navigation = useNavigation()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
 
   return (
     <View style={styles.root}>

@@ -1,13 +1,15 @@
 import {Pressable, View} from 'react-native'
 import React from 'react'
 import NewsListHeader from './NewsListHeader/NewsListHeader'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import NewsListItem from './NewsListItem/NewsListItem'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
+import {useSelector} from 'react-redux'
 export default function NewsList() {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <NewsListHeader />
