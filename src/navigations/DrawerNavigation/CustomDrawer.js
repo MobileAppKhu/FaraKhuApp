@@ -1,25 +1,22 @@
 import React, {useEffect, useState} from 'react'
-import {
-  View,
-  StyleSheet,
-  Image,
-  Pressable,
-  ActivityIndicator
-} from 'react-native'
+import {View, Image, Pressable, ActivityIndicator} from 'react-native'
 import {DrawerContentScrollView} from '@react-navigation/drawer'
 import {useNavigation} from '@react-navigation/native'
 import ToggleSwitch from 'toggle-switch-react-native'
 
 import Typography from '../../components/Typography'
 import Icon from 'react-native-vector-icons/Feather'
-import palette, {darkTheme} from '../../theme/palette'
+import lightPalette, {darkTheme} from '../../theme/palette'
 import HorizontalSeparator from '../../components/HorizontalSeparator'
 import {changeTheme} from './../../redux/auth/actions'
 import {request} from '../../helpers/request'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import CustomImage from '../../components/CustomImage'
+import makeStyles from '../../helpers/makeStyles'
 
 const DrawerItem = ({icon, title, onPress}) => {
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.drawerItemContainer}>
       <Pressable
@@ -29,7 +26,9 @@ const DrawerItem = ({icon, title, onPress}) => {
           color: palette.M_3_SYS_SECONDARY_CONTAINER,
           borderless: true
         }}>
-        <Typography variant="body2">{title}</Typography>
+        <Typography variant="body2" color={palette.M_3_SYS_ON_SURFACE_VARIANT}>
+          {title}
+        </Typography>
         <Image
           source={icon}
           style={styles.drawerItemIcon}
@@ -41,6 +40,8 @@ const DrawerItem = ({icon, title, onPress}) => {
 }
 
 function CustomDrawer(props) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+
   const [isDarkTheme, setDarkTheme] = useState(false)
   const navigation = useNavigation()
   const dispatch = useDispatch()
@@ -134,7 +135,7 @@ function CustomDrawer(props) {
               onToggle={() => {
                 setDarkTheme(!isDarkTheme)
 
-                dispatch(changeTheme(isDarkTheme ? palette : darkTheme))
+                dispatch(changeTheme(isDarkTheme ? lightPalette : darkTheme))
               }}
               animationSpeed={200}
             />
@@ -245,7 +246,7 @@ function CustomDrawer(props) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   drawerItemContainer: {
     borderRadius: 100,
     overflow: 'hidden',
@@ -265,6 +266,6 @@ const styles = StyleSheet.create({
     height: 30,
     marginStart: 13
   }
-})
+}))
 
 export default CustomDrawer
