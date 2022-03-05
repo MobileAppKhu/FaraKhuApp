@@ -3,6 +3,7 @@ import React from 'react'
 import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
 import {useSelector} from 'react-redux'
+import {generateJalaaliDate} from '../../../../../helpers/date'
 export default function NewsListItem() {
   const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
@@ -18,7 +19,7 @@ export default function NewsListItem() {
         <Typography
           variant="body2"
           color={palette.M_3_SYS_ON_SECONDARY_CONTAINER}>
-          23 آذر 1400
+          {generateJalaaliDate('1400-11-28')}
         </Typography>
       </View>
     </View>

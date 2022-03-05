@@ -17,7 +17,7 @@ export default function NewsList() {
       <NewsListHeader />
       <ScrollView>
         <View style={styles.itemsContainer}>
-          {Array(8)
+          {Array(7)
             .fill(null)
             .map((item, index) => (
               <NewsListItem key={index.toString()} />
