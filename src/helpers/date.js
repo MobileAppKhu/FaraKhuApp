@@ -90,7 +90,6 @@ export const jalaaliToGregorian = (year, month, day) => {
 }
 export const generateJalaaliDate = (date) => {
   const array = date.split('-')
-  console.log(array)
   return `${convertPersianNumbersToEnglishNumbers(array[2])} ${
     jalaaliMonthsList[Number(array[1]) - 1]
   } ${convertPersianNumbersToEnglishNumbers(array[0])}`

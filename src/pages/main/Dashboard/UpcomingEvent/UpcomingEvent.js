@@ -19,7 +19,6 @@ export default function UpcomingEvent() {
   }, [])
   // const theme = useSelector((state) => state.authReducer.theme)
 
-  // console.log(theme.M_3_SYS_ON_PRIMARY)
   const styles = useStyles()
   return (
     <View style={styles.root}>
