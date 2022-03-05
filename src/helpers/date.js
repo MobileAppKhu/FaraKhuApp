@@ -1,6 +1,7 @@
 import jalaali from 'jalaali-js'
 import moment from 'moment'
 import momentJalaali from 'moment-jalaali'
+import {convertPersianNumbersToEnglishNumbers} from './numbers'
 
 const gregorianMonthsList = [
   'January',
@@ -69,9 +70,9 @@ export const getListOfDays = (
 }
 
 export const formatNumberToMinutesAndSecond = (time) => {
-  var minutes = Math.floor(time / 60)
-  var seconds = time - minutes * 60
-  var result = ''
+  const minutes = Math.floor(time / 60)
+  const seconds = time - minutes * 60
+  let result = ''
   result += minutes < 10 ? `0${minutes}` : minutes
   result += ':'
   result += seconds < 10 ? `0${seconds}` : seconds
@@ -86,4 +87,11 @@ export const gregorianToJalaali = (year, month, day) => {
 export const jalaaliToGregorian = (year, month, day) => {
   const {gy, gm, gd} = jalaali.toGregorian(year, month, day)
   return {gYear: gy, gMonth: gm, gDay: gd}
+}
+export const generateJalaaliDate = (date) => {
+  const array = date.split('-')
+  console.log(array)
+  return `${convertPersianNumbersToEnglishNumbers(array[2])} ${
+    jalaaliMonthsList[Number(array[1]) - 1]
+  } ${convertPersianNumbersToEnglishNumbers(array[0])}`
 }
