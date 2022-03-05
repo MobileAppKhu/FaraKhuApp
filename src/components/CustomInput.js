@@ -146,13 +146,10 @@ const styles = StyleSheet.create({
     color: palette.M_3_SYS_INVERSE_SURFACE,
     borderWidth: 2,
     borderRadius: 15,
-    fontSize: 14,
+    // fontSize: 14,
     lineHeight: 18,
     width: '100%',
-    paddingRight: 15,
-    paddingLeft: 15,
-    paddingTop: 15,
-    paddingBottom: 15
+    padding: 15
   },
   inputError: {
     borderColor: palette.M_3_READ_ONLY_BACKGROUND_OPACITY_0_08,
