@@ -26,7 +26,7 @@ import WebViewPage from './DrawerNavigation/WebView'
 import NewsForGuests from '../pages/main/News/NewsForGuests'
 import NewsList from '../pages/main/News/NewsList/NewsList'
 import NewsCreate from '../pages/main/News/NewsCreate/NewsCreate'
-import CreateCourseEvent from '../pages/main/CourseEvent/CourseEvent'
+import CreateCourseEvent from '../pages/main/CourseEvent/CreateCourseEvent'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
