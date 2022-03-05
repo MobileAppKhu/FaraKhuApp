@@ -1,8 +1,7 @@
-import {StyleSheet} from 'react-native'
+import makeStyles from '../../../../helpers/makeStyles'
 import theme from '../../../../theme'
-import palette from '../../../../theme/palette'
 
-export default StyleSheet.create({
+export default makeStyles((palette) => ({
   root: {flex: 1},
   imageInput: {
     margin: 16,
@@ -38,4 +37,4 @@ export default StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 16
   }
-})
+}))

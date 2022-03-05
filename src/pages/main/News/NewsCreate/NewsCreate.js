@@ -1,16 +1,18 @@
 import {View} from 'react-native'
 import React from 'react'
 import SimpleHeader from '../../../../components/SimpleHeader'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import ImagePicker from '../../../../components/ImagePicker'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import {useState} from 'react'
 import CustomInput from '../../../../components/CustomInput'
 import CustomButton from '../../../../components/CustomButton'
+import {useSelector} from 'react-redux'
 export default function NewsCreate() {
   const [imageUri, setimageUri] = useState()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <View style={styles.root}>
       <SimpleHeader title="ثبت خبر جدید" />
