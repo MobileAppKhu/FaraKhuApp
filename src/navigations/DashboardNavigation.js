@@ -25,6 +25,7 @@ import CreatePoll from '../pages/main/Poll/CreatePoll'
 import WebViewPage from './DrawerNavigation/WebView'
 import NewsForGuests from '../pages/main/News/NewsForGuests'
 import NewsList from '../pages/main/News/NewsList/NewsList'
+import NewsCreate from '../pages/main/News/NewsCreate/NewsCreate'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -57,6 +58,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="create-poll" component={CreatePoll} />
       <Stack.Screen name="web-view" component={WebViewPage} />
       <Stack.Screen name="news-list" component={NewsList} />
+      <Stack.Screen name="news-create" component={NewsCreate} />
     </Stack.Navigator>
   )
 }

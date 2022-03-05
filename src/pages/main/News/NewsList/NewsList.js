@@ -7,9 +7,11 @@ import NewsListItem from './NewsListItem/NewsListItem'
 import Typography from '../../../../components/Typography'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useSelector} from 'react-redux'
+import {useNavigation} from '@react-navigation/native'
 export default function NewsList() {
   const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
+  const navigation = useNavigation()
   return (
     <View style={styles.root}>
       <NewsListHeader />
@@ -25,8 +27,7 @@ export default function NewsList() {
       <View>
         <Pressable
           style={styles.buttonStyle}
-          // onPress={() => navigation.navigate('create-announcement')}
-        >
+          onPress={() => navigation.navigate('news-create')}>
           <View style={styles.textStyle}>
             <Typography
               variant="h6"
