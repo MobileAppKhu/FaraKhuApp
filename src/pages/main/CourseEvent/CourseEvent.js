@@ -1,18 +1,14 @@
 import React, {useState} from 'react'
-import SimpleHeader from '../../../../components/SimpleHeader'
-import useStyles from './stylesheet'
-import {ScrollView, TextInput, View} from 'react-native'
-import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
-import CustomInput from '../../../../components/CustomInput'
-import CustomPicker from '../../../../components/CustomPicker'
-import CustomButton from '../../../../components/CustomButton'
-import {request} from '../../../../helpers/request'
-import moment from 'moment-jalaali'
-import {useToast} from 'react-native-toast-notifications'
-import {useNavigation} from '@react-navigation/native'
-
-export default function CreatToDo() {
+import {View} from 'react-native'
+import {ScrollView, TextInput} from 'react-native-gesture-handler'
+import CustomPicker from '../../../components/CustomPicker'
+import CustomInput from '../../../components/CustomInput'
+import styles from './stylesheet'
+import CourseEventHeader from './CourseEventHeader/CourseEventHeader'
+import palette from '../../../theme/palette'
+import Typography from '../../../components/Typography'
+import CustomButton from '../../../components/CustomButton'
+export default function CreateCourseEvent() {
   const [finalExamDate, setFinalExamDate] = useState({
     day: '',
     month: '',
@@ -20,57 +16,30 @@ export default function CreatToDo() {
     hour: '',
     minute: ''
   })
-  const navigation = useNavigation()
-  const [listTodo, setlistTodo] = useState('')
-  const [description, setDiscription] = useState('')
-  const [todoID, setToDoID] = useState('')
-  const toast = useToast()
-  const createToDoFunction = async () => {
-    const date = moment(
-      `${finalExamDate.year}-${finalExamDate.month}-${finalExamDate.day} ${finalExamDate.hour}:${finalExamDate.minute}`,
-      'jYYYY-jMM-jDD HH:MM'
-    ).format('YYYY-MM-DDTHH:MM:SS')
-    request('/Event/AddEvent', 'POST', {
-      eventName: todoID,
-      eventDescription: description,
-      eventTime: date,
-      courseId: listTodo.startsWith('شخصی')
-        ? ''
-        : '2d5fd322-1f99-4cf5-8dbe-7858d59b5189'
-    }).then((data) => {
-      if (data.status === 200) {
-        toast.show('رویداد با موفقیت ایجاد شد', {
-          type: 'success'
-        })
-        navigation.goBack()
-      }
-    })
-  }
-  const styles = useStyles()
+  const [description, setdescription] = useState('')
   return (
-    <View style={styles.screen}>
-      <SimpleHeader
-        title="رویداد جدید"
-        backgroundColor={palette.M_3_SYS_PRIMARY}
-        titleColor={palette.M_3_SYS_ON_PRIMARY}
-        itemsColor={palette.M_3_SYS_ON_PRIMARY}
-      />
-
-      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <View style={styles.textInputContainer}>
-          <CustomInput
-            label="عنوان رویداد:"
+    <View style={styles.root}>
+      <CourseEventHeader />
+      <ScrollView>
+        <View style={styles.eventTypeContainer}>
+          <CustomPicker
+            label="نوع اطلاعیه"
             required
-            placeholder="«عنوان رویداد»"
-            maxLength={9}
-            labelColor={palette.M_3_SYS_PRIMARY}
-            labelStyle={styles.labelStyle}
-            style={styles.textInput}
-            value={todoID}
-            onChangeText={(id) => setToDoID(id)}
+            items={['امتحان', 'تکلیف', 'ارائه', 'سایر']}
+            labelStyle={styles.pickerLabelStyle}
+            labelColor={palette.M_3_SYS_ON_BACKGROUND}
           />
         </View>
-
+        <View style={styles.separator} />
+        <View style={styles.eventTypeContainer}>
+          <CustomInput
+            label="عنوان"
+            required
+            labelColor={palette.M_3_SYS_ON_BACKGROUND}
+            placeholder="ورودی"
+          />
+        </View>
+        <View style={styles.separator} />
         <View style={styles.dateContainer}>
           <Typography variant="body2" color={palette.M_3_SYS_PRIMARY}>
             تاریخ رویداد:
@@ -141,36 +110,27 @@ export default function CreatToDo() {
             />
           </View>
         </View>
-
-        <View style={styles.containerpicker}>
-          <CustomPicker
-            label="دسته بندی:"
-            items={['شخصی', 'مبانی برق']}
-            labelColor={palette.M_3_SYS_PRIMARY}
-            selectedItem={listTodo}
-            onSelectItem={(lst) => setlistTodo(lst)}
-          />
-        </View>
-        <View style={styles.descInputContainer}>
+        <View style={styles.separator} />
+        <View style={styles.descriptionInputContainer}>
           <CustomInput
             label="توضیحات:"
-            placeholder="«توضیحات رویداد»"
+            placeholder="«توضیحات اطلاعیه"
             multiline
             textAlignVertical="top"
             labelColor={palette.M_3_SYS_PRIMARY}
             labelStyle={styles.labelStyle}
-            style={styles.descInput}
+            style={styles.descriptionInput}
             value={description}
-            onChangeText={(des) => setDiscription(des)}
+            onChangeText={(text) => setdescription(text)}
           />
         </View>
         <View style={styles.buttonContainer}>
           <CustomButton
-            title="ایجاد رویداد ✓"
+            title="ایجاد رویداد"
             size="small"
             startIconColor={palette.M_3_SYS_ON_PRIMARY}
-            disabled={!listTodo || !description || !finalExamDate || !todoID}
-            onPress={createToDoFunction}
+            startIcon="add_24px"
+            startIconSize={19}
           />
         </View>
       </ScrollView>
