@@ -26,6 +26,7 @@ import WebViewPage from './DrawerNavigation/WebView'
 import NewsForGuests from '../pages/main/News/NewsForGuests'
 import NewsList from '../pages/main/News/NewsList/NewsList'
 import NewsCreate from '../pages/main/News/NewsCreate/NewsCreate'
+import CreateCourseEvent from '../pages/main/CourseEvent/CreateCourseEvent'
 const Stack = createStackNavigator()
 
 export default function DashboardNavigation() {
@@ -59,6 +60,7 @@ export default function DashboardNavigation() {
       <Stack.Screen name="web-view" component={WebViewPage} />
       <Stack.Screen name="news-list" component={NewsList} />
       <Stack.Screen name="news-create" component={NewsCreate} />
+      <Stack.Screen name="create-course-event" component={CreateCourseEvent} />
     </Stack.Navigator>
   )
 }
