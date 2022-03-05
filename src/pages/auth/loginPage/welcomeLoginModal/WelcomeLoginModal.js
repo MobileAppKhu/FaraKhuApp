@@ -5,7 +5,7 @@ import useStyles from './stylesheet'
 import Typography from '../../../../components/Typography'
 import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
-export default function WelcomeLoginModal({isVisible, onClsoe, name}) {
+export default function WelcomeLoginModal({isVisible, onClsoe, name, onPress}) {
   const styles = useStyles()
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClsoe}>
@@ -24,7 +24,7 @@ export default function WelcomeLoginModal({isVisible, onClsoe, name}) {
           </Typography>
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title="وارد شو" size="small" onPress={onClsoe} />
+          <CustomButton title="وارد شو" size="small" onPress={onPress} />
         </View>
       </View>
     </Modal>
