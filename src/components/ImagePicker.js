@@ -21,10 +21,11 @@ function ImagePicker({imageUri, onChangeImage, width = 100, height = 100}) {
   }
 
   return (
-    <Pressable onPress={() => selectImg()}>
+    <Pressable onPress={selectImg}>
       <View style={[styles.container, {width, height}]}>
-        {!imageUri && <CustomIcon name="icon_add" size={40} color={'gray'} />}
-        {imageUri && (
+        {!imageUri ? (
+          <CustomIcon name="icon_add" size={40} color="gray" />
+        ) : (
           <Image
             source={{uri: imageUri}}
             resizeMode="cover"

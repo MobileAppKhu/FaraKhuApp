@@ -16,13 +16,17 @@ const useStyles = makeStyles((palette) => ({
     marginRight: 16,
     width: 118,
     height: 118,
-    borderRadius: 12,
-    backgroundColor: 'red'
+    borderRadius: 12
   },
   textContainer: {
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
+  },
+  image: {
+    borderRadius: 12,
+    flex: 1
   }
 }))
 export default useStyles

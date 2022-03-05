@@ -20,8 +20,13 @@ const useStyles = makeStyles((palette) => ({
   },
   itemsContainer: {
     marginTop: 16,
-
     marginBottom: 66
+  },
+  noNews: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20
   }
 }))
 export default useStyles

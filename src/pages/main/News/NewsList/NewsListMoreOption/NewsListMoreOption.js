@@ -3,10 +3,11 @@ import {View, Pressable} from 'react-native'
 import Modal from 'react-native-modal'
 import {useSelector} from 'react-redux'
 import Typography from '../../../../../components/Typography'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 
 export default function NewsListMoreOptionModal({isOpen, onClose}) {
   const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
 
   return (
     <Modal
