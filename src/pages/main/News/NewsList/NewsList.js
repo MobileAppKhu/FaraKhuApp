@@ -11,7 +11,7 @@ import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
 export default function NewsList() {
   const getNews = () => {
-    // setisLoading(true)
+    setisLoading(true)
     request('/News/SearchNews', 'POST', {
       // search: 'تست',
       start: 0,
@@ -21,16 +21,17 @@ export default function NewsList() {
     }).then((response) => {
       if (response.status === 200) {
         setnews(response.response.news)
+        setisLoading(false)
       }
     })
-    setisLoading(false)
   }
   const {theme: palette} = useSelector((state) => state.authReducer)
   const navigation = useNavigation()
   const [news, setnews] = useState([])
-  const [isLoading, setisLoading] = useState(true)
+  const [isLoading, setisLoading] = useState(false)
   useEffect(() => {
     getNews()
+    navigation.addListener('focus', getNews)
   }, [])
   const styles = useStyles()
   return (
@@ -38,10 +39,10 @@ export default function NewsList() {
       <NewsListHeader />
       <ScrollView
         refreshControl={
-          <RefreshControl refreshing={isLoading} onRefresh={getNews} />
+          <RefreshControl refreshing={isLoading} onRefresh={() => getNews()} />
         }>
         <View style={styles.itemsContainer}>
-          {news.length > 0 ? (
+          {news.length || isLoading > 0 ? (
             news.map((item, index) => (
               <NewsListItem
                 title={item.title}

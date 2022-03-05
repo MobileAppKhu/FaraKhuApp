@@ -48,7 +48,7 @@ export default function Announcement() {
   const styles = useStyles()
   return (
     <View style={styles.container}>
-      <SimpleHeader title="فراخوان" headerRightIcon={'icons8_search_1-1'} />
+      <SimpleHeader title="فراخوان" headerRightIcon="icons8_search_1-1" />
       <ScrollView
         refreshControl={
           <RefreshControl
