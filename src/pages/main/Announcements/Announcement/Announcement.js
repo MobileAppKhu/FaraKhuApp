@@ -4,7 +4,6 @@ import SimpleHeader from './../../../../components/SimpleHeader'
 import {Pressable, View, ScrollView, RefreshControl} from 'react-native'
 import useStyles from './stylesheet'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
@@ -48,7 +47,7 @@ export default function Announcement() {
   const styles = useStyles()
   return (
     <View style={styles.container}>
-      <SimpleHeader title="فراخوان" headerRightIcon={'icons8_search_1-1'} />
+      <SimpleHeader title="فراخوان" headerRightIcon="icons8_search_1-1" />
       <ScrollView
         refreshControl={
           <RefreshControl

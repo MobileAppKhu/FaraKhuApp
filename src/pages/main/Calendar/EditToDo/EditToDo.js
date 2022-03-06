@@ -3,7 +3,6 @@ import {TextInput, View, ScrollView} from 'react-native'
 
 import useStyles from './stylesheet'
 import SimpleHeader from '../../../../components/SimpleHeader'
-import palette from '../../../../theme/palette'
 import CustomInput from '../../../../components/CustomInput'
 import Typography from '../../../../components/Typography'
 import CustomPicker from '../../../../components/CustomPicker'
@@ -12,6 +11,7 @@ import moment from 'moment-jalaali'
 import {request} from '../../../../helpers/request'
 import {useToast} from 'react-native-toast-notifications'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 
 export default function EditToDo({route}) {
   const {
@@ -24,6 +24,7 @@ export default function EditToDo({route}) {
     eventId
   } = route.params
   const date = moment(moment(eventTime).format('jYYYY-jMM-jDD HH-MM'))
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const [finalExamDate, setFinalExamDate] = useState({
     day: date.day().toString(),
     month: date.month().toString(),

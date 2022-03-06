@@ -4,12 +4,13 @@ import SimpleHeader from '../../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomInput from './../../../../components/CustomInput'
 import useStyles from './stylesheet'
-import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
 import {request} from './../../../../helpers/request'
 import {useNavigation} from '@react-navigation/native'
 import {useToast} from 'react-native-toast-notifications'
+import {useSelector} from "react-redux";
 export default function CreateAnnouncement() {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const [title, settitle] = useState('')
   const [description, setdescription] = useState('')
   const navigation = useNavigation()

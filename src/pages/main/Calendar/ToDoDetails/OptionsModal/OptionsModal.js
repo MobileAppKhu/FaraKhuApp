@@ -3,12 +3,13 @@ import {View, Pressable} from 'react-native'
 import Modal from 'react-native-modal'
 import CustomIcon from '../../../../../components/CustomIcon'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 
 import useStyles from './stylessheet'
+import {useSelector} from "react-redux";
 
 const OptionsModalItem = ({text, color, icon, onPress}) => {
   const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Pressable
       onPress={onPress}

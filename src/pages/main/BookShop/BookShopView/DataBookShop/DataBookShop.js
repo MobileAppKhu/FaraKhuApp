@@ -2,12 +2,12 @@ import React from 'react'
 import useStyles from './stylesheet'
 import {Image, Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
 import {
   addCommaToPriceUnsigned,
   convertPersianNumbersToEnglishNumbers
 } from '../../../../../helpers/numbers'
+import {useSelector} from "react-redux";
 
 export default function DataBookShop({
   title,
@@ -19,6 +19,7 @@ export default function DataBookShop({
   description,
   userId
 }) {
+    const {theme: palette} = useSelector((state) => state.authReducer)
   const navigation = useNavigation()
   const styles = useStyles()
   return (

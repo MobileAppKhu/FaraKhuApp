@@ -7,11 +7,11 @@ import useStyles from './stylesheet'
 import DatePicker from '../../../../components/DatePicker'
 import UpcomingEventItems from '../../Dashboard/Components/UpcomingEventItems/UpcomingEventItems'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
 import moment from 'moment-jalaali'
+import {useSelector} from "react-redux";
 const PersonalCalendar = () => {
   const [date, setdate] = useState()
   const navigation = useNavigation()
@@ -42,6 +42,7 @@ const PersonalCalendar = () => {
     navigation.addListener('focus', getToDoList)
   }, [date])
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <SimpleHeader title="تقویم شخصی" headerRightIcon="more_vert_24px" />

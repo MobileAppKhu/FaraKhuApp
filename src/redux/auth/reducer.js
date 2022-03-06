@@ -31,7 +31,7 @@ export default function authReducer(state = INIT_STATE, action) {
         user: '',
         role: '',
         userId: '',
-        theme: false,
+        theme: state.theme,
         token: undefined
       }
     default:

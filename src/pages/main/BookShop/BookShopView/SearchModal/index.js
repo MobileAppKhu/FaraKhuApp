@@ -5,9 +5,10 @@ import CustomButton from '../../../../../components/CustomButton'
 
 import CustomIcon from '../../../../../components/CustomIcon'
 import theme from '../../../../../theme'
-import palette from '../../../../../theme/palette'
+import {useSelector} from "react-redux";
 
 function SearchModal({isVisible, onBackPress}) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Modal
       isVisible={isVisible}

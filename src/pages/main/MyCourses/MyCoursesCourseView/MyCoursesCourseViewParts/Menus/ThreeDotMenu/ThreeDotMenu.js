@@ -4,22 +4,23 @@ import Modal from 'react-native-modal'
 import MenuItem from '../MenuItem/MenuItem'
 import makeStyles from "../../../../../../../helpers/makeStyles";
 import {useSelector} from "react-redux";
-const {theme: palette} = useSelector((state) => state.authReducer)
-const modalItems = [
-  {
-    text: 'لیست دانشجویان',
-    color: palette.M_3_SYS_PRIMARY,
-    icon: 'icons8_people'
-  },
-  {
-    text: 'ویرایش کلاس',
-    color: palette.M_3_SYS_PRIMARY,
-    icon: 'mode_edit_24px',
-    onPress: () => {}
-  }
-]
+
 function ThreeDotMenu({visible, onBackdropPress}) {
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const modalItems = [
+    {
+      text: 'لیست دانشجویان',
+      color: palette.M_3_SYS_PRIMARY,
+      icon: 'icons8_people'
+    },
+    {
+      text: 'ویرایش کلاس',
+      color: palette.M_3_SYS_PRIMARY,
+      icon: 'mode_edit_24px',
+      onPress: () => {}
+    }
+  ]
   return (
     <Modal
       isVisible={visible}

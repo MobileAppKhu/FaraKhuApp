@@ -5,9 +5,9 @@ import Typography from '../../../components/Typography'
 import useStyles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
 import {useSelector} from "react-redux";
-const androidRipple = {borderless: true, color: '#ddd', radius: 25}
-export default function News() {
+export default function NewsForGuests() {
   const {theme: palette} = useSelector((state) => state.authReducer)
+  const androidRipple = {borderless: true, color: '#ddd', radius: 25}
   const navigation = useNavigation()
   const styles = useStyles()
   return (

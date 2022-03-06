@@ -5,10 +5,10 @@ import CheckBox from '@react-native-community/checkbox'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import useStyles from './stylessheet'
 import OptionsModal from './OptionsModal'
 import DeleteModal from './DeleteModal'
+import {useSelector} from "react-redux";
 
 export default function ToDoDetails({
   date = '2 بهمن - 08:00، 37 روز مانده',
@@ -20,7 +20,7 @@ export default function ToDoDetails({
   const [done, setDone] = useState(false)
   const [deleteModal, setDeleteModal] = useState(false)
   const [optionsModal, setOptionsModal] = useState(false)
-
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const deleteModalButtons = [
     {
       title: 'حذف رویداد',

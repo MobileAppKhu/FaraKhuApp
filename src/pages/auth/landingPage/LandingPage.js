@@ -2,11 +2,12 @@ import {Image, Pressable, View} from 'react-native'
 import React from 'react'
 import useStyles from './stylesheet'
 import Typography from '../../../components/Typography/index'
-import palette from '../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 export default function LandingPage() {
   const navigation = useNavigation()
   const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Pressable
       style={styles.root}

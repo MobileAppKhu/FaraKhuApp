@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {View, StyleSheet, I18nManager} from 'react-native'
+import {View,I18nManager} from 'react-native'
 import Modal from 'react-native-modal'
 
 import {
@@ -8,10 +8,10 @@ import {
   getListOfYears,
   getListOfDays
 } from '../../helpers/date'
-import palette from '../../theme/palette'
 import CustomButton from '../CustomButton'
 import Typography from '../Typography'
 import CustomPicker from './CustomPicker'
+import makeStyles from "../../helpers/makeStyles";
 
 export default function Index({type, open, close, onOkPress}) {
   const [selectedYear, setSelectedYear] = useState(getCurrentYear(type) - 18)
@@ -24,7 +24,7 @@ export default function Index({type, open, close, onOkPress}) {
   useEffect(() => {
     setDaysList(getListOfDays(type, selectedYear.value, selectedMonth.value))
   }, [selectedMonth, selectedYear, setDaysList, type])
-
+  const styles = useStyles()
   return (
     <Modal isVisible={open}>
       <View style={styles.container}>
@@ -95,7 +95,7 @@ export default function Index({type, open, close, onOkPress}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     minHeight: 275,
     backgroundColor: palette.M_3_SYS_PRIMARY,
@@ -130,4 +130,4 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingLeft: 4
   }
-})
+}))

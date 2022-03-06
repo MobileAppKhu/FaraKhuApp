@@ -1,10 +1,10 @@
 import React from 'react'
 import {useTranslation} from 'react-i18next'
-import {View, StyleSheet, Pressable} from 'react-native'
-
-import palette from '../theme/palette'
+import {View,Pressable} from 'react-native'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
+import {useSelector} from "react-redux";
+import makeStyles from "../helpers/makeStyles";
 
 export default function CustomTab({
   tabs,
@@ -17,7 +17,8 @@ export default function CustomTab({
   withoutContent = false
 }) {
   const {t} = useTranslation()
-
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <View>
       <View style={[styles.tabView, rootStyle ? rootStyle : {}]}>
@@ -61,7 +62,7 @@ export default function CustomTab({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   tabView: {
     backgroundColor: palette.tabs.Background,
     borderRadius: 10,
@@ -94,4 +95,4 @@ const styles = StyleSheet.create({
   inactiveTabText: {
     color: palette.tabs.inactiveTabText
   }
-})
+}))

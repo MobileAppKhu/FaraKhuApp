@@ -27,7 +27,7 @@ function AddMenu({visible, setVisible, onBackdropPress}) {
       icon: 'icons_alarm-ringing',
       onPress: () => {
         onBackdropPress()
-        navigation.navigate('create-announcement')
+        navigation.navigate('create-course-event')
       }
     },
     {

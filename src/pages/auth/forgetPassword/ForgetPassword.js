@@ -4,12 +4,13 @@ import SimpleHeader from '../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
 import useStyles from './stylesheet'
 import Typography from '../../../components/Typography'
-import palette from '../../../theme/palette'
 import CustomInput from './../../../components/CustomInput'
 import CustomButton from './../../../components/CustomButton'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 export default function ForgetPassword() {
   const navigation = useNavigation()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={styles.root}>

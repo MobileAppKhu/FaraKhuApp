@@ -1,12 +1,11 @@
 import React, {useState} from 'react'
 import {Pressable, StyleSheet, TextInput} from 'react-native'
-
 import theme from '../theme'
-import palette from '../theme/palette'
 import BirthdayPickerModal from './BirthdayPickerModal'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
-
+import {useSelector} from "react-redux";
+import makeStyles from "../helpers/makeStyles";
 export default function DatePicker({
   onChangeText,
   value,
@@ -17,7 +16,9 @@ export default function DatePicker({
   label,
   ...others
 }) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const [datePickerOpen, setDatePickerOpen] = useState(false)
+  const styles = useStyles()
   return (
     <>
       {label && (
@@ -74,7 +75,7 @@ export default function DatePicker({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     width: '100%'
   },
@@ -119,4 +120,4 @@ const styles = StyleSheet.create({
   inputBlured: {
     // backgroundColor: palette.authInput.background
   }
-})
+}))

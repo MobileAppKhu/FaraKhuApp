@@ -3,40 +3,42 @@ import {View, Image} from 'react-native'
 import Typography from '../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
 import useStyles from './stylesheet'
-import palette from '../../../theme/palette'
 import CustomButton from '../../../components/CustomButton'
+import {useSelector} from "react-redux";
 export default function FirstWelcomePage() {
   const navigation = useNavigation()
+    const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
-    <View style={useStyles.container}>
-      <View style={useStyles.imageContainer}>
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
         <Image
           source={require('../../../assets/images/FaraKhuLogo.png')}
-          style={useStyles.image}
+          style={styles.image}
         />
       </View>
-      <View style={useStyles.textview1}>
-        <View style={useStyles.texttype1}>
+      <View style={styles.textview1}>
+        <View style={styles.texttype1}>
           <Typography
             variant="h3"
             color={palette.M_3_SYS_SECONDARY}
-            style={useStyles.typorgraphy1}>
+            style={styles.typorgraphy1}>
             به پلتفرم رسمی دانشگاه خوارزمی خوش امدید!
           </Typography>
         </View>
       </View>
-      <View style={useStyles.textview2}>
-        <View style={useStyles.texttype2}>
+      <View style={styles.textview2}>
+        <View style={styles.texttype2}>
           <Typography
             variant="body2"
             color={palette.M_3_SYS_ON_SURFACE}
-            style={useStyles.typorgraphy2}>
+            style={styles.typorgraphy2}>
             با استفاده این اپلیکیشن می توانید از خدمات مختلف دانشگاه خوارزمی به
             صورت یکپارچه استفاده کنید.
           </Typography>
         </View>
       </View>
-      <View style={useStyles.buttonview}>
+      <View style={styles.buttonview}>
         <CustomButton
           title={'بزن بریم!'}
           onPress={() => navigation.navigate('login')}

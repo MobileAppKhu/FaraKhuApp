@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import {View, StyleSheet, Pressable, ScrollView} from 'react-native'
+import {View, Pressable, ScrollView} from 'react-native'
 import Modal from 'react-native-modal'
 
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
-import palette from '../theme/palette'
+import {useSelector} from "react-redux";
+import makeStyles from "../helpers/makeStyles";
 
 const CustomPicker = ({
   items,
@@ -17,6 +18,8 @@ const CustomPicker = ({
   required
 }) => {
   const [modalVisible, setModalVisible] = useState(false)
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
 
   return (
     <View style={styles.container}>
@@ -73,7 +76,7 @@ const CustomPicker = ({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     width: '100%'
   },
@@ -112,6 +115,6 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     padding: 10
   }
-})
+}))
 
 export default CustomPicker

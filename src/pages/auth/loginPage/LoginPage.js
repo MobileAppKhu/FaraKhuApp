@@ -1,34 +1,46 @@
 import {View, Image, Pressable} from 'react-native'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import React, {useState} from 'react'
 import useStyles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomInput from './../../../components/CustomInput'
 import Typography from '../../../components/Typography'
-import palette from '../../../theme/palette'
 import CustomButton from './../../../components/CustomButton'
 import {useNavigation} from '@react-navigation/native'
 import {request} from './../../../helpers/request'
 import {saveUser} from './../../../redux/auth/actions'
 import WelcomeLoginModal from './welcomeLoginModal/WelcomeLoginModal'
 import {saveUserIntoStorage} from '../../../helpers/userData'
+import {useToast} from 'react-native-toast-notifications'
 export default function LoginPage() {
+  const toast = useToast()
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
   const [welcomeLoginModalisOpen, setwelcomeLoginModalisOpen] = useState(false)
+  const [token, settoken] = useState()
+  const [name, setname] = useState('')
   const dispatch = useDispatch()
   const login = () => {
     request('/Account/SignIn', 'POST', {
       logon: email,
       password
     }).then((data) => {
-      dispatch(saveUser(data.header.map['set-cookie']))
-      saveUserIntoStorage(data.header.map['set-cookie'])
-      setwelcomeLoginModalisOpen(true)
+      if (data.status === 200) {
+        settoken(data.header.map['set-cookie'])
+        setname(
+          `${data.response.profileDto.firstName} ${data.response.profileDto.lastName}`
+        )
+        setwelcomeLoginModalisOpen(true)
+      } else {
+        toast.show('ایمیل یا رمز عبور اشتباه است', {
+          type: 'danger'
+        })
+      }
     })
   }
   const navigation = useNavigation()
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <ScrollView>
@@ -83,6 +95,12 @@ export default function LoginPage() {
       <WelcomeLoginModal
         isVisible={welcomeLoginModalisOpen}
         onClsoe={() => setwelcomeLoginModalisOpen(false)}
+        onPress={() => {
+          dispatch(saveUser(token))
+          saveUserIntoStorage(token)
+          setwelcomeLoginModalisOpen(false)
+        }}
+        name={name}
       />
     </View>
   )

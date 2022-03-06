@@ -3,7 +3,6 @@ import {View, TextInput, Pressable} from 'react-native'
 
 import CustomIcon from '../../../../../components/CustomIcon'
 import theme from '../../../../../theme'
-import {useSelector} from 'react-redux'
 import makeStyles from '../../../../../helpers/makeStyles'
 
 const PollOption = ({
@@ -12,7 +11,7 @@ const PollOption = ({
   removeHandler,
   value
 }) => {
-  const {theme: palette} = useSelector((state) => state.authReducer)
+
   const styles = useStyles()
   return (
     <View style={styles.optionContainer}>

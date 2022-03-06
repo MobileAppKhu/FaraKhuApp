@@ -1,10 +1,11 @@
 import React from 'react'
 import {View} from 'react-native'
 import {SliderBox} from 'react-native-image-slider-box'
-import palette from '../../../../theme/palette'
 import useStyles from './stylesheet'
-// import {Dimensions} from 'react-native'
+import {useSelector} from "react-redux";
 export default function NotificationsImages() {
+    // eslint-disable-next-line no-undef
+    const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={styles.root}>

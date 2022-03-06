@@ -3,10 +3,11 @@ import React from 'react'
 import {Image, View} from 'react-native'
 import useStyles from './stylesheet'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
-export default function WelcomeLoginModal({isVisible, onClsoe, name}) {
+import {useSelector} from "react-redux";
+export default function WelcomeLoginModal({isVisible, onClsoe, name, onPress}) {
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClsoe}>
       <View style={styles.root}>
@@ -24,7 +25,7 @@ export default function WelcomeLoginModal({isVisible, onClsoe, name}) {
           </Typography>
         </View>
         <View style={styles.buttonContainer}>
-          <CustomButton title="وارد شو" size="small" onPress={onClsoe} />
+          <CustomButton title="وارد شو" size="small" onPress={onPress} />
         </View>
       </View>
     </Modal>

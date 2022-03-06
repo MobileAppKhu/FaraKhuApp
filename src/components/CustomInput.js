@@ -2,9 +2,10 @@ import React, {useState} from 'react'
 import {Pressable, StyleSheet, TextInput, View} from 'react-native'
 
 import theme from '../theme'
-import palette from '../theme/palette'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
+import {useSelector} from "react-redux";
+import makeStyles from "../helpers/makeStyles";
 
 export default function CustomInput({
   label,
@@ -26,8 +27,10 @@ export default function CustomInput({
   required,
   ...others
 }) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const [isFocused, setIsFocused] = useState(false)
   const [isPasswordType, setisPasswordType] = useState(secureTextEntry)
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <View style={styles.labelContainer}>
@@ -130,7 +133,7 @@ export default function CustomInput({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     width: '100%'
   },
@@ -146,13 +149,10 @@ const styles = StyleSheet.create({
     color: palette.M_3_SYS_INVERSE_SURFACE,
     borderWidth: 2,
     borderRadius: 15,
-    fontSize: 14,
+    // fontSize: 14,
     lineHeight: 18,
     width: '100%',
-    paddingRight: 15,
-    paddingLeft: 15,
-    paddingTop: 15,
-    paddingBottom: 15
+    padding: 15
   },
   inputError: {
     borderColor: palette.M_3_READ_ONLY_BACKGROUND_OPACITY_0_08,
@@ -189,4 +189,4 @@ const styles = StyleSheet.create({
   clearInputOptions: {
     paddingLeft: 45
   }
-})
+}))

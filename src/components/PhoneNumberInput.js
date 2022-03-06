@@ -4,10 +4,10 @@ import {StyleSheet, TextInput, View, Pressable, I18nManager} from 'react-native'
 import Flag from 'react-native-flags'
 
 import theme from '../theme'
-import palette from '../theme/palette'
 import CountryModal from './CountryModal'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
+import makeStyles from "../helpers/makeStyles";
 
 export default function PhoneNumberInput({
   onChangeText,
@@ -21,9 +21,8 @@ export default function PhoneNumberInput({
   ...others
 }) {
   const [modalOpen, setModalOpen] = useState(false)
-
   const {t} = useTranslation()
-
+  const styles = useStyles()
   return (
     <>
       <View style={styles.phoneNumberView}>
@@ -58,7 +57,7 @@ export default function PhoneNumberInput({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   phoneNumberView: {
     flexDirection: I18nManager.isRTL ? 'row' : 'row-reverse',
     alignItems: 'center',
@@ -94,4 +93,4 @@ const styles = StyleSheet.create({
     marginRight: I18nManager.isRTL ? 10 : 2,
     marginLeft: I18nManager.isRTL ? 2 : 10
   }
-})
+}))

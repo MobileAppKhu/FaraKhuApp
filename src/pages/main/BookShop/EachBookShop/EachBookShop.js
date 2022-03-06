@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 import {ImageBackground, Pressable, View, ScrollView} from 'react-native'
 
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import CustomIcon from '../../../../components/CustomIcon'
 import useStyles from './stylesheet'
@@ -45,21 +44,8 @@ export default function EachBookShop({route}) {
       }
     })
   }
-  const deleteModalButtons = [
-    {
-      title: 'حذف رویداد',
-      color: palette.M_3_SYS_ON_PRIMARY,
-      bgColor: palette.M_3_SYS_ERROR,
-      onPress: deleteOfferFuntion
-    },
-    {
-      title: 'بیخیال',
-      borderColor: palette.M_3_READ_ONLY_BLACK,
-      borderWidth: 1,
-      onPress: () => setDeleteModal(false)
-    }
-  ]
 
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const optionsModalItems = [
     {
       text: 'ویرایش',
@@ -88,6 +74,20 @@ export default function EachBookShop({route}) {
   ]
   const navigation = useNavigation()
   const styles = useStyles()
+  const deleteModalButtons = [
+    {
+      title: 'حذف رویداد',
+      color: palette.M_3_SYS_ON_PRIMARY,
+      bgColor: palette.M_3_SYS_ERROR,
+      onPress: deleteOfferFuntion
+    },
+    {
+      title: 'بیخیال',
+      borderColor: palette.M_3_READ_ONLY_BLACK,
+      borderWidth: 1,
+      onPress: () => setDeleteModal(false)
+    }
+  ]
   return (
     <View style={styles.container}>
       <ScrollView>

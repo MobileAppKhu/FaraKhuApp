@@ -5,7 +5,6 @@ import {useNavigation} from '@react-navigation/native'
 import Typography from '../../../../components/Typography'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import CustomPicker from '../../../../components/CustomPicker'
-import palette from '../../../../theme/palette'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
 import CustomInput from '../../../../components/CustomInput'
@@ -13,6 +12,7 @@ import CustomButton from '../../../../components/CustomButton'
 import useStyles from './stylesheet'
 import {request} from '../../../../helpers/request'
 import {useToast} from 'react-native-toast-notifications'
+import {useSelector} from "react-redux";
 
 export default function BookShopCreate({
   image = null,
@@ -24,6 +24,7 @@ export default function BookShopCreate({
   editScreen = false
 }) {
   const navigation = useNavigation()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const toast = useToast()
   const [adType, setAdType] = useState(type)
   const [imageUri, setImageUri] = useState(image)

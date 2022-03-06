@@ -2,11 +2,12 @@ import Typography from '../../../../components/Typography'
 import React, {useEffect, useState} from 'react'
 import {View} from 'react-native'
 import useStyles from './stylesheet'
-import palette from './../../../../theme/palette'
 import UpcomingEventItems from '../Components/UpcomingEventItems/UpcomingEventItems'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
+import {useSelector} from "react-redux";
 export default function UpcomingEvent() {
+    const {theme: palette} = useSelector((state) => state.authReducer)
   const navigation = useNavigation()
   const [events, setevents] = useState([])
   const getEvents = async () => {
@@ -19,7 +20,6 @@ export default function UpcomingEvent() {
   }, [])
   // const theme = useSelector((state) => state.authReducer.theme)
 
-  // console.log(theme.M_3_SYS_ON_PRIMARY)
   const styles = useStyles()
   return (
     <View style={styles.root}>

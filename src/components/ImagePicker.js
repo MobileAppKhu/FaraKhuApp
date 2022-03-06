@@ -1,9 +1,9 @@
 import React from 'react'
-import {View, StyleSheet, Image, Pressable} from 'react-native'
+import {View,Image, Pressable} from 'react-native'
 import {launchImageLibrary} from 'react-native-image-picker'
-import palette from '../theme/palette'
 
 import CustomIcon from './CustomIcon'
+import makeStyles from "../helpers/makeStyles";
 
 function ImagePicker({imageUri, onChangeImage, width = 100, height = 100}) {
   const selectImg = async () => {
@@ -19,12 +19,13 @@ function ImagePicker({imageUri, onChangeImage, width = 100, height = 100}) {
       console.log(e)
     }
   }
-
+  const styles = useStyles()
   return (
-    <Pressable onPress={() => selectImg()}>
+    <Pressable onPress={selectImg}>
       <View style={[styles.container, {width, height}]}>
-        {!imageUri && <CustomIcon name="icon_add" size={40} color={'gray'} />}
-        {imageUri && (
+        {!imageUri ? (
+          <CustomIcon name="icon_add" size={40} color="gray" />
+        ) : (
           <Image
             source={{uri: imageUri}}
             resizeMode="cover"
@@ -36,7 +37,7 @@ function ImagePicker({imageUri, onChangeImage, width = 100, height = 100}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
     borderRadius: 10,
@@ -48,6 +49,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   }
-})
+}))
 
 export default ImagePicker

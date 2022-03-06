@@ -3,12 +3,13 @@ import React from 'react'
 import {View} from 'react-native'
 import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import CustomButton from '../../../../../components/CustomButton'
 import CustomIcon from '../../../../../components/CustomIcon'
+import {useSelector} from "react-redux";
 
 export default function SaveAnnouncementModal({isVisible, onClsoe}) {
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClsoe}>
       <View style={styles.root}>

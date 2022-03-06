@@ -3,14 +3,14 @@ import React from 'react'
 import {useTranslation} from 'react-i18next'
 import {View, StyleSheet, Pressable, I18nManager} from 'react-native'
 
-import palette from '../theme/palette'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
+import makeStyles from "../helpers/makeStyles";
 
 export default function IntroHeader({title}) {
   const navigation = useNavigation()
   const {t} = useTranslation()
-
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <View style={styles.headerLeft}>
@@ -34,7 +34,7 @@ export default function IntroHeader({title}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
     alignItems: 'center',
@@ -63,4 +63,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   }
-})
+}))

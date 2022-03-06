@@ -2,12 +2,13 @@ import React from 'react'
 import {View, Image} from 'react-native'
 import Typography from '../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
-import palette from '../../../theme/palette'
 import CustomButton from '../../../components/CustomButton'
 import useStyles from './stylesheet'
+import {useSelector} from "react-redux";
 const SecondWelcomePage = () => {
   const navigation = useNavigation()
   const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>

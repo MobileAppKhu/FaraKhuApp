@@ -1,8 +1,7 @@
-import {Dimensions, StyleSheet} from 'react-native'
+import {Dimensions} from 'react-native'
+import makeStyles from "../../../helpers/makeStyles";
 
-import palette from '../../../theme/palette'
-
-export const styles = StyleSheet.create({
+ const useStyles = makeStyles((palette) => ({
   root: {
     width: Dimensions.get('window').width,
     paddingHorizontal: 30,
@@ -21,4 +20,5 @@ export const styles = StyleSheet.create({
     marginBottom: 15
   },
   emptyCell: {}
-})
+}))
+export default useStyles

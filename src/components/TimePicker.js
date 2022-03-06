@@ -3,10 +3,10 @@ import {Pressable, StyleSheet, TextInput, View, Text} from 'react-native'
 import Modal from 'react-native-modal'
 
 import theme from '../theme'
-import palette from '../theme/palette'
 import CustomPicker from './BirthdayPickerModal/CustomPicker'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
+import {useSelector} from "react-redux";
 
 export default function TimePicker({
   onChangeText,
@@ -21,6 +21,8 @@ export default function TimePicker({
   const [selectedMinute, setselectedMinute] = useState('')
   const [selectedHour, setselectedHour] = useState('')
   const [customPickerIsOpen, setcustomPickerIsOpen] = useState(false)
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <>
       {label && (
@@ -115,8 +117,7 @@ export default function TimePicker({
     </>
   )
 }
-
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     minHeight: 275,
     backgroundColor: palette.white,
@@ -203,4 +204,4 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginTop: '12%'
   }
-})
+}))

@@ -1,13 +1,13 @@
 import React from 'react'
 import {useTranslation} from 'react-i18next'
-import {Pressable, StyleSheet} from 'react-native'
+import {Pressable} from 'react-native'
 
-import palette from '../theme/palette'
 import Typography from './Typography'
+import makeStyles from "../helpers/makeStyles";
 
 export default function IntroButton({onPress, title, style, textStyle}) {
   const {t} = useTranslation()
-
+  const styles = useStyles()
   return (
     <Pressable style={[styles.button, style]} onPress={onPress}>
       <Typography variant="smallButton" style={[styles.text, textStyle]}>
@@ -17,7 +17,7 @@ export default function IntroButton({onPress, title, style, textStyle}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   button: {
     width: 170,
     height: 60,
@@ -38,4 +38,4 @@ const styles = StyleSheet.create({
     // paddingTop: 13,
     // paddingBottom: 13
   }
-})
+}))

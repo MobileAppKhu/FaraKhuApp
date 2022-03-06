@@ -2,10 +2,11 @@ import React from 'react'
 import {StyleSheet} from 'react-native'
 import Modal from 'react-native-modal'
 
-import palette from '../../../../../theme/palette'
 import CustomAlert from '../../../../../components/CustomAlert'
+import {useSelector} from "react-redux";
 
 function DeleteModal({isVisible, buttons, onBackdropPress, onBackButtonPress}) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Modal
       isVisible={isVisible}

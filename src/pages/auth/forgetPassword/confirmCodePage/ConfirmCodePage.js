@@ -6,10 +6,11 @@ import Typography from '../../../../components/Typography'
 import CodeInput from '../../../../components/CodeInput'
 import CustomButton from '../../../../components/CustomButton'
 import useStyles from './stylesheet'
-import palette from '../../../../theme/palette'
+import {useSelector} from "react-redux";
 export default function ConfirmCodePage() {
   const [code, setcode] = useState('')
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <SimpleHeader />

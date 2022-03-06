@@ -1,55 +1,63 @@
 import React from 'react'
-import {View, StyleSheet, Pressable} from 'react-native'
+import {View, Pressable} from 'react-native'
 import Modal from 'react-native-modal'
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
 import {useSelector} from "react-redux";
 import makeStyles from "../../../../helpers/makeStyles";
-const {theme: palette} = useSelector((state) => state.authReducer)
-const styles = useStyles()
-const modalItems = [
-  {
-    title: 'تکلیف دوم از فصل3',
-    courseName: 'معماری کامپیوتر',
-    time: '3 روز پیش',
-    color: palette.M_3_SYS_ON_SURFACE_VARIANT,
-    icon: 'icons8_delete_bin-1'
-  },
-  {
-    title: 'کوییز سوم از فصل2',
-    courseName: 'معماری کامپیوتر',
-    time: '5 روز پیش',
-    color: palette.M_3_SYS_ON_SURFACE_VARIANT,
-    icon: 'icons8_delete_bin-1'
-  }
-]
 
-const NotifModalItem = ({title, color, icon, courseName, time, onPress}) => (
-  <Pressable
-    onPress={onPress}
-    android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_90}}
-    style={styles.notifModalItem}>
+
+const NotifModalItem = ({title, color, icon, courseName, time, onPress}) => {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
+return(
     <Pressable
-      style={styles.removeIcon}
-      android_ripple={{color: '#bbb', borderless: true, radius: 24}}>
-      <CustomIcon name={icon} size={24} color={color} />
-    </Pressable>
+        onPress={onPress}
+        android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_90}}
+        style={styles.notifModalItem}>
+      <Pressable
+          style={styles.removeIcon}
+          android_ripple={{color: '#bbb', borderless: true, radius: 24}}>
+        <CustomIcon name={icon} size={24} color={color} />
+      </Pressable>
 
-    <View style={styles.notifModalItemDetails}>
-      <Typography
-        variant="body2"
-        color={color}
-        style={styles.notifModalItemText}>
-        {title}
-      </Typography>
-      <Typography variant="regular10">
-        {courseName} | {time}
-      </Typography>
-    </View>
-  </Pressable>
+      <View style={styles.notifModalItemDetails}>
+        <Typography
+            variant="body2"
+            color={color}
+            style={styles.notifModalItemText}>
+          {title}
+        </Typography>
+        <Typography variant="regular10">
+          {courseName} | {time}
+        </Typography>
+      </View>
+    </Pressable>
 )
 
-function NotificationModal({isVisible, onBackdropPress, items = modalItems}) {
+}
+
+
+function NotificationModal({isVisible, onBackdropPress, items}) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
+  const modalItems = [
+    {
+      title: 'تکلیف دوم از فصل3',
+      courseName: 'معماری کامپیوتر',
+      time: '3 روز پیش',
+      color: palette.M_3_SYS_ON_SURFACE_VARIANT,
+      icon: 'icons8_delete_bin-1'
+    },
+    {
+      title: 'کوییز سوم از فصل2',
+      courseName: 'معماری کامپیوتر',
+      time: '5 روز پیش',
+      color: palette.M_3_SYS_ON_SURFACE_VARIANT,
+      icon: 'icons8_delete_bin-1'
+    }
+  ]
+  items=items || modalItems
   return (
     <Modal
       isVisible={isVisible}
