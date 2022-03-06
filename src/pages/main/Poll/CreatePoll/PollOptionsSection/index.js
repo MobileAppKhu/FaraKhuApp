@@ -1,16 +1,19 @@
 import React from 'react'
-import {View, StyleSheet, Pressable} from 'react-native'
+import {View, Pressable} from 'react-native'
 
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import CustomIcon from '../../../../../components/CustomIcon'
 import PollOption from '../PollOption'
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 function PollOptionsSection({
   pollOptions,
   setPollOptions,
   currentPollOptionId
 }) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   const pollOptionChangeHandler = (text, option) => {
     const selectedItem = pollOptions.findIndex((opt) => option.id === opt.id)
     const newOptions = pollOptions
@@ -71,7 +74,7 @@ function PollOptionsSection({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   pollOptionsTitle: {
     flexDirection: 'row-reverse',
     alignItems: 'baseline',
@@ -96,6 +99,6 @@ const styles = StyleSheet.create({
     width: '32%',
     paddingVertical: 10
   }
-})
+}))
 
 export default PollOptionsSection

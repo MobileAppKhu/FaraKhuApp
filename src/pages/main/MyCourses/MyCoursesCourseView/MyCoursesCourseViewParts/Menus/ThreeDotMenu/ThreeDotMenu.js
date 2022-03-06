@@ -1,24 +1,26 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View} from 'react-native'
 import Modal from 'react-native-modal'
-
-import palette from '../../../../../../../theme/palette'
 import MenuItem from '../MenuItem/MenuItem'
+import makeStyles from "../../../../../../../helpers/makeStyles";
+import {useSelector} from "react-redux";
 
-const modalItems = [
-  {
-    text: 'لیست دانشجویان',
-    color: palette.M_3_SYS_PRIMARY,
-    icon: 'icons8_people'
-  },
-  {
-    text: 'ویرایش کلاس',
-    color: palette.M_3_SYS_PRIMARY,
-    icon: 'mode_edit_24px',
-    onPress: () => {}
-  }
-]
 function ThreeDotMenu({visible, onBackdropPress}) {
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const modalItems = [
+    {
+      text: 'لیست دانشجویان',
+      color: palette.M_3_SYS_PRIMARY,
+      icon: 'icons8_people'
+    },
+    {
+      text: 'ویرایش کلاس',
+      color: palette.M_3_SYS_PRIMARY,
+      icon: 'mode_edit_24px',
+      onPress: () => {}
+    }
+  ]
   return (
     <Modal
       isVisible={visible}
@@ -44,7 +46,7 @@ function ThreeDotMenu({visible, onBackdropPress}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   modalContainer: {
     flex: 1,
     margin: 0
@@ -59,6 +61,6 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
     elevation: 10
   }
-})
+}))
 
 export default ThreeDotMenu

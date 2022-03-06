@@ -1,12 +1,12 @@
 import React, {useState} from 'react'
 import {Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import useStyles from './stylesheet'
 import CheckBox from '@react-native-community/checkbox'
 import moment from 'moment-jalaali'
 import {request} from '../../../../../helpers/request'
 import {useToast} from 'react-native-toast-notifications'
+import {useSelector} from "react-redux";
 
 export default function UpcomingEventItems({
   eventName,
@@ -19,6 +19,7 @@ export default function UpcomingEventItems({
   courseId,
   onPress = () => {}
 }) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const toast = useToast()
   const changeIsDoneFunction = async (newValue) => {
     setshowEvent(newValue)

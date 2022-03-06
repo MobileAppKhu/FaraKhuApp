@@ -2,12 +2,13 @@ import React from 'react'
 import {Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
-import palette from '../../../../../theme/palette'
 import useStyles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 export default function BookShopHeader() {
   const navigation = useNavigation()
   const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.container}>
       <Pressable style={styles.leftIcon} onPress={() => navigation.goBack()}>

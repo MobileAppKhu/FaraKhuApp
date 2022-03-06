@@ -3,13 +3,12 @@ import {View, Image, Pressable, ActivityIndicator} from 'react-native'
 import useStyles from './stylesheet'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomIcon from '../../../../components/CustomIcon'
 import {ScrollView} from 'react-native-gesture-handler'
 import SettingPart from './SettingPart/SettingPart'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import {logOut} from '../../../../redux/auth/actions'
 import {deleteUserFromStorage} from '../../../../helpers/userData'
 
@@ -17,6 +16,7 @@ export default function Setting() {
   const [userData, setUserData] = useState()
   const navigation = useNavigation()
   const dispatch = useDispatch()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const getUserData = async () => {
     const {
       response: {userId}

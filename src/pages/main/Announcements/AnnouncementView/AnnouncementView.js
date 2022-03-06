@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 import {View, Pressable, Image, ScrollView} from 'react-native'
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 
 import useStyles from './stylesheet'
 import CustomButton from './../../../../components/CustomButton'
 import Modal from 'react-native-modal'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 
 export default function AnnouncementView({route}) {
   const [moreOptionViewIsOpen, setmoreOptionViewIsOpen] = useState(false)
@@ -16,6 +16,7 @@ export default function AnnouncementView({route}) {
   const {userFullname, announcementTitle, announcementDescription} =
     announcementData
   const styles = useStyles()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.container}>
       <View style={styles.AnnouncementHeader}>

@@ -1,9 +1,9 @@
 import React from 'react'
 import useStyles from './stylesheet'
 import {ImageBackground, Pressable, View} from 'react-native'
-import palette from '../../../../../theme/palette'
 import Typography from '../../../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 export default function MyCoursesMainPageCourseItem({
   title,
   courseNumber,
@@ -11,6 +11,7 @@ export default function MyCoursesMainPageCourseItem({
 }) {
   const navigation = useNavigation()
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Pressable
       style={styles.root}

@@ -3,17 +3,17 @@ import React, {useState} from 'react'
 import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
-import palette from '../../../../../theme/palette'
 import {useNavigation} from '@react-navigation/native'
 import Modal from 'react-native-modal'
 import MenuItem from '../../MyCoursesCourseView/MyCoursesCourseViewParts/Menus/MenuItem/MenuItem'
+import {useSelector} from "react-redux";
 
 const androidRipple = {color: '#ddd', borderless: true, radius: 24}
 
 export default function MyCoursesMainPageHeader() {
   const navigation = useNavigation()
   const [moreOptionViewIsOpen, setMoreOptionViewIsOpen] = useState(false)
-
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const modalItems = [
     {
       text: 'ایجاد درس جدید',

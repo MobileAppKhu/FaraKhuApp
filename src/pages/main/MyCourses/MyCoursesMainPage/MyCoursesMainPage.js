@@ -5,9 +5,10 @@ import MyCoursesMainPageHeader from './MyCoursesMainPageHeader/MyCoursesMainPage
 import MyCoursesMainPageCourseItem from './MyCoursesMainPageCourseItem/MyCoursesMainPageCourseItem'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomButton from '../../../../components/CustomButton'
-import palette from './../../../../theme/palette'
+import {useSelector} from "react-redux";
 export default function MyCoursesMainPage() {
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <MyCoursesMainPageHeader />

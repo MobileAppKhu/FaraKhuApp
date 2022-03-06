@@ -1,11 +1,10 @@
 import {View, Image, Pressable} from 'react-native'
-import {useDispatch} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import React, {useState} from 'react'
 import useStyles from './stylesheet'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomInput from './../../../components/CustomInput'
 import Typography from '../../../components/Typography'
-import palette from '../../../theme/palette'
 import CustomButton from './../../../components/CustomButton'
 import {useNavigation} from '@react-navigation/native'
 import {request} from './../../../helpers/request'
@@ -41,6 +40,7 @@ export default function LoginPage() {
   }
   const navigation = useNavigation()
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <ScrollView>

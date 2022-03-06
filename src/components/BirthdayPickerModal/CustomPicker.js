@@ -1,13 +1,14 @@
 import React, {useRef, useState} from 'react'
-import {StyleSheet, FlatList, Pressable} from 'react-native'
+import {FlatList, Pressable} from 'react-native'
 
 import theme from '../../theme'
-// import palette from '../../theme/palette'
 import Typography from '../Typography'
+import makeStyles from "../../helpers/makeStyles";
 
 function CustomPicker({options, onChange, selected, textVariant = 'body2'}) {
   const scrollRef = useRef()
   const [offset, setOffset] = useState(0)
+    const styles = useStyles()
   return (
     <FlatList
       onMomentumScrollEnd={(e) => {
@@ -51,7 +52,7 @@ function CustomPicker({options, onChange, selected, textVariant = 'body2'}) {
 
 export default React.memo(CustomPicker)
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   root: {
     padding: 5
   },
@@ -74,4 +75,4 @@ const styles = StyleSheet.create({
   itemText: {
     // color: palette.balticSea
   }
-})
+}))

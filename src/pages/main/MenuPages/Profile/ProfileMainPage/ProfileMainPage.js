@@ -3,19 +3,21 @@ import React from 'react'
 import {Pressable, View, Linking} from 'react-native'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomIcon from '../../../../../components/CustomIcon'
-import palette from '../../../../../theme/palette'
 import useStyles from './stylesheet'
 import Clipboard from '@react-native-clipboard/clipboard'
 
 import Typography from './../../../../../components/Typography/index'
 import CustomButton from './../../../../../components/CustomButton'
 import CustomImage from '../../../../../components/CustomImage'
+import {useSelector} from "react-redux";
 
 export default function ProfileMainPage({route}) {
   const navigation = useNavigation()
   const userData = route.params
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
+
     <View style={styles.root}>
       <ScrollView>
         <View style={styles.topPart}>

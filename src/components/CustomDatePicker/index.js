@@ -3,12 +3,11 @@ import moment from 'moment'
 import momentJalaali from 'moment-jalaali'
 import React, {useEffect, useRef, useState} from 'react'
 import {Pressable, View} from 'react-native'
-
-import palette from '../../theme/palette'
 import CustomIcon from '../CustomIcon'
 import Typography from '../Typography'
 import MonthView from './MonthView'
 import {styles} from './styles/index.styles'
+import {useSelector} from "react-redux";
 
 const builsNewJalaaliMonth = (month) => {
   const tempMonth = momentJalaali(month.clone())
@@ -106,7 +105,7 @@ export default function CustomDatePicker() {
   useEffect(() => {
     renderMonths()
   }, [])
-
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <Typography variant="h4">Choose Date</Typography>

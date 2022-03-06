@@ -1,7 +1,6 @@
-import {StyleSheet} from 'react-native'
 import theme from '../../../theme'
-import palette from '../../../theme/palette'
-export default StyleSheet.create({
+import makeStyles from "../../../helpers/makeStyles";
+const useStyles = makeStyles((palette) => ({
   root: {
     flex: 1,
     backgroundColor: palette.M_3_SYS_BACKGROUND
@@ -74,4 +73,5 @@ export default StyleSheet.create({
     marginHorizontal: 16,
     marginBottom: 24
   }
-})
+}))
+export default useStyles

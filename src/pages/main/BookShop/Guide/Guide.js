@@ -3,10 +3,11 @@ import {View} from 'react-native'
 
 import SimpleHeader from '../../../../components/SimpleHeader'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
+import {useSelector} from "react-redux";
 
 export default function Guide() {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={{backgroundColor: palette.M_3_SYS_ON_PRIMARY, flex: 1}}>
       <SimpleHeader title="راهنمای ثبت اگهی" />

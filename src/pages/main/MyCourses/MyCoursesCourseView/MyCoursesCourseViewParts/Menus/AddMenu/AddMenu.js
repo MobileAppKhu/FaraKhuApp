@@ -3,13 +3,14 @@ import {Pressable, View} from 'react-native'
 import Modal from 'react-native-modal'
 import {useNavigation} from '@react-navigation/native'
 
-import palette from '../../../../../../../theme/palette'
 import MenuItem from '../MenuItem/MenuItem'
 import useStyles from './stylesheet'
 import CustomIcon from '../../../../../../../components/CustomIcon'
+import {useSelector} from "react-redux";
 
 function AddMenu({visible, setVisible, onBackdropPress}) {
   const navigation = useNavigation()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const modalItems = [
     {
       text: 'ایجاد رویداد شخصی',

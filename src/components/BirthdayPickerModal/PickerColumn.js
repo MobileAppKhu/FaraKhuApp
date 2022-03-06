@@ -1,13 +1,12 @@
 import Picker from '@gregfrench/react-native-wheel-picker'
 import React from 'react'
-import {StyleSheet} from 'react-native'
-
 import theme from '../../theme'
-import palette from '../../theme/palette'
-
+import {useSelector} from "react-redux";
+import makeStyles from "../../helpers/makeStyles";
 var PickerItem = Picker.Item
-
 export default function PickerColumn({options, value, onChange}) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <Picker
       style={styles.picker}
@@ -28,7 +27,7 @@ export default function PickerColumn({options, value, onChange}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   picker: {
     width: '100%',
     height: '100%'
@@ -38,4 +37,5 @@ const styles = StyleSheet.create({
     color: palette.balticSea,
     fontSize: 16
   }
-})
+}))
+

@@ -1,9 +1,9 @@
 import React from 'react'
-import {View, StyleSheet, TextInput, Pressable} from 'react-native'
+import {View, TextInput, Pressable} from 'react-native'
 
-import palette from '../../../../../theme/palette'
 import CustomIcon from '../../../../../components/CustomIcon'
 import theme from '../../../../../theme'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 const PollOption = ({
   placeholder = 'گزینه1',
@@ -11,6 +11,8 @@ const PollOption = ({
   removeHandler,
   value
 }) => {
+
+  const styles = useStyles()
   return (
     <View style={styles.optionContainer}>
       <View style={styles.optionInputContainer}>
@@ -35,7 +37,7 @@ const PollOption = ({
     </View>
   )
 }
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   optionContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -63,6 +65,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'flex-end'
   }
-})
+}))
 
 export default PollOption

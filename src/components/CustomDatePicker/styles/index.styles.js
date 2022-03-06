@@ -1,8 +1,8 @@
-import {Dimensions, StyleSheet} from 'react-native'
+import {Dimensions} from 'react-native'
 
-import palette from '../../../theme/palette'
+import makeStyles from "../../../helpers/makeStyles";
 
-export const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   root: {
     backgroundColor: '#fff',
     width: '100%',
@@ -37,4 +37,5 @@ export const styles = StyleSheet.create({
   confirmButtonText: {
     color: palette.white
   }
-})
+}))
+export default useStyles

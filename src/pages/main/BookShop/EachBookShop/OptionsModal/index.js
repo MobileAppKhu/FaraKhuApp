@@ -3,24 +3,30 @@ import {View, Pressable, StyleSheet} from 'react-native'
 import Modal from 'react-native-modal'
 import CustomIcon from '../../../../../components/CustomIcon'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
+import makeStyles from "../../../../../helpers/makeStyles";
+import {useSelector} from "react-redux";
 
-const OptionsModalItem = ({text, color, icon, onPress}) => (
-  <Pressable
-    onPress={onPress}
-    android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
-    style={styles.optionsModalItem}>
-    <Typography
-      variant="body2"
-      color={color}
-      style={styles.optionsModalItemText}>
-      {text}
-    </Typography>
-    <CustomIcon name={icon} size={24} color={color} />
-  </Pressable>
-)
+const OptionsModalItem = ({text, color, icon, onPress}) => {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
+  return(
+      <Pressable
+          onPress={onPress}
+          android_ripple={{color: palette.M_3_REF_NEUTRAL_NEUTRAL_80}}
+          style={styles.optionsModalItem}>
+        <Typography
+            variant="body2"
+            color={color}
+            style={styles.optionsModalItemText}>
+          {text}
+        </Typography>
+        <CustomIcon name={icon} size={24} color={color} />
+      </Pressable>
 
+  )
+}
 function OptionsModal({isVisible, onBackdropPress, items}) {
+  const styles = useStyles()
   return (
     <Modal
       isVisible={isVisible}
@@ -46,7 +52,7 @@ function OptionsModal({isVisible, onBackdropPress, items}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   optionsModalContainer: {
     flex: 1,
     margin: 0
@@ -72,6 +78,6 @@ const styles = StyleSheet.create({
   optionsModalItemText: {
     marginRight: 12
   }
-})
+}))
 
 export default OptionsModal

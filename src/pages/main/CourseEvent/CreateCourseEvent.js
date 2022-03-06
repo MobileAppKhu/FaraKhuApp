@@ -5,10 +5,11 @@ import CustomPicker from '../../../components/CustomPicker'
 import CustomInput from '../../../components/CustomInput'
 import styles from './stylesheet'
 import CourseEventHeader from './CreateCourseEventHeader/CourseEventHeader'
-import palette from '../../../theme/palette'
 import Typography from '../../../components/Typography'
 import CustomButton from '../../../components/CustomButton'
+import {useSelector} from "react-redux";
 export default function CreateCourseEvent() {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const [finalExamDate, setFinalExamDate] = useState({
     day: '',
     month: '',

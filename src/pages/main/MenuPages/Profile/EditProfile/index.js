@@ -1,9 +1,8 @@
 import React, {useRef, useState} from 'react'
-import {View, StyleSheet, ScrollView} from 'react-native'
+import {View, ScrollView} from 'react-native'
 
 import CustomButton from '../../../../../components/CustomButton'
 import SimpleHeader from '../../../../../components/SimpleHeader'
-import palette from '../../../../../theme/palette'
 import Favorites from './Favorites'
 import HorizontalSeparator from '../../../../../components/HorizontalSeparator'
 import CustomInput from '../../../../../components/CustomInput'
@@ -11,6 +10,8 @@ import {request} from '../../../../../helpers/request'
 import SuccessModal from './SuccessModal'
 import {useNavigation} from '@react-navigation/native'
 import {useToast} from 'react-native-toast-notifications'
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 function EditProfile({route}) {
   const userData = route.params
@@ -58,7 +59,8 @@ function EditProfile({route}) {
       toast.show('خطایی رخ داده!')
     }
   }
-
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <View style={styles.screen}>
       <SimpleHeader
@@ -120,7 +122,7 @@ function EditProfile({route}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   screen: {
     flex: 1
   },
@@ -135,6 +137,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     paddingBottom: 15
   }
-})
+}))
 
 export default EditProfile

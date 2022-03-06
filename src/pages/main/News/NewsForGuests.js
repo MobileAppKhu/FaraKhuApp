@@ -2,11 +2,12 @@ import React from 'react'
 import {View, Pressable, ScrollView, ImageBackground} from 'react-native'
 import CustomIcon from '../../../components/CustomIcon'
 import Typography from '../../../components/Typography'
-import palette from '../../../theme/palette'
 import useStyles from './stylesheet'
 import {useNavigation} from '@react-navigation/native'
-const androidRipple = {borderless: true, color: '#ddd', radius: 25}
+import {useSelector} from "react-redux";
 export default function NewsForGuests() {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const androidRipple = {borderless: true, color: '#ddd', radius: 25}
   const navigation = useNavigation()
   const styles = useStyles()
   return (

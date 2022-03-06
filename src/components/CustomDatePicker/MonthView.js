@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, FlatList} from 'react-native'
+import {View,FlatList} from 'react-native'
 
 import Typography from '../Typography'
 import {styles} from './styles/MonthView.styles'

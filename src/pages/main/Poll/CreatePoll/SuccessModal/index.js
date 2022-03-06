@@ -1,11 +1,13 @@
 import React from 'react'
-import {StyleSheet} from 'react-native'
 import Modal from 'react-native-modal'
 
 import CustomAlert from '../../../../../components/CustomAlert'
-import palette from '../../../../../theme/palette'
+import makeStyles from "../../../../../helpers/makeStyles";
+import {useSelector} from "react-redux";
 
 function SuccessModal({isVisible, onPressBtn}) {
+    const {theme: palette} = useSelector((state) => state.authReducer)
+    const styles = useStyles()
   return (
     <Modal
       isVisible={isVisible}
@@ -33,13 +35,13 @@ function SuccessModal({isVisible, onPressBtn}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles(() => ({
   deleteModal: {
     flex: 1,
     margin: 0,
     justifyContent: 'center',
     alignItems: 'center'
   }
-})
+}))
 
 export default SuccessModal

@@ -1,9 +1,10 @@
 import React from 'react'
-import {View, StyleSheet, TextInput} from 'react-native'
+import {View,TextInput} from 'react-native'
 
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomPicker from '../../../../components/CustomPicker'
+import {useSelector} from "react-redux";
+import makeStyles from "../../../../helpers/makeStyles";
 
 const weekDays = [
   'شنبه',
@@ -23,6 +24,9 @@ function DayPicker({
   style
 }) {
   const {day, startTime, endTime} = selectedDay
+
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles=useStyles()
   return (
     <View style={[styles.container, style]}>
       <View style={styles.dayInput}>
@@ -81,7 +85,7 @@ function DayPicker({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     flexDirection: 'row-reverse',
     alignItems: 'center',
@@ -104,6 +108,6 @@ const styles = StyleSheet.create({
     backgroundColor: palette.M_3_SYS_SECONDARY_CONTAINER,
     borderRadius: 7
   }
-})
+}))
 
 export default DayPicker

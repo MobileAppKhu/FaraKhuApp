@@ -4,9 +4,9 @@ import useStyles from './stylesheet'
 import CustomPicker from '../../../../components/CustomPicker'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import CustomInput from '../../../../components/CustomInput'
-import palette from '../../../../theme/palette'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import CustomButton from '../../../../components/CustomButton'
+import {useSelector} from "react-redux";
 export default function AddUser() {
   const [typeTeacher, setTypeTeacher] = useState()
   const [name, setName] = useState()
@@ -14,6 +14,7 @@ export default function AddUser() {
   const [identitycode, setIdentityCode] = useState()
   const [email, setEmail] = useState()
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.container}>
       <SimpleHeader

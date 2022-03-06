@@ -4,11 +4,11 @@ import {View, ScrollView} from 'react-native'
 import SimpleHeader from '../../../../components/SimpleHeader'
 import CustomInput from '../../../../components/CustomInput'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import useStyles from './stylesheet'
 import CustomButton from '../../../../components/CustomButton'
 import PollOptionsSection from './PollOptionsSection'
 import SuccessModal from './SuccessModal'
+import {useSelector} from "react-redux";
 
 let id = 0
 
@@ -19,6 +19,7 @@ function CreatePoll() {
 
   const container = useRef()
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.screen}>
       <SimpleHeader title="نظرسنجی جدید" />

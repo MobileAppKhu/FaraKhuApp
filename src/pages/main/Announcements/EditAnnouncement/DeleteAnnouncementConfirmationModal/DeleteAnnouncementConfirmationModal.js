@@ -4,13 +4,14 @@ import Modal from 'react-native-modal'
 import CustomButton from '../../../../../components/CustomButton'
 import CustomIcon from '../../../../../components/CustomIcon'
 import Typography from '../../../../../components/Typography'
-import palette from '../../../../../theme/palette'
 import useStyles from './stylesheet'
+import {useSelector} from "react-redux";
 export default function DeleteAnnouncementConfirmationModal({
   isVisible,
   onClose,
   onDeleteAnnouncement
 }) {
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <Modal isVisible={isVisible} onBackdropPress={onClose}>

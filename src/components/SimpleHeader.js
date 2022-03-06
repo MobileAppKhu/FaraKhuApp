@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native'
 import React from 'react'
 import {View, StyleSheet, Pressable} from 'react-native'
-
-import palette from '../theme/palette'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
+import makeStyles from "../helpers/makeStyles";
+import {useSelector} from "react-redux";
 
 export default function SimpleHeader({
   title,
@@ -18,6 +18,8 @@ export default function SimpleHeader({
   titleColor
 }) {
   const navigation = useNavigation()
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View
       style={[
@@ -69,8 +71,7 @@ export default function SimpleHeader({
     </View>
   )
 }
-
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -109,4 +110,4 @@ const styles = StyleSheet.create({
   headerRightTypography: {
     color: palette.balticSea
   }
-})
+}))

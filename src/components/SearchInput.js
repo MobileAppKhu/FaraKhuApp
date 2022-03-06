@@ -1,10 +1,11 @@
 import React from 'react'
 import {useTranslation} from 'react-i18next'
-import {StyleSheet, TextInput, View} from 'react-native'
+import {TextInput, View} from 'react-native'
 
 import theme from '../theme'
-import palette from '../theme/palette'
 import CustomIcon from './CustomIcon'
+import makeStyles from "../helpers/makeStyles";
+import {useSelector} from "react-redux";
 
 export default function SearchInput({
   onChangeText,
@@ -14,7 +15,8 @@ export default function SearchInput({
   ...others
 }) {
   const {t} = useTranslation()
-
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.searchView}>
       <CustomIcon name="Search" size={22} color={palette.balticSea} />
@@ -29,7 +31,7 @@ export default function SearchInput({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   searchView: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -52,4 +54,4 @@ const styles = StyleSheet.create({
     paddingTop: 13,
     paddingBottom: 13
   }
-})
+}))

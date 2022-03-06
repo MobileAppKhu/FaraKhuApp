@@ -4,13 +4,13 @@ import SimpleHeader from '../../../../components/SimpleHeader'
 import {ScrollView} from 'react-native-gesture-handler'
 import CustomInput from '../../../../components/CustomInput'
 import useStyles from './stylesheet'
-import palette from '../../../../theme/palette'
 import CustomButton from '../../../../components/CustomButton'
 import DeleteAnnouncementConfirmationModal from './DeleteAnnouncementConfirmationModal/DeleteAnnouncementConfirmationModal'
 import SaveAnnouncementModal from './SaveAnnouncementModal/SaveAnnouncementModal'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
 import {useToast} from 'react-native-toast-notifications'
+import {useSelector} from "react-redux";
 
 export default function EditAnnouncement({route}) {
   const toast = useToast()
@@ -66,6 +66,7 @@ export default function EditAnnouncement({route}) {
     }
   }
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <View style={styles.root}>
       <SimpleHeader

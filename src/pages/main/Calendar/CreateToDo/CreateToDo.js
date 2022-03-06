@@ -3,7 +3,6 @@ import SimpleHeader from '../../../../components/SimpleHeader'
 import useStyles from './stylesheet'
 import {ScrollView, TextInput, View} from 'react-native'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
 import CustomInput from '../../../../components/CustomInput'
 import CustomPicker from '../../../../components/CustomPicker'
 import CustomButton from '../../../../components/CustomButton'
@@ -11,6 +10,7 @@ import {request} from '../../../../helpers/request'
 import moment from 'moment-jalaali'
 import {useToast} from 'react-native-toast-notifications'
 import {useNavigation} from '@react-navigation/native'
+import {useSelector} from "react-redux";
 
 export default function CreatToDo() {
   const [finalExamDate, setFinalExamDate] = useState({
@@ -20,6 +20,7 @@ export default function CreatToDo() {
     hour: '',
     minute: ''
   })
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const navigation = useNavigation()
   const [listTodo, setlistTodo] = useState('')
   const [description, setDiscription] = useState('')

@@ -3,10 +3,11 @@ import {View, Image} from 'react-native'
 import Typography from '../../../components/Typography'
 import {useNavigation} from '@react-navigation/native'
 import useStyles from './stylesheet'
-import palette from '../../../theme/palette'
 import CustomButton from '../../../components/CustomButton'
+import {useSelector} from "react-redux";
 export default function FirstWelcomePage() {
   const navigation = useNavigation()
+    const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={styles.container}>

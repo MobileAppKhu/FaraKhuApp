@@ -1,10 +1,13 @@
 import React from 'react'
-import {View, StyleSheet} from 'react-native'
+import {View} from 'react-native'
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
-import palette from '../../../../theme/palette'
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../helpers/makeStyles'
 
 function InternetManagement() {
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <View style={styles.container}>
       <Typography variant="bold12" color={palette.M_3_SOURCE_NEUTRAL}>
@@ -26,7 +29,7 @@ function InternetManagement() {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     backgroundColor: '#dde7f3',
     borderRadius: 16,
@@ -55,6 +58,6 @@ const styles = StyleSheet.create({
     borderRadius: 50,
     backgroundColor: palette.M_3_REF_NEUTRAL_NEUTRAL_60
   }
-})
+}))
 
 export default InternetManagement
