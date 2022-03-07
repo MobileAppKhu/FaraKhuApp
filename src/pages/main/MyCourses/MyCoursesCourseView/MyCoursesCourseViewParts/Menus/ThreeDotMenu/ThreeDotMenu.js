@@ -2,8 +2,8 @@ import React from 'react'
 import {View} from 'react-native'
 import Modal from 'react-native-modal'
 import MenuItem from '../MenuItem/MenuItem'
-import makeStyles from "../../../../../../../helpers/makeStyles";
-import {useSelector} from "react-redux";
+import makeStyles from '../../../../../../../helpers/makeStyles'
+import {useSelector} from 'react-redux'
 
 function ThreeDotMenu({visible, onBackdropPress}) {
   const styles = useStyles()
@@ -46,7 +46,7 @@ function ThreeDotMenu({visible, onBackdropPress}) {
   )
 }
 
-const useStyles = makeStyles((palette) => ({
+const useStyles = makeStyles(() => ({
   modalContainer: {
     flex: 1,
     margin: 0

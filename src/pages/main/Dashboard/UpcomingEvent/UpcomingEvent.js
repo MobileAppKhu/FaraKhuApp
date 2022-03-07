@@ -5,9 +5,9 @@ import useStyles from './stylesheet'
 import UpcomingEventItems from '../Components/UpcomingEventItems/UpcomingEventItems'
 import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 export default function UpcomingEvent() {
-    const {theme: palette} = useSelector((state) => state.authReducer)
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const navigation = useNavigation()
   const [events, setevents] = useState([])
   const getEvents = async () => {
@@ -18,7 +18,6 @@ export default function UpcomingEvent() {
   useEffect(() => {
     getEvents()
   }, [])
-  // const theme = useSelector((state) => state.authReducer.theme)
 
   const styles = useStyles()
   return (

@@ -3,11 +3,10 @@ import {Pressable, View} from 'react-native'
 import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
 import CustomIcon from '../../../../../components/CustomIcon'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 export default function SettingPart({text, onPress}) {
-  //   const navigation = useNavigation()
   const styles = useStyles()
-    const {theme: palette} = useSelector((state) => state.authReducer)
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Pressable onPress={onPress} style={styles.root}>
       <View>
