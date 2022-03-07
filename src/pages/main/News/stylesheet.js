@@ -9,6 +9,7 @@ const useStyles = makeStyles((palette) => ({
     width: '100%',
     height: 232,
     justifyContent: 'space-between'
+    // alignItems: 'flex-end'
   },
   moreOption: {
     paddingHorizontal: 24,
@@ -20,7 +21,7 @@ const useStyles = makeStyles((palette) => ({
     justifyContent: 'space-between'
   },
   information: {
-    height: 126,
+    minHeight: 66,
     marginBottom: 8,
     marginHorizontal: 16,
     paddingVertical: 4,
@@ -30,7 +31,8 @@ const useStyles = makeStyles((palette) => ({
     borderColor: palette.M_3_SYS_PRIMARY_CONTAINER,
     backgroundColor: palette.M_3_SYS_SECONDARY,
     opacity: 0.75,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    alignItems: 'flex-end'
   },
 
   AnnouncementDetails: {

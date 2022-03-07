@@ -48,7 +48,7 @@ export default function NewsList() {
                 title={item.title}
                 key={index.toString()}
                 fileId={item.fileId}
-                desciption={item.desciption}
+                description={item.description}
                 createdDate={item.createdDate}
               />
             ))
