@@ -1,4 +1,4 @@
-import {View} from 'react-native'
+import {View, Pressable} from 'react-native'
 import React from 'react'
 import useStyles from './stylesheet'
 import Typography from '../../../../../components/Typography'
@@ -6,12 +6,27 @@ import {useSelector} from 'react-redux'
 import CustomImage from '../../../../../components/CustomImage'
 import {generateJalaaliDate} from '../../../../../helpers/date'
 import jMoment from 'moment-jalaali'
-export default function NewsListItem({title, fileId, desciption, createdDate}) {
+import {useNavigation} from '@react-navigation/native'
+export default function NewsListItem({
+  title,
+  fileId,
+  description,
+  createdDate
+}) {
   const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   const date = jMoment(createdDate).format('jYYYY-jMM-jDD')
+  const navigattion = useNavigation()
+  const onPressFunction = () => {
+    navigattion.navigate('news-view', {
+      title,
+      fileId,
+      description,
+      createdDate
+    })
+  }
   return (
-    <View style={styles.root}>
+    <Pressable style={styles.root} onPress={onPressFunction}>
       <View style={styles.imageContainer}>
         <CustomImage avatarId={fileId} style={styles.image} />
       </View>
@@ -25,6 +40,6 @@ export default function NewsListItem({title, fileId, desciption, createdDate}) {
           {generateJalaaliDate(date)}
         </Typography>
       </View>
-    </View>
+    </Pressable>
   )
 }

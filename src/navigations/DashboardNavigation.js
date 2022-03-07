@@ -23,7 +23,7 @@ import BookShopEdit from '../pages/main/BookShop/BookShopEdit/BookShopEdit'
 import AddUser from '../pages/main/UserMangement/AddUser/AddUser'
 import CreatePoll from '../pages/main/Poll/CreatePoll'
 import WebViewPage from './DrawerNavigation/WebView'
-import NewsForGuests from '../pages/main/News/NewsForGuests'
+import NewsView from '../pages/main/News/NewsForGuests'
 import NewsList from '../pages/main/News/NewsList/NewsList'
 import NewsCreate from '../pages/main/News/NewsCreate/NewsCreate'
 import CreateCourseEvent from '../pages/main/CourseEvent/CreateCourseEvent'
@@ -55,12 +55,12 @@ export default function DashboardNavigation() {
       <Stack.Screen name="edit-profile" component={EditProfile} />
       <Stack.Screen name="book-shop-edit" component={BookShopEdit} />
       <Stack.Screen name="add-user" component={AddUser} />
-      <Stack.Screen name="news" component={NewsForGuests} />
       <Stack.Screen name="create-poll" component={CreatePoll} />
       <Stack.Screen name="web-view" component={WebViewPage} />
       <Stack.Screen name="news-list" component={NewsList} />
       <Stack.Screen name="news-create" component={NewsCreate} />
       <Stack.Screen name="create-course-event" component={CreateCourseEvent} />
+      <Stack.Screen name="news-view" component={NewsView} />
     </Stack.Navigator>
   )
 }
