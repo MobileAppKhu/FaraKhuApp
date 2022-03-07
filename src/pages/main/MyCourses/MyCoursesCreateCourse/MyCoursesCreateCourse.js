@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, {useCallback, useRef, useState} from 'react'
 import {View, Pressable, ScrollView, TextInput, BackHandler} from 'react-native'
 import {useNavigation, useFocusEffect} from '@react-navigation/native'
 
@@ -62,7 +62,7 @@ function MyCoursesCreateCourse() {
   }
 
   useFocusEffect(
-    React.useCallback(() => {
+    useCallback(() => {
       const onBackPress = () => {
         setCloseModal(true)
         return true

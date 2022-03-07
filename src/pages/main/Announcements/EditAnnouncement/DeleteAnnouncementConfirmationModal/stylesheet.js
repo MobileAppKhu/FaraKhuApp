@@ -1,7 +1,7 @@
 import makeStyles from '../../../../../helpers/makeStyles'
 import theme from '../../../../../theme'
 
-const styles = makeStyles((palette) => ({
+const useStyles = makeStyles((palette) => ({
   root: {
     marginHorizontal: 24,
     borderRadius: 16,
@@ -44,4 +44,4 @@ const styles = makeStyles((palette) => ({
     color: palette.M_3_SYS_ON_ERROR_CONTAINER
   }
 }))
-export default styles
+export default useStyles

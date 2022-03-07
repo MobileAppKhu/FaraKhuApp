@@ -3,11 +3,11 @@ import {View} from 'react-native'
 import {ScrollView, TextInput} from 'react-native-gesture-handler'
 import CustomPicker from '../../../components/CustomPicker'
 import CustomInput from '../../../components/CustomInput'
-import styles from './stylesheet'
+import useStyles from './stylesheet'
 import CourseEventHeader from './CreateCourseEventHeader/CourseEventHeader'
 import Typography from '../../../components/Typography'
 import CustomButton from '../../../components/CustomButton'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 export default function CreateCourseEvent() {
   const {theme: palette} = useSelector((state) => state.authReducer)
   const [finalExamDate, setFinalExamDate] = useState({
@@ -17,6 +17,7 @@ export default function CreateCourseEvent() {
     hour: '',
     minute: ''
   })
+  const styles = useStyles()
   const [description, setdescription] = useState('')
   return (
     <View style={styles.root}>

@@ -1,14 +1,16 @@
 import React from 'react'
-import {View, TextInput, StyleSheet, Pressable} from 'react-native'
+import {View, TextInput, Pressable} from 'react-native'
 import Modal from 'react-native-modal'
 import CustomButton from '../../../../../components/CustomButton'
 
 import CustomIcon from '../../../../../components/CustomIcon'
 import theme from '../../../../../theme'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
+import makeStyles from '../../../../../helpers/makeStyles'
 
 function SearchModal({isVisible, onBackPress}) {
   const {theme: palette} = useSelector((state) => state.authReducer)
+  const styles = useStyles()
   return (
     <Modal
       isVisible={isVisible}
@@ -45,7 +47,7 @@ function SearchModal({isVisible, onBackPress}) {
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeStyles((palette) => ({
   container: {
     backgroundColor: palette.M_3_SYS_SURFACE,
     borderRadius: 12
@@ -68,6 +70,6 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 24
   }
-})
+}))
 
 export default SearchModal

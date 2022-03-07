@@ -1,6 +1,6 @@
 import makeStyles from '../../../../helpers/makeStyles'
 
-const styles = makeStyles((palette) => ({
+const useStyles = makeStyles((palette) => ({
   root: {
     marginTop: 10,
     marginHorizontal: 16,
@@ -28,4 +28,4 @@ const styles = makeStyles((palette) => ({
     marginBottom: 10
   }
 }))
-export default styles
+export default useStyles

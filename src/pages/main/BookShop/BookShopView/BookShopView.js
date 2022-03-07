@@ -10,10 +10,9 @@ import {useNavigation} from '@react-navigation/native'
 import {request} from '../../../../helpers/request'
 import {useToast} from 'react-native-toast-notifications'
 import {bookShopType} from '../BookShopCreate/BookShopCreate'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 
 export default function BookShopView() {
-  // const [searchModal, setSearchModal] = useState(false)
   const toast = useToast()
   const {theme: palette} = useSelector((state) => state.authReducer)
   const [refreshing, setRefreshing] = useState(false)

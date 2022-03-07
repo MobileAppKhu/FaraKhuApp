@@ -44,6 +44,7 @@ export default function Announcement() {
     getAnnouncementFunction()
     navigation.addListener('focus', getAnnouncementFunction)
   }, [user])
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={styles.container}>

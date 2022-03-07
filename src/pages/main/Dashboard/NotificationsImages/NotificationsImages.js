@@ -2,15 +2,13 @@ import React from 'react'
 import {View} from 'react-native'
 import {SliderBox} from 'react-native-image-slider-box'
 import useStyles from './stylesheet'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 export default function NotificationsImages() {
-    // eslint-disable-next-line no-undef
-    const {theme: palette} = useSelector((state) => state.authReducer)
+  const {theme: palette} = useSelector((state) => state.authReducer)
   const styles = useStyles()
   return (
     <View style={styles.root}>
       <SliderBox
-        // dotStyle={styles.root}
         images={[
           require('../../../../assets/images/behnia1.jpg'),
           require('../../../../assets/images/behnia2.jpg'),

@@ -3,11 +3,11 @@ import {Pressable, View} from 'react-native'
 import Typography from '../../../../../components/Typography'
 import useStyles from './stylesheet'
 import CustomIcon from '../../../../../components/CustomIcon'
-import {useSelector} from "react-redux";
+import {useSelector} from 'react-redux'
 
 export default function PollEventItems({eventName, eventTime}) {
   const styles = useStyles()
-    const {theme: palette} = useSelector((state) => state.authReducer)
+  const {theme: palette} = useSelector((state) => state.authReducer)
   return (
     <Pressable style={styles.root}>
       <View style={styles.eventControler}>
