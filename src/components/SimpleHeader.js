@@ -3,8 +3,8 @@ import React from 'react'
 import {View, StyleSheet, Pressable} from 'react-native'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
-import makeStyles from "../helpers/makeStyles";
-import {useSelector} from "react-redux";
+import makeStyles from '../helpers/makeStyles'
+import {useSelector} from 'react-redux'
 
 export default function SimpleHeader({
   title,
@@ -15,7 +15,8 @@ export default function SimpleHeader({
   isCloseIcon,
   backgroundColor,
   itemsColor,
-  titleColor
+  titleColor,
+  shadow = 6
 }) {
   const navigation = useNavigation()
   const styles = useStyles()
@@ -24,7 +25,8 @@ export default function SimpleHeader({
     <View
       style={[
         styles.container,
-        backgroundColor ? {backgroundColor: backgroundColor} : {}
+        backgroundColor ? {backgroundColor: backgroundColor} : {},
+        {elevation: shadow}
       ]}>
       <View style={styles.headerLeft}>
         <Pressable
