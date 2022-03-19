@@ -1403,6 +1403,11 @@
   "resolved" "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz"
   "version" "7.0.9"
 
+"@types/lodash@^4.14.175":
+  "integrity" "sha512-XOKXa1KIxtNXgASAnwj7cnttJxS4fksBRywK/9LzRV5YxrF80BXZIGeQSuoESQ/VkUj30Ae0+YcuHc15wJCB2g=="
+  "resolved" "https://registry.npmjs.org/@types/lodash/-/lodash-4.14.180.tgz"
+  "version" "4.14.180"
+
 "@types/node@*":
   "integrity" "sha512-+2Iggwg7PxoO5Kyhvsq9VarmPbIelXP070HMImEpbtGCoyWNINQj4wzjbQCXzdHTRXnqufutJb5KAURZANNBAw=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-16.11.12.tgz"
@@ -5304,6 +5309,11 @@
   "resolved" "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
   "version" "2.1.2"
 
+"nanoclone@^0.2.1":
+  "integrity" "sha512-wynEP02LmIbLpcYw8uBKpcfF6dmg2vcpKqxeH5UcoKEYdExslsdUA4ugFauuaeYdTB76ez6gJW8XAZ6CgkXYxA=="
+  "resolved" "https://registry.npmjs.org/nanoclone/-/nanoclone-0.2.1.tgz"
+  "version" "0.2.1"
+
 "nanoid@^3.1.23":
   "integrity" "sha512-fmsZYa9lpn69Ad5eDn7FMcnnSR+8R34W9qJEijxYhTbfOWzr22n1QxCMzXLK+ODyW2973V3Fux959iQoUxzUIA=="
   "resolved" "https://registry.npmjs.org/nanoid/-/nanoid-3.2.0.tgz"
@@ -5835,6 +5845,11 @@
     "loose-envify" "^1.4.0"
     "object-assign" "^4.1.1"
     "react-is" "^16.8.1"
+
+"property-expr@^2.0.4":
+  "integrity" "sha512-IJUkICM5dP5znhCckHSv30Q4b5/JA5enCtkRHYaOVOAocnH/1BQEYTC5NMfT3AVl/iXKdr3aqQbQn9DxyWknwA=="
+  "resolved" "https://registry.npmjs.org/property-expr/-/property-expr-2.0.5.tgz"
+  "version" "2.0.5"
 
 "psl@^1.1.33":
   "integrity" "sha512-RIdOzyoavK+hA18OGGWDqUTsCLhtA7IcZ/6NCs4fFJaHBDab+pDDmDIByWFRQJq2Cd7r1OoQxBGKOaztq+hjIQ=="
@@ -7007,6 +7022,11 @@
   "resolved" "https://registry.npmjs.org/toidentifier/-/toidentifier-1.0.0.tgz"
   "version" "1.0.0"
 
+"toposort@^2.0.2":
+  "integrity" "sha1-riF2gXXRVZ1IvvNUILL0li8JwzA="
+  "resolved" "https://registry.npmjs.org/toposort/-/toposort-2.0.2.tgz"
+  "version" "2.0.2"
+
 "tough-cookie@^4.0.0":
   "integrity" "sha512-tHdtEpQCMrc1YLrMaqXXcj6AxhYi/xgit6mZu1+EDWUn+qhUf8wMQoFIy9NXuq23zAwtcB0t/MjACGR18pcRbg=="
   "resolved" "https://registry.npmjs.org/tough-cookie/-/tough-cookie-4.0.0.tgz"
@@ -7535,3 +7555,16 @@
     "string-width" "^4.2.0"
     "y18n" "^5.0.5"
     "yargs-parser" "^20.2.2"
+
+"yup@^0.32.11":
+  "integrity" "sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg=="
+  "resolved" "https://registry.npmjs.org/yup/-/yup-0.32.11.tgz"
+  "version" "0.32.11"
+  dependencies:
+    "@babel/runtime" "^7.15.4"
+    "@types/lodash" "^4.14.175"
+    "lodash" "^4.17.21"
+    "lodash-es" "^4.17.21"
+    "nanoclone" "^0.2.1"
+    "property-expr" "^2.0.4"
+    "toposort" "^2.0.2"

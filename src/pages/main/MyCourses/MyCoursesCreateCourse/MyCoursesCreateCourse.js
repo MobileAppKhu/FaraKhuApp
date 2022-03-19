@@ -2,6 +2,7 @@ import React, {useCallback, useRef, useState} from 'react'
 import {View, Pressable, ScrollView, TextInput, BackHandler} from 'react-native'
 import {useNavigation, useFocusEffect} from '@react-navigation/native'
 import {useFormik} from 'formik'
+import * as Yup from 'yup'
 
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
@@ -14,6 +15,7 @@ import DayPicker from './DayPicker'
 import useStyles from './stylessheet'
 import CloseModal from './Modals/CloseModal'
 import {useSelector} from 'react-redux'
+import ErrorMessage from '../../../../components/ErrroMessage'
 
 const dayTemplate = {
   id: Date.now(),
@@ -28,13 +30,47 @@ const dayTemplate = {
   }
 }
 
+const validationSchema = Yup.object().shape({
+  profID: Yup.string()
+    .matches(/\d{9}/, '* شماره استادی می‌بایست 9 رقم باشد.')
+    .required('وارد کردن "شماره استادی" الزامی می‌باشد.'),
+  faculty: Yup.string().required('* انتخاب "دانشکده" الزامی می‌باشد.'),
+  department: Yup.string().required('* انتخاب "گروه درسی" الزامی می‌باشد.'),
+  courseName: Yup.string().required('* انتخاب "نام درس" الزامی می‌باشد.'),
+  days: Yup.array().min(
+    1,
+    '* مشخص کردن "روز های برگزاری کلاس" الزامی می‌باشد. \nبعد از انتخاب مقادیر، بر روی "اضافه کردن روز جدید +" کلیک کنید تا روز انتخابی شما اضافه شود.'
+  ),
+  finalExamDay: Yup.string().required(
+    '* انتخاب "روز برگزاری امتحان" الزامی می‌باشد.'
+  ),
+  finalExamMonth: Yup.string().required(
+    '* انتخاب "ماه برگزاری امتحان" الزامی می‌باشد.'
+  ),
+  finalExamYear: Yup.string().required(
+    '* انتخاب "سال برگزاری امتحان" الزامی می‌باشد.'
+  ),
+  classPlace: Yup.string().required(
+    '* انتخاب "محل برگزاری امحان" الزامی می‌باشد.'
+  ),
+  students: Yup.array()
+})
+
 function MyCoursesCreateCourse() {
   const navigation = useNavigation()
   const styles = useStyles()
   const {theme: palette} = useSelector((state) => state.authReducer)
   const {M_3_SYS_PRIMARY: primaryColor} = palette
 
-  const {values, setFieldValue, handleChange, handleSubmit} = useFormik({
+  const {
+    values,
+    errors,
+    touched,
+    setFieldValue,
+    setFieldTouched,
+    handleChange,
+    handleSubmit
+  } = useFormik({
     initialValues: {
       profID: '',
       faculty: '',
@@ -46,9 +82,9 @@ function MyCoursesCreateCourse() {
       finalExamMonth: '',
       finalExamYear: '',
       classPlace: '',
-      day: dayTemplate,
       students: []
     },
+    validationSchema: validationSchema,
     onSubmit: (values) => console.log(values)
   })
 
@@ -149,7 +185,9 @@ function MyCoursesCreateCourse() {
             style={styles.textInput}
             value={values.profID}
             onChangeText={handleChange('profID')}
+            onBlur={() => setFieldTouched('profID')}
           />
+          <ErrorMessage error={errors.profID} visible={touched.profID} />
           <CustomPicker
             label="دانشکده:"
             items={[
@@ -166,6 +204,8 @@ function MyCoursesCreateCourse() {
             selectedItem={values.faculty}
             onSelectItem={handleChange('faculty')}
           />
+          <ErrorMessage error={errors.faculty} visible={touched.faculty} />
+
           <CustomPicker
             label="گروه درسی:"
             items={['برق', 'کامپیوتر', 'عمران']}
@@ -173,12 +213,21 @@ function MyCoursesCreateCourse() {
             selectedItem={values.department}
             onSelectItem={handleChange('department')}
           />
+          <ErrorMessage
+            error={errors.department}
+            visible={touched.department}
+          />
+
           <CustomPicker
             label="نام درس:"
             items={['کامپایلر', 'ریاضی', 'ادبیات عمومی', 'معماری کامپیوتر']}
             labelColor={primaryColor}
             selectedItem={values.courseName}
             onSelectItem={handleChange('courseName')}
+          />
+          <ErrorMessage
+            error={errors.courseName}
+            visible={touched.courseName}
           />
         </View>
 
@@ -239,6 +288,7 @@ function MyCoursesCreateCourse() {
               }}
               style={{marginVertical: 5}}
             />
+            <ErrorMessage error={errors.days} visible={touched.days} />
           </View>
 
           <View style={styles.addDayContainer}>
@@ -268,6 +318,7 @@ function MyCoursesCreateCourse() {
                 textAlign="center"
                 value={values.finalExamDay}
                 onChangeText={handleChange('finalExamDay')}
+                onBlur={() => setFieldTouched('finalExamDay')}
                 style={styles.dateTextInput}
               />
               <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
@@ -278,6 +329,7 @@ function MyCoursesCreateCourse() {
                 textAlign="center"
                 value={values.finalExamMonth}
                 onChangeText={handleChange('finalExamMonth')}
+                onBlur={() => setFieldTouched('finalExamMonth')}
                 style={styles.dateTextInput}
               />
               <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
@@ -288,10 +340,23 @@ function MyCoursesCreateCourse() {
                 textAlign="center"
                 value={values.finalExamYear}
                 onChangeText={handleChange('finalExamYear')}
+                onBlur={() => setFieldTouched('finalExamYear')}
                 style={styles.dateTextInput}
               />
             </View>
           </View>
+          <ErrorMessage
+            error={errors.finalExamDay}
+            visible={touched.finalExamDay}
+          />
+          <ErrorMessage
+            error={errors.finalExamMonth}
+            visible={touched.finalExamMonth}
+          />
+          <ErrorMessage
+            error={errors.finalExamYear}
+            visible={touched.finalExamYear}
+          />
         </View>
 
         <View style={styles.classPlace}>
@@ -299,7 +364,12 @@ function MyCoursesCreateCourse() {
             placeholder="مکان برگزاری کلاس"
             value={values.classPlace}
             onChangeText={handleChange('classPlace')}
+            onBlur={() => setFieldTouched('classPlace')}
             style={styles.textInput}
+          />
+          <ErrorMessage
+            error={errors.classPlace}
+            visible={touched.classPlace}
           />
         </View>
 
