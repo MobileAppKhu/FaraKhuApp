@@ -4,8 +4,8 @@ import Modal from 'react-native-modal'
 
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
-import {useSelector} from "react-redux";
-import makeStyles from "../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../helpers/makeStyles'
 
 const CustomPicker = ({
   items,
@@ -61,8 +61,10 @@ const CustomPicker = ({
               <Pressable
                 android_ripple={{color: palette.M_3_REF_PRIMARY_PRIMARY_90}}
                 onPress={() => {
-                  onSelectItem(item)
                   setModalVisible(false)
+                  setTimeout(() => {
+                    onSelectItem(item)
+                  }, 400)
                 }}
                 key={index}
                 style={styles.modalItem}>

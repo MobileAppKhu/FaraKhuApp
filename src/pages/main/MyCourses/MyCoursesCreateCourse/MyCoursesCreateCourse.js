@@ -1,6 +1,7 @@
 import React, {useCallback, useRef, useState} from 'react'
 import {View, Pressable, ScrollView, TextInput, BackHandler} from 'react-native'
 import {useNavigation, useFocusEffect} from '@react-navigation/native'
+import {useFormik} from 'formik'
 
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
@@ -15,7 +16,7 @@ import CloseModal from './Modals/CloseModal'
 import {useSelector} from 'react-redux'
 
 const dayTemplate = {
-  id: 0,
+  id: Date.now(),
   day: '',
   startTime: {
     hour: '08',
@@ -29,38 +30,40 @@ const dayTemplate = {
 
 function MyCoursesCreateCourse() {
   const navigation = useNavigation()
-  // States
-  const [classPlace, setClassPlace] = useState('')
-  const [faculty, setFaculty] = useState('')
-  const [department, setDepartment] = useState('')
-  const [courseName, setCourseName] = useState('')
-  const [image, setImage] = useState(null)
-  const [days, setDays] = useState([])
-  const [day, setDay] = useState(dayTemplate)
-  const [finalExamDate, setFinalExamDate] = useState({
-    day: '',
-    month: '',
-    year: ''
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const {M_3_SYS_PRIMARY: primaryColor} = palette
+
+  const {values, setFieldValue, handleChange, handleSubmit} = useFormik({
+    initialValues: {
+      profID: '',
+      faculty: '',
+      department: '',
+      courseName: '',
+      image: null,
+      days: [],
+      finalExamDay: '',
+      finalExamMonth: '',
+      finalExamYear: '',
+      classPlace: '',
+      day: dayTemplate,
+      students: []
+    },
+    onSubmit: (values) => console.log(values)
   })
-  const [students, setStudents] = useState([])
+
+  // States
+  const [day, setDay] = useState(dayTemplate)
   const [student, setStudent] = useState({
     name: 'نام دانشجو',
     stuID: ''
   })
-  const [profID, setProfID] = useState('')
   const [closeModal, setCloseModal] = useState(false)
 
   //Refs
   const studentList = useRef()
 
-  //Methods
-  const handleDayChange = (value, day) => {
-    let selectedDay = days.findIndex((d) => d.id === day.id)
-    let newDays = [...days]
-    newDays[selectedDay] = {...newDays[selectedDay], day: value}
-    setDays(newDays)
-  }
-
+  // useEffect call
   useFocusEffect(
     useCallback(() => {
       const onBackPress = () => {
@@ -74,10 +77,18 @@ function MyCoursesCreateCourse() {
     }, [])
   )
 
+  //Methods
+  const handleDayChange = (value, day) => {
+    let selectedDay = values.days.findIndex((d) => d.id === day.id)
+    let newDays = [...values.days]
+    newDays[selectedDay] = {...newDays[selectedDay], day: value}
+    setFieldValue('days', newDays)
+  }
+
   const handleTimeChange = (value, field, day, timeType) => {
     // timeType = startTime or endTime  | field = hour or minute
-    let selectedDay = days.findIndex((d) => d.id === day.id)
-    let newDays = [...days]
+    let selectedDay = values.days.findIndex((d) => d.id === day.id)
+    let newDays = [...values.days]
     newDays[selectedDay] = {
       ...newDays[selectedDay],
       [timeType]: {
@@ -85,21 +96,20 @@ function MyCoursesCreateCourse() {
         [field]: value
       }
     }
-    setDays(newDays)
+    setFieldValue('days', newDays)
   }
 
   const handleStudentChange = (value, stu) => {
-    let selectedStudent = students.findIndex((s) => s.stuID === stu.stuID)
-    let newStudents = [...students]
+    let selectedStudent = values.students.findIndex(
+      (s) => s.stuID === stu.stuID
+    )
+    let newStudents = [...values.students]
     newStudents[selectedStudent] = {
       ...newStudents[selectedStudent],
       stuID: value
     }
-    setStudents(newStudents)
+    setFieldValue('students', newStudents)
   }
-  const styles = useStyles()
-  const {theme: palette} = useSelector((state) => state.authReducer)
-  const {M_3_SYS_PRIMARY: primaryColor} = palette
 
   return (
     <View style={styles.screen}>
@@ -137,8 +147,8 @@ function MyCoursesCreateCourse() {
             labelColor={primaryColor}
             labelStyle={{fontSize: 14, fontFamily: 'Shabnam'}}
             style={styles.textInput}
-            value={profID}
-            onChangeText={(id) => setProfID(id)}
+            value={values.profID}
+            onChangeText={handleChange('profID')}
           />
           <CustomPicker
             label="دانشکده:"
@@ -153,22 +163,22 @@ function MyCoursesCreateCourse() {
               'ریاضی'
             ]}
             labelColor={primaryColor}
-            selectedItem={faculty}
-            onSelectItem={(faculty) => setFaculty(faculty)}
+            selectedItem={values.faculty}
+            onSelectItem={handleChange('faculty')}
           />
           <CustomPicker
             label="گروه درسی:"
             items={['برق', 'کامپیوتر', 'عمران']}
             labelColor={primaryColor}
-            selectedItem={department}
-            onSelectItem={(dep) => setDepartment(dep)}
+            selectedItem={values.department}
+            onSelectItem={handleChange('department')}
           />
           <CustomPicker
             label="نام درس:"
             items={['کامپایلر', 'ریاضی', 'ادبیات عمومی', 'معماری کامپیوتر']}
             labelColor={primaryColor}
-            selectedItem={courseName}
-            onSelectItem={(crs) => setCourseName(crs)}
+            selectedItem={values.courseName}
+            onSelectItem={handleChange('courseName')}
           />
         </View>
 
@@ -176,8 +186,8 @@ function MyCoursesCreateCourse() {
 
         <View style={styles.imageInput}>
           <ImagePicker
-            imageUri={image}
-            onChangeImage={(uri) => setImage(uri)}
+            imageUri={values.image}
+            onChangeImage={handleChange('image')}
             width={144}
             height={144}
           />
@@ -196,7 +206,7 @@ function MyCoursesCreateCourse() {
             روز های برگزاری:
           </Typography>
           <View>
-            {days.map((day, index) => (
+            {values.days.map((day, index) => (
               <DayPicker
                 selectedDay={day}
                 onSelectDay={(value) => {
@@ -216,10 +226,16 @@ function MyCoursesCreateCourse() {
               selectedDay={day}
               onSelectDay={(value) => setDay({...day, day: value})}
               onStartTimeChange={(value, field) => {
-                setDay({...day, startTime: {...day.startTime, [field]: value}})
+                setDay({
+                  ...day,
+                  startTime: {...day.startTime, [field]: value}
+                })
               }}
               onEndTimeChange={(value, field) => {
-                setDay({...day, endTime: {...day.endTime, [field]: value}})
+                setDay({
+                  ...day,
+                  endTime: {...day.endTime, [field]: value}
+                })
               }}
               style={{marginVertical: 5}}
             />
@@ -230,8 +246,8 @@ function MyCoursesCreateCourse() {
               android_ripple={{color: palette.M_3_SYS_PRIMARY_CONTAINER}}
               style={styles.addDay}
               onPress={() => {
-                setDays([...days, day])
-                setDay({...dayTemplate, id: ++day.id})
+                setFieldValue('days', [...values.days, day])
+                setDay({...dayTemplate, id: Date.now()})
               }}>
               <Typography variant="h6" color={primaryColor}>
                 اضافه کردن روز جدید
@@ -250,9 +266,8 @@ function MyCoursesCreateCourse() {
                 placeholder="روز"
                 keyboardType="numeric"
                 textAlign="center"
-                onChangeText={(day) => {
-                  setFinalExamDate({...finalExamDate, day})
-                }}
+                value={values.finalExamDay}
+                onChangeText={handleChange('finalExamDay')}
                 style={styles.dateTextInput}
               />
               <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
@@ -261,9 +276,8 @@ function MyCoursesCreateCourse() {
                 placeholder="ماه"
                 keyboardType="numeric"
                 textAlign="center"
-                onChangeText={(month) => {
-                  setFinalExamDate({...finalExamDate, month})
-                }}
+                value={values.finalExamMonth}
+                onChangeText={handleChange('finalExamMonth')}
                 style={styles.dateTextInput}
               />
               <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
@@ -272,9 +286,8 @@ function MyCoursesCreateCourse() {
                 placeholder="سال"
                 keyboardType="numeric"
                 textAlign="center"
-                onChangeText={(year) => {
-                  setFinalExamDate({...finalExamDate, year})
-                }}
+                value={values.finalExamYear}
+                onChangeText={handleChange('finalExamYear')}
                 style={styles.dateTextInput}
               />
             </View>
@@ -284,8 +297,8 @@ function MyCoursesCreateCourse() {
         <View style={styles.classPlace}>
           <CustomInput
             placeholder="مکان برگزاری کلاس"
-            value={classPlace}
-            onChangeText={(text) => setClassPlace(text)}
+            value={values.classPlace}
+            onChangeText={handleChange('classPlace')}
             style={styles.textInput}
           />
         </View>
@@ -304,7 +317,7 @@ function MyCoursesCreateCourse() {
             <View style={styles.studentsHeader}>
               <View style={{flexDirection: 'row-reverse'}}>
                 <Typography>تعداد: </Typography>
-                <Typography>{students.length} نفر</Typography>
+                <Typography>{values.students.length} نفر</Typography>
               </View>
 
               <Pressable
@@ -313,7 +326,7 @@ function MyCoursesCreateCourse() {
                 }}
                 style={styles.addDay}
                 onPress={() => {
-                  setStudents([...students, student])
+                  setFieldValue('students', [...values.students, student])
                   setStudent({name: 'نام دانشجو', stuID: ''})
                 }}>
                 <Typography variant="h6" color={primaryColor}>
@@ -328,7 +341,7 @@ function MyCoursesCreateCourse() {
               contentContainerStyle={styles.studentsList}
               onContentSizeChange={() => studentList.current.scrollToEnd()}
               ref={studentList}>
-              {students.map((stu, index) => (
+              {values.students.map((stu, index) => (
                 <CustomInput
                   placeholder="شماره دانشجویی"
                   keyboardType="numeric"
@@ -360,6 +373,7 @@ function MyCoursesCreateCourse() {
           <CustomButton
             title="ایجاد کلاس +"
             size="small"
+            onPress={handleSubmit}
             style={{marginVertical: 30}}
           />
         </View>
