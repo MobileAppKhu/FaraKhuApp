@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {View, Pressable, TextInput} from 'react-native'
 import {useSelector} from 'react-redux'
 import CustomIcon from '../../../../../components/CustomIcon'
@@ -8,33 +8,19 @@ import ErrorMessage from '../../../../../components/ErrroMessage'
 import Typography from '../../../../../components/Typography'
 import makeStyles from '../../../../../helpers/makeStyles'
 import DayPicker from '../DayPicker'
+import {createEmptyDay} from '../MyCoursesCreateCourse'
 
-const dayTemplate = {
-  id: Date.now(),
-  day: '',
-  startTime: {
-    hour: '08',
-    minute: '00'
-  },
-  endTime: {
-    hour: '10',
-    minute: '00'
-  }
-}
-
-export default function GeneralInfo({
+export default function DaysDatePlace({
   values,
   errors,
   touched,
-  primaryColor,
   handleChange,
   setFieldTouched,
   setFieldValue
 }) {
   const styles = useStyles()
   const {theme: palette} = useSelector((state) => state.authReducer)
-
-  const [day, setDay] = useState(dayTemplate)
+  const {M_3_SYS_PRIMARY: primaryColor} = palette
 
   const handleDayChange = (value, day) => {
     let selectedDay = values.days.findIndex((d) => d.id === day.id)
@@ -84,23 +70,6 @@ export default function GeneralInfo({
               style={{marginVertical: 5}}
             />
           ))}
-          <DayPicker
-            selectedDay={day}
-            onSelectDay={(value) => setDay({...day, day: value})}
-            onStartTimeChange={(value, field) => {
-              setDay({
-                ...day,
-                startTime: {...day.startTime, [field]: value}
-              })
-            }}
-            onEndTimeChange={(value, field) => {
-              setDay({
-                ...day,
-                endTime: {...day.endTime, [field]: value}
-              })
-            }}
-            style={{marginVertical: 5}}
-          />
           <ErrorMessage error={errors.days} visible={touched.days} />
         </View>
 
@@ -109,8 +78,7 @@ export default function GeneralInfo({
             android_ripple={{color: palette.M_3_SYS_PRIMARY_CONTAINER}}
             style={styles.addDay}
             onPress={() => {
-              setFieldValue('days', [...values.days, day])
-              setDay({...dayTemplate, id: Date.now()})
+              setFieldValue('days', [...values.days, createEmptyDay()])
             }}>
             <Typography variant="h6" color={primaryColor}>
               اضافه کردن روز جدید

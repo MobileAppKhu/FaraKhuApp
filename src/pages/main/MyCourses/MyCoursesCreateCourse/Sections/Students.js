@@ -7,9 +7,10 @@ import CustomInput from '../../../../../components/CustomInput'
 import Typography from '../../../../../components/Typography'
 import makeStyles from '../../../../../helpers/makeStyles'
 
-export default function GeneralInfo({values, primaryColor, setFieldValue}) {
+export default function Students({values, setFieldValue}) {
   const styles = useStyles()
   const {theme: palette} = useSelector((state) => state.authReducer)
+  const {M_3_SYS_PRIMARY: primaryColor} = palette
 
   const [student, setStudent] = useState({
     name: 'نام دانشجو',

@@ -13,8 +13,21 @@ import ImagePicker from '../../../../components/ImagePicker'
 import useStyles from './stylessheet'
 import CloseModal from './Modals/CloseModal'
 import GeneralInfo from './Sections/GeneralInfo'
-import DatesAndPlaceInfo from './Sections/DatesAndPlaceInfo'
+import DaysDatePlace from './Sections/DaysDatePlace'
 import Students from './Sections/Students'
+
+export const createEmptyDay = () => ({
+  id: Date.now(),
+  day: '',
+  startTime: {
+    hour: '08',
+    minute: '00'
+  },
+  endTime: {
+    hour: '10',
+    minute: '00'
+  }
+})
 
 const validationSchema = Yup.object().shape({
   profID: Yup.string()
@@ -25,7 +38,7 @@ const validationSchema = Yup.object().shape({
   courseName: Yup.string().required('* انتخاب "نام درس" الزامی می‌باشد.'),
   days: Yup.array().min(
     1,
-    '* مشخص کردن "روز های برگزاری کلاس" الزامی می‌باشد. \nبعد از انتخاب مقادیر، بر روی "اضافه کردن روز جدید +" کلیک کنید تا روز انتخابی شما اضافه شود.'
+    '* مشخص کردن "روز های برگزاری کلاس" الزامی می‌باشد.'
   ),
   finalExamDay: Yup.string().required(
     '* انتخاب "روز برگزاری امتحان" الزامی می‌باشد.'
@@ -65,7 +78,7 @@ function MyCoursesCreateCourse() {
       department: '',
       courseName: '',
       image: null,
-      days: [],
+      days: [createEmptyDay()],
       finalExamDay: '',
       finalExamMonth: '',
       finalExamYear: '',
@@ -123,7 +136,6 @@ function MyCoursesCreateCourse() {
           touched={touched}
           handleChange={handleChange}
           setFieldTouched={setFieldTouched}
-          primaryColor={primaryColor}
         />
 
         <HorizontalSeparator margin={20} />
@@ -144,24 +156,19 @@ function MyCoursesCreateCourse() {
         <HorizontalSeparator margin={20} />
 
         {/* (days - finalExamDate - classPlace) inputs */}
-        <DatesAndPlaceInfo
+        <DaysDatePlace
           values={values}
           touched={touched}
           errors={errors}
           setFieldTouched={setFieldTouched}
           setFieldValue={setFieldValue}
           handleChange={handleChange}
-          primaryColor={primaryColor}
         />
 
         <HorizontalSeparator margin={20} />
 
         {/* (students) inputs */}
-        <Students
-          values={values}
-          setFieldValue={setFieldValue}
-          primaryColor={primaryColor}
-        />
+        <Students values={values} setFieldValue={setFieldValue} />
 
         <CustomButton
           title="ایجاد کلاس +"

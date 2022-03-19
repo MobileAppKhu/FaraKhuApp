@@ -1,5 +1,6 @@
 import React from 'react'
 import {View} from 'react-native'
+import {useSelector} from 'react-redux'
 
 import CustomInput from '../../../../../components/CustomInput'
 import CustomPicker from '../../../../../components/CustomPicker'
@@ -10,11 +11,12 @@ export default function GeneralInfo({
   values,
   errors,
   touched,
-  primaryColor,
   handleChange,
   setFieldTouched
 }) {
   const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const {M_3_SYS_PRIMARY: primaryColor} = palette
 
   return (
     <View>
