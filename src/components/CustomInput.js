@@ -4,8 +4,8 @@ import {Pressable, StyleSheet, TextInput, View} from 'react-native'
 import theme from '../theme'
 import CustomIcon from './CustomIcon'
 import Typography from './Typography'
-import {useSelector} from "react-redux";
-import makeStyles from "../helpers/makeStyles";
+import {useSelector} from 'react-redux'
+import makeStyles from '../helpers/makeStyles'
 
 export default function CustomInput({
   label,
@@ -25,6 +25,7 @@ export default function CustomInput({
   startIcon,
   clearInputOptions,
   required,
+  onBlur,
   ...others
 }) {
   const {theme: palette} = useSelector((state) => state.authReducer)
@@ -62,7 +63,12 @@ export default function CustomInput({
         value={value}
         placeholder={placeholder}
         {...others}
-        onBlur={() => setIsFocused(false)}
+        onBlur={() => {
+          setIsFocused(false)
+          if (onBlur) {
+            onBlur()
+          }
+        }}
         onFocus={() => setIsFocused(true)}
         keyboardType={keyboardType}
         textAlign="right"

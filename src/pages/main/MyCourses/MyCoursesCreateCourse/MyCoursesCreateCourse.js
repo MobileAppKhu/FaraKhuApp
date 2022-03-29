@@ -1,21 +1,23 @@
-import React, {useCallback, useRef, useState} from 'react'
-import {View, Pressable, ScrollView, TextInput, BackHandler} from 'react-native'
+import React, {useCallback, useState} from 'react'
+import {View, Pressable, ScrollView, BackHandler} from 'react-native'
 import {useNavigation, useFocusEffect} from '@react-navigation/native'
+import {useFormik} from 'formik'
+import {useSelector} from 'react-redux'
+import * as Yup from 'yup'
 
 import CustomIcon from '../../../../components/CustomIcon'
 import Typography from '../../../../components/Typography'
-import CustomInput from '../../../../components/CustomInput'
 import CustomButton from '../../../../components/CustomButton'
-import CustomPicker from '../../../../components/CustomPicker'
 import HorizontalSeparator from '../../../../components/HorizontalSeparator'
 import ImagePicker from '../../../../components/ImagePicker'
-import DayPicker from './DayPicker'
 import useStyles from './stylessheet'
 import CloseModal from './Modals/CloseModal'
-import {useSelector} from 'react-redux'
+import GeneralInfo from './Sections/GeneralInfo'
+import DaysDatePlace from './Sections/DaysDatePlace'
+import Students from './Sections/Students'
 
-const dayTemplate = {
-  id: 0,
+export const createEmptyDay = () => ({
+  id: Date.now(),
   day: '',
   startTime: {
     hour: '08',
@@ -25,41 +27,67 @@ const dayTemplate = {
     hour: '10',
     minute: '00'
   }
-}
+})
+
+const validationSchema = Yup.object().shape({
+  profID: Yup.string()
+    .matches(/\d{9}/, '* شماره استادی می‌بایست 9 رقم باشد.')
+    .required('وارد کردن "شماره استادی" الزامی می‌باشد.'),
+  faculty: Yup.string().required('* انتخاب "دانشکده" الزامی می‌باشد.'),
+  department: Yup.string().required('* انتخاب "گروه درسی" الزامی می‌باشد.'),
+  courseName: Yup.string().required('* انتخاب "نام درس" الزامی می‌باشد.'),
+  days: Yup.array().min(
+    1,
+    '* مشخص کردن "روز های برگزاری کلاس" الزامی می‌باشد.'
+  ),
+  finalExamDay: Yup.string().required(
+    '* انتخاب "روز برگزاری امتحان" الزامی می‌باشد.'
+  ),
+  finalExamMonth: Yup.string().required(
+    '* انتخاب "ماه برگزاری امتحان" الزامی می‌باشد.'
+  ),
+  finalExamYear: Yup.string().required(
+    '* انتخاب "سال برگزاری امتحان" الزامی می‌باشد.'
+  ),
+  classPlace: Yup.string().required(
+    '* انتخاب "محل برگزاری امحان" الزامی می‌باشد.'
+  ),
+  students: Yup.array()
+})
 
 function MyCoursesCreateCourse() {
   const navigation = useNavigation()
-  // States
-  const [classPlace, setClassPlace] = useState('')
-  const [faculty, setFaculty] = useState('')
-  const [department, setDepartment] = useState('')
-  const [courseName, setCourseName] = useState('')
-  const [image, setImage] = useState(null)
-  const [days, setDays] = useState([])
-  const [day, setDay] = useState(dayTemplate)
-  const [finalExamDate, setFinalExamDate] = useState({
-    day: '',
-    month: '',
-    year: ''
-  })
-  const [students, setStudents] = useState([])
-  const [student, setStudent] = useState({
-    name: 'نام دانشجو',
-    stuID: ''
-  })
-  const [profID, setProfID] = useState('')
+  const styles = useStyles()
+  const {theme: palette} = useSelector((state) => state.authReducer)
+  const {M_3_SYS_PRIMARY: primaryColor} = palette
+
   const [closeModal, setCloseModal] = useState(false)
 
-  //Refs
-  const studentList = useRef()
-
-  //Methods
-  const handleDayChange = (value, day) => {
-    let selectedDay = days.findIndex((d) => d.id === day.id)
-    let newDays = [...days]
-    newDays[selectedDay] = {...newDays[selectedDay], day: value}
-    setDays(newDays)
-  }
+  const {
+    values,
+    errors,
+    touched,
+    setFieldValue,
+    setFieldTouched,
+    handleChange,
+    handleSubmit
+  } = useFormik({
+    initialValues: {
+      profID: '',
+      faculty: '',
+      department: '',
+      courseName: '',
+      image: null,
+      days: [createEmptyDay()],
+      finalExamDay: '',
+      finalExamMonth: '',
+      finalExamYear: '',
+      classPlace: '',
+      students: []
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => console.log(values.days.length)
+  })
 
   useFocusEffect(
     useCallback(() => {
@@ -73,33 +101,6 @@ function MyCoursesCreateCourse() {
         BackHandler.removeEventListener('hardwareBackPress', onBackPress)
     }, [])
   )
-
-  const handleTimeChange = (value, field, day, timeType) => {
-    // timeType = startTime or endTime  | field = hour or minute
-    let selectedDay = days.findIndex((d) => d.id === day.id)
-    let newDays = [...days]
-    newDays[selectedDay] = {
-      ...newDays[selectedDay],
-      [timeType]: {
-        ...newDays[selectedDay][timeType],
-        [field]: value
-      }
-    }
-    setDays(newDays)
-  }
-
-  const handleStudentChange = (value, stu) => {
-    let selectedStudent = students.findIndex((s) => s.stuID === stu.stuID)
-    let newStudents = [...students]
-    newStudents[selectedStudent] = {
-      ...newStudents[selectedStudent],
-      stuID: value
-    }
-    setStudents(newStudents)
-  }
-  const styles = useStyles()
-  const {theme: palette} = useSelector((state) => state.authReducer)
-  const {M_3_SYS_PRIMARY: primaryColor} = palette
 
   return (
     <View style={styles.screen}>
@@ -128,56 +129,22 @@ function MyCoursesCreateCourse() {
       />
 
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-        <View>
-          <CustomInput
-            label="استاد درس:"
-            placeholder="شماره استادی"
-            keyboardType="numeric"
-            maxLength={9}
-            labelColor={primaryColor}
-            labelStyle={{fontSize: 14, fontFamily: 'Shabnam'}}
-            style={styles.textInput}
-            value={profID}
-            onChangeText={(id) => setProfID(id)}
-          />
-          <CustomPicker
-            label="دانشکده:"
-            items={[
-              'فنی مهندسی',
-              'ریاضی',
-              'ادبیات',
-              'فنی مهندسی',
-              'ریاضی',
-              'ادبیات',
-              'فنی مهندسی',
-              'ریاضی'
-            ]}
-            labelColor={primaryColor}
-            selectedItem={faculty}
-            onSelectItem={(faculty) => setFaculty(faculty)}
-          />
-          <CustomPicker
-            label="گروه درسی:"
-            items={['برق', 'کامپیوتر', 'عمران']}
-            labelColor={primaryColor}
-            selectedItem={department}
-            onSelectItem={(dep) => setDepartment(dep)}
-          />
-          <CustomPicker
-            label="نام درس:"
-            items={['کامپایلر', 'ریاضی', 'ادبیات عمومی', 'معماری کامپیوتر']}
-            labelColor={primaryColor}
-            selectedItem={courseName}
-            onSelectItem={(crs) => setCourseName(crs)}
-          />
-        </View>
+        {/* (profID - faculty - department - courseName) inputs */}
+        <GeneralInfo
+          values={values}
+          errors={errors}
+          touched={touched}
+          handleChange={handleChange}
+          setFieldTouched={setFieldTouched}
+        />
 
         <HorizontalSeparator margin={20} />
 
+        {/* image inputs */}
         <View style={styles.imageInput}>
           <ImagePicker
-            imageUri={image}
-            onChangeImage={(uri) => setImage(uri)}
+            imageUri={values.image}
+            onChangeImage={handleChange('image')}
             width={144}
             height={144}
           />
@@ -188,181 +155,27 @@ function MyCoursesCreateCourse() {
 
         <HorizontalSeparator margin={20} />
 
-        <View style={styles.daysExamPlace}>
-          <Typography
-            variant="body1"
-            color={primaryColor}
-            style={{marginBottom: 5}}>
-            روز های برگزاری:
-          </Typography>
-          <View>
-            {days.map((day, index) => (
-              <DayPicker
-                selectedDay={day}
-                onSelectDay={(value) => {
-                  handleDayChange(value, day)
-                }}
-                onStartTimeChange={(value, field) => {
-                  handleTimeChange(value, field, day, 'startTime')
-                }}
-                onEndTimeChange={(value, field) => {
-                  handleTimeChange(value, field, day, 'endTime')
-                }}
-                key={index}
-                style={{marginVertical: 5}}
-              />
-            ))}
-            <DayPicker
-              selectedDay={day}
-              onSelectDay={(value) => setDay({...day, day: value})}
-              onStartTimeChange={(value, field) => {
-                setDay({...day, startTime: {...day.startTime, [field]: value}})
-              }}
-              onEndTimeChange={(value, field) => {
-                setDay({...day, endTime: {...day.endTime, [field]: value}})
-              }}
-              style={{marginVertical: 5}}
-            />
-          </View>
-
-          <View style={styles.addDayContainer}>
-            <Pressable
-              android_ripple={{color: palette.M_3_SYS_PRIMARY_CONTAINER}}
-              style={styles.addDay}
-              onPress={() => {
-                setDays([...days, day])
-                setDay({...dayTemplate, id: ++day.id})
-              }}>
-              <Typography variant="h6" color={primaryColor}>
-                اضافه کردن روز جدید
-              </Typography>
-              <CustomIcon name="icon_add" size={18} color={primaryColor} />
-            </Pressable>
-          </View>
-
-          <View style={styles.finalExamDate}>
-            <Typography variant="body1" color={primaryColor}>
-              تاریخ امتحان پایان ترم:
-            </Typography>
-            <View style={styles.dateInput}>
-              <TextInput
-                maxLength={2}
-                placeholder="روز"
-                keyboardType="numeric"
-                textAlign="center"
-                onChangeText={(day) => {
-                  setFinalExamDate({...finalExamDate, day})
-                }}
-                style={styles.dateTextInput}
-              />
-              <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
-              <TextInput
-                maxLength={2}
-                placeholder="ماه"
-                keyboardType="numeric"
-                textAlign="center"
-                onChangeText={(month) => {
-                  setFinalExamDate({...finalExamDate, month})
-                }}
-                style={styles.dateTextInput}
-              />
-              <Typography style={{padding: 0, margin: 0}}>{`/`}</Typography>
-              <TextInput
-                maxLength={4}
-                placeholder="سال"
-                keyboardType="numeric"
-                textAlign="center"
-                onChangeText={(year) => {
-                  setFinalExamDate({...finalExamDate, year})
-                }}
-                style={styles.dateTextInput}
-              />
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.classPlace}>
-          <CustomInput
-            placeholder="مکان برگزاری کلاس"
-            value={classPlace}
-            onChangeText={(text) => setClassPlace(text)}
-            style={styles.textInput}
-          />
-        </View>
+        {/* (days - finalExamDate - classPlace) inputs */}
+        <DaysDatePlace
+          values={values}
+          touched={touched}
+          errors={errors}
+          setFieldTouched={setFieldTouched}
+          setFieldValue={setFieldValue}
+          handleChange={handleChange}
+        />
 
         <HorizontalSeparator margin={20} />
 
-        <View style={styles.students}>
-          <Typography
-            variant="body1"
-            color={primaryColor}
-            style={{marginBottom: 5}}>
-            دانشجویان کلاس:
-          </Typography>
+        {/* (students) inputs */}
+        <Students values={values} setFieldValue={setFieldValue} />
 
-          <View style={styles.studentsBox}>
-            <View style={styles.studentsHeader}>
-              <View style={{flexDirection: 'row-reverse'}}>
-                <Typography>تعداد: </Typography>
-                <Typography>{students.length} نفر</Typography>
-              </View>
-
-              <Pressable
-                android_ripple={{
-                  color: palette.M_3_SYS_PRIMARY_CONTAINER
-                }}
-                style={styles.addDay}
-                onPress={() => {
-                  setStudents([...students, student])
-                  setStudent({name: 'نام دانشجو', stuID: ''})
-                }}>
-                <Typography variant="h6" color={primaryColor}>
-                  دانشجوی جدید
-                </Typography>
-                <CustomIcon name="icon_add" size={18} color={primaryColor} />
-              </Pressable>
-            </View>
-
-            <ScrollView
-              nestedScrollEnabled={true}
-              contentContainerStyle={styles.studentsList}
-              onContentSizeChange={() => studentList.current.scrollToEnd()}
-              ref={studentList}>
-              {students.map((stu, index) => (
-                <CustomInput
-                  placeholder="شماره دانشجویی"
-                  keyboardType="numeric"
-                  maxLength={9}
-                  defaultValue={stu.stuID}
-                  helperText={stu.name}
-                  helperTextStyle={styles.studentName}
-                  onChangeText={(text) => {
-                    handleStudentChange(text, stu)
-                  }}
-                  style={[styles.textInput, styles.stuNumberInput]}
-                  key={index}
-                />
-              ))}
-              <CustomInput
-                placeholder="شماره دانشجویی"
-                keyboardType="numeric"
-                maxLength={9}
-                value={student.stuID}
-                helperText="شماره دانشجویی را وارد کنید"
-                helperTextStyle={styles.studentName}
-                onChangeText={(text) =>
-                  setStudent({stuID: text, name: 'نام دانشجو'})
-                }
-                style={styles.textInput}
-              />
-            </ScrollView>
-          </View>
-          <CustomButton
-            title="ایجاد کلاس +"
-            size="small"
-            style={{marginVertical: 30}}
-          />
-        </View>
+        <CustomButton
+          title="ایجاد کلاس +"
+          size="small"
+          onPress={handleSubmit}
+          style={{marginVertical: 30}}
+        />
       </ScrollView>
     </View>
   )
